@@ -4,8 +4,7 @@
 # Backups
 /backup/
 
-# User uploads
-/media_library/
+
 
 # OS files
 .DS_Store
