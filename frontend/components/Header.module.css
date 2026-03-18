@@ -8,6 +8,10 @@
   transition: all var(--transition-base);
 }
 
+.header.transparent {
+  background: transparent;
+}
+
 .header.scrolled {
   background: var(--color-navy);
   box-shadow: var(--shadow-lg);

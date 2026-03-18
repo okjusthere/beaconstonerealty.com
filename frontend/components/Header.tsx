@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import styles from './Header.module.css';
 import type { MenuItem, PicItem } from '@/lib/api';
 
@@ -14,6 +15,8 @@ export default function Header({ menuItems, logo }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -30,15 +33,21 @@ export default function Header({ menuItems, logo }: HeaderProps) {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  const headerClass = [
+    styles.header,
+    scrolled ? styles.scrolled : '',
+    isHome && !scrolled ? styles.transparent : '',
+  ].filter(Boolean).join(' ');
+
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+    <header className={headerClass}>
       <div className={styles.inner}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
           {logo ? (
             <img src={logo.path} alt="Beaconstone Realty" className={styles.logoImg} />
           ) : (
-            <span className={styles.logoText}>Beaconstone Realty</span>
+            <span className={styles.logoText}>BEACONSTONE REALTY</span>
           )}
         </Link>
 

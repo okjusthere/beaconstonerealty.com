@@ -57,7 +57,7 @@ export default async function RootLayout({
       </head>
       <body>
         <Header menuItems={menuItems} logo={logo} />
-        <main style={{ paddingTop: 'var(--header-height)' }}>
+        <main>
           {children}
         </main>
         <Footer webInfo={webInfo} menuItems={menuItems} />
