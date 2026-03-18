@@ -2,6 +2,11 @@
 // PHP built-in server router (用于 Railway 部署)
 // 替代 Apache .htaccess 的 URL 重写功能
 
+<?php
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+        $_SERVER['HTTPS'] = 'on';
+}
+?>
 $uri = $_SERVER['REQUEST_URI'];
 $path = parse_url($uri, PHP_URL_PATH);
 
