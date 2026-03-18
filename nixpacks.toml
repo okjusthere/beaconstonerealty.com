@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php74", "php74Extensions.mysqli", "php74Extensions.mbstring", "php74Extensions.xml", "php74Extensions.curl", "php74Extensions.zip"]
+nixPkgs = ["php74", "php74Extensions.mysqli", "php74Extensions.mbstring", "php74Extensions.xml", "php74Extensions.curl", "php74Extensions.zip", "php74Extensions.gd", "php74Extensions.pdo_mysql"]
 
 [phases.install]
 cmds = ["composer install --no-dev --optimize-autoloader"]
