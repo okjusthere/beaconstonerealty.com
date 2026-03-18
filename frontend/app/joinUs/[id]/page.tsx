@@ -10,6 +10,20 @@ function ArrowRight() {
   );
 }
 
+function extractVideoSource(html: string): string | null {
+  const videoMatch = html.match(/<video[^>]+src=["']([^"']+)["']/i);
+  if (videoMatch?.[1]) {
+    return videoMatch[1];
+  }
+
+  const sourceMatch = html.match(/<source[^>]+src=["']([^"']+)["']/i);
+  return sourceMatch?.[1] ?? null;
+}
+
+function normalizeText(value?: string): string {
+  return value?.replace(/\u00a0/g, ' ').trim() || '';
+}
+
 export default async function JoinUsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
@@ -74,6 +88,8 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
     // Keep fallbacks for the initial migration pass.
   }
 
+  const heroVideoSrc = extractVideoSource(heroMedia);
+
   return (
     <>
       <section className={styles.hero}>
@@ -85,7 +101,25 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
         </div>
         {heroMedia && (
           <div className={`container ${styles.heroMedia}`}>
-            <div dangerouslySetInnerHTML={{ __html: heroMedia }} />
+            <div className={styles.heroMediaFrame}>
+              {heroVideoSrc ? (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className={styles.heroVideo}
+                >
+                  <source src={heroVideoSrc} type="video/mp4" />
+                </video>
+              ) : (
+                <div
+                  className={styles.heroEmbed}
+                  dangerouslySetInnerHTML={{ __html: heroMedia }}
+                />
+              )}
+            </div>
           </div>
         )}
       </section>
@@ -112,7 +146,7 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
           <div className="container">
             <div className={styles.featureGrid}>
               <div className={styles.featureImageWrap}>
-                {featureImage && <img src={featureImage} alt={featureTitle || 'Join us'} loading="lazy" />}
+                {featureImage && <img src={featureImage} alt={featureTitle || 'Join us'} loading="eager" />}
               </div>
               <div className={styles.featureContent}>
                 <h2 className={styles.sectionTitle}>{featureTitle}</h2>
@@ -130,15 +164,39 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
               <h2 className={styles.sectionTitle}>{careerTitle || 'Unlock your potential'}</h2>
             </div>
             <div className={styles.careerGrid}>
-              {careerCards.map((item) => (
-                <Link key={item.id} href={item.url || '#'} className={styles.careerCard}>
-                  {item.thumbnail && <img src={item.thumbnail} alt={item.title} loading="lazy" className={styles.careerImage} />}
-                  <div className={styles.careerBody}>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-                </Link>
-              ))}
+              {careerCards.map((item, index) => {
+                const itemTitle = normalizeText(item.title);
+                const itemDescription = normalizeText(item.description);
+                const hasCopy = Boolean(itemTitle || itemDescription);
+
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.url || '#'}
+                    className={`${styles.careerCard} ${!hasCopy ? styles.careerCardVisualOnly : ''}`}
+                    aria-label={hasCopy ? undefined : `Career spotlight ${index + 1}`}
+                  >
+                    {item.thumbnail && (
+                      <img
+                        src={item.thumbnail}
+                        alt={itemTitle || `Career spotlight ${index + 1}`}
+                        loading="eager"
+                        className={styles.careerImage}
+                      />
+                    )}
+                    {hasCopy ? (
+                      <div className={styles.careerBody}>
+                        {itemTitle && <h3>{itemTitle}</h3>}
+                        {itemDescription && <p>{itemDescription}</p>}
+                      </div>
+                    ) : (
+                      <div className={styles.careerOverlay}>
+                        <span>View Story</span>
+                      </div>
+                    )}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -156,10 +214,10 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
               <div className={styles.discoverGrid}>
                 {discoverMore.map((item) => (
                   <Link key={item.id} href={item.url || '#'} className={styles.discoverCard}>
-                    {item.thumbnail && <img src={item.thumbnail} alt={item.title} loading="lazy" className={styles.discoverImage} />}
+                    {item.thumbnail && <img src={item.thumbnail} alt={item.title} loading="eager" className={styles.discoverImage} />}
                     <div className={styles.discoverBody}>
                       <h3>{item.title}</h3>
-                      <p>{item.description}</p>
+                      {normalizeText(item.description) && <p>{item.description}</p>}
                     </div>
                   </Link>
                 ))}
