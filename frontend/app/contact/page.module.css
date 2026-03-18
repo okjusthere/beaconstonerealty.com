@@ -1,0 +1,78 @@
+.hero {
+  background: var(--color-navy);
+  padding: var(--space-5xl) 0 var(--space-3xl);
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+}
+
+.heroDesc {
+  font-family: var(--font-accent);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.content { background: var(--color-white); }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+}
+
+@media (min-width: 768px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+.infoTitle {
+  font-size: 1.75rem;
+  color: var(--color-navy);
+  margin-bottom: var(--space-xl);
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.infoLabel {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--color-grey-dark);
+}
+
+.infoValue {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  color: var(--color-brown);
+}
+
+.mapWrap {
+  min-height: 400px;
+}
+
+.mapPlaceholder {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background: var(--color-grey-lightest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-grey);
+}
