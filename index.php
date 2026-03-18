@@ -7,8 +7,16 @@ $path = parse_url($uri, PHP_URL_PATH);
 
 // 1. 如果请求的是真实存在的文件（CSS/JS/图片/字体等），直接返回
 if ($path !== '/' && file_exists(__DIR__ . $path)) {
-    // 设置正确的 Content-Type
     $ext = pathinfo($path, PATHINFO_EXTENSION);
+
+    // PHP 文件 → 切换到该文件的目录后执行（保证相对路径 include 正常）
+    if ($ext === 'php') {
+        chdir(dirname(__DIR__ . $path));
+        include __DIR__ . $path;
+        return;
+    }
+
+    // 静态资源 → 设置 MIME 类型后输出
     $mimeTypes = [
         'css' => 'text/css',
         'js' => 'application/javascript',
@@ -17,6 +25,7 @@ if ($path !== '/' && file_exists(__DIR__ . $path)) {
         'jpeg' => 'image/jpeg',
         'gif' => 'image/gif',
         'svg' => 'image/svg+xml',
+        'webp' => 'image/webp',
         'woff' => 'font/woff',
         'woff2' => 'font/woff2',
         'ttf' => 'font/ttf',
@@ -25,32 +34,27 @@ if ($path !== '/' && file_exists(__DIR__ . $path)) {
         'ico' => 'image/x-icon',
         'pdf' => 'application/pdf',
         'zip' => 'application/zip',
+        'mp4' => 'video/mp4',
+        'webm' => 'video/webm',
+        'mp3' => 'audio/mpeg',
         'txt' => 'text/plain',
+        'json' => 'application/json',
+        'xml' => 'application/xml',
+        'map' => 'application/json',
+        'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     ];
+
     if (isset($mimeTypes[$ext])) {
         header('Content-Type: ' . $mimeTypes[$ext]);
         readfile(__DIR__ . $path);
         return;
     }
-    // PHP 文件直接执行
-    if ($ext === 'php') {
-        include __DIR__ . $path;
-        return;
-    }
-    // 其他文件让 PHP 处理
+
+    // 其他未知类型文件，让 PHP 内置服务器默认处理
     return false;
 }
 
-// 2. 如果请求的是 application/ 下的 PHP 文件（API），直接执行
-if (preg_match('#^/application/#', $path)) {
-    $file = __DIR__ . $path;
-    if (file_exists($file)) {
-        include $file;
-        return;
-    }
-}
-
-// 3. 其他所有请求 → 走路由（模拟 .htaccess 的 RewriteRule）
+// 2. 其他所有请求 → 走路由（模拟 .htaccess 的 RewriteRule）
 $url = ltrim($path, '/');
 if (!empty($url)) {
     $_GET['url'] = $url;
