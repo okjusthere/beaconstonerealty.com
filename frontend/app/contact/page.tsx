@@ -93,8 +93,9 @@ export default async function ContactPage() {
               submissionTitle="contact us"
               eyebrow="Contact Us"
               title="Tell us what you are looking for"
-              description="Share your timeline, preferred areas, and bedroom needs. We will reach out once your request has been reviewed."
-              successMessage="Thank you. Your contact request has been submitted."
+              description="Share your timeline, preferred areas, and bedroom needs. Your email app will open with a prepared message."
+              recipientEmail={webInfo.email || 'info@beacon-stone.com'}
+              successMessage="Your email app has been opened with a contact request draft."
             />
 
             <aside className={styles.sidebar}>

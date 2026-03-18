@@ -4,8 +4,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { getGlobalData, getPicByClassId } from '@/lib/api';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: 'Beaconstone Realty | Luxury Real Estate',
   description: 'Beaconstone Realty — premium luxury real estate services. Find exclusive properties and connect with top real estate professionals.',

@@ -1,0 +1,3243 @@
+{
+  "generatedAt": "2026-03-18T14:02:09.282Z",
+  "sourceSiteUrl": "https://beaconstonerealty.com",
+  "globalData": {
+    "web_control": {
+      "state": "1",
+      "tips": "网站维护中……请稍候访问"
+    },
+    "web_info": {
+      "company": "Beacon Stone Realty",
+      "address": "420 Lexingtone Ave #1454, New York, NY, 10170",
+      "phone": "+1 646-696-8641",
+      "mobile": "",
+      "email": "info@beacon-stone.com",
+      "fax": "",
+      "contact": "",
+      "qq": "",
+      "wechat": "",
+      "whatsapp": "",
+      "zip": "",
+      "icp": "",
+      "icp_police": "",
+      "weburl": "",
+      "map": ""
+    },
+    "web_code": [],
+    "pic_info": [
+      {
+        "id": 1,
+        "classid": 1,
+        "path": "/media_library/image_20260305132714XFYZ.jpg",
+        "name": "logo",
+        "url": "",
+        "remarks": ""
+      }
+    ],
+    "menu_info": [
+      {
+        "id": 1,
+        "parentid": 0,
+        "type": 2,
+        "link_id": 12,
+        "title": "Home",
+        "sub_title": "",
+        "url": "/index",
+        "remarks": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "is_show": true,
+        "allow_access": [],
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "children": []
+      },
+      {
+        "id": 2,
+        "parentid": 0,
+        "type": 2,
+        "link_id": 13,
+        "title": "About Us",
+        "sub_title": "About Us",
+        "url": "/about/13",
+        "remarks": "Redefining New York real estate through global vision, strategic execution, and disciplined performance",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "is_show": true,
+        "allow_access": [],
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "children": []
+      },
+      {
+        "id": 3,
+        "parentid": 0,
+        "type": 4,
+        "link_id": 5,
+        "title": "Property Center",
+        "sub_title": "",
+        "url": "/propertyCenter/5",
+        "remarks": "Where Elevated Living Begins",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "is_show": true,
+        "allow_access": [],
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "children": []
+      },
+      {
+        "id": 4,
+        "parentid": 0,
+        "type": 4,
+        "link_id": 6,
+        "title": "Real Estate Agent Center",
+        "sub_title": "",
+        "url": "/realEstateBrokerCenter/6",
+        "remarks": "Guided by Expertise. Driven by Strategy",
+        "thumbnail": "/media_library/image_20260305093311KIHV.jpg",
+        "banner": [],
+        "is_show": true,
+        "allow_access": [],
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "children": []
+      },
+      {
+        "id": 6,
+        "parentid": 0,
+        "type": 2,
+        "link_id": 39,
+        "title": "Join Us",
+        "sub_title": "Join Us",
+        "url": "/joinUs/39",
+        "remarks": "Beacon Stone Realty is built for ambitious professionals who want to grow beyond the traditional brokerage model.\nWe provide the strategy, resources, and global connections that allow our agents to elevate their business and expand their opportunities.",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "is_show": true,
+        "allow_access": [],
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "children": []
+      },
+      {
+        "id": 7,
+        "parentid": 0,
+        "type": 2,
+        "link_id": 57,
+        "title": "Contact Us",
+        "sub_title": "",
+        "url": "/contact/57",
+        "remarks": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [
+          "/media_library/image_20260307103947MLLP.jpg"
+        ],
+        "is_show": true,
+        "allow_access": [],
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "children": []
+      },
+      {
+        "id": 5,
+        "parentid": 0,
+        "type": 2,
+        "link_id": 38,
+        "title": "Sale",
+        "sub_title": "",
+        "url": "/sale/38",
+        "remarks": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "is_show": false,
+        "allow_access": [],
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "children": []
+      },
+      {
+        "id": 8,
+        "parentid": 0,
+        "type": 2,
+        "link_id": 61,
+        "title": "Terms of Use",
+        "sub_title": "",
+        "url": "/page/61",
+        "remarks": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "is_show": false,
+        "allow_access": [],
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "children": []
+      }
+    ],
+    "news_class_info": [
+      {
+        "id": 1,
+        "parentid": 0,
+        "title": "Remarkable Places<br>Inspired Living",
+        "description": "Exploring architecture, design, culture, and the lifestyles that define exceptional living in New York and beyond.",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/news/1",
+        "c_id": [],
+        "children": []
+      },
+      {
+        "id": 2,
+        "parentid": 0,
+        "title": "关于我们统计",
+        "description": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/news/2",
+        "c_id": [],
+        "children": []
+      },
+      {
+        "id": 3,
+        "parentid": 0,
+        "title": "Redefining the Standard of Real Estate.",
+        "description": "Beacon Stone Realty is a New York–based real estate advisory specializing in luxury sales, strategic investments, and international transactions. Through our global network and disciplined execution, we position every property at the highest level of the market.",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/news/3",
+        "c_id": [],
+        "children": []
+      },
+      {
+        "id": 4,
+        "parentid": 0,
+        "title": "Advisors, Not Just Agents",
+        "description": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/news/4",
+        "c_id": [],
+        "children": []
+      },
+      {
+        "id": 5,
+        "parentid": 0,
+        "title": "propertyCenter",
+        "description": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/propertyCenter/5",
+        "c_id": [
+          "3"
+        ],
+        "children": []
+      },
+      {
+        "id": 6,
+        "parentid": 0,
+        "title": "Real Estate Agent Center",
+        "description": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/realEstateBrokerCenter/6",
+        "c_id": [
+          "4"
+        ],
+        "children": []
+      },
+      {
+        "id": 7,
+        "parentid": 0,
+        "title": "Empowering exceptional professionals to build extraordinary real estate careers.",
+        "description": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/news/7",
+        "c_id": [],
+        "children": []
+      },
+      {
+        "id": 8,
+        "parentid": 0,
+        "title": "joinUs-Discover More",
+        "description": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/news/8",
+        "c_id": [],
+        "children": []
+      },
+      {
+        "id": 9,
+        "parentid": 0,
+        "title": "sale-Discover More",
+        "description": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/news/9",
+        "c_id": [],
+        "children": []
+      },
+      {
+        "id": 10,
+        "parentid": 0,
+        "title": "aboutUs-Discover More",
+        "description": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/news/10",
+        "c_id": [],
+        "children": []
+      },
+      {
+        "id": 11,
+        "parentid": 0,
+        "title": "关于我们图",
+        "description": "",
+        "thumbnail": "/images/no_picture.jpg",
+        "banner": [],
+        "content": "",
+        "show_type": 1,
+        "seo_title": "",
+        "seo_keywords": "",
+        "seo_description": "",
+        "url": "/news/11",
+        "c_id": [],
+        "children": []
+      }
+    ],
+    "product_class_info": [],
+    "customer_service": [
+      {
+        "key": "mobile",
+        "value": "18912345678",
+        "description": "手机号",
+        "type": "text",
+        "state": true
+      },
+      {
+        "key": "qq",
+        "value": "12345678xxxx",
+        "description": "QQ",
+        "type": "text",
+        "state": true
+      },
+      {
+        "key": "wechat",
+        "value": "/media_library/image_20251017194412KZIH.jpg",
+        "description": "微信",
+        "type": "image",
+        "state": true
+      },
+      {
+        "key": "facebook",
+        "value": "https://www.facebook.com/",
+        "description": "FACEBOOK",
+        "type": "text",
+        "state": true
+      },
+      {
+        "key": "twitter",
+        "value": "https://www.twitter.com/",
+        "description": "TWITTER",
+        "type": "text",
+        "state": true
+      },
+      {
+        "key": "linkedin",
+        "value": "https://www.linkedin.com/",
+        "description": "LINKEDIN",
+        "type": "text",
+        "state": true
+      },
+      {
+        "key": "instagram",
+        "value": "https://www.instagram.com/",
+        "description": "INSTAGRAM",
+        "type": "text",
+        "state": true
+      },
+      {
+        "key": "youtube",
+        "value": "https://www.youtube.com/",
+        "description": "YOUTUBE",
+        "type": "text",
+        "state": true
+      }
+    ],
+    "links_info": [],
+    "links_class_info": []
+  },
+  "newsById": {
+    "1": {
+      "id": 1,
+      "classid": null,
+      "title": "Beacon Stone Realty",
+      "url": "/page/1",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/media_library/image_20260316092657OXBG.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p>A&nbsp;New York–based worldwide real estate company, business including real estate sales, investment, rental and property management.&nbsp;With deep experience across NYC’s luxury condominium, house and townhouse markets,&nbsp;our firm approaches every transaction with discipline, market intelligence, and measured execution.</p><p><br/></p>",
+      "add_time": "1770608622",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "2": {
+      "id": 2,
+      "classid": null,
+      "title": "Our Story",
+      "url": "/page/2",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/media_library/image_20260316092735NJKN.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p>Built partnership with more than 30 countries real estate&nbsp;company in the world. Our work and market insight have been featured by major international media platforms, reflecting both performance and perspective.</p><p>Every agent from Beacon Stone has rich experience and strong education background, more than 60% graduated from Ivy league. Founded&nbsp;by Columbia Business School alumni Xiangyu (Allen) Zhang, with hundreds of millions in residential sales volume.&nbsp;He also serves as a real estate resident commentator for the World Journal and appeared in Season One of Owning Manhattan on Netflix.</p><p><br/></p>",
+      "add_time": "1770608687",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "3": {
+      "id": 3,
+      "classid": null,
+      "title": "Representation, Defined by Elegance",
+      "url": "/page/3",
+      "keywords": null,
+      "description": "At Beacon Stone Realty, selling a home is a considered process — guided by experience, market intelligence, and discretion.<br>\nWe work closely with our clients to ensure each property is presented with clarity, confidence, and a quiet sense of distinction.",
+      "thumbnail": "/media_library/image_20260209142447BSLS.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><iframe width=\"100%\" height=\"664\" src=\"https://www.youtube.com/embed/zsmuIPrDkUw?si=3KzOCHFYKxWAuIj0\" frameborder=\"0\" allowfullscreen=\"\"></iframe></p>",
+      "add_time": "1770608759",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "4": {
+      "id": 4,
+      "classid": [
+        "1"
+      ],
+      "title": "Extraordinary Living ",
+      "url": "/newsdetail/4",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260209115447YXTX.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770609296",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "5": {
+      "id": 5,
+      "classid": [
+        "1"
+      ],
+      "title": "Extraordinary Living ",
+      "url": "/newsdetail/5",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260209115450PRNB.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770609296",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "6": {
+      "id": 6,
+      "classid": [
+        "1"
+      ],
+      "title": "Extraordinary Living ",
+      "url": "/newsdetail/6",
+      "keywords": "",
+      "description": " Stories and Market Insights ",
+      "thumbnail": "/media_library/image_20260209115452GDDV.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770609296",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "7": {
+      "id": 7,
+      "classid": [
+        "1"
+      ],
+      "title": "Extraordinary Living ",
+      "url": "/newsdetail/7",
+      "keywords": "",
+      "description": " Stories and Market Insights ",
+      "thumbnail": "/media_library/image_20260209115455YBNV.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770609296",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "8": {
+      "id": 8,
+      "classid": [
+        "1"
+      ],
+      "title": "Extraordinary Living ",
+      "url": "/newsdetail/8",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260209115531TEFW.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770609335",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "9": {
+      "id": 9,
+      "classid": [
+        "1"
+      ],
+      "title": "Extraordinary Living ",
+      "url": "/newsdetail/9",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260209115533HVJB.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770609335",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "10": {
+      "id": 10,
+      "classid": null,
+      "title": "footer内容",
+      "url": "/page/10",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><a href target=\"_blank\" class=\"Footer__disclaimer p3 u-color-dark-grey\" style=\"color: rgb(102, 102, 102); text-decoration-line: none; font-family: Benton-Book, Arial, sans-serif; font-size: 12px; line-height: 20px; font-stretch: normal; margin: 30px 0px 0px; display: block; text-wrap-mode: wrap; background-color: rgb(255, 255, 255);\">Texas Real Estate Commission Consumer Protection Notice</a></p><p><span style=\"font-family: Arial;font-size: 12px;background: rgb(255, 255, 255)\">Beacon Stone Realty fully supports the principles of the Fair Housing Act and the Equal Opportunity Act. We are committed to providing equal housing opportunities without discrimination.</span></p><p><span style=\"font-family: Arial;font-size: 12px;background: rgb(255, 255, 255)\">The information contained on this website is deemed reliable but is not guaranteed. Listings and property information may be subject to errors, omissions, changes in price, prior sale, or withdrawal without notice. All property information, including square footage and dimensions, is approximate and should be independently verified.</span></p><p><br/></p>",
+      "add_time": "1770609394",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "11": {
+      "id": 11,
+      "classid": null,
+      "title": "Every home tells a story. Let yours begin here",
+      "url": "/page/11",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770613978",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "12": {
+      "id": 12,
+      "classid": null,
+      "title": "Home",
+      "url": "/index",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770622501",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "13": {
+      "id": 13,
+      "classid": null,
+      "title": "About Us",
+      "url": "/about/13",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><video controls=\"\" preload=\"none\" src=\"/media_library/upload/video/20260316/1773629336251679.mp4\">1</video></p>",
+      "add_time": "1770622825",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "14": {
+      "id": 14,
+      "classid": [
+        "2"
+      ],
+      "title": "MARKET FOCUS",
+      "url": "/newsdetail/14",
+      "keywords": "NYC",
+      "description": "Luxury Residential",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770622968",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "15": {
+      "id": 15,
+      "classid": [
+        "2"
+      ],
+      "title": "ELITE TEAM",
+      "url": "/newsdetail/15",
+      "keywords": "60%+",
+      "description": "Ivy League Graduates",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770622983",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "16": {
+      "id": 16,
+      "classid": [
+        "2"
+      ],
+      "title": "TRANSACTION VOLUME",
+      "url": "/newsdetail/16",
+      "keywords": "$600M+",
+      "description": "Residential Sales",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770622998",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "17": {
+      "id": 17,
+      "classid": [
+        "2"
+      ],
+      "title": "GLOBAL CONNECTIONS",
+      "url": "/newsdetail/17",
+      "keywords": "30+",
+      "description": "Partner Countries",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770623042",
+      "view": 2,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "18": {
+      "id": 18,
+      "classid": null,
+      "title": "A New York foundation with a global perspective on exceptional real estate.",
+      "url": "/about/18",
+      "keywords": null,
+      "description": "Beacon Stone Realty connects clients with opportunities across New York and international markets. Through strong relationships with investors, developers, and partners worldwide, we position every property with the right audience.",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770623092",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "19": {
+      "id": 19,
+      "classid": null,
+      "title": "Global Reach. Local Mastery.",
+      "url": "/about/19",
+      "keywords": null,
+      "description": "Beacon Stone Realty connects New York to the world. Through strategic partnerships across more than 30 countries and deep expertise in Manhattan’s luxury market, we provide our clients with unmatched exposure and sophisticated advisory.<br>\nWe do not simply list properties — we position assets for maximum impact.",
+      "thumbnail": "/media_library/image_20260312084614MKLI.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770623150",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "20": {
+      "id": 20,
+      "classid": [
+        "3"
+      ],
+      "title": "A global network of exceptional agents and exclusive properties.",
+      "url": "/newsdetail/20",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260312084810GYMP.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<ul class=\"StaticStackableImage__bottom-list StaticStackableImage__bottom-list-double list-paddingleft-2\" style=\"list-style-type: inherit;\"><li><p>New York</p></li><li><p>Los&nbsp;Angles</p></li><li><p>Boston</p></li><li><p>Miami</p></li><li><p>Hong&nbsp;Kong</p></li><li><p>Singapore</p></li><li><p>Tokyo</p></li><li><p>Italy</p></li></ul><p><br/></p>",
+      "add_time": "1770628305",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "21": {
+      "id": 21,
+      "classid": [
+        "3"
+      ],
+      "title": "An International Network. A Higher Level of Access.",
+      "url": "/newsdetail/21",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260312084745BBYM.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p>Beacon Stone Realty works alongside carefully selected global partners to provide exclusive opportunities and seamless cross-border transactions for buyers, sellers, and investors.</p>",
+      "add_time": "1770628305",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "22": {
+      "id": 22,
+      "classid": [
+        "4"
+      ],
+      "title": "Driven by Strategy. Defined by Results.",
+      "url": "/newsdetail/22",
+      "keywords": "",
+      "description": "Every property deserves more than exposure — it deserves positioning, negotiation, and execution at the highest level.",
+      "thumbnail": "/media_library/image_20260209171311SMHN.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770628394",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "23": {
+      "id": 23,
+      "classid": [
+        "4"
+      ],
+      "title": "Advisors, Not Just Agents.",
+      "url": "/newsdetail/23",
+      "keywords": "",
+      "description": "Our team brings institutional-level strategy to residential real estate — guiding buyers, sellers, and investors with clarity and confidence.",
+      "thumbnail": "/media_library/image_20260209171313IQXS.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770628394",
+      "view": 1,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "24": {
+      "id": 24,
+      "classid": null,
+      "title": "Position Your Property at the Highest Level.",
+      "url": "/about/24",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/media_library/image_20260305092201VLEC.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770628509",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "25": {
+      "id": 25,
+      "classid": null,
+      "title": "Are You Ready to Elevate Your Career?",
+      "url": "/about/25",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/media_library/image_20260305092135RFGR.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770628543",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "26": {
+      "id": 26,
+      "classid": [
+        "5"
+      ],
+      "title": "Olana Naples Residence",
+      "url": "/propertyCenterDetail/26",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260210101753HPBR.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770689884",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "27": {
+      "id": 27,
+      "classid": [
+        "5"
+      ],
+      "title": "Olana Naples Residence",
+      "url": "/propertyCenterDetail/27",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260210101755JRND.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770689884",
+      "view": 1,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "",
+        "development_details": "",
+        "real_estate_agent_id": "",
+        "total_residences": "",
+        "development_type": "",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "28": {
+      "id": 28,
+      "classid": [
+        "5"
+      ],
+      "title": "Curated Living",
+      "url": "/propertyCenterDetail/28",
+      "keywords": "",
+      "description": "$32,500,000",
+      "thumbnail": "/media_library/image_20260305113458KEDA.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><span style=\"color: rgb(31, 31, 31); font-family: consolas, &quot;lucida console&quot;, &quot;courier new&quot;, monospace; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);\">Marketed By Premier Sotheby&#39;s International Realty</span></p>",
+      "add_time": "1770689884",
+      "view": 15,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "<p>A portfolio shaped by vision and discretion</p>",
+        "development_details": "<p>Amenties</p><p>Amenities Beautifully Appointed Champalimaud-Designed Arrival Lobby and Lounge</p><p>Beachfront Lounge</p><p>Gulf-Front Pool and Spa</p><p><br/></p><p><br/></p>",
+        "real_estate_agent_id": "71",
+        "total_residences": "24",
+        "development_type": "Condominium",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "29": {
+      "id": 29,
+      "classid": [
+        "5"
+      ],
+      "title": "Global Perspective",
+      "url": "/propertyCenterDetail/29",
+      "keywords": "Naples, FL, United States",
+      "description": "$32,500,000",
+      "thumbnail": "/media_library/image_20260305113510FDIK.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><span style=\"color: rgb(31, 31, 31); font-family: consolas, &quot;lucida console&quot;, &quot;courier new&quot;, monospace; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);\">Marketed By Premier Sotheby&#39;s International Realty</span></p>",
+      "add_time": "1770689884",
+      "view": 12,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "<p>Connecting international capital with premier assets</p>",
+        "development_details": "<p>Amenties</p><p>Amenities Beautifully Appointed Champalimaud-Designed Arrival Lobby and Lounge</p><p>Beachfront Lounge</p><p>Gulf-Front Pool and Spa</p><p><br/></p><p><br/></p><p><br/></p>",
+        "real_estate_agent_id": "72",
+        "total_residences": "10",
+        "development_type": "Condominium",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "30": {
+      "id": 30,
+      "classid": [
+        "5"
+      ],
+      "title": "Prime Residences",
+      "url": "/propertyCenterDetail/30",
+      "keywords": "Naples, FL, United States",
+      "description": "$32,500,000",
+      "thumbnail": "/media_library/image_20260305113301FDXP.jpg",
+      "enclosure": [],
+      "photo_album": [
+        "/media_library/image_20260307101824FSUC.jpg",
+        "/media_library/image_20260307101837SSRL.jpg"
+      ],
+      "content": "<p><span style=\"background-color: rgb(255, 255, 255); color: rgb(31, 31, 31); font-family: consolas, &quot;lucida console&quot;, &quot;courier new&quot;, monospace; font-size: 12px; white-space-collapse: preserve;\">Marketed By Premier Sotheby&#39;s International Realty</span></p>",
+      "add_time": "1770689884",
+      "view": 462,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "house_introduction": "<p>Strategic acquisitions in New York’s most competitive markets</p>",
+        "development_details": "<p>Amenties</p><p>Amenities Beautifully Appointed Champalimaud-Designed Arrival Lobby and Lounge</p><p>Beachfront Lounge</p><p>Gulf-Front Pool and Spa</p><p><br/></p>",
+        "real_estate_agent_id": "73",
+        "total_residences": "12",
+        "development_type": "Condominium",
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "31": {
+      "id": 31,
+      "classid": [
+        "6"
+      ],
+      "title": "Khawlah A Alfayez",
+      "url": "/realEstateBrokerDetail/31",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260210172814FQIC.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770715714",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "32": {
+      "id": 32,
+      "classid": [
+        "6"
+      ],
+      "title": "Ziwei (Audrey) Wen",
+      "url": "/realEstateBrokerDetail/32",
+      "keywords": "",
+      "description": "Real Estate Advisor",
+      "thumbnail": "/media_library/image_20260312113728NQRK.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770715714",
+      "view": 1,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "phone": "+1 +1 929-271-8175",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "<p>Ziwei (Audrey) Wen&nbsp;is a New York–based real estate advisor with Beacon Stone Realty, specializing in residential sales and international buyers. With a background in finance, risk management, and market analysis, she provides clients with data-driven guidance throughout the buying process — from property selection to long-term investment positioning.</p><p>Audrey holds a Master of Science in Enterprise Risk Management from Columbia University and a Bachelor’s degree in Mathematics and Economics from New York University. Prior to entering real estate, she gained experience at J.P. Morgan Asset Management, Ernst &amp; Young, and Deloitte, where she analyzed market trends, investment strategies, and financial risks across global industries.</p><p>Combining analytical rigor with local market expertise, Audrey helps clients evaluate not only the property itself but also financing structure, liquidity, and long-te"
+      }
+    },
+    "33": {
+      "id": 33,
+      "classid": [
+        "11"
+      ],
+      "title": "Tatyana Ilieva ",
+      "url": "/realEstateBrokerDetail/33",
+      "keywords": "",
+      "description": "Real Estate Advisor",
+      "thumbnail": "/media_library/image_20260305131951PGBC.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770715714",
+      "view": 5,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "phone": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "34": {
+      "id": 34,
+      "classid": [
+        "11"
+      ],
+      "title": "Qiao Chen",
+      "url": "/realEstateBrokerDetail/34",
+      "keywords": "",
+      "description": "Real Estate Advisor",
+      "thumbnail": "/media_library/image_20260306130353KHCT.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770715714",
+      "view": 199,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "phone": "+966 114 977 208",
+        "real_estate_broker_region": "AL OLAYA, RIYADH, SAUDI ARABIA",
+        "real_estate_broker_desc": "<p style=\"margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: var(--font-family-text); line-height: 30px;\">An established property expert and Sales Manager, Project Developments with Saudi Arabia Sotheby’s International Realty, Khawlah brings a multidimensional background to her current role. Her previous experience spans marketing and client advisory, including working with one of the Kingdom’s largest firms, partly owned by the Public Investment Fund – before transitioning into luxury automotive sales. Exposure to high-net-worth clients and a proper understanding of their expectations for discretion and superior service naturally led her to the world of prime real estate, whose complexities and nuances she continues to uncover today, layer by layer, one transaction at a time.<br/></p><p><br/></p>",
+        "real_estate_broker_email": "khawlah.alfayez@sothebysrealty.com"
+      }
+    },
+    "35": {
+      "id": 35,
+      "classid": null,
+      "title": "MARKET YOUR PROPERTY",
+      "url": "/page/35",
+      "keywords": null,
+      "description": "Privileged Access To Qualified Global Buyers",
+      "thumbnail": "/media_library/image_20260211092336ODYJ.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><span style=\"font-family: BentonSans-Book; text-align: center; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">The Sotheby’s International Realty® network is an exclusive association of distinguished residential luxury real estate brokerage companies throughout the world. Our agents are local experts, globally connected and ready to guide you on your homebuying and selling journey.</span></p>",
+      "add_time": "1770773017",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": "",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_email": ""
+      }
+    },
+    "36": {
+      "id": 36,
+      "classid": null,
+      "title": "表单信息",
+      "url": "/page/36",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p class=\"u-halfpadding-top\" style=\"font-stretch: normal; line-height: 30px; margin-top: 0px; margin-bottom: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-family: BentonSans-Book, Arial, sans-serif; border: 0px; list-style: none; font-feature-settings: &quot;liga&quot; 0, &quot;clig&quot; 0; text-wrap-mode: wrap; background-color: rgb(242, 242, 242); padding-top: 0px !important;\">By submitting this form, you acknowledge that you accept the Sotheby&#39;s International Realty&nbsp;<a href=\"http://127.0.0.1:5500/propertyCenterDetail.html?id=30\" target=\"_blank\" style=\"color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif;\">Privacy Policy</a>&nbsp;and&nbsp;<a href=\"http://127.0.0.1:5500/propertyCenterDetail.html?id=30\" target=\"_blank\" style=\"color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif;\">Terms of Use</a>.</p><p class=\"u-halfpadding-top\" style=\"font-stretch: normal; line-height: 30px; margin-top: 0px; margin-bottom: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-family: BentonSans-Book, Arial, sans-serif; border: 0px; list-style: none; font-feature-settings: &quot;liga&quot; 0, &quot;clig&quot; 0; text-wrap-mode: wrap; background-color: rgb(242, 242, 242); padding-top: 10px !important;\">This site is protected by reCAPTCHA and the Google&nbsp;<a href=\"http://127.0.0.1:5500/propertyCenterDetail.html?id=30\" target=\"_blank\" style=\"color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif;\">Privacy Policy</a>&nbsp;and&nbsp;<a href=\"http://127.0.0.1:5500/propertyCenterDetail.html?id=30\" target=\"_blank\" style=\"color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif;\">Terms of Service</a>&nbsp;apply.</p><p><br/></p>",
+      "add_time": "1770781805",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "37": {
+      "id": 37,
+      "classid": null,
+      "title": "表单页面",
+      "url": "/page/37",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><span style=\"font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">Yes, I would like more information from Sotheby&#39;s International Realty. Please use and/or share my information with a&nbsp;</span><em style=\"font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">Sotheby&#39;s International Realty</em><span style=\"font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">&nbsp;agent to contact me about my real estate needs.</span><br/><br/><span style=\"font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">By clicking SEND MESSAGE, I agree a&nbsp;</span><em style=\"font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">Sotheby&#39;s International Realty</em><span style=\"font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">&nbsp;Agent may contact me by phone or text message including by automated means about real estate services, and that I can access real estate services without providing my phone number. I acknowledge that I have read and agree to the&nbsp;</span><a href=\"http://127.0.0.1:5500/propertyCenterDetail.html?id=30\" style=\"color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">Terms of Use</a><span style=\"font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">&nbsp;and&nbsp;</span><a href=\"http://127.0.0.1:5500/propertyCenterDetail.html?id=30\" style=\"color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">Privacy Policy</a></p>",
+      "add_time": "1770791348",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "38": {
+      "id": 38,
+      "classid": null,
+      "title": "sale",
+      "url": "/sale/38",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770793213",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "39": {
+      "id": 39,
+      "classid": null,
+      "title": "joinUs",
+      "url": "/joinUs/39",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><video controls=\"\" preload=\"none\" src=\"/media_library/upload/video/20260316/1773629336251679.mp4\">1</video></p>",
+      "add_time": "1770793304",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "40": {
+      "id": 40,
+      "classid": null,
+      "title": "A more thoughtful real estate experience.",
+      "url": "/joinUs/40",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p style=\"text-align: left;\">New&nbsp;York&nbsp;has&nbsp;always&nbsp;been&nbsp;one&nbsp;of&nbsp;the&nbsp;world’s&nbsp;most&nbsp;important&nbsp;real&nbsp;</p><p style=\"text-align: left;\">estate&nbsp;markets. At&nbsp;Beacon&nbsp;Stone&nbsp;Realty,&nbsp;we&nbsp;work&nbsp;at&nbsp;the&nbsp;intersection&nbsp;</p><p style=\"text-align: left;\">of&nbsp;local&nbsp;expertise&nbsp;and&nbsp;global relationships.By&nbsp;combining&nbsp;deep&nbsp;</p><p style=\"text-align: left;\">knowledge&nbsp;of&nbsp;New&nbsp;York&nbsp;with&nbsp;an&nbsp;international network&nbsp;of&nbsp;partners&nbsp;</p><p style=\"text-align: left;\">and&nbsp;clients,&nbsp;we&nbsp;help&nbsp;buyers&nbsp;and&nbsp;investors&nbsp;navigate opportunities&nbsp;</p><p style=\"text-align: left;\">across&nbsp;borders&nbsp;with&nbsp;confidence.</p>",
+      "add_time": "1770793871",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "41": {
+      "id": 41,
+      "classid": null,
+      "title": "joinUs",
+      "url": "/joinUs/41",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<h3 class=\"u-padding-bottom-20 u-color-dark-blue\" style=\"font-family: FreightDisplayProBook; font-size: 32px; font-weight: 400; font-stretch: normal; line-height: 40px; letter-spacing: 1px; margin: 0px; color: rgb(0, 23, 49); padding-bottom: 20px; text-wrap-mode: wrap;\">“Real estate is ultimately about people, relationships, and trust.”</h3><h6 class=\"u-padding-bottom-10 u-color-dark-blue u-font-weight-bold\" style=\"font-family: MercuryDisplayRegular; margin: 0px; font-size: 18px; font-weight: 400; font-stretch: normal; line-height: 24px; color: rgb(0, 23, 49); padding-bottom: 10px; text-wrap-mode: wrap;\">Xiangyu (Allen) Zhang</h6><p class=\"e1 u-padding-bottom-40 u-text-uppercase u-font-weight-bold\" style=\"font-family: Benton, Arial, sans-serif; font-size: 12px; font-stretch: normal; line-height: 16px; letter-spacing: 1.6px; margin-top: 0px; margin-bottom: 0px; text-transform: uppercase; padding-bottom: 40px; text-wrap-mode: wrap; color: rgb(51, 51, 51);\">Beacon Stone Realty- Founder &amp; CEO</p><p><br/></p>",
+      "add_time": "1770793901",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "42": {
+      "id": 42,
+      "classid": null,
+      "title": "Why Beacon Stone Realty？",
+      "url": "/joinUs/42",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/media_library/image_20260312101052CEDV.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<ul class=\"StaticStackableImage__bottom-list StaticStackableImage__bottom-list-double list-paddingleft-2\" style=\"list-style-type: inherit;\"><li><p>Market&nbsp;Intelligence</p></li><li><p>Modern&nbsp;Technology</p></li><li><p>Execution&nbsp;Excellence</p></li><li><p>Global&nbsp;Reach</p></li></ul><p><br/></p>",
+      "add_time": "1770793957",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "43": {
+      "id": 43,
+      "classid": [
+        "7"
+      ],
+      "title": "Neyshia Go",
+      "url": "/newsdetail/43",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260211151407UKOD.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770794056",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "44": {
+      "id": 44,
+      "classid": [
+        "7"
+      ],
+      "title": "Neyshia Go",
+      "url": "/newsdetail/44",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260211151409OKHP.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770794056",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "45": {
+      "id": 45,
+      "classid": [
+        "7"
+      ],
+      "title": "Neyshia Go",
+      "url": "/newsdetail/45",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260211151412VKVE.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1770794056",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "46": {
+      "id": 46,
+      "classid": [
+        "7"
+      ],
+      "title": "Neyshia Go",
+      "url": "/newsdetail/46",
+      "keywords": "",
+      "description": "BEVERLY HILLS, CALIFORNIA",
+      "thumbnail": "/media_library/image_20260211151414SZGD.png",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><span style=\"color: rgb(153, 153, 153); font-family: Benton-Book, Arial, sans-serif; font-size: 14px; text-wrap-mode: wrap; background-color: rgb(0, 35, 73);\">“I have seen my business grow by actually 150%.”</span><br/><em style=\"color: rgb(153, 153, 153); font-family: Benton-Book, Arial, sans-serif; font-size: 14px; text-wrap-mode: wrap; background-color: rgb(0, 35, 73);\">Sotheby’s International Realty — Beverly Hills Brokerage</em></p>",
+      "add_time": "1770794056",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "47": {
+      "id": 47,
+      "classid": [
+        "8"
+      ],
+      "title": "Real Estate Agent Center",
+      "url": "/realEstateBrokerCenter/6",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260306144923CECE.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1771899996",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "48": {
+      "id": 48,
+      "classid": [
+        "8"
+      ],
+      "title": "Sell with Us",
+      "url": "/sale/38",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260312085328LQPL.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1771899996",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "49": {
+      "id": 49,
+      "classid": [
+        "8"
+      ],
+      "title": "About Us",
+      "url": "/about/13",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260312085322BWJQ.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1771900039",
+      "view": 1,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "50": {
+      "id": 50,
+      "classid": null,
+      "title": "Sell with Us",
+      "url": "/page/50",
+      "keywords": null,
+      "description": "Exceptional properties deserve extraordinary marketing.",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><video controls=\"\" preload=\"none\" src=\"/media_library/upload/video/20260316/1773629336251679.mp4\">1</video></p>",
+      "add_time": "1771901842",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "51": {
+      "id": 51,
+      "classid": null,
+      "title": "Expertise that reaches down the block and around the world.",
+      "url": "/sale/51",
+      "keywords": null,
+      "description": "We distribute our listings to the most relevant websites around the globe and measure the impact with top analytic tools. Our worldwide partners include the most authoritative news, lifestyle, and financial voices, as well as real estate-centric websites. Nothing compares to the expertise and exposure we can offer.",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p><video class=\"edui-upload-video  vjs-default-skin video-js\" controls=\"\" preload=\"none\" width=\"420\" height=\"280\" src=\"/media_library/upload/video/20260224/1771909757921109.mp4\"><source src=\"/media_library/upload/video/20260224/1771909757921109.mp4\" type=\"video/mp4\"/></video></p>",
+      "add_time": "1771909759",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "52": {
+      "id": 52,
+      "classid": null,
+      "title": "Give yourself every advantage",
+      "url": "/sale/52",
+      "keywords": null,
+      "description": "Taking your business to the next level requires more oppurtunities and more wins.No other luxury real estate company can help you do that quite like Sotheby's International Realty.",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1771912466",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "53": {
+      "id": 53,
+      "classid": null,
+      "title": "Sell your home with our tailored solution for you.",
+      "url": "/sale/53",
+      "keywords": null,
+      "description": "Connect with our local experts who can create a comprehensive and customized plan for your home that takes into consideration all avenues of marketing.",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1771912483",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "54": {
+      "id": 54,
+      "classid": [
+        "9"
+      ],
+      "title": "JoinUs",
+      "url": "/newsdetail/54",
+      "keywords": "joinUs/39",
+      "description": "",
+      "thumbnail": "/media_library/image_20260306145126HWER.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1771913557",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "55": {
+      "id": 55,
+      "classid": [
+        "9"
+      ],
+      "title": "Real Estate Agent Center",
+      "url": "/realEstateBrokerCenter/6",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260306145054TUDE.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1771913557",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "56": {
+      "id": 56,
+      "classid": [
+        "9"
+      ],
+      "title": "About Us",
+      "url": "/about/13",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260306145047RGUL.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1771913557",
+      "view": 1,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "57": {
+      "id": 57,
+      "classid": null,
+      "title": "contact us",
+      "url": "/contact/57",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772182892",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "58": {
+      "id": 58,
+      "classid": null,
+      "title": "THANK YOU FOR CONTACTING BEACON STONE REALTY",
+      "url": "/contact/58",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<p>Thank&nbsp;you&nbsp;for&nbsp;reaching&nbsp;out.&nbsp;We&nbsp;look&nbsp;forward&nbsp;to&nbsp;assisting&nbsp;you&nbsp;with&nbsp;insight,&nbsp;precision,&nbsp;and&nbsp;a&nbsp;refined&nbsp;approach&nbsp;to&nbsp;New&nbsp;York&nbsp;real&nbsp;estate.&nbsp;A&nbsp;member&nbsp;of&nbsp;our&nbsp;team&nbsp;will&nbsp;be&nbsp;in&nbsp;touch&nbsp;shortly.</p>",
+      "add_time": "1772256932",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "59": {
+      "id": 59,
+      "classid": [
+        "10"
+      ],
+      "title": "Position Your Property at the Highest Level.",
+      "url": "/sale/38",
+      "keywords": "SELL WITH US",
+      "description": "",
+      "thumbnail": "/media_library/image_20260305092614UIUJ.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772415182",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "60": {
+      "id": 60,
+      "classid": [
+        "10"
+      ],
+      "title": "Are You Ready to Elevate Your Career?",
+      "url": "/joinUs/39",
+      "keywords": "JOIN US",
+      "description": "",
+      "thumbnail": "/media_library/image_20260305092656KXZL.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772415197",
+      "view": 1,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "61": {
+      "id": 61,
+      "classid": null,
+      "title": "Terms of Use",
+      "url": "/page/61",
+      "keywords": null,
+      "description": "",
+      "thumbnail": "/images/no_picture.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "<h1 class=\"h2-desk u-padding-bottom-10 u-color-dark-blue\" style=\"font-weight: 400; font-stretch: normal; letter-spacing: 1px; margin: 0px; font-family: FreightDisplayProBook; font-size: 46px; line-height: 52px; color: rgb(0, 23, 49); padding-bottom: 10px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">Terms &amp; Conditions</h1><p class=\"p u-padding-bottom-20 u-color-black\" style=\"font-family: Benton-Book, Arial, sans-serif; font-stretch: normal; line-height: 30px; margin-top: 0px; margin-bottom: 0px; padding-bottom: 20px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">The policy set forth below is provided in English only to avoid any misinterpretations caused by a language translation. If necessary, please seek the proper advice, or please do not use this site.</p><p class=\"h5-desk u-color-black u-padding-bottom-10\" style=\"font-family: MercuryDisplayRegular; font-size: 22px; font-stretch: normal; line-height: 28px; margin-top: 0px; margin-bottom: 0px; padding-bottom: 10px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">What You Should Know</p><p class=\"p u-padding-bottom-20 u-color-black\" style=\"font-family: Benton-Book, Arial, sans-serif; font-stretch: normal; line-height: 30px; margin-top: 0px; margin-bottom: 0px; padding-bottom: 20px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);\">Welcome to the sir.com web site (the &quot;Web Site&quot;). The goal of this Web Site is to provide you with access to the most comprehensive network of residential real estate products/services and related links to meet your needs (the &quot;Content&quot;). Please read our Terms of Use (the &quot;Terms&quot;) carefully before continuing on with your use of this Web Site. These Terms shall govern the use of the Web Site and apply to all Internet traffic visiting the Web Site. By accessing or using this Web Site, you agree to the Terms. The Terms are meant to protect all of our Web Site visitors and your use of this Web Site signifies your agreement with these Terms.&nbsp;<strong>IF YOU DO NOT AGREE WITH THESE TERMS, DO NOT USE THIS WEB SITE</strong>.</p><p><br/></p>",
+      "add_time": "1772418000",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "",
+        "real_estate_broker_desc": "",
+        "real_estate_broker_region": "",
+        "phone": "",
+        "development_type": "",
+        "total_residences": "",
+        "real_estate_agent_id": "",
+        "development_details": "",
+        "house_introduction": ""
+      }
+    },
+    "62": {
+      "id": 62,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/62",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260305105924NPJN.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772679568",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "63": {
+      "id": 63,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/63",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260305105924HXMO.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772679568",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "64": {
+      "id": 64,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/64",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260305105924LSNV.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772679568",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "65": {
+      "id": 65,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/65",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260305105924YARA.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772679568",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "66": {
+      "id": 66,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/66",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260305105924HRER.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772679568",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "67": {
+      "id": 67,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/67",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260305105925KJNU.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772679568",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "68": {
+      "id": 68,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/68",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260305105925YWVW.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772679568",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "69": {
+      "id": 69,
+      "classid": [
+        "6"
+      ],
+      "title": "Ziwei (Audrey) Wen",
+      "url": "/propertyCenterDetail/69",
+      "keywords": "",
+      "description": "Real Estate Advisor",
+      "thumbnail": "/media_library/image_20260311180801HXRZ.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772689454",
+      "view": 9,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "audreywen@beacon-stone.com",
+        "real_estate_broker_desc": "<p>Ziwei (Audrey) Wen&nbsp;is a New York–based real estate advisor with Beacon Stone Realty, specializing in residential sales and international buyers. With a background in finance, risk management, and market analysis, she provides clients with data-driven guidance throughout the buying process — from property selection to long-term investment positioning.</p><p>Audrey holds a Master of Science in Enterprise Risk Management from Columbia University and a Bachelor’s degree in Mathematics and Economics from New York University. Prior to entering real estate, she gained experience at J.P. Morgan Asset Management, Ernst &amp; Young, and Deloitte, where she analyzed market trends, investment strategies, and financial risks across global industries.</p><p>Combining analytical rigor with local market expertise, Audrey helps clients evaluate not only the property itself but also financing structure, liquidity, and long-term val"
+      }
+    },
+    "70": {
+      "id": 70,
+      "classid": [
+        "6"
+      ],
+      "title": "Nick Yu",
+      "url": "/realEstateBrokerDetail/70",
+      "keywords": "",
+      "description": "Real Estate Advisor",
+      "thumbnail": "/media_library/image_20260312113638QJZD.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772689658",
+      "view": 8,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "nickyu@beacon-stone.com",
+        "real_estate_broker_desc": "<p><strong>Nick Yu</strong>&nbsp;is a New York–based Real Estate Advisor at Beacon-Stone Realty, specializing in luxury and investment condominiums across Manhattan and Long Island City. He works with both local and international clients on luxury resale and new development opportunities, advising on acquisitions with a focus on long-term value, market positioning, and strategic execution.</p><p>A graduate of Columbia University’s Negotiation and Conflict Resolution program, Nick brings a disciplined and structured approach to every transaction. His background in advanced negotiation strategy allows him to navigate complex deal dynamics with clarity and composure, ensuring his clients are represented with precision and confidence.</p><p>Nick views real estate not only as a residence, but as a long-term financial asset. By combining market analysis, pricing strategy, and strong negotiation, he helps clients make informed decisi"
+      }
+    },
+    "71": {
+      "id": 71,
+      "classid": [
+        "6"
+      ],
+      "title": "Juliana Gamboa ",
+      "url": "/realEstateBrokerDetail/71",
+      "keywords": "",
+      "description": "Real Estate Advisor",
+      "thumbnail": "/media_library/image_20260312113632AISE.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772689987",
+      "view": 9,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "julianagamboa@beacon-stone.com",
+        "real_estate_broker_desc": "<p><strong>Juliana Gamboa</strong>&nbsp;is a New York–based real estate advisor specializing in residential properties across Manhattan and the Greater New York market. She brings a background in luxury property sales and international client relations, combining strategic market insight with refined presentation and disciplined negotiation.</p><p>Prior to focusing on New York City real estate, Juliana was involved in luxury residential sales within an internationally recognized wellness-based residential community, guiding buyers through high-value transactions and contract processes. Working alongside sales and legal teams strengthened her attention to detail, compliance awareness, and structured approach to complex deals.</p><p>She holds a Bachelor’s degree in International Business (Honors) and is fully bilingual in English and Spanish, advising both local and international clients with clarity and precision.</p><p>"
+      }
+    },
+    "72": {
+      "id": 72,
+      "classid": [
+        "6"
+      ],
+      "title": "Qiao Chen",
+      "url": "/realEstateBrokerDetail/72",
+      "keywords": "",
+      "description": "Real Estate Advisor",
+      "thumbnail": "/media_library/image_20260312113625NICD.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772690115",
+      "view": 11,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "qiaochen@beacon-stone.com",
+        "real_estate_broker_desc": "<p><strong>Qiao Chen</strong> is a New York City–based real estate advisor specializing in residential properties across NYC. Her approach combines refined aesthetic judgment with thoughtful market strategy, helping clients navigate decisions shaped by lifestyle, design, and long-term value.</p><p>Before entering real estate, Qiao worked as a pianist within New York’s cultural institutions and gained experience in the art and creative market, developing a strong eye for architecture, proportion, and craftsmanship — qualities that inform her perspective on exceptional homes.</p><p>She holds degrees from the Manhattan School of Music and an MBA in New York City, bringing structured negotiation, communication, and analytical decision-making to every transaction.</p><p>Qiao has experience assisting clients navigating New York City’s competitive and high-end residential market. She works with both local and international clie"
+      }
+    },
+    "73": {
+      "id": 73,
+      "classid": [
+        "6"
+      ],
+      "title": "Tatyana Ilieva",
+      "url": "/realEstateBrokerDetail/73",
+      "keywords": "",
+      "description": "Real Estate Advisor",
+      "thumbnail": "/media_library/image_20260312113617KPIY.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772690196",
+      "view": 7,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "tatyana@beacon-stone.com",
+        "real_estate_broker_desc": "<p><strong>Tatyana Ilieva&nbsp;</strong>is a New York–based real estate advisor at Beacon Stone Realty, specializing in luxury residential and investment properties across Manhattan and the Greater New York market. She brings a rare combination of analytical rigor, strategic clarity, and refined aesthetic sensibility to every transaction.</p><p>Currently a sophomore at Columbia University’s School of Engineering and Applied Science, studying Computer Science and Electrical Engineering, Tatyana approaches real estate with a data-driven, technically informed perspective. Her engineering background strengthens her ability to evaluate market trends, structure complex transactions, and identify long-term value opportunities with precision. Tatyana focuses on helping clients build a lifestyle of satisfaction for years to come.</p><p>Tatyana is a professional artist with a keen eye for composition, proportion, and design — skills "
+      }
+    },
+    "74": {
+      "id": 74,
+      "classid": [
+        "6"
+      ],
+      "title": "Xiangyu (Allen) Zhang",
+      "url": "/realEstateBrokerDetail/74",
+      "keywords": "",
+      "description": "Founder & CEO – Real Estate Broker",
+      "thumbnail": "/media_library/image_20260312113610SNBX.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772690269",
+      "view": 45,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": {
+        "real_estate_broker_email": "allenzhang@beacon-stone.com",
+        "real_estate_broker_desc": "<p><strong>Xiangyu (Allen) Zhang</strong>&nbsp;is a New York–based real estate investor and Founder&nbsp;&amp; CEO&nbsp;of Beacon Stone Realty, specializing in luxury acquisitions, strategic advisory, and high-value transactions across Manhattan and the Greater New York market.</p><p>With a Master’s degree from Boston University, advanced accounting studies at Harvard Business School, and private equity program at Columbia Business School, Allen approaches every transaction with institutional-level analytical rigor and strategic clarity. His background in real estate private equity&nbsp;further strengthens his ability to underwrite complex assets, structure sophisticated deals, and identify long-term value creation opportunities.</p><p>Allen’s achievements in the New York real estate market have earned international recognition, including a feature documentary produced fromby Tencent. He also serves as a resident comment"
+      }
+    },
+    "75": {
+      "id": 75,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/75",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260306145558MRTH.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772779978",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "76": {
+      "id": 76,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/76",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260306145622PCEJ.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772779978",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "77": {
+      "id": 77,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/77",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260306145606HDES.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772779978",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "78": {
+      "id": 78,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/78",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260307103248YCSW.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772779978",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "79": {
+      "id": 79,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/79",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260306145545MRTJ.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772779978",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    },
+    "80": {
+      "id": 80,
+      "classid": [
+        "7"
+      ],
+      "title": " ",
+      "url": "/newsdetail/80",
+      "keywords": "",
+      "description": "",
+      "thumbnail": "/media_library/image_20260306145535XKRU.jpg",
+      "enclosure": [],
+      "photo_album": [],
+      "content": "",
+      "add_time": "1772779978",
+      "view": 0,
+      "seo_title": "",
+      "seo_keywords": "",
+      "seo_description": "",
+      "field": []
+    }
+  },
+  "newsListsByClassId": {
+    "1": [],
+    "2": [
+      {
+        "id": "17",
+        "classid": [
+          "2"
+        ],
+        "title": "GLOBAL CONNECTIONS",
+        "url": "/newsdetail/17",
+        "keywords": "30+",
+        "description": "Partner Countries",
+        "thumbnail": "/images/no_picture.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770623042",
+        "content": "",
+        "view": "2",
+        "field": {
+          "real_estate_broker_email": "",
+          "real_estate_broker_desc": "",
+          "real_estate_broker_region": "",
+          "phone": "",
+          "development_type": "",
+          "total_residences": "",
+          "real_estate_agent_id": "",
+          "development_details": "",
+          "house_introduction": ""
+        }
+      },
+      {
+        "id": "16",
+        "classid": [
+          "2"
+        ],
+        "title": "TRANSACTION VOLUME",
+        "url": "/newsdetail/16",
+        "keywords": "$600M+",
+        "description": "Residential Sales",
+        "thumbnail": "/images/no_picture.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770622998",
+        "content": "",
+        "view": "0",
+        "field": {
+          "real_estate_broker_email": "",
+          "house_introduction": "",
+          "development_details": "",
+          "real_estate_agent_id": "",
+          "total_residences": "",
+          "development_type": "",
+          "phone": "",
+          "real_estate_broker_region": "",
+          "real_estate_broker_desc": ""
+        }
+      },
+      {
+        "id": "15",
+        "classid": [
+          "2"
+        ],
+        "title": "ELITE TEAM",
+        "url": "/newsdetail/15",
+        "keywords": "60%+",
+        "description": "Ivy League Graduates",
+        "thumbnail": "/images/no_picture.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770622983",
+        "content": "",
+        "view": "0",
+        "field": {
+          "real_estate_broker_region": "",
+          "house_introduction": "",
+          "development_details": "",
+          "real_estate_agent_id": "",
+          "total_residences": "",
+          "development_type": "",
+          "phone": "",
+          "real_estate_broker_desc": "",
+          "real_estate_broker_email": ""
+        }
+      },
+      {
+        "id": "14",
+        "classid": [
+          "2"
+        ],
+        "title": "MARKET FOCUS",
+        "url": "/newsdetail/14",
+        "keywords": "NYC",
+        "description": "Luxury Residential",
+        "thumbnail": "/images/no_picture.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770622968",
+        "content": "",
+        "view": "0",
+        "field": {
+          "real_estate_broker_desc": "",
+          "real_estate_broker_region": "",
+          "phone": "",
+          "development_type": "",
+          "total_residences": "",
+          "real_estate_agent_id": "",
+          "development_details": "",
+          "house_introduction": "",
+          "real_estate_broker_email": ""
+        }
+      }
+    ],
+    "3": [
+      {
+        "id": "21",
+        "classid": [
+          "3"
+        ],
+        "title": "An International Network. A Higher Level of Access.",
+        "url": "/newsdetail/21",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260312084745BBYM.png",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770628305",
+        "content": "<p>Beacon Stone Realty works alongside carefully selected global partners to provide exclusive opportunities and seamless cross-border transactions for buyers, sellers, and investors.</p>",
+        "view": "0",
+        "field": {
+          "house_introduction": "",
+          "development_details": "",
+          "real_estate_agent_id": "",
+          "total_residences": "",
+          "development_type": "",
+          "phone": "",
+          "real_estate_broker_region": "",
+          "real_estate_broker_desc": "",
+          "real_estate_broker_email": ""
+        }
+      },
+      {
+        "id": "20",
+        "classid": [
+          "3"
+        ],
+        "title": "A global network of exceptional agents and exclusive properties.",
+        "url": "/newsdetail/20",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260312084810GYMP.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770628305",
+        "content": "<ul class=\"StaticStackableImage__bottom-list StaticStackableImage__bottom-list-double list-paddingleft-2\" style=\"list-style-type: inherit;\"><li><p>New York</p></li><li><p>Los&nbsp;Angles</p></li><li><p>Boston</p></li><li><p>Miami</p></li><li><p>Hong&nbsp;Kong</p></li><li><p>Singapore</p></li><li><p>Tokyo</p></li><li><p>Italy</p></li></ul><p><br/></p>",
+        "view": "0",
+        "field": {
+          "real_estate_broker_desc": "",
+          "real_estate_broker_region": "",
+          "phone": "",
+          "development_type": "",
+          "total_residences": "",
+          "real_estate_agent_id": "",
+          "development_details": "",
+          "house_introduction": "",
+          "real_estate_broker_email": ""
+        }
+      }
+    ],
+    "4": [
+      {
+        "id": "23",
+        "classid": [
+          "4"
+        ],
+        "title": "Advisors, Not Just Agents.",
+        "url": "/newsdetail/23",
+        "keywords": "",
+        "description": "Our team brings institutional-level strategy to residential real estate — guiding buyers, sellers, and investors with clarity and confidence.",
+        "thumbnail": "/media_library/image_20260209171313IQXS.png",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770628394",
+        "content": "",
+        "view": "1",
+        "field": {
+          "house_introduction": "",
+          "development_details": "",
+          "real_estate_agent_id": "",
+          "total_residences": "",
+          "development_type": "",
+          "phone": "",
+          "real_estate_broker_region": "",
+          "real_estate_broker_desc": "",
+          "real_estate_broker_email": ""
+        }
+      },
+      {
+        "id": "22",
+        "classid": [
+          "4"
+        ],
+        "title": "Driven by Strategy. Defined by Results.",
+        "url": "/newsdetail/22",
+        "keywords": "",
+        "description": "Every property deserves more than exposure — it deserves positioning, negotiation, and execution at the highest level.",
+        "thumbnail": "/media_library/image_20260209171311SMHN.png",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770628394",
+        "content": "",
+        "view": "0",
+        "field": {
+          "real_estate_broker_desc": "",
+          "real_estate_broker_region": "",
+          "phone": "",
+          "development_type": "",
+          "total_residences": "",
+          "real_estate_agent_id": "",
+          "development_details": "",
+          "house_introduction": "",
+          "real_estate_broker_email": ""
+        }
+      }
+    ],
+    "5": [
+      {
+        "id": "30",
+        "classid": [
+          "5"
+        ],
+        "title": "Prime Residences",
+        "url": "/propertyCenterDetail/30",
+        "keywords": "Naples, FL, United States",
+        "description": "$32,500,000",
+        "thumbnail": "/media_library/image_20260305113301FDXP.jpg",
+        "enclosure": [],
+        "photo_album": [
+          "/media_library/image_20260307101824FSUC.jpg",
+          "/media_library/image_20260307101837SSRL.jpg"
+        ],
+        "add_time": "1770689884",
+        "content": "<p><span style=\"background-color: rgb(255, 255, 255); color: rgb(31, 31, 31); font-family: consolas, &quot;lucida console&quot;, &quot;courier new&quot;, monospace; font-size: 12px; white-space-collapse: preserve;\">Marketed By Premier Sotheby&#39;s International Realty</span></p>",
+        "view": "462",
+        "field": {
+          "real_estate_broker_email": "",
+          "real_estate_broker_desc": "",
+          "real_estate_broker_region": "",
+          "phone": "",
+          "development_type": "Condominium",
+          "total_residences": "12",
+          "real_estate_agent_id": "73",
+          "development_details": "<p>Amenties</p><p>Amenities Beautifully Appointed Champalimaud-Designed Arrival Lobby and Lounge</p><p>Beachfront Lounge</p><p>Gulf-Front Pool and Spa</p><p><br/></p>",
+          "house_introduction": "<p>Strategic acquisitions in New York’s most competitive markets</p>"
+        }
+      },
+      {
+        "id": "29",
+        "classid": [
+          "5"
+        ],
+        "title": "Global Perspective",
+        "url": "/propertyCenterDetail/29",
+        "keywords": "Naples, FL, United States",
+        "description": "$32,500,000",
+        "thumbnail": "/media_library/image_20260305113510FDIK.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770689884",
+        "content": "<p><span style=\"color: rgb(31, 31, 31); font-family: consolas, &quot;lucida console&quot;, &quot;courier new&quot;, monospace; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);\">Marketed By Premier Sotheby&#39;s International Realty</span></p>",
+        "view": "12",
+        "field": {
+          "development_type": "Condominium",
+          "house_introduction": "<p>Connecting international capital with premier assets</p>",
+          "development_details": "<p>Amenties</p><p>Amenities Beautifully Appointed Champalimaud-Designed Arrival Lobby and Lounge</p><p>Beachfront Lounge</p><p>Gulf-Front Pool and Spa</p><p><br/></p><p><br/></p><p><br/></p>",
+          "real_estate_agent_id": "72",
+          "total_residences": "10",
+          "phone": "",
+          "real_estate_broker_region": "",
+          "real_estate_broker_desc": "",
+          "real_estate_broker_email": ""
+        }
+      },
+      {
+        "id": "28",
+        "classid": [
+          "5"
+        ],
+        "title": "Curated Living",
+        "url": "/propertyCenterDetail/28",
+        "keywords": "",
+        "description": "$32,500,000",
+        "thumbnail": "/media_library/image_20260305113458KEDA.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770689884",
+        "content": "<p><span style=\"color: rgb(31, 31, 31); font-family: consolas, &quot;lucida console&quot;, &quot;courier new&quot;, monospace; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);\">Marketed By Premier Sotheby&#39;s International Realty</span></p>",
+        "view": "15",
+        "field": {
+          "real_estate_broker_desc": "",
+          "real_estate_broker_region": "",
+          "phone": "",
+          "development_type": "Condominium",
+          "total_residences": "24",
+          "real_estate_agent_id": "71",
+          "development_details": "<p>Amenties</p><p>Amenities Beautifully Appointed Champalimaud-Designed Arrival Lobby and Lounge</p><p>Beachfront Lounge</p><p>Gulf-Front Pool and Spa</p><p><br/></p><p><br/></p>",
+          "house_introduction": "<p>A portfolio shaped by vision and discretion</p>",
+          "real_estate_broker_email": ""
+        }
+      }
+    ],
+    "6": [
+      {
+        "id": "74",
+        "classid": [
+          "6"
+        ],
+        "title": "Xiangyu (Allen) Zhang",
+        "url": "/realEstateBrokerDetail/74",
+        "keywords": "",
+        "description": "Founder & CEO – Real Estate Broker",
+        "thumbnail": "/media_library/image_20260312113610SNBX.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772690269",
+        "content": "",
+        "view": "45",
+        "field": {
+          "house_introduction": "",
+          "development_details": "",
+          "real_estate_agent_id": "",
+          "total_residences": "",
+          "development_type": "",
+          "phone": "+1 646-696-8641",
+          "real_estate_broker_region": "",
+          "real_estate_broker_desc": "<p><strong>Xiangyu (Allen) Zhang</strong>&nbsp;is a New York–based real estate investor and Founder&nbsp;&amp; CEO&nbsp;of Beacon Stone Realty, specializing in luxury acquisitions, strategic advisory, and high-value transactions across Manhattan and the Greater New York market.</p><p>With a Master’s degree from Boston University, advanced accounting studies at Harvard Business School, and private equity program at Columbia Business School, Allen approaches every transaction with institutional-level analytical rigor and strategic clarity. His background in real estate private equity&nbsp;further strengthens his ability to underwrite complex assets, structure sophisticated deals, and identify long-term value creation opportunities.</p><p>Allen’s achievements in the New York real estate market h"
+        }
+      },
+      {
+        "id": "73",
+        "classid": [
+          "6"
+        ],
+        "title": "Tatyana Ilieva",
+        "url": "/realEstateBrokerDetail/73",
+        "keywords": "",
+        "description": "Real Estate Advisor",
+        "thumbnail": "/media_library/image_20260312113617KPIY.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772690196",
+        "content": "",
+        "view": "7",
+        "field": {
+          "real_estate_broker_desc": "<p><strong>Tatyana Ilieva&nbsp;</strong>is a New York–based real estate advisor at Beacon Stone Realty, specializing in luxury residential and investment properties across Manhattan and the Greater New York market. She brings a rare combination of analytical rigor, strategic clarity, and refined aesthetic sensibility to every transaction.</p><p>Currently a sophomore at Columbia University’s School of Engineering and Applied Science, studying Computer Science and Electrical Engineering, Tatyana approaches real estate with a data-driven, technically informed perspective. Her engineering background strengthens her ability to evaluate market trends, structure complex transactions, and identify long-term value opportunities with precision. Tatyana focuses on helping clients build a lifestyle of satisfaction for years to come.</p><p>Tatyana is a professional artist with a keen eye for composition, proportion, and design — skills she now applies to identifying exceptional properties an"
+        }
+      },
+      {
+        "id": "72",
+        "classid": [
+          "6"
+        ],
+        "title": "Qiao Chen",
+        "url": "/realEstateBrokerDetail/72",
+        "keywords": "",
+        "description": "Real Estate Advisor",
+        "thumbnail": "/media_library/image_20260312113625NICD.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772690115",
+        "content": "",
+        "view": "11",
+        "field": {
+          "real_estate_broker_email": "qiaochen@beacon-stone.com",
+          "real_estate_broker_desc": "<p><strong>Qiao Chen</strong> is a New York City–based real estate advisor specializing in residential properties across NYC. Her approach combines refined aesthetic judgment with thoughtful market strategy, helping clients navigate decisions shaped by lifestyle, design, and long-term value.</p><p>Before entering real estate, Qiao worked as a pianist within New York’s cultural institutions and gained experience in the art and creative market, developing a strong eye for architecture, proportion, and craftsmanship — qualities that inform her perspective on exceptional homes.</p><p>She holds degrees from the Manhattan School of Music and an MBA in New York City, bringing structured negotiation, communication, and analytical decision-making to every transaction.</p><p>Qiao has experience assisting clients navigating New York City’s competitive and high-end residential market. She works with both local and international clie"
+        }
+      },
+      {
+        "id": "71",
+        "classid": [
+          "6"
+        ],
+        "title": "Juliana Gamboa ",
+        "url": "/realEstateBrokerDetail/71",
+        "keywords": "",
+        "description": "Real Estate Advisor",
+        "thumbnail": "/media_library/image_20260312113632AISE.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772689987",
+        "content": "",
+        "view": "9",
+        "field": {
+          "house_introduction": "",
+          "real_estate_broker_email": "julianagamboa@beacon-stone.com",
+          "real_estate_broker_desc": "<p><strong>Juliana Gamboa</strong>&nbsp;is a New York–based real estate advisor specializing in residential properties across Manhattan and the Greater New York market. She brings a background in luxury property sales and international client relations, combining strategic market insight with refined presentation and disciplined negotiation.</p><p>Prior to focusing on New York City real estate, Juliana was involved in luxury residential sales within an internationally recognized wellness-based residential community, guiding buyers through high-value transactions and contract processes. Working alongside sales and legal teams strengthened her attention to detail, compliance awareness, and structured approach to complex deals.</p><p>She holds a Bachelor’s degree in International Business (Honors) and is fully bilingual in English and Spanish, advising both local and international clients with cla"
+        }
+      },
+      {
+        "id": "70",
+        "classid": [
+          "6"
+        ],
+        "title": "Nick Yu",
+        "url": "/realEstateBrokerDetail/70",
+        "keywords": "",
+        "description": "Real Estate Advisor",
+        "thumbnail": "/media_library/image_20260312113638QJZD.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772689658",
+        "content": "",
+        "view": "8",
+        "field": {
+          "phone": "+1 +1 858-209-3720",
+          "real_estate_broker_email": "nickyu@beacon-stone.com",
+          "real_estate_broker_desc": "<p><strong>Nick Yu</strong>&nbsp;is a New York–based Real Estate Advisor at Beacon-Stone Realty, specializing in luxury and investment condominiums across Manhattan and Long Island City. He works with both local and international clients on luxury resale and new development opportunities, advising on acquisitions with a focus on long-term value, market positioning, and strategic execution.</p><p>A graduate of Columbia University’s Negotiation and Conflict Resolution program, Nick brings a disciplined and structured approach to every transaction. His background in advanced negotiation strategy allows him to navigate complex deal dynamics with clarity and composure, ensuring his clients are represented with precision and confidence.</p><p>Nick views real estate not only as a residence, but as a long-term financial asset. By combining market analysis, pricing strategy, and strong negotiation, he hel"
+        }
+      },
+      {
+        "id": "32",
+        "classid": [
+          "6"
+        ],
+        "title": "Ziwei (Audrey) Wen",
+        "url": "/realEstateBrokerDetail/32",
+        "keywords": "",
+        "description": "Real Estate Advisor",
+        "thumbnail": "/media_library/image_20260312113728NQRK.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770715714",
+        "content": "",
+        "view": "1",
+        "field": {
+          "real_estate_broker_desc": "<p>Ziwei (Audrey) Wen&nbsp;is a New York–based real estate advisor with Beacon Stone Realty, specializing in residential sales and international buyers. With a background in finance, risk management, and market analysis, she provides clients with data-driven guidance throughout the buying process — from property selection to long-term investment positioning.</p><p>Audrey holds a Master of Science in Enterprise Risk Management from Columbia University and a Bachelor’s degree in Mathematics and Economics from New York University. Prior to entering real estate, she gained experience at J.P. Morgan Asset Management, Ernst &amp; Young, and Deloitte, where she analyzed market trends, investment strategies, and financial risks across global industries.</p><p>Combining analytical rigor with local market expertise, Audrey helps clients evaluate not only the property itself but also financing structure, liquidity, and long-term value. She frequently works with overseas buyers and provides"
+        }
+      }
+    ],
+    "7": [
+      {
+        "id": "80",
+        "classid": [
+          "7"
+        ],
+        "title": " ",
+        "url": "/newsdetail/80",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260306145535XKRU.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772779978",
+        "content": "",
+        "view": "0",
+        "field": []
+      },
+      {
+        "id": "79",
+        "classid": [
+          "7"
+        ],
+        "title": " ",
+        "url": "/newsdetail/79",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260306145545MRTJ.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772779978",
+        "content": "",
+        "view": "0",
+        "field": []
+      },
+      {
+        "id": "78",
+        "classid": [
+          "7"
+        ],
+        "title": " ",
+        "url": "/newsdetail/78",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260307103248YCSW.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772779978",
+        "content": "",
+        "view": "0",
+        "field": []
+      },
+      {
+        "id": "77",
+        "classid": [
+          "7"
+        ],
+        "title": " ",
+        "url": "/newsdetail/77",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260306145606HDES.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772779978",
+        "content": "",
+        "view": "0",
+        "field": []
+      },
+      {
+        "id": "76",
+        "classid": [
+          "7"
+        ],
+        "title": " ",
+        "url": "/newsdetail/76",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260306145622PCEJ.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772779978",
+        "content": "",
+        "view": "0",
+        "field": []
+      },
+      {
+        "id": "75",
+        "classid": [
+          "7"
+        ],
+        "title": " ",
+        "url": "/newsdetail/75",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260306145558MRTH.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772779978",
+        "content": "",
+        "view": "0",
+        "field": []
+      }
+    ],
+    "8": [
+      {
+        "id": "49",
+        "classid": [
+          "8"
+        ],
+        "title": "About Us",
+        "url": "/about/13",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260312085322BWJQ.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1771900039",
+        "content": "",
+        "view": "1",
+        "field": []
+      },
+      {
+        "id": "48",
+        "classid": [
+          "8"
+        ],
+        "title": "Sell with Us",
+        "url": "/sale/38",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260312085328LQPL.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1771899996",
+        "content": "",
+        "view": "0",
+        "field": []
+      },
+      {
+        "id": "47",
+        "classid": [
+          "8"
+        ],
+        "title": "Real Estate Agent Center",
+        "url": "/realEstateBrokerCenter/6",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260306144923CECE.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1771899996",
+        "content": "",
+        "view": "0",
+        "field": []
+      }
+    ],
+    "9": [
+      {
+        "id": "56",
+        "classid": [
+          "9"
+        ],
+        "title": "About Us",
+        "url": "/about/13",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260306145047RGUL.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1771913557",
+        "content": "",
+        "view": "1",
+        "field": []
+      },
+      {
+        "id": "55",
+        "classid": [
+          "9"
+        ],
+        "title": "Real Estate Agent Center",
+        "url": "/realEstateBrokerCenter/6",
+        "keywords": "",
+        "description": "",
+        "thumbnail": "/media_library/image_20260306145054TUDE.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1771913557",
+        "content": "",
+        "view": "0",
+        "field": []
+      },
+      {
+        "id": "54",
+        "classid": [
+          "9"
+        ],
+        "title": "JoinUs",
+        "url": "/newsdetail/54",
+        "keywords": "joinUs/39",
+        "description": "",
+        "thumbnail": "/media_library/image_20260306145126HWER.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1771913557",
+        "content": "",
+        "view": "0",
+        "field": []
+      }
+    ],
+    "10": [
+      {
+        "id": "60",
+        "classid": [
+          "10"
+        ],
+        "title": "Are You Ready to Elevate Your Career?",
+        "url": "/joinUs/39",
+        "keywords": "JOIN US",
+        "description": "",
+        "thumbnail": "/media_library/image_20260305092656KXZL.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772415197",
+        "content": "",
+        "view": "1",
+        "field": {
+          "real_estate_broker_email": "",
+          "real_estate_broker_desc": "",
+          "real_estate_broker_region": "",
+          "phone": "",
+          "development_type": "",
+          "total_residences": "",
+          "real_estate_agent_id": "",
+          "development_details": "",
+          "house_introduction": ""
+        }
+      },
+      {
+        "id": "59",
+        "classid": [
+          "10"
+        ],
+        "title": "Position Your Property at the Highest Level.",
+        "url": "/sale/38",
+        "keywords": "SELL WITH US",
+        "description": "",
+        "thumbnail": "/media_library/image_20260305092614UIUJ.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1772415182",
+        "content": "",
+        "view": "0",
+        "field": {
+          "development_details": "",
+          "real_estate_agent_id": "",
+          "total_residences": "",
+          "development_type": "",
+          "phone": "",
+          "real_estate_broker_region": "",
+          "real_estate_broker_desc": "",
+          "real_estate_broker_email": "",
+          "house_introduction": ""
+        }
+      }
+    ],
+    "11": [
+      {
+        "id": "34",
+        "classid": [
+          "11"
+        ],
+        "title": "Qiao Chen",
+        "url": "/realEstateBrokerDetail/34",
+        "keywords": "",
+        "description": "Real Estate Advisor",
+        "thumbnail": "/media_library/image_20260306130353KHCT.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770715714",
+        "content": "",
+        "view": "199",
+        "field": {
+          "real_estate_broker_email": "khawlah.alfayez@sothebysrealty.com",
+          "real_estate_broker_desc": "<p style=\"margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: var(--font-family-text); line-height: 30px;\">An established property expert and Sales Manager, Project Developments with Saudi Arabia Sotheby’s International Realty, Khawlah brings a multidimensional background to her current role. Her previous experience spans marketing and client advisory, including working with one of the Kingdom’s largest firms, partly owned by the Public Investment Fund – before transitioning into luxury automotive sales. Exposure to high-net-worth clients and a proper understanding of their expectations for discretion and superior service naturally led her to the world of prime real estate, whose complexities and nuances she continues to uncover today, layer by layer, one transaction at a time.<br/></p><p><br/></p>",
+          "real_estate_broker_region": "AL OLAYA, RIYADH, SAUDI ARABIA",
+          "phone": "+966 114 977 208"
+        }
+      },
+      {
+        "id": "33",
+        "classid": [
+          "11"
+        ],
+        "title": "Tatyana Ilieva ",
+        "url": "/realEstateBrokerDetail/33",
+        "keywords": "",
+        "description": "Real Estate Advisor",
+        "thumbnail": "/media_library/image_20260305131951PGBC.jpg",
+        "enclosure": [],
+        "photo_album": [],
+        "add_time": "1770715714",
+        "content": "",
+        "view": "5",
+        "field": {
+          "real_estate_broker_email": "",
+          "real_estate_broker_desc": "",
+          "real_estate_broker_region": "",
+          "phone": ""
+        }
+      }
+    ]
+  },
+  "productListsByClassId": {
+    "all": []
+  }
+}

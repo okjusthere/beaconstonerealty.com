@@ -1,72 +1,41 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import { notFound } from 'next/navigation';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
+import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
 import styles from './page.module.css';
-import { useParams } from 'next/navigation';
-
-interface BrokerData {
-  title: string;
-  description: string;
-  content: string;
-  thumbnail: string;
-  keywords: string;
-  field?: Record<string, string>;
-}
 
 const FORM_NOTE_HTML = `
-  <p>By submitting this form, you acknowledge that you accept our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
-  <p>This site is protected by reCAPTCHA and the Google <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Service</a> apply.</p>
+  <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
 `;
 
 const FORM_DISCLAIMER_HTML = `
-  <p>Yes, I would like more information from Beacon Stone Realty. Please use and/or share my information with a Beacon Stone Realty agent to contact me about my real estate needs.</p>
+  <p>You can review and edit the draft before sending it from your own email account.</p>
 `;
 
-export default function BrokerDetailPage() {
-  const params = useParams<{ id: string }>();
-  const routeId = Array.isArray(params?.id) ? params.id[0] : params?.id;
-  const [broker, setBroker] = useState<BrokerData | null>(null);
+export async function generateStaticParams() {
+  const brokers = await getNewsList(6, -1, 9);
+  return brokers.map((broker) => ({ id: String(broker.id) }));
+}
 
-  useEffect(() => {
-    const id = routeId;
-    if (!id) return;
+export default async function BrokerDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const brokerId = Number(id);
 
-    let cancelled = false;
-
-    async function loadBroker() {
-      try {
-        const response = await fetch(`/api/legacy/news_detail?id=${encodeURIComponent(id)}`);
-        const payload = await response.json();
-        if (!cancelled) {
-          setBroker(payload?.obj?.data ?? null);
-        }
-      } catch {
-        if (!cancelled) {
-          setBroker(null);
-        }
-      }
-    }
-
-    void loadBroker();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [routeId]);
-
-  if (!broker) {
-    return (
-      <div className={styles.loading}>
-        <div className={styles.spinner} />
-        <p>Loading agent profile...</p>
-      </div>
-    );
+  if (!Number.isFinite(brokerId)) {
+    notFound();
   }
+
+  let broker;
+  try {
+    broker = await getNewsDetail(brokerId);
+  } catch {
+    notFound();
+  }
+
+  const globalData = await getGlobalData();
+  const recipientEmail = broker.field?.email || globalData.web_info.email || 'info@beacon-stone.com';
 
   return (
     <>
-      {/* Hero Section */}
       <section className={styles.hero}>
         <div className="container">
           <div className={styles.heroGrid}>
@@ -96,7 +65,6 @@ export default function BrokerDetailPage() {
         </div>
       </section>
 
-      {/* Content */}
       {broker.content && (
         <section className={styles.content}>
           <div className="container">
@@ -108,7 +76,6 @@ export default function BrokerDetailPage() {
         </section>
       )}
 
-      {/* Contact Form */}
       <section className={styles.contact}>
         <div className="container">
           <div className={styles.contactInner}>
@@ -116,11 +83,12 @@ export default function BrokerDetailPage() {
               variant="inquiry"
               submissionTitle={broker.title}
               title="Let's get in touch"
-              description="Tell us how this advisor can help and the team will review your request directly."
+              description="Tell us how this advisor can help and your email app will open with a prepared message."
               messagePlaceholder="I would like to discuss buying, selling, or renting with you."
               noteHtml={FORM_NOTE_HTML}
               disclaimerHtml={FORM_DISCLAIMER_HTML}
-              successMessage="Thank you. Your agent inquiry has been submitted."
+              recipientEmail={recipientEmail}
+              successMessage="Your email app has been opened with an advisor inquiry draft."
             />
           </div>
         </div>

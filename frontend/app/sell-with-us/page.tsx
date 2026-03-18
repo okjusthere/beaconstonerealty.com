@@ -1,16 +1,14 @@
 import Link from 'next/link';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
-import { getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
+import { getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
 
 const FORM_NOTE_HTML = `
-  <p>By submitting this form, you acknowledge that you accept our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
-  <p>This site is protected by reCAPTCHA and the Google <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Service</a> apply.</p>
+  <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
 `;
 
 const FORM_DISCLAIMER_HTML = `
-  <p>Yes, I would like more information from Beacon Stone Realty. Please use and/or share my information with a Beacon Stone Realty agent to contact me about my real estate needs.</p>
-  <p>By clicking SEND MESSAGE, I agree a Beacon Stone Realty agent may contact me by phone or text message including by automated means about real estate services, and that I can access real estate services without providing my phone number.</p>
+  <p>You can review and edit the draft before sending it from your own email account.</p>
 `;
 
 export const metadata = {
@@ -30,15 +28,20 @@ export default async function SellWithUsPage() {
   let inquiryHeading = '';
   let inquiryDescription = '';
   let discoverMore: NewsItem[] = [];
+  let recipientEmail = 'info@beacon-stone.com';
 
   try {
-    const [hero, advisors, formContent, discoverContent] = await Promise.allSettled([
+    const [globalData, hero, advisors, formContent, discoverContent] = await Promise.allSettled([
+      getGlobalData(),
       getNewsDetail(50),
       getNewsList(6, -1, 9),
       Promise.all([getNewsDetail(52), getNewsDetail(53)]),
       getNewsList(9, -1, 8),
     ]);
 
+    if (globalData.status === 'fulfilled') {
+      recipientEmail = globalData.value.web_info.email || recipientEmail;
+    }
     if (hero.status === 'fulfilled') {
       heroTitle = hero.value.title || heroTitle;
       heroDescription = hero.value.description || '';
@@ -148,17 +151,19 @@ export default async function SellWithUsPage() {
               messagePlaceholder="Share your background and the kind of opportunities you want to build."
               noteHtml={FORM_NOTE_HTML}
               disclaimerHtml={FORM_DISCLAIMER_HTML}
-              successMessage="Thank you. Your application has been submitted."
+              recipientEmail={recipientEmail}
+              successMessage="Your email app has been opened with a recruiting inquiry draft."
             />
             <LegacyLeadForm
               variant="inquiry"
               submissionTitle={inquiryHeading || heroTitle}
-              title={inquiryHeading || 'Let’s get in touch'}
-              description={inquiryDescription || 'Tell us about your sale objectives and one of our advisors will follow up once your request has been reviewed.'}
+              title={inquiryHeading || "Let's get in touch"}
+              description={inquiryDescription || 'Tell us about your sale objectives and your email app will open with a prepared message.'}
               messagePlaceholder="I am interested in discussing a sale opportunity with Beacon Stone Realty."
               noteHtml={FORM_NOTE_HTML}
               disclaimerHtml={FORM_DISCLAIMER_HTML}
-              successMessage="Thank you. Your inquiry has been submitted."
+              recipientEmail={recipientEmail}
+              successMessage="Your email app has been opened with a sale inquiry draft."
             />
           </div>
         </div>

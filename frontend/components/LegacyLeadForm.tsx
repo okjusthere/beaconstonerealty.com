@@ -1,11 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './LegacyLeadForm.module.css';
 import {
+  buildMailtoHref,
   LegacyLeadVariant,
-  sendLegacyVerificationCode,
-  submitLegacyLead,
   validateContactForm,
   validateInquiryForm,
   validateJoinForm,
@@ -31,6 +30,7 @@ interface LegacyLeadFormProps {
   messagePlaceholder?: string;
   successMessage?: string;
   compact?: boolean;
+  recipientEmail?: string;
 }
 
 const INITIAL_VALUES: Record<LegacyLeadVariant, Record<string, string>> = {
@@ -40,7 +40,6 @@ const INITIAL_VALUES: Record<LegacyLeadVariant, Record<string, string>> = {
     email: '',
     phone: '',
     message: '',
-    code: '',
   },
   join: {
     firstName: '',
@@ -50,7 +49,6 @@ const INITIAL_VALUES: Record<LegacyLeadVariant, Record<string, string>> = {
     market: '',
     linkedin: '',
     message: '',
-    code: '',
   },
   contact: {
     firstName: '',
@@ -61,7 +59,6 @@ const INITIAL_VALUES: Record<LegacyLeadVariant, Record<string, string>> = {
     bedrooms: '',
     purchase: '',
     location: '',
-    code: '',
   },
 };
 
@@ -75,45 +72,16 @@ export default function LegacyLeadForm({
   noteHtml,
   disclaimerHtml,
   messagePlaceholder,
-  successMessage = 'Thank you. Your message has been sent successfully.',
+  successMessage = 'Your email app has been opened with a draft message.',
   compact = false,
+  recipientEmail = 'info@beacon-stone.com',
 }: LegacyLeadFormProps) {
   const [values, setValues] = useState<Record<string, string>>({ ...INITIAL_VALUES[variant] });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSendingCode, setIsSendingCode] = useState(false);
-  const [countdown, setCountdown] = useState(0);
   const [feedback, setFeedback] = useState('');
   const [feedbackKind, setFeedbackKind] = useState<'error' | 'success'>('error');
 
-  useEffect(() => {
-    if (countdown <= 0) {
-      return undefined;
-    }
-
-    const timer = window.setTimeout(() => {
-      setCountdown((current) => current - 1);
-    }, 1000);
-
-    return () => window.clearTimeout(timer);
-  }, [countdown]);
-
   function setFieldValue(field: string, value: string) {
     setValues((current) => ({ ...current, [field]: value }));
-  }
-
-  async function handleSendCode() {
-    setFeedback('');
-    setFeedbackKind('error');
-    setIsSendingCode(true);
-
-    const result = await sendLegacyVerificationCode(values.phone || '');
-
-    setIsSendingCode(false);
-    setFeedback(result.message);
-    setFeedbackKind(result.ok ? 'success' : 'error');
-    if (result.ok) {
-      setCountdown(60);
-    }
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -133,16 +101,7 @@ export default function LegacyLeadForm({
       return;
     }
 
-    setIsSubmitting(true);
-    const result = await submitLegacyLead(validation.payload);
-    setIsSubmitting(false);
-
-    if (!result.ok) {
-      setFeedback(result.message);
-      setFeedbackKind('error');
-      return;
-    }
-
+    window.location.href = buildMailtoHref(recipientEmail, validation.payload);
     setFeedback(successMessage);
     setFeedbackKind('success');
     setValues({ ...INITIAL_VALUES[variant] });
@@ -289,33 +248,13 @@ export default function LegacyLeadForm({
             </div>
           )}
 
-          <div className={`${styles.field} ${styles.fullWidth}`}>
-            <label htmlFor={`${variant}-code`}>Verification Code</label>
-            <div className={styles.verificationRow}>
-              <input
-                id={`${variant}-code`}
-                type="text"
-                value={values.code || ''}
-                onChange={(event) => setFieldValue('code', event.target.value)}
-                placeholder="Enter the SMS code"
-              />
-              <button
-                type="button"
-                className={styles.sendCode}
-                onClick={handleSendCode}
-                disabled={isSendingCode || countdown > 0}
-              >
-                {countdown > 0 ? `${countdown}s` : isSendingCode ? 'Sending' : 'Send Code'}
-              </button>
-            </div>
-          </div>
         </div>
 
         {noteHtml && <div className={styles.note} dangerouslySetInnerHTML={{ __html: noteHtml }} />}
         {disclaimerHtml && <div className={styles.disclaimer} dangerouslySetInnerHTML={{ __html: disclaimerHtml }} />}
 
-        <button type="submit" className={styles.submit} disabled={isSubmitting}>
-          {isSubmitting ? 'Sending' : 'Send Message'}
+        <button type="submit" className={styles.submit}>
+          Send Message
           <ArrowRight />
         </button>
 

@@ -1,18 +1,10 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  output: 'export',
+  trailingSlash: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'beaconstonerealty.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.beaconstonerealty.com',
-      },
-    ],
+    unoptimized: true,
   },
 };
 

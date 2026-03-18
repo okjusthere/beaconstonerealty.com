@@ -1,140 +1,73 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import LegacyLeadForm from '@/components/LegacyLeadForm';
-import styles from './page.module.css';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
+import PropertyGallery from '@/components/PropertyGallery';
+import LegacyLeadForm from '@/components/LegacyLeadForm';
+import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
+import styles from './page.module.css';
 
 function ArrowRight() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M5 12h14M12 5l7 7-7 7"/>
+      <path d="M5 12h14M12 5l7 7-7 7" />
     </svg>
   );
 }
 
-interface PropertyData {
-  title: string;
-  description: string;
-  content: string;
-  thumbnail: string;
-  photo_album: string[];
-  field?: Record<string, string>;
-}
-
-interface AgentData {
-  title: string;
-  thumbnail: string;
-  url: string;
-  description: string;
-  field?: Record<string, string>;
-}
-
 const FORM_NOTE_HTML = `
-  <p>By submitting this form, you acknowledge that you accept our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
-  <p>This site is protected by reCAPTCHA and the Google <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Service</a> apply.</p>
+  <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
 `;
 
 const FORM_DISCLAIMER_HTML = `
-  <p>Yes, I would like more information from Beacon Stone Realty. Please use and/or share my information with a Beacon Stone Realty agent to contact me about my real estate needs.</p>
+  <p>You can review and edit the draft before sending it from your own email account.</p>
 `;
 
-export default function PropertyDetailPage() {
-  const params = useParams<{ id: string }>();
-  const routeId = Array.isArray(params?.id) ? params.id[0] : params?.id;
-  const [property, setProperty] = useState<PropertyData | null>(null);
-  const [agent, setAgent] = useState<AgentData | null>(null);
-  const [activePhoto, setActivePhoto] = useState(0);
+export async function generateStaticParams() {
+  const properties = await getNewsList(5, -1, 1);
+  return properties.map((property) => ({ id: String(property.id) }));
+}
 
-  useEffect(() => {
-    const id = routeId;
-    if (!id) return;
+export default async function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const propertyId = Number(id);
 
-    let cancelled = false;
-
-    async function loadProperty() {
-      try {
-        const response = await fetch(`/api/legacy/news_detail?id=${encodeURIComponent(id)}`);
-        const payload = await response.json();
-        const propertyData = payload?.obj?.data ?? null;
-        if (!cancelled) {
-          setProperty(propertyData);
-        }
-
-        const agentId = propertyData?.field?.real_estate_agent_id;
-        if (agentId) {
-          const agentResponse = await fetch(`/api/legacy/news_detail?id=${encodeURIComponent(agentId)}`);
-          const agentPayload = await agentResponse.json();
-          if (!cancelled) {
-            setAgent(agentPayload?.obj?.data ?? null);
-          }
-        }
-      } catch {
-        if (!cancelled) {
-          setProperty(null);
-        }
-      }
-    }
-
-    void loadProperty();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [routeId]);
-
-  const photos = property?.photo_album?.length ? property.photo_album : property?.thumbnail ? [property.thumbnail] : [];
-
-  if (!property) {
-    return (
-      <div className={styles.loading}>
-        <div className={styles.spinner} />
-        <p>Loading property details...</p>
-      </div>
-    );
+  if (!Number.isFinite(propertyId)) {
+    notFound();
   }
+
+  let property;
+  try {
+    property = await getNewsDetail(propertyId);
+  } catch {
+    notFound();
+  }
+
+  const [globalData, brokers] = await Promise.all([
+    getGlobalData(),
+    getNewsList(6, -1, 9),
+  ]);
+
+  const agentId = Number(property.field?.real_estate_agent_id || 0);
+  const agent = brokers.find((item) => item.id === agentId);
+  const recipientEmail = globalData.web_info.email || 'info@beacon-stone.com';
+  const photos = property.photo_album?.length
+    ? property.photo_album
+    : property.thumbnail
+      ? [property.thumbnail]
+      : [];
 
   return (
     <>
-      {/* Photo Gallery */}
-      <section className={styles.gallery}>
-        <div className={styles.galleryMain}>
-          {photos.length > 0 && (
-            <img
-              src={photos[activePhoto]}
-              alt={property.title}
-              className={styles.galleryImage}
-            />
-          )}
-        </div>
-        {photos.length > 1 && (
-          <div className={styles.galleryThumbs}>
-            {photos.map((photo, i) => (
-              <button
-                key={i}
-                className={`${styles.thumbBtn} ${i === activePhoto ? styles.thumbActive : ''}`}
-                onClick={() => setActivePhoto(i)}
-              >
-                <img src={photo} alt={`Photo ${i + 1}`} />
-              </button>
-            ))}
-          </div>
-        )}
-      </section>
+      <PropertyGallery images={photos} title={property.title} />
 
-      {/* Property Info */}
       <section className={styles.details}>
         <div className="container">
           <div className={styles.detailsGrid}>
-            {/* Main Content */}
             <div className={styles.detailsMain}>
               <h1 className={styles.propertyTitle}>{property.title}</h1>
               {property.description && (
                 <p className={styles.propertyDesc}>{property.description}</p>
               )}
 
-              {/* Property Fields */}
               {property.field && Object.keys(property.field).length > 0 && (
                 <div className={styles.fields}>
                   <h2 className={styles.fieldsSectionTitle}>Development Details</h2>
@@ -143,7 +76,7 @@ export default function PropertyDetailPage() {
                       value && (
                         <div key={key} className={styles.fieldItem}>
                           <span className={styles.fieldLabel}>
-                            {key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                            {key.replace(/_/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())}
                           </span>
                           <span className={styles.fieldValue}>{value}</span>
                         </div>
@@ -153,7 +86,6 @@ export default function PropertyDetailPage() {
                 </div>
               )}
 
-              {/* Rich Content */}
               {property.content && (
                 <div
                   className={styles.richContent}
@@ -162,9 +94,7 @@ export default function PropertyDetailPage() {
               )}
             </div>
 
-            {/* Sidebar: Agent + Contact Form */}
             <div className={styles.sidebar}>
-              {/* Agent Card */}
               {agent && (
                 <div className={styles.agentCard}>
                   <div className={styles.agentPhoto}>
@@ -182,18 +112,18 @@ export default function PropertyDetailPage() {
                 </div>
               )}
 
-              {/* Contact Form */}
               <div className={styles.contactForm}>
                 <LegacyLeadForm
                   variant="inquiry"
                   submissionTitle={property.title}
                   title="Let's get in touch"
-                  description="Tell us what you would like to know about this development and one of our advisors will review your request."
+                  description="Tell us what you would like to know about this development and a prepared email draft will open for you."
                   messagePlaceholder="I would like to discuss this property with your team."
                   noteHtml={FORM_NOTE_HTML}
                   disclaimerHtml={FORM_DISCLAIMER_HTML}
                   compact
-                  successMessage="Thank you. Your property inquiry has been submitted."
+                  recipientEmail={recipientEmail}
+                  successMessage="Your email app has been opened with a property inquiry draft."
                 />
               </div>
             </div>

@@ -4,12 +4,11 @@ import styles from './page.module.css';
 import { findMenuByPath, getGlobalData, getNewsList, type NewsItem } from '@/lib/api';
 
 const FORM_NOTE_HTML = `
-  <p>By submitting this form, you acknowledge that you accept our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
-  <p>This site is protected by reCAPTCHA and the Google <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Service</a> apply.</p>
+  <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
 `;
 
 const FORM_DISCLAIMER_HTML = `
-  <p>Yes, I would like more information from Beacon Stone Realty. Please use and/or share my information with a Beacon Stone Realty agent to contact me about my real estate needs.</p>
+  <p>You can review and edit the draft before sending it from your own email account.</p>
 `;
 
 export const metadata = {
@@ -23,6 +22,7 @@ export default async function BrokersPage() {
   let pageTitle = 'Guided by Expertise. Driven by Strategy';
   let bannerImage = '';
   let agents: BrokerCard[] = [];
+  let recipientEmail = 'info@beacon-stone.com';
 
   try {
     const [globalData, agentList] = await Promise.allSettled([
@@ -34,6 +34,7 @@ export default async function BrokersPage() {
       const menu = findMenuByPath(globalData.value.menu_info, '/brokers');
       pageTitle = menu?.remarks || menu?.title || pageTitle;
       bannerImage = menu?.thumbnail || '';
+      recipientEmail = globalData.value.web_info.email || recipientEmail;
     }
     if (agentList.status === 'fulfilled') {
       agents = agentList.value as BrokerCard[];
@@ -119,11 +120,12 @@ export default async function BrokersPage() {
               variant="inquiry"
               submissionTitle={pageTitle}
               title="Let's get in touch"
-              description="Tell us how one of our advisors can help. Once your request is reviewed, the team will follow up directly."
+              description="Tell us how one of our advisors can help and your email app will open with a prepared message."
               messagePlaceholder="I would like to discuss buying, selling, or renting with your team."
               noteHtml={FORM_NOTE_HTML}
               disclaimerHtml={FORM_DISCLAIMER_HTML}
-              successMessage="Thank you. Your request has been submitted."
+              recipientEmail={recipientEmail}
+              successMessage="Your email app has been opened with an inquiry draft."
             />
           </div>
         </div>

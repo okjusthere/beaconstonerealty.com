@@ -1,5 +1,5 @@
 import styles from './page.module.css';
-import { getNewsDetail } from '@/lib/api';
+import { getMenuRouteIds, getNewsDetail, getNewsRouteIds } from '@/lib/api';
 
 export default async function LegacyContentPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -34,4 +34,13 @@ export default async function LegacyContentPage({ params }: { params: Promise<{ 
       </div>
     </section>
   );
+}
+
+export async function generateStaticParams() {
+  const ids = new Set([
+    ...getMenuRouteIds('/page/'),
+    ...getNewsRouteIds('/page/'),
+  ]);
+
+  return Array.from(ids).map((id) => ({ id }));
 }

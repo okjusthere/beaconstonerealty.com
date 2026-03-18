@@ -1,5 +1,5 @@
-export const LEGACY_EMAIL_PATTERN = /^[\w-]+(\.[\w-]+)*@[\w-]+(\.(\w)+)*(\.(\w){2,3})$/;
-export const LEGACY_PHONE_PATTERN = /^(?:13|15|18|17)\d{9}$/;
+export const LEGACY_EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const LEGACY_PHONE_PATTERN = /^[+\d\s().-]{7,20}$/;
 
 export interface InquiryFormValues {
   firstName: string;
@@ -7,7 +7,6 @@ export interface InquiryFormValues {
   email: string;
   phone: string;
   message: string;
-  code: string;
 }
 
 export interface JoinFormValues extends InquiryFormValues {
@@ -24,41 +23,56 @@ export interface ContactFormValues {
   bedrooms: string;
   purchase: string;
   location: string;
-  code: string;
 }
 
 export type LegacyLeadVariant = 'inquiry' | 'join' | 'contact';
 
+export interface LeadDraft {
+  subject: string;
+  body: string;
+}
+
 export interface ValidationResult {
   error?: string;
-  payload?: Record<string, string>;
+  payload?: LeadDraft;
+}
+
+function normalizePhone(value: string): string {
+  return value.replace(/\D/g, '');
 }
 
 function buildContacts(firstName: string, lastName: string): string {
-  return `first Name:${firstName.trim()},last Name:${lastName.trim()}`;
+  return `${firstName.trim()} ${lastName.trim()}`.trim();
+}
+
+function buildDraft(title: string, lines: Array<[string, string]>): LeadDraft {
+  return {
+    subject: `[Beacon Stone Realty] ${title}`,
+    body: lines
+      .filter(([, value]) => value.trim())
+      .map(([label, value]) => `${label}: ${value.trim()}`)
+      .join('\n'),
+  };
 }
 
 function validateCommonFields(values: InquiryFormValues): string | undefined {
   if (!values.firstName.trim()) {
-    return 'first Name！';
+    return 'First name is required.';
   }
   if (!values.lastName.trim()) {
-    return 'last Name！';
+    return 'Last name is required.';
   }
   if (!values.email.trim()) {
-    return 'Email Address';
+    return 'Email address is required.';
   }
   if (!LEGACY_EMAIL_PATTERN.test(values.email.trim())) {
-    return 'Email address is invalid';
+    return 'Email address is invalid.';
   }
   if (!values.phone.trim()) {
-    return 'Phone number！';
+    return 'Phone number is required.';
   }
-  if (!LEGACY_PHONE_PATTERN.test(values.phone.trim())) {
-    return 'The format of the mobile phone number is incorrect！';
-  }
-  if (!values.code.trim()) {
-    return 'Please enter the verification code.';
+  if (!LEGACY_PHONE_PATTERN.test(values.phone.trim()) || normalizePhone(values.phone).length < 7) {
+    return 'Phone number format is invalid.';
   }
   return undefined;
 }
@@ -69,18 +83,17 @@ export function validateInquiryForm(values: InquiryFormValues, title: string): V
     return { error: commonError };
   }
   if (!values.message.trim()) {
-    return { error: 'Please fill in the consultation content' };
+    return { error: 'Please fill in the message.' };
   }
 
   return {
-    payload: {
-      title,
-      contacts: buildContacts(values.firstName, values.lastName),
-      phone: values.phone.trim(),
-      email: values.email.trim(),
-      message: values.message.trim(),
-      code: values.code.trim(),
-    },
+    payload: buildDraft(title, [
+      ['Inquiry type', 'Property / advisor inquiry'],
+      ['Full name', buildContacts(values.firstName, values.lastName)],
+      ['Email', values.email],
+      ['Phone', values.phone],
+      ['Message', values.message],
+    ]),
   };
 }
 
@@ -90,24 +103,25 @@ export function validateJoinForm(values: JoinFormValues, title: string): Validat
     return { error: commonError };
   }
   if (!values.market.trim()) {
-    return { error: 'SelectMarket！' };
+    return { error: 'Select market is required.' };
   }
   if (!values.linkedin.trim()) {
-    return { error: 'LinkedIn！' };
+    return { error: 'LinkedIn URL is required.' };
   }
   if (!values.message.trim()) {
-    return { error: 'Please fill in the consultation content' };
+    return { error: 'Please fill in the message.' };
   }
 
   return {
-    payload: {
-      title,
-      contacts: buildContacts(values.firstName, values.lastName),
-      phone: values.phone.trim(),
-      email: values.email.trim(),
-      message: `SelectMarket:${values.market.trim()},LinkedIn:${values.linkedin.trim()},message:${values.message.trim()}`,
-      code: values.code.trim(),
-    },
+    payload: buildDraft(title, [
+      ['Inquiry type', 'Join us'],
+      ['Full name', buildContacts(values.firstName, values.lastName)],
+      ['Email', values.email],
+      ['Phone', values.phone],
+      ['Select market', values.market],
+      ['LinkedIn', values.linkedin],
+      ['Message', values.message],
+    ]),
   };
 }
 
@@ -117,8 +131,7 @@ export function validateContactForm(values: ContactFormValues, title: string): V
     lastName: values.lastName,
     email: values.email,
     phone: values.phone,
-    message: 'contact us',
-    code: values.code,
+    message: 'contact request',
   });
 
   if (commonError) {
@@ -126,71 +139,24 @@ export function validateContactForm(values: ContactFormValues, title: string): V
   }
 
   return {
-    payload: {
-      title,
-      contacts: buildContacts(values.firstName, values.lastName),
-      phone: values.phone.trim(),
-      email: values.email.trim(),
-      message: [
-        `budget:${values.budget.trim()}`,
-        `bedrooms:${values.bedrooms.trim()}`,
-        `purchase:${values.purchase.trim()}`,
-        `location:${values.location.trim()}`,
-      ].join(','),
-      code: values.code.trim(),
-    },
+    payload: buildDraft(title, [
+      ['Inquiry type', 'Contact request'],
+      ['Full name', buildContacts(values.firstName, values.lastName)],
+      ['Email', values.email],
+      ['Phone', values.phone],
+      ['Budget', values.budget],
+      ['Bedrooms', values.bedrooms],
+      ['Purchase timeline', values.purchase],
+      ['Preferred location', values.location],
+    ]),
   };
 }
 
-export async function sendLegacyVerificationCode(phone: string): Promise<{ ok: boolean; message: string }> {
-  const trimmedPhone = phone.trim();
+export function buildMailtoHref(recipientEmail: string, payload: LeadDraft): string {
+  const query = new URLSearchParams({
+    subject: payload.subject,
+    body: payload.body,
+  });
 
-  if (!trimmedPhone) {
-    return { ok: false, message: 'Phone number！' };
-  }
-  if (!LEGACY_PHONE_PATTERN.test(trimmedPhone)) {
-    return { ok: false, message: 'The format of the mobile phone number is incorrect！' };
-  }
-
-  try {
-    const response = await fetch('/api/legacy/send_sms', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ type: '1', mobile: trimmedPhone }).toString(),
-    });
-    const payload = await response.json();
-
-    if (payload?.message === 'success') {
-      return { ok: true, message: 'Verification code sent successfully.' };
-    }
-
-    return {
-      ok: false,
-      message: payload?.message || 'Failed to send the verification code.',
-    };
-  } catch {
-    return { ok: false, message: 'Failed to send the verification code.' };
-  }
-}
-
-export async function submitLegacyLead(payload: Record<string, string>): Promise<{ ok: boolean; message: string }> {
-  try {
-    const response = await fetch('/api/legacy/inner_message', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(payload).toString(),
-    });
-    const data = await response.json();
-
-    if (data?.message === 'success') {
-      return { ok: true, message: 'success' };
-    }
-
-    return {
-      ok: false,
-      message: data?.message || 'Failed to submit the form.',
-    };
-  } catch {
-    return { ok: false, message: 'Failed to submit the form.' };
-  }
+  return `mailto:${recipientEmail}?${query.toString()}`;
 }

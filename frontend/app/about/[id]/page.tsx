@@ -1,6 +1,6 @@
 import styles from './page.module.css';
 import Link from 'next/link';
-import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
+import { getGlobalData, getMenuRouteIds, getNewsDetail, getNewsList, getNewsRouteIds } from '@/lib/api';
 
 function ArrowRight() {
   return (
@@ -161,4 +161,13 @@ export default async function AboutPage({ params }: { params: Promise<{ id: stri
       )}
     </>
   );
+}
+
+export async function generateStaticParams() {
+  const ids = new Set([
+    ...getMenuRouteIds('/about/'),
+    ...getNewsRouteIds('/about/'),
+  ]);
+
+  return Array.from(ids).map((id) => ({ id }));
 }
