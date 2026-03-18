@@ -1,7 +1,11 @@
 FROM php:7.4-apache
 
-# Enable Apache mod_rewrite for .htaccess
-RUN a2enmod rewrite
+# Enable Apache mod_rewrite for .htaccess and fix MPM conflict
+RUN a2dismod mpm_event && a2enmod mpm_prefork && a2enmod rewrite
+
+# Use PORT env var from Railway
+RUN sed -i 's/80/${PORT}/g' /etc/apache2/sites-available/000-default.conf /etc/apache2/ports.conf
+ENV PORT=80
 
 # Install system dependencies for PHP extensions
 RUN apt-get update && apt-get install -y \
