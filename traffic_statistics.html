@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+    <script type="text/javascript" src="/js/jQuery.blockUI.js"></script>
+    <script type="text/javascript" src="/js/jquery.SuperSlide.js"></script>
+    <script type="text/javascript" src="/js/webforce.js"></script>
+    <script type="text/javascript" src="/js/webforce_traffic_statistics.js"></script>
+    <script type="text/javascript" src="/js/myjs.js"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td></td>
+        <td>ip数</td>
+        <td>浏览量</td>
+        <td>访客数</td>
+    </tr>
+    <tr>
+        <td>今日</td>
+        <td class="today-ip"></td>
+        <td class="today-page-view"></td>
+        <td class="today-user-agent"></td>
+    </tr>
+    <tr>
+        <td>昨日</td>
+        <td class="yesterday-ip"></td>
+        <td class="yesterday-page-view"></td>
+        <td class="yesterday-user-agent"></td>
+    </tr>
+    <tr>
+        <td>前天</td>
+        <td class="y-ip"></td>
+        <td class="y-page-view"></td>
+        <td class="y-user-agent"></td>
+    </tr>
+</table>
+<script type="text/javascript">
+    $(".today-ip").text(getIP());
+    $(".today-page-view").text(getPageView());
+    $(".today-user-agent").text(getUserAgent());
+    $(".yesterday-ip").text(getIP(1));
+    $(".yesterday-page-view").text(getPageView(1));
+    $(".yesterday-user-agent").text(getUserAgent(1));
+    $(".y-ip").text(getIP(3));
+    $(".y-page-view").text(getPageView(3));
+    $(".y-user-agent").text(getUserAgent(3));
+</script>
+</body>
+</html>

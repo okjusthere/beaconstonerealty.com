@@ -1,0 +1,37 @@
+DIV.page {
+    padding: 5px; margin: 5px;font-size: 12px; line-height:28px; text-align: center;
+}
+DIV.page A {
+    border: #eee 1px solid; background-position: 50% bottom; padding:0 3px 0 3px; margin-right: 3px; color: #333; text-decoration: none; display:inline-block;  vertical-align:top;min-width:20px; line-height:26px; border-radius:4px;
+}
+DIV.page A:hover {
+    border: var(--primary-color) 1px solid; background-image: none; color: #fff; background-color: var(--primary-color);
+}
+DIV.page A:active {
+    border: var(--primary-color) 1px solid; background-image: none; color: #fff; background-color: var(--primary-color);
+}
+DIV.page SPAN{ display:inline-block; vertical-align:top; min-width:20px; border-radius:4px;}
+DIV.page SPAN.current {
+    padding:0 3px 0 3px; margin-right: 3px; font-weight: bold; background-color: var(--primary-color); color:#fff;
+}
+DIV.page SPAN.disabled {
+    display: none
+}
+DIV.page SPAN.ellipsis{
+    margin-right: 3px;
+}
+DIV.page A.next {
+    border: var(--primary-color) 2px solid; margin: 0px 0px 0px 10px;
+}
+DIV.page A.next:hover {
+    border: var(--primary-color) 2px solid;
+}
+DIV.page A.prev {
+    border: var(--primary-color) 2px solid; margin: 0px 10px 0px 0px;
+}
+DIV.page A.prev:hover {
+    border: var(--primary-color) 2px solid;
+}
+DIV.page select{ display:inline-block; vertical-align:top;
+    border: #eee 1px solid; padding:0 3px 0 3px; color: #333; line-height:26px; height:28px; min-width:28px;
+}

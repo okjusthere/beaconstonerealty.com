@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["php74", "php74Extensions.mysqli", "php74Extensions.mbstring", "php74Extensions.xml", "php74Extensions.curl", "php74Extensions.zip"]
+
+[phases.install]
+cmds = ["composer install --no-dev --optimize-autoloader"]
+
+[start]
+cmd = "php -S 0.0.0.0:${PORT:-8080} index.php"

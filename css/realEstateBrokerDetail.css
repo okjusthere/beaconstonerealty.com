@@ -1,0 +1,894 @@
+.icon {
+    font-family: icons;
+    font-feature-settings: normal;
+    font-variant: normal;
+    -webkit-font-smoothing: antialiased;
+    font-display: swap
+}
+
+.icon,
+.icon-map-glyphs {
+    display: inline-block;
+    line-height: 1;
+    font-weight: 400;
+    font-style: normal;
+    speak: none;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: auto;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.icon-map-glyphs {
+    font-family: icon-map-glyph;
+    font-feature-settings: normal;
+    font-variant: normal;
+    -webkit-font-smoothing: antialiased;
+    font-display: swap
+}
+
+.m-agentcontactinfo {
+    margin-top: 0;
+    height: 100%
+}
+
+.m-agentcontactinfo .c-contact-card--wrapper,
+.m-agentcontactinfo .contact-card__clear {
+    height: 100%
+}
+
+.m-agentcontactinfo .contact-card__info-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.m-agentcontactinfo .listing-item__agent-phone {
+    cursor: pointer
+}
+
+.m-agentcontactinfo .listing-item__agent-phone .o-phone {
+    font-size: 1rem
+}
+
+@media only screen and (max-width:47.999em) {
+    .m-agentcontactinfo .listing-item__agent-phone .o-phone {
+        font-size: 1.165rem
+    }
+}
+
+@media only screen and (min-width:48em)and (max-width:79.999em) {
+    .m-agentcontactinfo .listing-item__agent-phone .o-phone {
+        font-size: 1rem
+    }
+}
+
+@media only screen and (min-width:80em) {
+    .m-agentcontactinfo .listing-item__agent-phone .o-phone {
+        font-size: 1rem
+    }
+}
+
+.m-agentcontactinfo .listing-item__agent-phone .m-agent-item__feature-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px
+}
+
+.m-agentcontactinfo .c-contact-card {
+    padding: 0 20px 20px;
+    background: transparent;
+    height: 100%;
+    line-height: 1.5em;
+    margin-bottom: 1px;
+    position: relative
+}
+
+.m-agentcontactinfo .c-contact-card .o-phone {
+    font-family: var(--font-family-text);
+    font-weight: 400;
+    font-style: normal;
+    padding-bottom: 10px
+}
+
+@media only screen and (min-width:48em)and (max-width:79.999em) {
+    .m-agentcontactinfo .c-contact-card .o-phone {
+        line-height: 1.4
+    }
+}
+
+.m-agentcontactinfo .c-contact-card .o-phone .icon-phone-classic-full {
+    padding-right: 8px;
+    font-family: icons
+}
+
+.m-agentcontactinfo .c-contact-card .o-phone .o-phone__text {
+    display: none
+}
+
+.m-agentcontactinfo .c-contact-card .o-phone .o-phone-number {
+    font-family: var(--font-family-text);
+    font-size: 1.167rem;
+    color: #58585a;
+    display: inline-block;
+    font-style: normal;
+    cursor: pointer;
+    white-space: nowrap;
+    font-feature-settings: normal;
+    font-variant: normal;
+    text-decoration: inherit
+}
+
+@media only screen and (max-width:47.999em) {
+    .m-agentcontactinfo .c-contact-card .o-phone .o-phone-number {
+        font-size: 1.359555rem
+    }
+}
+
+@media only screen and (min-width:48em)and (max-width:79.999em) {
+    .m-agentcontactinfo .c-contact-card .o-phone .o-phone-number {
+        font-size: 1.167rem
+    }
+}
+
+@media only screen and (min-width:80em) {
+    .m-agentcontactinfo .c-contact-card .o-phone .o-phone-number {
+        font-size: 1.167rem
+    }
+}
+
+.m-agentcontactinfo .c-contact-card .o-phone,
+.m-agentcontactinfo .c-contact-card .url {
+    display: flex;
+    align-items: center
+}
+
+.m-agentcontactinfo .c-contact-card .icon-text {
+    padding-right: 8px;
+    font-weight: 400;
+    line-height: 16px
+}
+
+.m-agentcontactinfo .c-contact-card .contact-card__office-title {
+    color: rgb(var(--color-dynamic-text-subtitles));
+    font-family: var(--font-family-text);
+    line-height: 18px;
+    font-size: 1.167rem
+}
+
+@media only screen and (max-width:47.999em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__office-title {
+        font-size: 1.359555rem
+    }
+}
+
+@media only screen and (min-width:48em)and (max-width:79.999em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__office-title {
+        font-size: 1.167rem
+    }
+}
+
+@media only screen and (min-width:80em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__office-title {
+        font-size: 1.167rem
+    }
+}
+
+@media only screen and (max-width:59.999em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__office-title {
+        padding-top: 40px
+    }
+}
+
+.m-agentcontactinfo .c-contact-card .contact-card__address--spacing {
+    margin-bottom: 0;
+    color: #58585a;
+    margin-top: 0;
+    font-size: 1.2em
+}
+
+@media only screen and (max-width:47.999em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__address--spacing {
+        font-size: 1.2em
+    }
+}
+
+@media only screen and (min-width:48em)and (max-width:79.999em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__address--spacing {
+        font-size: 1.2em
+    }
+}
+
+@media only screen and (min-width:80em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__address--spacing {
+        font-size: 1.2em
+    }
+}
+
+.m-agentcontactinfo .c-contact-card .contact-card__info-website {
+    font-size: 1.167rem
+}
+
+@media only screen and (max-width:47.999em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__info-website {
+        font-size: 1.359555rem
+    }
+}
+
+@media only screen and (min-width:48em)and (max-width:79.999em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__info-website {
+        font-size: 1.167rem
+    }
+}
+
+@media only screen and (min-width:80em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__info-website {
+        font-size: 1.167rem
+    }
+}
+
+@media only screen and (max-width:47.999em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__info-website .icon-link {
+        padding-right: 6px
+    }
+}
+
+.m-agentcontactinfo .c-contact-card .contact-card__address {
+    font-size: 1.167rem
+}
+
+@media only screen and (max-width:47.999em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__address {
+        font-size: 1.359555rem
+    }
+}
+
+@media only screen and (min-width:48em)and (max-width:79.999em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__address {
+        font-size: 1.167rem
+    }
+}
+
+@media only screen and (min-width:80em) {
+    .m-agentcontactinfo .c-contact-card .contact-card__address {
+        font-size: 1.167rem
+    }
+}
+
+.m-agentcontactinfo .c-contact-card .icon-link,
+.m-agentcontactinfo .c-contact-card .icon-text,
+.m-agentcontactinfo .c-contact-card .street-address {
+    padding-right: 8px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #58585a;
+    text-transform: capitalize
+}
+
+.agent__heading {
+    font-size: 38px;
+    margin-bottom: 20px;
+    font-family: FreightBigBook, Arial, Sans-Serif;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: #fff;
+    line-height: 44px;
+    letter-spacing: .8px
+}
+
+@media(min-width:768px) {
+    .agent__heading {
+        font-size: 38px;
+        line-height: 44px;
+        letter-spacing: .8px
+    }
+}
+
+@media(min-width:1280px) {
+    .agent__heading {
+        font-size: 46px;
+        line-height: 52px;
+        letter-spacing: 1px
+    }
+}
+
+.agent__profile {
+    padding-bottom: 30px
+}
+
+.agent__profile,
+.agent__profile * {
+    font-size: 16px;
+    line-height: 30px;
+    color: #fff
+}
+
+.agent__profile li {
+    list-style: disc
+}
+
+.u-bg-blueSir {
+    background-color: #3E3634
+}
+
+.AgentPersonal__content-button {
+    cursor: pointer;
+    width: 100%;
+    position: absolute;
+    font-size: 12px;
+    text-align: center;
+    bottom: 0;
+    z-index: 1
+}
+
+.AgentPersonal__content-button .icon-chevron {
+    margin-left: 5px;
+    transition: transform .2s ease-in-out;
+    font-size: 11px
+}
+
+.AgentPersonal__content-button--collapse {
+    background: transparent
+}
+
+.AgentPersonal__content-button--collapse .icon-chevron {
+    transform: rotate(180deg) translate(4px, 4px);
+    display: inline-block
+}
+
+.AgentPersonal__heading {
+    margin-bottom: 20px
+}
+
+.agent__highlights {
+    border-top: 1px solid #c29b40
+}
+
+@media only screen and (min-width:768px)and (max-width:1279px) {
+    .agent__highlights {
+        display: grid;
+        grid-gap: 0 30px;
+        grid-template-columns: repeat(1, 1fr)
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .agent__highlights {
+        margin-top: 10px
+    }
+}
+
+.agent__office {
+    font-size: 22px;
+    line-height: 28px;
+    letter-spacing: 0;
+    font-family: MercuryDisplay-Roman, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    color: #fff
+}
+
+@media(min-width:1280px) {
+    .agent__office {
+        font-size: 22px;
+        line-height: 28px;
+        letter-spacing: 0
+    }
+}
+
+.agent__highlights h5 {
+    letter-spacing: normal
+}
+
+.AgentPersonal__highlights-text {
+    height: 199px;
+    overflow: hidden
+}
+
+.AgentPersonal__highlights-text--expanded {
+    height: auto
+}
+
+.agent__highlights-item--list li {
+    padding-bottom: 5px;
+    list-style: none;
+    font-family: BentonSans-Book, Arial, Sans-Serif;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 30px;
+    color: #fff
+}
+
+.agent__highlights-item--list li:last-child {
+    padding-bottom: 0
+}
+
+.agent__highlights-item .AgentPersonal__office .sir {
+    display: block
+}
+
+.agent__highlights-item .agent__office-link {
+    box-shadow: none;
+    box-sizing: content-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    font-family: BentonSans-Medium, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    min-width: 180px;
+    text-decoration: none;
+    line-height: 1;
+    color: #fff
+}
+
+@media only screen and (max-width:79.999em) {
+    .agent__highlights-item .agent__office-link {
+        padding-top: 18px
+    }
+}
+
+@media only screen and (max-width:59.999em) {
+    .agent__highlights-item .agent__office-link {
+        padding-top: 18px;
+        display: block;
+        text-align: left
+    }
+}
+
+.agent__highlights-item .agent__office-link .btn__container {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+@media only screen and (max-width:59.999em) {
+    .agent__highlights-item .agent__office-link .btn__container {
+        justify-content: flex-start
+    }
+}
+
+.agent__highlights-item .agent__office-link .btn__container .btn__icon-arrow {
+    display: inline-flex;
+    font-size: 24px
+}
+
+.agent__highlights-item .agent__office-link:hover .btn__icon-arrow {
+    transform: translateX(10px);
+    transition: transform .2s ease;
+    margin-left: 10px
+}
+
+@media only screen and (min-width:1280px) {
+    .agent__highlights-item .agent__office-link {
+        padding-top: 10px
+    }
+}
+
+.agent__title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #999;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.6px;
+    font-family: Benton, Arial, sans-serif;
+    font-weight: 600
+}
+
+.agent__descrption,
+.agent__descrption p {
+    font-family: MercuryDisplay-Roman, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 24px;
+    letter-spacing: 0;
+    margin: 0;
+    color: #fff
+}
+
+@media(min-width:1280px) {
+
+    .agent__descrption,
+    .agent__descrption p {
+        font-size: 22px;
+        line-height: 28px;
+        letter-spacing: 0
+    }
+}
+
+.agent__stats-title {
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: Benton, Arial, sans-serif
+}
+
+.AgentPersonal__paragraph {
+    margin-bottom: 20px
+}
+
+.AgentPersonal__paragraph:last-of-type {
+    margin-bottom: 0
+}
+
+.AgentPersonal__profile--expandible {
+    padding-bottom: 30px
+}
+
+.AgentPersonal__stats {
+    display: flex;
+    width: 100%;
+    margin: 22px 0 50px;
+    justify-content: space-evenly
+}
+
+.AgentPersonal__stats--mobile {
+    margin: 30px 0 0 !important
+}
+
+@media only screen and (min-width:768px) {
+    .AgentPersonal__stats {
+        justify-content: flex-start
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .AgentPersonal__stats {
+        margin: 30px 0 0
+    }
+}
+
+.AgentPersonal__showLabel {
+    font-size: 12px;
+    cursor: pointer
+}
+
+.AgentPersonal__showLabel .icon-chevron {
+    padding-left: 5px;
+    font-size: 11px
+}
+
+.AgentPersonal__showLabel--rotate .icon-chevron {
+    padding-right: 5px;
+    transform: rotate(180deg) translate(4px, 4px);
+    display: inline-block
+}
+
+@media only screen and (min-width:768px) {
+    .agent__contact {
+        padding-top: 48px
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .agent__contact {
+        padding-bottom: 80px;
+        padding-top: 80px !important;
+    }
+}
+
+.AgentPersonal__profile li {
+    list-style: disc
+}
+
+@media only screen and (max-width:768px) {
+    .agent__contact .container.grid {
+        margin-right: 20px;
+        margin-left: 20px
+    }
+}
+
+@media only screen and (max-width:79.999em) {
+    .agent__contact {
+        padding-bottom: 60px
+    }
+}
+
+.Hero {
+    text-align: center;
+    overflow: inherit
+}
+
+@media only screen and (min-width:768px) {
+    .Hero {
+        text-align: left
+    }
+}
+
+.Hero__agent {
+    background-color: #3E3634
+}
+
+@media only screen and (max-width:79.999em) {
+    .Hero__agent {
+        padding-top: 60px !important;
+        padding-bottom: 50px !important
+    }
+}
+
+@media only screen and (min-width:80em) {
+    .Hero__agent {
+        padding-bottom: 0
+    }
+}
+
+@media only screen and (min-width:30em) {
+    .Hero__agent {
+        padding-top: 30px !important
+    }
+}
+
+@media only screen and (max-width:47.999em) {
+
+    .Hero__video-fix,
+    .agent__long-gold-line {
+        display: none
+    }
+}
+
+.agent__agent-title {
+    font-family: BentonSans-Medium, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 16px;
+    letter-spacing: 1.6px;
+    margin: 0;
+    color: #fff;
+    text-align: justify;
+    /* text-transform: uppercase */
+}
+
+@media(min-width:768px) {
+    .agent__agent-title {
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 1.8px
+    }
+}
+
+.Hero__agent-name {
+    color: #fff;
+         font-family: 'LibreBaskerville';
+
+    font-size: 44px;
+    line-height: 46px;
+    font-weight: unset
+}
+
+@media(min-width:768px) {
+    .Hero__agent-name {
+        font-size: 50px;
+        line-height: 54px;
+        letter-spacing: 0
+    }
+}
+
+@media(min-width:1280px) {
+    .Hero__agent-name {
+        font-size: 50px;
+        line-height: 72px;
+        letter-spacing: 0
+    }
+}
+
+.Hero__agent-name:not(.Hero__agent-name--unspaced) {
+    margin-top: 30px
+}
+
+@media only screen and (max-width:1279px) {
+    .Hero__agent-name:not(.Hero__agent-name--unspaced) {
+        margin-top: 20px
+    }
+}
+
+.Hero__agent-connect {
+    padding: 0 50px
+}
+
+@media only screen and (min-width:270px)and (max-width:767px) {
+    .Hero__img-container {
+        padding: 0 20px;
+        display: flex;
+        justify-content: center
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__img-container {
+        position: relative
+    }
+}
+
+.Hero__agent-image {
+    height: auto;
+    min-height: 304px;
+    object-fit: cover
+}
+
+@media only screen and (min-width:270px)and (max-width:767px) {
+    .Hero__agent-image {
+        margin-top: 50px;
+        width: 228px;
+        max-height: 304px
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .Hero__agent-image {
+        min-height: 320px;
+        object-fit: cover
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__agent-image {
+        height: 477px;
+        position: absolute;
+        object-fit: cover;
+        top: 0;
+        right: 0;
+        z-index: 2
+    }
+
+    .Hero__agent-img-fix {
+        width: 420px;
+        height: 531px
+    }
+}
+
+.Hero__coverage {
+    margin-top: 30px;
+    max-width: 460px
+}
+
+@media only screen and (min-width:270px)and (max-width:767px) {
+    .Hero__coverage {
+        max-width: none
+    }
+}
+
+.Hero__video-section {
+    background-color: #3E3634;
+    padding-bottom: 60px
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__video-section {
+        padding-bottom: 80px
+    }
+}
+
+@media only screen and (min-width:270px)and (max-width:767px) {
+    .Hero__video-section .container {
+        margin: 0 auto
+    }
+}
+
+.Hero__video-container {
+    text-align: center;
+    padding-left: 0
+}
+
+@media only screen and (min-width:768px) {
+    .Hero__video-container {
+        text-align: center;
+        height: auto;
+        margin-top: -200px
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__video-container {
+        height: auto;
+        text-align: left;
+        margin-top: -30px
+    }
+}
+
+.Hero__video-container-image {
+    min-height: 230px
+}
+
+@media only screen and (min-width:768px) {
+    .Hero__video-container-image {
+        min-height: 400px
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__video-container-image {
+        min-height: 460px
+    }
+}
+
+.Hero__video-fix {
+    width: 100%;
+    height: 200px;
+    background-color: #3E3634
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__video-fix {
+        width: 784px;
+        height: auto
+    }
+}
+
+.Hero__video-img {
+    width: 100%;
+    height: auto
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__no-video-padder {
+        padding: 60px;
+        background-color: #3E3634
+    }
+}
+
+.Hero__cta {
+    margin-top: 30px
+}
+
+@media only screen and (max-width:1279px) {
+    .Hero__cta {
+        margin-top: 75px
+    }
+}
+
+.Hero__iframe iframe {
+    width: 100%;
+    height: 100%
+}
+
+.u-color-white {
+    color: #fff
+}
+
+@media only screen and (min-width:1280px) {
+
+    .container,
+    .grid.container {
+        max-width: 1146px;
+        margin: 0 auto
+    }
+
+    .Hero__agent.u-padding-top {
+        padding-top: 80px !important
+    }
+}
+
+.Hero__agent-address {
+    font-family: BentonSans-Medium, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 1.2px;
+    color: #999;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:60em) {
+    .Hero__agent-address {
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 1.6px
+    }
+}

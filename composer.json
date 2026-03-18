@@ -1,0 +1,9 @@
+{
+    "require": {
+        "alibabacloud/dysmsapi-20170525": "2.0.20",
+        "alibabacloud/client": "^1.5",
+        "phpoffice/phpspreadsheet": "^1.5",
+        "alipaysdk/openapi": "*@dev",
+        "phpoffice/phpword": "^1.2"
+    }
+}

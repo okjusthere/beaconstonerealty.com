@@ -1,0 +1,38 @@
+<IfModule rewrite_module>
+# php_value upload_max_filesize 50M
+# php_value post_max_size 50M
+RewriteEngine On
+Options -MultiViews
+ErrorDocument 404 /404.html
+
+#增加下面的内容--获取后台请求头的Authorization
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+#SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+# 1. 放行真正的静态资源（排除API路径）
+RewriteCond %{REQUEST_URI} ^/(static|assets)/ [NC,OR]
+RewriteCond %{REQUEST_URI} \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|txt|pdf|zip)$ [NC]
+RewriteRule ^ - [L]
+# 排除 PHP 文件，确保 PHP 文件能被正常处理
+RewriteCond %{REQUEST_URI} !\.php$ [NC]
+
+# 2. 放行所有API请求（包括JSON格式）
+RewriteCond %{REQUEST_URI} ^/(application)/ [NC]
+RewriteRule ^ - [L]
+
+# 3. 前端路由规则
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+# 1. 首先排除 application 目录及其所有内容
+#RewriteCond %{REQUEST_URI} ^/application/ [NC]
+## 2. 排除其他静态资源
+#RewriteCond %{REQUEST_URI} \.(json)$ [NC]
+#RewriteRule ^ - [L]
+#
+## 3. 前端路由规则
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+</IfModule>

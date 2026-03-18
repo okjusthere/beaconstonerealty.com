@@ -1,0 +1,699 @@
+.m-listing-info {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-bottom: 50px;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid #d6d6d6
+}
+
+@media only screen and (max-width:79.999em) {
+    .m-listing-info {
+        display: flex;
+        width: 100%;
+        justify-content: space-between
+    }
+}
+
+@media only screen and (max-width:47.999em) {
+    .m-listing-info {
+        padding-bottom: 30px;
+        margin-bottom: 0
+    }
+}
+
+@media only screen and (min-width:48em)and (max-width:79.999em) {
+    .m-listing-info {
+        padding-bottom: 30px;
+        margin-bottom: 0
+    }
+}
+
+.m-listing-info--large {
+    display: flex;
+    flex-direction: column
+}
+
+.m-listing-info__buyer-disclaimer {
+    display: block;
+    margin: 5px 0;
+    font-family: BentonSans-Book, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    text-transform: none;
+    color: #666
+}
+
+.m-listing-info__buyer-value {
+    display: block
+}
+
+.m-listing-info__title {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+       font-family: 'LibreBaskerville';
+
+    font-size: 38px;
+    line-height: 44px;
+    letter-spacing: .8px;
+    font-weight: 400;
+    text-align: center
+}
+
+@media only screen and (min-width:80em) {
+    .m-listing-info__title {
+        font-size: 46px;
+        line-height: 52px;
+        letter-spacing: 1px
+    }
+}
+
+.m-listing-info__local-listing--text {
+    font-family: MercuryDisplay-Roman, Arial, sans-serif;
+    color: #000;
+    font-size: 18px;
+    letter-spacing: 0;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center
+}
+
+.m-listing-info__local-listing--text:first-letter {
+    text-transform: uppercase
+}
+
+.m-listing-info__local-listing--link {
+    display: block;
+    padding: 5px 0;
+    line-height: normal;
+    font-size: 13px;
+    font-family: BentonSans-Medium, Arial, sans-serif;
+    letter-spacing: 1.4px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #3E3634;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.m-listing-info__local-listing--link .icon {
+    display: inline-flex;
+    font-size: 24px;
+    margin-left: 10px;
+    transition: transform .2s ease
+}
+
+.m-listing-info__local-listing--link:hover {
+    color: #3E3634
+}
+
+.m-listing-info__local-listing--link:hover .icon {
+    transform: translateX(10px)
+}
+
+.m-listing-info__columns-holder {
+    max-height: 425px;
+    overflow: hidden;
+    transition: all .3s ease-in-out
+}
+
+.m-listing-info .container-show-more {
+    border-top: 1px solid #d6d6d6;
+    display: flex;
+    justify-content: center
+}
+
+.m-listing-info .container-show-more .button-show-more {
+    background: transparent;
+    border: 0;
+    color: #3E3634;
+    cursor: pointer;
+    font-family: BentonSans-Medium, Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.4px;
+    line-height: 25px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px
+}
+
+.m-listing-info .container-show-more .button-show-more .icon {
+    transform: rotate(180deg)
+}
+
+.m-listing-info .container-show-more .button-show-more.active .icon {
+    transform: rotate(0deg)
+}
+
+.m-listing-info__columns {
+    display: flex;
+    flex-direction: row;
+    gap: 30px
+}
+
+.m-listing-info__column {
+    width: 25%
+}
+
+.m-listing-info__accordion .accordion-group .accordion-item:first-child {
+    border-top: 1px solid #ebeef5
+}
+
+.m-listing-info__accordion .accordion-item,
+.m-listing-info__accordion .accordion-item.active {
+    border-bottom: 1px solid #ebeef5
+}
+
+.m-listing-info__accordion .accordion-item .icon {
+    color: #3E3634
+}
+
+.m-listing-info__accordion .accordion-title {
+    color: #c29b40;
+    font-size: 18px;
+    font-family: serif;
+    line-height: 1.33;
+    padding: 28px 0
+}
+
+.m-listing-info--large .m-listing-info__accordion .m-listing-info__item-title {
+    color: #999;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.6px;
+    font-family: BentonSans-Medium, Arial, Sans-Serif
+}
+
+@media only screen and (max-width:59.999em) {
+    .m-listing-info--large .m-listing-info__accordion .m-listing-info__item-title {
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 12px;
+        letter-spacing: 1.2px
+    }
+}
+
+.m-listing-info--large .m-listing-info__accordion .m-listing-info__item-content {
+    font-size: 18px
+}
+
+.m-listing-info__accordion .m-listing-info__item {
+    margin-bottom: 30px
+}
+
+.m-listing-info__column-title {
+    color: #8e740b;
+    margin-bottom: 40px;
+    text-transform: capitalize;
+    font-size: 18px;
+    line-height: 1.33;
+    font-family: serif
+}
+
+.m-listing-info__column-items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px
+}
+
+.m-listing-info--large .m-listing-info__column-items .m-listing-info__item-title {
+    color: #999;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.6px;
+    font-family: BentonSans-Medium, Arial, Sans-Serif
+}
+
+@media only screen and (max-width:59.999em) {
+    .m-listing-info--large .m-listing-info__column-items .m-listing-info__item-title {
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 12px;
+        letter-spacing: 1.2px
+    }
+}
+
+.m-listing-info--large .m-listing-info__column-items .m-listing-info__item-content {
+    font-size: 18px
+}
+
+.m-listing-info .m-listing-info__item {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto
+}
+
+.m-listing-info .m-listing-info__item-title {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.6px;
+    font-family: BentonSans-Medium, Arial, Sans-Serif;
+    text-transform: uppercase;
+    color: #8e740b;
+    margin-bottom: 10px
+}
+
+@media only screen and (max-width:59.999em) {
+    .m-listing-info .m-listing-info__item-title {
+        font-size: 10px
+    }
+}
+
+.m-listing-info .m-listing-info__item-content {
+    color: #000;
+    font-size: 22px;
+    line-height: 24px;
+    letter-spacing: 0;
+    font-family: MercuryDisplay-Roman, Arial, Sans-Serif;
+    display: flex;
+    flex-direction: column
+}
+
+.m-listing-info .m-listing-info__item-content:first-letter {
+    text-transform: uppercase
+}
+
+.m-listing-info .m-listing-info__item-content .additional-text {
+    font-size: 18px;
+    line-height: 24px;
+    text-transform: none
+}
+
+.m-listing-info .m-listing-info__item-content .capitalized-letter:first-letter {
+    text-transform: uppercase
+}
+
+.m-property-details-listing-info {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+    overflow: hidden
+}
+
+@media only screen and (min-width:768px) {
+    .m-property-details-listing-info {
+        gap: 50px
+    }
+
+    .m-property-details-listing-info:has(.m-listing-info__local-listing) {
+        gap: 20px
+    }
+}
+
+@media only screen and (max-width:79.999em) {
+    .m-property-details-listing-info {
+        display: flex;
+        width: 100%;
+        justify-content: space-between
+    }
+}
+
+@media only screen and (max-width:59.999em) {
+    .m-property-details-listing-info {
+        gap: 20px
+    }
+}
+
+.m-property-details-listing-info--large {
+    display: flex;
+    flex-direction: column
+}
+
+.m-property-details-listing-info__columns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 60px;
+    padding-bottom: 50px
+}
+
+@media only screen and (min-width:768px) {
+    .m-property-details-listing-info__columns {
+        gap: 50px
+    }
+}
+
+.m-property-details-listing-info__column-items {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+    gap: 30px
+}
+
+@media only screen and (min-width:768px) {
+    .m-property-details-listing-info__column-items {
+        grid-template-columns: repeat(4, 1fr)
+    }
+}
+
+.m-property-details-listing-info__disclaimer-title {
+    font-weight: 600
+}
+
+.m-property-details-listing-info__disclaimer,
+.m-property-details-listing-info__disclaimer-title {
+    color: #000;
+    font-family: BentonSans-Book, Arial, Sans-Serif;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 24px
+}
+
+.m-property-details-listing-info__disclaimer {
+    font-weight: 400
+}
+
+.m-property-details-listing-info .m-listing-info__title {
+    margin-bottom: 0
+}
+
+.m-property-details-listing-info__accordion .m-listing-info__item-title {
+    color: #666;
+    font-family: BentonSans-Medium, Arial, Sans-Serif;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase
+}
+
+@media only screen and (max-width:59.999em) {
+    .m-property-details-listing-info__accordion .m-listing-info__item-title {
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 12px;
+        letter-spacing: 1.2px
+    }
+}
+
+.m-property-details-listing-info__accordion .m-listing-info__item-content {
+    color: #000;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0;
+    font-size: 18px;
+    font-family: MercuryDisplay-Roman, Arial, sans-serif
+}
+
+.m-property-details-listing-info__accordion .m-listing-info__item {
+    margin-bottom: 0
+}
+
+.m-property-details-listing-info__column-title {
+    color: #8e740b;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    font-family: MercuryDisplay-Roman, sans-serif, Arial;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0;
+    border-bottom: 1px solid #d6d6d6;
+    padding-bottom: 8px
+}
+
+.m-property-details-listing-info__column {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+.m-listing-openhouse {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #d6d6d6;
+    margin-bottom: 10px;
+    padding: 25px 0
+}
+
+.m-listing-openhouse__title {
+    width: 100%;
+    text-transform: capitalize;
+    color: #3E3634;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 24px;
+    letter-spacing: 0;
+    margin: 0;
+    font-family: MercuryDisplay-Roman, Arial, sans-serif
+}
+
+@media only screen and (min-width:80em) {
+    .m-listing-openhouse__title {
+        font-size: 22px;
+        line-height: 28px;
+        letter-spacing: 0
+    }
+}
+
+.m-listing-openhouse__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+}
+
+@media only screen and (max-width:29.999em) {
+    .m-listing-openhouse__items {
+        grid-template-columns: repeat(1, 1fr)
+    }
+}
+
+.m-listing-openhouse__item {
+    margin-top: 20px;
+    margin-right: 0;
+    position: relative;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #666;
+    font-family: MercuryDisplay-Roman, Arial, sans-serif
+}
+
+@media only screen and (min-width:60em) {
+    .m-listing-openhouse__item {
+        margin-bottom: 0;
+        margin-right: 60px
+    }
+}
+
+.m-listing-rental-availability {
+    border-top: 1px solid #d6d6d6;
+    margin: 10px 0;
+    padding: 20px 0 25px
+}
+
+.m-listing-rental-availability__items {
+    display: grid;
+    grid-template-columns: 100%
+}
+
+@media only screen and (min-width:80em) {
+    .m-listing-rental-availability__items {
+        grid-template-columns: 50% 50%
+    }
+}
+
+.m-listing-rental-availability__title {
+    margin-bottom: 20px;
+    width: 100%;
+    text-transform: capitalize;
+    color: #3E3634;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 24px;
+    letter-spacing: 0;
+    font-family: MercuryDisplay-Roman, Arial, sans-serif
+}
+
+@media only screen and (min-width:80em) {
+    .m-listing-rental-availability__title {
+        font-size: 22px;
+        line-height: 28px;
+        letter-spacing: 0
+    }
+}
+
+.m-listing-rental-availability__item {
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 24px;
+    letter-spacing: 0;
+    font-family: MercuryDisplay-Roman, Arial, sans-serif;
+    color: #666
+}
+
+@media only screen and (min-width:48em) {
+    .m-listing-rental-availability__item {
+        margin-right: 40px
+    }
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .monthly-caclulation,
+.m-listing-info--sirhuge .mortgagecalc__modal .mortage-checkbox,
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgagecalc__label {
+    color: #3E3634;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: capitalize
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgagecalc__input {
+    border: 0;
+    flex: 1 1;
+    padding-left: 0;
+    font-size: 14px;
+    box-sizing: border-box
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgagecalc__input__loan {
+    border: 0;
+    border-bottom: 1px solid #000;
+    padding-left: 10px
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgagecalc__input__currency {
+    position: relative;
+    border: 0;
+    border-bottom: 1px solid #000;
+    padding-left: 12px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgagecalc__currency-symbol {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #555
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .o-input {
+    font-size: 14px;
+    box-sizing: border-box
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .o-button {
+    padding: 18px 0;
+    background-color: var(--primary-color);
+    font-family: BentonSans-Medium, Arial, sans-serif;
+    border: 0;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.4px;
+    min-width: 180px;
+    text-decoration: none;
+    line-height: 1;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-sizing: content-box;
+    transition: background-color .3s linear
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .input-box__name {
+    color: #3E3634
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .input-box__icon {
+    border: 1px solid #3E3634
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgagecalc__reset-btn {
+    color: #3E3634;
+    font-family: BentonSans-Medium, Arial, sans-serif
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .percent-down__span {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgage__slider {
+    accent-color: #3E3634;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 20px;
+    margin-top: 10px
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgage__slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    background: #3E3634;
+    border: 2px solid #3E3634;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -2px;
+    vertical-align: middle
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgage__slider::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    background: #3E3634;
+    border: 20px solid #3E3634;
+    border-radius: 50%;
+    cursor: pointer
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgage__slider::-moz-range-track {
+    height: 4px;
+    border-radius: 2px;
+    background: #ccc
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgage__slider::-moz-range-progress {
+    background: #3E3634;
+    height: 4px;
+    border-radius: 2px
+}
+
+.m-listing-info--sirhuge .mortgagecalc__modal .mortgagecalc__logo img {
+    display: inline !important;
+    padding-bottom: 30px
+}

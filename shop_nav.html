@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商城顶部导航栏</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            padding: 30px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .demo-header {
+            background: linear-gradient(135deg, #e4393c 0%, #ff6b6b 100%);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .demo-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .demo-description {
+            font-size: 15px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* 顶部导航栏样式 */
+        .top-bar {
+            background-color: #ffffff;
+            padding: 0 30px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .top-left, .top-right {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .top-item {
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            height: 100%;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+            border-bottom: 3px solid transparent;
+            color: #555;
+        }
+
+        .top-item:hover {
+            color: #e4393c;
+            background-color: #fef5f5;
+            border-bottom-color: #e4393c;
+        }
+
+        .top-item i {
+            font-size: 16px;
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .item-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .cart-count, .msg-count, .favorite-count, .order-count {
+            background-color: #e4393c;
+            color: white;
+            border-radius: 10px;
+            padding: 1px 6px;
+            font-size: 11px;
+            min-width: 18px;
+            text-align: center;
+            display: inline-block;
+            margin-left: 5px;
+            line-height: 16px;
+            font-weight: 600;
+        }
+
+        /* 下拉菜单 */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 180px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            z-index: 100;
+            border-radius: 8px;
+            padding: 10px 0;
+            border: 1px solid #f0f0f0;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 10px 18px;
+            white-space: nowrap;
+            color: #555;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s;
+            font-size: 13.5px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #fef5f5;
+            color: #e4393c;
+        }
+
+        .dropdown-item i {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #888;
+            width: 18px;
+        }
+
+        .dropdown-item:hover i {
+            color: #e4393c;
+        }
+
+        /* 登录状态切换区域 */
+        .login-toggle-area {
+            padding: 25px 30px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .toggle-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .toggle-btn {
+            padding: 12px 28px;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+
+        .toggle-btn:hover {
+            background-color: #f5f5f5;
+            border-color: #ccc;
+        }
+
+        .toggle-btn.active {
+            background-color: #e4393c;
+            border-color: #e4393c;
+            color: white;
+        }
+
+        .status-description {
+            font-size: 14px;
+            color: #777;
+            margin-top: 8px;
+            text-align: center;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* 用户欢迎信息 */
+        .welcome-user {
+            color: #e4393c;
+            font-weight: 600;
+        }
+
+        /* 分隔线 */
+        .separator {
+            height: 20px;
+            width: 1px;
+            background-color: #e8e8e8;
+            margin: 0 5px;
+        }
+
+        /* 禁用状态 */
+        .disabled-item {
+            color: #bbb !important;
+            cursor: not-allowed !important;
+        }
+
+        .disabled-item:hover {
+            background-color: transparent !important;
+            color: #bbb !important;
+            border-bottom-color: transparent !important;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .top-bar {
+                padding: 0 20px;
+            }
+
+            .top-item {
+                padding: 0 12px;
+            }
+
+            .item-text {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .top-bar {
+                padding: 0 15px;
+                height: 50px;
+            }
+
+            .top-item {
+                padding: 0 10px;
+            }
+
+            .item-text {
+                font-size: 12px;
+            }
+
+            .top-item i {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="demo-header">
+        <h1 class="demo-title">商城顶部导航栏</h1>
+        <p class="demo-description">图文并茂设计风格，始终显示图标和文字，支持登录前/登录后状态切换</p>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <div class="top-bar">
+        <!-- 左侧区域 -->
+        <div class="top-left">
+            <div class="top-item dropdown" id="user-status">
+                <!-- 登录状态内容会通过JS动态填充 -->
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="top-item dropdown" id="favorite-item">
+                <!-- 收藏夹内容会通过JS动态填充 -->
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="top-item dropdown" id="cart-item">
+                <!-- 购物车内容会通过JS动态填充 -->
+            </div>
+        </div>
+
+        <!-- 右侧区域 -->
+        <div class="top-right">
+            <div class="top-item dropdown" id="order-item">
+                <!-- 订单中心内容会通过JS动态填充 -->
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="top-item dropdown" id="message-item">
+                <!-- 消息中心内容会通过JS动态填充 -->
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="top-item dropdown" id="user-center">
+                <!-- 用户中心内容会通过JS动态填充 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 登录状态切换区域 -->
+    <div class="login-toggle-area">
+        <div class="toggle-buttons">
+            <button class="toggle-btn active" id="btn-logged-out">登录前状态</button>
+            <button class="toggle-btn" id="btn-logged-in">登录后状态</button>
+        </div>
+        <p class="status-description">点击上方按钮切换顶部导航栏的登录状态。登录前状态下的部分功能（如我的收藏、我的订单等）将显示为灰色，表示需要登录后才能使用。</p>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // 定义登录前和登录后的内容
+        const loggedOutContent = {
+            userStatus: {
+                html: '<i class="fas fa-user-circle"></i><span class="item-text">请登录</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-sign-in-alt"></i>立即登录</div><div class="dropdown-item"><i class="fas fa-user-plus"></i>免费注册</div>'
+            },
+            favoriteItem: {
+                html: '<i class="fas fa-heart"></i><span class="item-text">我的收藏</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-shopping-bag"></i>商品收藏</div><div class="dropdown-item"><i class="fas fa-store"></i>店铺收藏</div><div class="dropdown-item"><i class="fas fa-eye"></i>浏览记录</div>',
+                disabled: true
+            },
+            cartItem: {
+                html: '<i class="fas fa-shopping-cart"></i><span class="item-text">购物车</span><span class="cart-count">0</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-shopping-cart"></i>查看购物车</div><div class="dropdown-item"><i class="fas fa-info-circle"></i>登录后同步购物车商品</div>'
+            },
+            orderItem: {
+                html: '<i class="fas fa-clipboard-list"></i><span class="item-text">我的订单</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-clock"></i>待付款订单</div><div class="dropdown-item"><i class="fas fa-truck"></i>待发货订单</div><div class="dropdown-item"><i class="fas fa-box-open"></i>待收货订单</div><div class="dropdown-item"><i class="fas fa-comment"></i>待评价订单</div>',
+                disabled: true
+            },
+            messageItem: {
+                html: '<i class="fas fa-bell"></i><span class="item-text">消息中心</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-envelope"></i>系统消息</div><div class="dropdown-item"><i class="fas fa-comment-alt"></i>交易消息</div><div class="dropdown-item"><i class="fas fa-bullhorn"></i>活动通知</div>',
+                disabled: true
+            },
+            userCenter: {
+                html: '<i class="fas fa-user-cog"></i><span class="item-text">用户中心</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-user"></i>个人资料</div><div class="dropdown-item"><i class="fas fa-lock"></i>账户安全</div><div class="dropdown-item"><i class="fas fa-map-marker-alt"></i>地址管理</div>',
+                disabled: true
+            }
+        };
+
+        const loggedInContent = {
+            userStatus: {
+                html: '<i class="fas fa-user-circle"></i><span class="item-text welcome-user">欢迎，张先生</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-user"></i>个人中心</div><div class="dropdown-item"><i class="fas fa-cog"></i>账户设置</div><div class="dropdown-item"><i class="fas fa-sign-out-alt"></i>退出登录</div>'
+            },
+            favoriteItem: {
+                html: '<i class="fas fa-heart"></i><span class="item-text">我的收藏</span><span class="favorite-count">12</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-shopping-bag"></i>商品收藏 <span class="favorite-count" style="background-color:#ff9800; margin-left:auto;">8</span></div><div class="dropdown-item"><i class="fas fa-store"></i>店铺收藏 <span class="favorite-count" style="background-color:#ff9800; margin-left:auto;">4</span></div><div class="dropdown-item"><i class="fas fa-eye"></i>浏览记录</div>'
+            },
+            cartItem: {
+                html: '<i class="fas fa-shopping-cart"></i><span class="item-text">购物车</span><span class="cart-count">5</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-shopping-cart"></i>查看购物车</div><div class="dropdown-item"><i class="fas fa-money-check-alt"></i>去结算</div><div class="dropdown-item"><i class="fas fa-trash-alt"></i>清空购物车</div>'
+            },
+            orderItem: {
+                html: '<i class="fas fa-clipboard-list"></i><span class="item-text">我的订单</span><span class="order-count">3</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-clock"></i>待付款 <span class="order-count" style="background-color:#ff9800; margin-left:auto;">1</span></div><div class="dropdown-item"><i class="fas fa-truck"></i>待发货 <span class="order-count" style="background-color:#ff9800; margin-left:auto;">2</span></div><div class="dropdown-item"><i class="fas fa-box-open"></i>待收货</div><div class="dropdown-item"><i class="fas fa-comment"></i>待评价 <span class="order-count" style="background-color:#ff9800; margin-left:auto;">4</span></div>'
+            },
+            messageItem: {
+                html: '<i class="fas fa-bell"></i><span class="item-text">消息中心</span><span class="msg-count">3</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-envelope"></i>系统消息 <span class="msg-count" style="background-color:#ff9800; margin-left:auto;">1</span></div><div class="dropdown-item"><i class="fas fa-comment-alt"></i>交易消息 <span class="msg-count" style="background-color:#ff9800; margin-left:auto;">2</span></div><div class="dropdown-item"><i class="fas fa-bullhorn"></i>活动通知</div>'
+            },
+            userCenter: {
+                html: '<i class="fas fa-user-cog"></i><span class="item-text">用户中心</span>',
+                dropdown: '<div class="dropdown-item"><i class="fas fa-user"></i>个人资料</div><div class="dropdown-item"><i class="fas fa-lock"></i>账户安全</div><div class="dropdown-item"><i class="fas fa-map-marker-alt"></i>地址管理</div><div class="dropdown-item"><i class="fas fa-credit-card"></i>支付方式</div><div class="dropdown-item"><i class="fas fa-history"></i>我的足迹</div>'
+            }
+        };
+
+        // 初始状态为登录前
+        let isLoggedIn = false;
+        updateTopBarContent(loggedOutContent);
+
+        // 登录前按钮点击事件
+        $('#btn-logged-out').click(function() {
+            if (isLoggedIn) {
+                isLoggedIn = false;
+                updateTopBarContent(loggedOutContent);
+                updateToggleButtons();
+            }
+        });
+
+        // 登录后按钮点击事件
+        $('#btn-logged-in').click(function() {
+            if (!isLoggedIn) {
+                isLoggedIn = true;
+                updateTopBarContent(loggedInContent);
+                updateToggleButtons();
+            }
+        });
+
+        // 更新顶部导航栏内容
+        function updateTopBarContent(content) {
+            // 更新用户状态区域
+            updateItem('user-status', content.userStatus);
+
+            // 更新收藏夹区域
+            updateItem('favorite-item', content.favoriteItem);
+
+            // 更新购物车区域
+            updateItem('cart-item', content.cartItem);
+
+            // 更新订单中心区域
+            updateItem('order-item', content.orderItem);
+
+            // 更新消息中心区域
+            updateItem('message-item', content.messageItem);
+
+            // 更新用户中心区域
+            updateItem('user-center', content.userCenter);
+        }
+
+        // 更新单个菜单项
+        function updateItem(itemId, itemContent) {
+            const $item = $(`#${itemId}`);
+            $item.html(itemContent.html);
+            $item.find('.dropdown-content').remove();
+
+            if (itemContent.disabled) {
+                $item.addClass('disabled-item');
+                $item.removeClass('dropdown');
+                $item.off('mouseenter mouseleave');
+            } else {
+                $item.removeClass('disabled-item');
+                $item.addClass('dropdown');
+                $item.append(`<div class="dropdown-content">${itemContent.dropdown}</div>`);
+            }
+        }
+
+        // 更新切换按钮状态
+        function updateToggleButtons() {
+            if (isLoggedIn) {
+                $('#btn-logged-out').removeClass('active');
+                $('#btn-logged-in').addClass('active');
+            } else {
+                $('#btn-logged-out').addClass('active');
+                $('#btn-logged-in').removeClass('active');
+            }
+        }
+
+        // 下拉菜单点击事件
+        $(document).on('click', '.dropdown-item', function(e) {
+            e.stopPropagation();
+            const itemText = $(this).text().trim();
+            const $parent = $(this).closest('.top-item');
+
+            // 检查是否是禁用状态
+            if ($parent.hasClass('disabled-item')) {
+                showToast('请先登录！');
+                return;
+            }
+
+            // 模拟不同功能的响应
+            if (itemText.includes('登录')) {
+                showToast('跳转到登录页面');
+            } else if (itemText.includes('注册')) {
+                showToast('跳转到注册页面');
+            } else if (itemText.includes('购物车')) {
+                showToast('跳转到购物车页面');
+            } else if (itemText.includes('收藏')) {
+                showToast('跳转到收藏页面');
+            } else if (itemText.includes('订单') || itemText.includes('待付款') || itemText.includes('待发货') || itemText.includes('待收货') || itemText.includes('待评价')) {
+                showToast('跳转到订单相关页面');
+            } else if (itemText.includes('消息')) {
+                showToast('跳转到消息中心');
+            } else if (itemText.includes('退出')) {
+                showToast('确认退出登录？');
+                // 在实际应用中，这里会调用退出登录的API
+            } else if (itemText.includes('个人中心') || itemText.includes('账户设置') || itemText.includes('个人资料')) {
+                showToast('跳转到用户中心');
+            } else {
+                showToast(`您点击了：${itemText}`);
+            }
+        });
+
+        // 显示提示消息
+        function showToast(message) {
+            // 移除已有的提示
+            $('.toast-message').remove();
+
+            // 创建新的提示
+            const $toast = $(`<div class="toast-message">${message}</div>`);
+            $('body').append($toast);
+
+            // 添加样式
+            $toast.css({
+                position: 'fixed',
+                top: '20px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                backgroundColor: '#333',
+                color: 'white',
+                padding: '12px 24px',
+                borderRadius: '6px',
+                zIndex: '10000',
+                fontSize: '14px',
+                fontWeight: '500',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                animation: 'fadeInUp 0.3s, fadeOut 0.3s 2.7s'
+            });
+
+            // 添加动画
+            const style = document.createElement('style');
+            style.textContent = `
+                    @keyframes fadeInUp {
+                        from { opacity: 0; transform: translate(-50%, 10px); }
+                        to { opacity: 1; transform: translate(-50%, 0); }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                `;
+            document.head.appendChild(style);
+
+            // 3秒后移除提示
+            setTimeout(() => {
+                $toast.remove();
+                style.remove();
+            }, 3000);
+        }
+    });
+</script>
+</body>
+</html>

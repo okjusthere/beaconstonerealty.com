@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="/css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/css/appcommon.css" />
+    <link rel="stylesheet" type="text/css" href="/css/contact.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/js/wow.js"></script>
+    <script type="text/javascript" src="/js/webforce.js?1"></script>
+    <script type="text/javascript" src="/js/webforce_search.js?2"></script>
+    <script type="text/javascript" src="/js/webforce_message.js?2"></script>
+    <script type="text/javascript" src="/js/webforce_contact.js"></script>
+    <script type="text/javascript" src="/js/myjs.js"></script>
+</head>
+
+<body>
+    <!-- header start -->
+    <div class="header"></div>
+    <!-- header end -->
+
+
+    <!-- content start -->
+    <div class="herocontainer hidden-xs">
+        <div class="heroimage "></div>
+    </div>
+    <script type="text/javascript">
+        $(".heroimage").html(banner_inner());
+    </script>
+    <div class="container-fluid" style="background:#f2f2f2; margin-bottom: 40px;">
+        <div class="container">
+            <section class="row">
+                <div class="col-md-12 header-text">
+                    <p class="header-system-name text-center"><strong class="title01"> </strong></p>
+                    <p class="instruction-text">
+                    </p>
+                </div><!-- / col-md-12 -->
+            </section><!-- / row -->
+        </div><!-- / container -->
+
+    </div>
+
+    <script>
+
+        wf_news_detail(58).done(function (data) {
+            $(".container-fluid .title01").html(data.title);
+            $(".container-fluid .instruction-text").html(data.content);
+        }); //文章详情
+    </script>
+
+    <div class="container">
+
+        <form id="MainForm" class="form demo-form" autocomplete="off">
+
+            <section class="row">
+                <table id="form-table" class="upload" style="width:80%;" cellpadding="0" cellspacing="0" border="0"
+                    role="presentation">
+
+                    <tbody>
+
+                        <tr>
+                            <td class="text-right hidden-xs" style="width: 10%;">
+                                <label for="sirform_TextBoxFirstName">
+                                    First Name:
+                                </label>
+                            </td>
+
+                            <td style="width:30%;">
+
+                                <input name="contacts2" type="text" id="sirform_TextBoxFirstName" class="form-control"
+                                    placeholder="First Name" autocomplete="given-name" aria-describedby="fname-error">
+
+                            </td>
+
+                            <td class="text-right hidden-xs" style="width: 10%;">
+                                <label for="sirform_TextBoxLastName">Last Name:</label>
+                            </td>
+
+                            <td style="width:30%">
+                                <input name="lastname2" type="text" id="sirform_TextBoxLastName" class="form-control"
+                                    placeholder="Last Name" autocomplete="family-name" aria-describedby="lname-error">
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-right hidden-xs" style="width: 10%;">
+                                <label for="Email">
+                                    Email:
+                                </label>
+                            </td>
+
+                            <td style="width:30%;">
+
+                                <input name="email2" type="text" class="form-control" placeholder="Email Address">
+
+                            </td>
+
+                            <td class="text-right hidden-xs" style="width: 10%;">
+                                <label for="Phone">Phone:</label>
+                            </td>
+
+                            <td style="width:30%">
+                                <input name="phone2" type="text" class="form-control" placeholder="Phone">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right hidden-xs" style="width: 10%;">
+                                <label for="sirform_TextBoxFirstName">
+                                    budget:
+                                </label>
+                            </td>
+
+                            <td style="width:30%;">
+
+                                <input name="budget" type="text" class="form-control" placeholder="budget">
+
+                            </td>
+
+                            <td class="text-right hidden-xs" style="width: 10%;">
+                                <label for="sirform_TextBoxLastName">how many bedrooms:</label>
+                            </td>
+
+                            <td style="width:30%">
+                                <input name="bedrooms" type="text" class="form-control" placeholder="how many bedrooms">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right hidden-xs" style="width: 10%;">
+                                <label for="sirform_TextBoxFirstName">
+                                    purchase time line:
+                                </label>
+                            </td>
+
+                            <td style="width:30%;">
+
+                                <input name="purchase" type="text" class="form-control"
+                                    placeholder="purchase time line">
+
+                            </td>
+
+                            <td class="text-right hidden-xs" style="width: 10%;">
+                                <label for="sirform_TextBoxLastName">any location prefer:</label>
+                            </td>
+
+                            <td style="width:30%">
+                                <input name="location" type="text" class="form-control"
+                                    placeholder="any location prefer">
+
+                            </td>
+                        </tr>
+
+
+
+                        <!-- NON U.S. AGENT/BROKER ==========================-->
+
+                        <tr>
+                            <td colspan="4" class="text-center">
+
+                                <div id="consumer-button" class="">
+                                    <input type="button" name="sirform$SubmitButton" value="SUBMIT" id="submit3"
+                                        class="btn btn-gen">
+                                </div>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </section>
+
+        </form>
+
+        <div class="ml_contactcon_module1_top">
+
+        </div>
+
+
+    </div>
+    <script type="text/javascript">
+        $(".ml_contactcon_module1_top").html(contact(2));
+    </script>
+
+    <!-- foot start -->
+    <div class="footer"></div>
+    <!-- foot end -->
+</body>
+
+</html>

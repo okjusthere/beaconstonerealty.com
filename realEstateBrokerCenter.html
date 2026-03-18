@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="/css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/css/appcommon.css" /> 
+    <link rel="stylesheet" type="text/css" href="/css/realEstateBrokerCenter.css" /> 
+    <link rel="stylesheet" type="text/css" href="/css/realEstateBrokerCenter2.css" /> 
+    <link rel="stylesheet" type="text/css" href="/css/realEstateBrokerCenter3.css" /> 
+    <link rel="stylesheet" type="text/css" href="/css/realEstateBrokerDetail2.css" /> 
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/page.css" />
+    <script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/js/wow.js"></script>
+    <script type="text/javascript" src="/js/webforce.js?1"></script>
+    <script type="text/javascript" src="/js/webforce_search.js?2"></script>
+    <script type="text/javascript" src="/js/webforce_message.js?2"></script>
+    <script type="text/javascript" src="/js/webforce_news.js"></script>
+    <script type="text/javascript" src="/js/myjs.js"></script>
+</head>
+
+<body>
+    <!-- header start -->
+    <div class="header"></div>
+    <!-- header end -->
+    <div role="main" class="m-agents__wrapper js-global-content">
+        <section class="m-top-image__container realEstateBrokerCenter01bg">
+            <div class="u-ar" >
+                <div class="u-ar__4-1" ></div>
+                <div class="u-ar__content m-top-image__image-container" >
+                    <div class="responsive-image-container " style="width:100%"><img  src=""
+                            width="1920" height="477" decoding="async" data-nimg="1" class="" loading="lazy"
+                            style="color:transparent;width:100%"></div>
+                    <h2 class="m-top-image__container-title"> </h2>
+                </div>
+            </div>
+        </section> 
+        <div class=" realEstateBrokerCenter02bg"> 
+            <section
+                class="m-agents-search__results grid__item lap--1-1 lap-wide--1-1 desk-large--2-3 ">
+              
+                <div class="m-agents-search__results-container">
+                    <div class="m-agents-search__results-locations"></div>
+                    <div class="m-agents-results js-m-listing-results con01">
+                        
+                       
+                    </div>
+                </div>
+              
+            </section>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(".realEstateBrokerCenter01bg h2").html(menu(local_c_id, "remarks"))
+        $(".realEstateBrokerCenter01bg img").attr("src",menu(local_c_id, "thumbnail"))
+        $(".realEstateBrokerCenter02bg .con01").html(news_inner(10,2));
+        var l_news_info ={}
+        // setURL()
+    </script>
+
+    <section class="GetInTouch u-bg-very-light-grey" id="connect-with-me">
+            <div class="GetInTouch__container container grid">
+                <div class="m-listing-contact-info agent">
+                     
+                    <div class="m-listing-contact-info__contact" id="listingContactInfoWrapper">
+                        <div id="listingContactInfoForm" class="m-listing-contact-info__contact-anchor" role="form" tabindex="-1" aria-label="Contact Agent Form"></div>
+                        <h3 class="m-listing-contact-info__contact-title">Let's get in touch</h3>
+                        <div class="m-listing-contact-info__contact-form">
+                            <form id="GetInTouchForm">
+                                <div class="grid">
+                                    <div class="grid__item default--1-2 palm-wide--1-1 palm--1-1 lap-wide--1-1 lap--1-1 u-padding-right input-holder">
+                                        <div class="input-container  "><label for="firstname" class="label-inactive">First Name</label><input class="o-input       " type="text" name="contacts" id="firstname" placeholder="First Name" aria-label="First Name" required="" value=""></div>
+                                    </div>
+                                    <div class="grid__item default--1-2 palm-wide--1-1 palm--1-1 lap-wide--1-1 lap--1-1 input-holder">
+                                        <div class="input-container  "><label for="lastname" class="label-inactive">Last
+                                                Name</label><input class="o-input       " type="text" name="lastname" id="lastname" placeholder="Last Name" aria-label="Last Name" required="" value=""></div>
+                                    </div>
+                                    <div class="grid__item default--1-2 palm-wide--1-1 palm--1-1 lap-wide--1-1 lap--1-1 u-padding-right input-holder">
+                                        <div class="input-container  "><label for="email" class="label-inactive">Email
+                                                Address</label><input class="o-input       " type="email" name="email" id="email" placeholder="Email Address" aria-label="Email Address" required="" value=""></div>
+                                    </div>
+                                    <div class="grid__item default--1-2 palm-wide--1-1 palm--1-1 lap-wide--1-1 lap--1-1 input-holder">
+                                        <div class="input-container  "><label for="phone" class="label-inactive">Phone
+                                                number (Optional)</label><input class="o-input       " type="text" name="phone" id="phone" placeholder="Phone number (Optional)" aria-label="Phone number (Optional)" pattern="[0-9]+" value=""></div>
+                                    </div>
+                                    <div class="grid__item default--1-1">
+                                        <div class="input-container  input-container--textarea  "><label for="message">Message (Optional)</label><textarea class="o-textarea  " id="message" name="message" aria-label="Message (Optional)" placeholder="I'd like to discuss buying, selling, renting with you."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="grid__item">
+                                        <div class="captcha__message"><p class="u-halfpadding-top" style="font-stretch: normal; line-height: 30px; margin-top: 0px; margin-bottom: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-family: BentonSans-Book, Arial, sans-serif; border: 0px; list-style: none; font-feature-settings: &quot;liga&quot; 0, &quot;clig&quot; 0; text-wrap-mode: wrap; background-color: rgb(242, 242, 242); padding-top: 0px !important;">By submitting this form, you acknowledge that you accept the Sotheby's International Realty&nbsp;<a href="http://127.0.0.1:5500/propertyCenterDetail.html?id=30" target="_blank" style="color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif;">Privacy Policy</a>&nbsp;and&nbsp;<a href="http://127.0.0.1:5500/propertyCenterDetail.html?id=30" target="_blank" style="color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif;">Terms of Use</a>.</p><p class="u-halfpadding-top" style="font-stretch: normal; line-height: 30px; margin-top: 0px; margin-bottom: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; font-family: BentonSans-Book, Arial, sans-serif; border: 0px; list-style: none; font-feature-settings: &quot;liga&quot; 0, &quot;clig&quot; 0; text-wrap-mode: wrap; background-color: rgb(242, 242, 242); padding-top: 10px !important;">This site is protected by reCAPTCHA and the Google&nbsp;<a href="http://127.0.0.1:5500/propertyCenterDetail.html?id=30" target="_blank" style="color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif;">Privacy Policy</a>&nbsp;and&nbsp;<a href="http://127.0.0.1:5500/propertyCenterDetail.html?id=30" target="_blank" style="color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif;">Terms of Service</a>&nbsp;apply.</p><p><br></p></div>
+                                    </div>
+                                    <div class="button-submit" id="submit" type="submit"><span>Send message</span><i class="fa fa-long-arrow-right"></i></div>
+                                    <div class="disclaimer"><p><span style="font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);">Yes, I would like more information from Sotheby's International Realty. Please use and/or share my information with a&nbsp;</span><em style="font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);">Sotheby's International Realty</em><span style="font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);">&nbsp;agent to contact me about my real estate needs.</span><br><br><span style="font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);">By clicking SEND MESSAGE, I agree a&nbsp;</span><em style="font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);">Sotheby's International Realty</em><span style="font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);">&nbsp;Agent may contact me by phone or text message including by automated means about real estate services, and that I can access real estate services without providing my phone number. I acknowledge that I have read and agree to the&nbsp;</span><a href="http://127.0.0.1:5500/propertyCenterDetail.html?id=30" style="color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);">Terms of Use</a><span style="font-family: BentonSans-Book, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);">&nbsp;and&nbsp;</span><a href="http://127.0.0.1:5500/propertyCenterDetail.html?id=30" style="color: rgb(0, 35, 73); text-decoration-line: none; cursor: pointer; margin: 0px; padding: 0px; border: 0px; list-style: none; vertical-align: middle; font-family: BentonSans-Medium, Arial, sans-serif; font-size: 12px; text-wrap-mode: wrap; background-color: rgb(242, 242, 242);">Privacy Policy</a></p></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    <style>
+        
+.m-listing-contact-info{
+    display: block;
+}
+.Hero {
+    text-align: center;
+    overflow: inherit
+}
+
+@media only screen and (min-width:768px) {
+    .Hero {
+        text-align: left
+    }
+}
+
+.Hero__agent {
+    background-color: #3E3634
+}
+
+@media only screen and (max-width:79.999em) {
+    .Hero__agent {
+        padding-top: 60px !important;
+        padding-bottom: 50px !important
+    }
+}
+
+@media only screen and (min-width:80em) {
+    .Hero__agent {
+        padding-bottom: 0
+    }
+}
+
+@media only screen and (min-width:30em) {
+    .Hero__agent {
+        padding-top: 30px !important
+    }
+}
+
+@media only screen and (max-width:47.999em) {
+
+    .Hero__video-fix,
+    .agent__long-gold-line {
+        display: none
+    }
+}
+
+.agent__agent-title {
+    font-family: BentonSans-Medium, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 16px;
+    letter-spacing: 1.6px;
+    margin: 0;
+    color: #fff;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+@media(min-width:768px) {
+    .agent__agent-title {
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 1.8px
+    }
+}
+
+.Hero__agent-name {
+    color: #fff;
+    /* font-family: FreightBigBook, Arial, Sans-Serif; */
+    font-size: 44px;
+    line-height: 46px;
+    font-weight: unset;
+    margin-bottom: 10px;
+    font-family: 'LibreBaskerville';
+
+}
+
+@media(min-width:768px) {
+    .Hero__agent-name {
+        font-size: 48px;
+        line-height: 54px;
+        letter-spacing: 0
+    }
+}
+
+@media(min-width:1280px) {
+    .Hero__agent-name {
+        font-size: 48px;
+        line-height: 72px;
+        letter-spacing: 0
+    }
+}
+
+.Hero__agent-name:not(.Hero__agent-name--unspaced) {
+    margin-top: 30px
+}
+
+@media only screen and (max-width:1279px) {
+    .Hero__agent-name:not(.Hero__agent-name--unspaced) {
+        margin-top: 20px
+    }
+}
+
+.Hero__agent-connect {
+    padding: 0 50px
+}
+
+@media only screen and (min-width:270px)and (max-width:767px) {
+    .Hero__img-container {
+        padding: 0 20px;
+        display: flex;
+        justify-content: center
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__img-container {
+        position: relative
+    }
+}
+
+.Hero__agent-image {
+    height: auto;
+    min-height: 304px;
+    object-fit: cover
+}
+
+@media only screen and (min-width:270px)and (max-width:767px) {
+    .Hero__agent-image {
+        margin-top: 50px;
+        width: 228px;
+        max-height: 304px
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .Hero__agent-image {
+        min-height: 320px;
+        object-fit: cover
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__agent-image {
+        /* height: 550px;
+        position: absolute; */
+        object-fit: cover;
+        top: 0;
+        right: 0;
+        z-index: 2
+    }
+
+    .Hero__agent-img-fix {
+        width: 420px;
+        height: 531px
+    }
+}
+
+.Hero__coverage {
+    margin-top: 30px;
+    max-width: 460px
+}
+
+@media only screen and (min-width:270px)and (max-width:767px) {
+    .Hero__coverage {
+        max-width: none
+    }
+}
+
+.Hero__video-section {
+    background-color: #3E3634;
+    padding-bottom: 60px
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__video-section {
+        padding-bottom: 80px
+    }
+}
+
+@media only screen and (min-width:270px)and (max-width:767px) {
+    .Hero__video-section .container {
+        margin: 0 auto
+    }
+}
+
+.Hero__video-container {
+    text-align: center;
+    padding-left: 0
+}
+
+@media only screen and (min-width:768px) {
+    .Hero__video-container {
+        text-align: center;
+        height: auto;
+        margin-top: -200px
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__video-container {
+        height: auto;
+        text-align: left;
+        margin-top: -30px
+    }
+}
+
+.Hero__video-container-image {
+    min-height: 230px
+}
+
+@media only screen and (min-width:768px) {
+    .Hero__video-container-image {
+        min-height: 400px
+    }
+}
+
+@media only screen and (min-width:1280px) {
+    .Hero__video-container-image {
+        min-height: 460px
+    }
+}
+
+    </style>
+    <!-- content end -->
+
+    <!-- foot start -->
+    <div class="footer"></div>
+    <!-- foot end -->
+</body>
+
+</html>
