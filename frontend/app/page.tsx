@@ -11,6 +11,25 @@ function ArrowRight() {
   );
 }
 
+function extractVideoSource(html: string): string | null {
+  const videoMatch = html.match(/<video[^>]+src=["']([^"']+)["']/i);
+  if (videoMatch?.[1]) {
+    return videoMatch[1];
+  }
+
+  const sourceMatch = html.match(/<source[^>]+src=["']([^"']+)["']/i);
+  return sourceMatch?.[1] ?? null;
+}
+
+function stripHtmlTags(html: string): string {
+  return html
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export default async function HomePage() {
   // Fetch all homepage data in parallel
   let heroTitle = 'Discover Exceptional Living';
@@ -79,35 +98,47 @@ export default async function HomePage() {
     // Use fallback values
   }
 
+  const heroVideoSrc = extractVideoSource(heroBannerContent);
+
   return (
     <>
-      {/* ========== Hero Section with Video ========== */}
+      {/* ========== Hero Intro + Banner Video ========== */}
       <section className={styles.hero}>
-        <div className={styles.heroVideo}>
-          {heroBannerContent ? (
-            <div
-              className={styles.heroBannerHtml}
-              dangerouslySetInnerHTML={{ __html: heroBannerContent }}
-            />
-          ) : (
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className={styles.heroVideoElement}
-            >
-              <source src="/video/hero-1080p.mp4" type="video/mp4" />
-            </video>
-          )}
-          <div className={styles.heroOverlay} />
+        <div className={styles.heroIntro}>
+          <div className="container">
+            <div className={styles.heroIntroGrid}>
+              <div className={styles.heroIntroCopy}>
+                <h1 className={styles.heroTitle}>{heroTitle}</h1>
+              </div>
+              <div className={styles.heroIntroAction}>
+                <Link href="/properties" className={`btn ${styles.heroBtn}`}>
+                  Explore Properties <ArrowRight />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>{heroTitle}</h1>
-          <div className={styles.heroSearch}>
-            <Link href="/properties" className={`btn btn-secondary ${styles.heroBtn}`}>
-              Explore Properties <ArrowRight />
-            </Link>
+        <div className={styles.heroMedia}>
+          <div className={styles.heroMediaSurface}>
+            {heroVideoSrc ? (
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className={styles.heroVideoElement}
+              >
+                <source src={heroVideoSrc} type="video/mp4" />
+              </video>
+            ) : heroBannerContent ? (
+              <div
+                className={styles.heroBannerHtml}
+                dangerouslySetInnerHTML={{ __html: heroBannerContent }}
+              />
+            ) : (
+              <div className={styles.heroFallback} />
+            )}
           </div>
         </div>
       </section>
@@ -137,11 +168,6 @@ export default async function HomePage() {
         <section className={`section ${styles.story}`}>
           <div className="container">
             <div className={styles.storyInner}>
-              <div className={styles.storyImage}>
-                {storyImage && (
-                  <img src={storyImage} alt={storyTitle} loading="lazy" />
-                )}
-              </div>
               <div className={styles.storyText}>
                 <h2 className={styles.sectionTitle}>{storyTitle}</h2>
                 <div
@@ -151,6 +177,11 @@ export default async function HomePage() {
                 <Link href="/about/13" className="btn-arrow">
                   See Details <ArrowRight />
                 </Link>
+              </div>
+              <div className={styles.storyImage}>
+                {storyImage && (
+                  <img src={storyImage} alt={storyTitle} loading="lazy" />
+                )}
               </div>
             </div>
           </div>
@@ -162,7 +193,10 @@ export default async function HomePage() {
         <div className="container">
           <div className={styles.exclusiveInner}>
             <h2 className={styles.exclusiveTitle}>{exclusiveTitle}</h2>
-            <p className={styles.exclusiveDesc}>{exclusiveDesc}</p>
+            <div
+              className={styles.exclusiveDesc}
+              dangerouslySetInnerHTML={{ __html: exclusiveDesc }}
+            />
             <Link href="/sell-with-us" className={`btn btn-secondary ${styles.exclusiveBtn}`}>
               Sell With Us <ArrowRight />
             </Link>
@@ -186,8 +220,14 @@ export default async function HomePage() {
       <section className={`section-lg ${styles.properties}`}>
         <div className="container">
           <div className={styles.propertiesHeader}>
-            <h2 className={styles.sectionTitle}>{propertySectionTitle || 'Exceptional Locations'}</h2>
-            <p className={styles.propertiesDesc}>{propertySectionDesc}</p>
+            <h2
+              className={styles.sectionTitle}
+              dangerouslySetInnerHTML={{ __html: propertySectionTitle || 'Exceptional Locations' }}
+            />
+            <div
+              className={styles.propertiesDesc}
+              dangerouslySetInnerHTML={{ __html: propertySectionDesc }}
+            />
             <Link href="/properties" className="btn-arrow">
               Explore More <ArrowRight />
             </Link>
@@ -212,7 +252,7 @@ export default async function HomePage() {
                 <div className={styles.propertyInfo}>
                   <h3 className={styles.propertyTitle}>{property.title}</h3>
                   <p className={styles.propertyDesc}>
-                    {property.field?.house_introduction || property.description}
+                    {stripHtmlTags(property.field?.house_introduction || property.description)}
                   </p>
                 </div>
               </Link>

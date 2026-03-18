@@ -10,6 +10,7 @@ const staticRoot = process.env.STATIC_ROOT
   ? path.resolve(process.env.STATIC_ROOT)
   : path.resolve(__dirname, '..', 'out');
 const port = Number(process.env.PORT || '8080');
+const host = process.env.HOST || '0.0.0.0';
 
 const MIME_TYPES = {
   '.css': 'text/css; charset=utf-8',
@@ -91,6 +92,6 @@ const server = http.createServer((request, response) => {
   response.end('Not Found');
 });
 
-server.listen(port, '0.0.0.0', () => {
-  console.log(`Serving static site from ${staticRoot} on port ${port}`);
+server.listen(port, host, () => {
+  console.log(`Serving static site from ${staticRoot} on http://${host}:${port}`);
 });

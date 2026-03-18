@@ -32,7 +32,8 @@ export default async function BrokerDetailPage({ params }: { params: Promise<{ i
   }
 
   const globalData = await getGlobalData();
-  const recipientEmail = broker.field?.email || globalData.web_info.email || 'info@beacon-stone.com';
+  const brokerEmail = broker.field?.real_estate_broker_email || broker.field?.email || '';
+  const recipientEmail = brokerEmail || globalData.web_info.email || 'info@beacon-stone.com';
 
   return (
     <>
@@ -55,9 +56,9 @@ export default async function BrokerDetailPage({ params }: { params: Promise<{ i
                   {broker.field.phone}
                 </a>
               )}
-              {broker.field?.email && (
-                <a href={`mailto:${broker.field.email}`} className={styles.heroEmail}>
-                  {broker.field.email}
+              {brokerEmail && (
+                <a href={`mailto:${brokerEmail}`} className={styles.heroEmail}>
+                  {brokerEmail}
                 </a>
               )}
             </div>

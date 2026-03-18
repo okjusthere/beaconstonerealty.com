@@ -122,7 +122,7 @@ export default function LegacyLeadForm({
         </div>
       )}
 
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit} noValidate>
         <div className={styles.grid}>
           <div className={styles.field}>
             <label htmlFor={`${variant}-firstName`}>First Name</label>
