@@ -1,8 +1,11 @@
 [phases.setup]
-nixPkgs = ["php74", "php74Extensions.mysqli", "php74Extensions.mbstring", "php74Extensions.xml", "php74Extensions.curl", "php74Extensions.zip", "php74Extensions.gd", "php74Extensions.pdo_mysql"]
+nixPkgs = ["nodejs_20"]
 
 [phases.install]
-cmds = ["composer install --no-dev --optimize-autoloader"]
+cmds = ["cd frontend && npm ci"]
+
+[phases.build]
+cmds = ["cd frontend && npm run build"]
 
 [start]
-cmd = "php -S 0.0.0.0:${PORT:-8080} index.php"
+cmd = "node frontend/scripts/serve-static.mjs"

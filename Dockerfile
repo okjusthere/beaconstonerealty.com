@@ -1,23 +1,23 @@
-FROM php:7.4-cli
+FROM node:20-alpine AS build
 
-# Install PHP extensions with dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev libonig-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install mysqli pdo_mysql mbstring gd zip \
-    && rm -rf /var/lib/apt/lists/*
+WORKDIR /app/frontend
 
-# Install Composer
-COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+COPY frontend/package*.json ./
+RUN npm ci
 
-# Copy app files
-WORKDIR /var/www/html
-COPY . .
+COPY frontend ./
+RUN npm run build
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-scripts 2>/dev/null; true
+FROM node:20-alpine AS runtime
 
-EXPOSE 80
+WORKDIR /app
 
-# Use PHP built-in server with index.php as router
-CMD php -S 0.0.0.0:${PORT:-80} index.php
+ENV NODE_ENV=production
+ENV STATIC_ROOT=/app/frontend/out
+
+COPY --from=build /app/frontend/out ./frontend/out
+COPY --from=build /app/frontend/scripts/serve-static.mjs ./frontend/scripts/serve-static.mjs
+
+EXPOSE 8080
+
+CMD ["node", "frontend/scripts/serve-static.mjs"]
