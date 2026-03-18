@@ -1,16 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
-import Link from 'next/link';
-
-function ArrowRight() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M5 12h14M12 5l7 7-7 7"/>
-    </svg>
-  );
-}
+import { useParams } from 'next/navigation';
 
 interface BrokerData {
   title: string;
@@ -21,37 +14,46 @@ interface BrokerData {
   field?: Record<string, string>;
 }
 
+const FORM_NOTE_HTML = `
+  <p>By submitting this form, you acknowledge that you accept our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
+  <p>This site is protected by reCAPTCHA and the Google <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Service</a> apply.</p>
+`;
+
+const FORM_DISCLAIMER_HTML = `
+  <p>Yes, I would like more information from Beacon Stone Realty. Please use and/or share my information with a Beacon Stone Realty agent to contact me about my real estate needs.</p>
+`;
+
 export default function BrokerDetailPage() {
+  const params = useParams<{ id: string }>();
+  const routeId = Array.isArray(params?.id) ? params.id[0] : params?.id;
   const [broker, setBroker] = useState<BrokerData | null>(null);
-  const [formData, setFormData] = useState({
-    contacts: '', lastname: '', email: '', phone: '', message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
+    const id = routeId;
     if (!id) return;
 
-    const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://beaconstonerealty.com';
-    fetch(`${apiBase}/application/index/news_detail.php?id=${id}`)
-      .then(r => r.json())
-      .then(data => setBroker(data))
-      .catch(() => {});
-  }, []);
+    let cancelled = false;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || '';
-      await fetch(`${apiBase}/application/index/inner_message.php`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
-      });
-      setSubmitted(true);
-    } catch { alert('Failed to send.'); }
-  };
+    async function loadBroker() {
+      try {
+        const response = await fetch(`/api/legacy/news_detail?id=${encodeURIComponent(id)}`);
+        const payload = await response.json();
+        if (!cancelled) {
+          setBroker(payload?.obj?.data ?? null);
+        }
+      } catch {
+        if (!cancelled) {
+          setBroker(null);
+        }
+      }
+    }
+
+    void loadBroker();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [routeId]);
 
   if (!broker) {
     return (
@@ -110,40 +112,16 @@ export default function BrokerDetailPage() {
       <section className={styles.contact}>
         <div className="container">
           <div className={styles.contactInner}>
-            <h2 className={styles.contactTitle}>Let&apos;s get in touch</h2>
-            {submitted ? (
-              <div className={styles.success}>
-                <p>Message sent successfully!</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className={styles.form}>
-                <div className={styles.formRow}>
-                  <input type="text" placeholder="First Name" required
-                    value={formData.contacts}
-                    onChange={e => setFormData({...formData, contacts: e.target.value})} />
-                  <input type="text" placeholder="Last Name" required
-                    value={formData.lastname}
-                    onChange={e => setFormData({...formData, lastname: e.target.value})} />
-                </div>
-                <div className={styles.formRow}>
-                  <input type="email" placeholder="Email Address" required
-                    value={formData.email}
-                    onChange={e => setFormData({...formData, email: e.target.value})} />
-                  <input type="text" placeholder="Phone (Optional)"
-                    value={formData.phone}
-                    onChange={e => setFormData({...formData, phone: e.target.value})} />
-                </div>
-                <textarea placeholder="Message (Optional)" rows={4}
-                  value={formData.message}
-                  onChange={e => setFormData({...formData, message: e.target.value})} />
-                <p className={styles.disclaimer}>
-                  By submitting this form, you acknowledge that you accept the Privacy Policy and Terms of Use.
-                </p>
-                <button type="submit" className={styles.submitBtn}>
-                  Send message <ArrowRight />
-                </button>
-              </form>
-            )}
+            <LegacyLeadForm
+              variant="inquiry"
+              submissionTitle={broker.title}
+              title="Let's get in touch"
+              description="Tell us how this advisor can help and the team will review your request directly."
+              messagePlaceholder="I would like to discuss buying, selling, or renting with you."
+              noteHtml={FORM_NOTE_HTML}
+              disclaimerHtml={FORM_DISCLAIMER_HTML}
+              successMessage="Thank you. Your agent inquiry has been submitted."
+            />
           </div>
         </div>
       </section>

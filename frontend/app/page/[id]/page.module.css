@@ -1,0 +1,42 @@
+.page {
+  padding: calc(var(--header-height) + 3rem) 0 5rem;
+  background: #fff;
+}
+
+.inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: #8e7a58;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 1rem;
+  color: #3e3634;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.description {
+  margin: 0 0 1.5rem;
+  color: #5f5a57;
+  line-height: 1.8;
+}
+
+.content {
+  color: #3e3634;
+  line-height: 1.85;
+}
+
+.content :global(img),
+.content :global(video),
+.content :global(iframe) {
+  max-width: 100%;
+  height: auto;
+}

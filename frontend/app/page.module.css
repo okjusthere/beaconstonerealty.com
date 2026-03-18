@@ -22,6 +22,20 @@
   object-fit: cover;
 }
 
+.heroBannerHtml,
+.heroBannerHtml :global(video),
+.heroBannerHtml :global(iframe),
+.heroBannerHtml :global(img) {
+  width: 100%;
+  height: 100%;
+}
+
+.heroBannerHtml :global(video),
+.heroBannerHtml :global(iframe),
+.heroBannerHtml :global(img) {
+  object-fit: cover;
+}
+
 .heroOverlay {
   position: absolute;
   inset: 0;

@@ -1,106 +1,127 @@
 .hero {
-  background: var(--color-navy);
-  padding: calc(var(--header-height) + var(--space-4xl)) 0 var(--space-3xl);
+  padding: calc(var(--header-height) + 3rem) 0 2rem;
+  background: #fff;
+}
+
+.heroInner {
+  max-width: 900px;
   text-align: center;
+  margin: 0 auto;
 }
 
 .eyebrow {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
+  margin: 0 0 0.75rem;
+  color: #8e7a58;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-gold);
-  margin-bottom: var(--space-md);
 }
 
 .heroTitle {
-  font-size: clamp(2rem, 4vw, 3rem);
-  color: var(--color-white);
-  margin-bottom: var(--space-md);
+  margin: 0;
+  color: #3e3634;
+  font-size: clamp(2.25rem, 4vw, 4rem);
+  line-height: 1.05;
 }
 
-.heroDesc {
-  color: rgba(255, 255, 255, 0.7);
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 1rem;
-}
-
-/* Listing */
 .listing {
-  background: var(--color-white);
+  padding: 1rem 0 5rem;
+  background: #fff;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-xl);
-}
-
-@media (min-width: 640px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 1024px) {
-  .grid { grid-template-columns: repeat(3, 1fr); }
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .card {
+  height: 100%;
+  border: 1px solid #dad5cf;
+  background: #fff;
+}
+
+.imageLink {
   display: block;
-  text-decoration: none;
-  border: 1px solid var(--color-grey-light);
-  transition: all var(--transition-base);
+  aspect-ratio: 1.32;
   overflow: hidden;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
-
-.cardImageWrap {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: var(--color-grey-lightest);
+  background: #f2f2f2;
 }
 
 .cardImage {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
+  transition: transform 0.35s ease;
 }
 
 .card:hover .cardImage {
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 
 .cardBody {
-  padding: var(--space-lg);
+  padding: 1.4rem 1.35rem 1.6rem;
+}
+
+.cardCopy {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cardEyebrow {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  color: #666;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 .cardTitle {
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  color: var(--color-navy);
-  margin-bottom: var(--space-sm);
-  font-weight: 400;
+  margin: 0 0 0.75rem;
+  color: #3e3634;
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  line-height: 1.25;
 }
 
-.cardDesc {
-  font-size: 0.9rem;
-  color: var(--color-grey-dark);
+.cardPrice {
+  margin: 0 0 0.85rem;
+  color: #3e3634;
+  font-size: 1rem;
   line-height: 1.6;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  color: #5f5a57;
+  line-height: 1.7;
+}
+
+.cardResidences {
+  font-weight: 600;
+}
+
+.cardMarketing :global(*) {
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .empty {
+  padding: 5rem 0;
   text-align: center;
-  padding: var(--space-4xl) 0;
-  color: var(--color-grey-dark);
+  color: #5f5a57;
+}
+
+@media (max-width: 899px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

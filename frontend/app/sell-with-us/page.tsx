@@ -1,191 +1,197 @@
-'use client';
-
-import { useState } from 'react';
+import Link from 'next/link';
+import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
+import { getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
 
-function ArrowRight() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M5 12h14M12 5l7 7-7 7"/>
-    </svg>
-  );
-}
+const FORM_NOTE_HTML = `
+  <p>By submitting this form, you acknowledge that you accept our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
+  <p>This site is protected by reCAPTCHA and the Google <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Service</a> apply.</p>
+`;
 
-export default function SellWithUsPage() {
-  const [formData, setFormData] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    phone: '',
-    market: '',
-    linkedin: '',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
+const FORM_DISCLAIMER_HTML = `
+  <p>Yes, I would like more information from Beacon Stone Realty. Please use and/or share my information with a Beacon Stone Realty agent to contact me about my real estate needs.</p>
+  <p>By clicking SEND MESSAGE, I agree a Beacon Stone Realty agent may contact me by phone or text message including by automated means about real estate services, and that I can access real estate services without providing my phone number.</p>
+`;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || '';
-      await fetch(`${apiBase}/application/index/inner_message.php`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({
-          contacts2: formData.firstname,
-          lastname2: formData.lastname,
-          email2: formData.email,
-          phone2: formData.phone,
-          SelectMarket: formData.market,
-          LinkedIn: formData.linkedin,
-          message2: formData.message,
-        }).toString(),
-      });
-      setSubmitted(true);
-    } catch {
-      alert('Failed to send message. Please try again.');
+export const metadata = {
+  title: 'Sale | Beaconstone Realty',
+  description: 'Explore sale opportunities, partner with our advisors, and connect with Beacon Stone Realty.',
+};
+
+type SaleCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'keywords' | 'description' | 'content' | 'field'>;
+
+export default async function SellWithUsPage() {
+  let heroTitle = 'Sale';
+  let heroDescription = '';
+  let heroMedia = '';
+  let advisorCards: SaleCard[] = [];
+  let joinHeading = '';
+  let joinDescription = '';
+  let inquiryHeading = '';
+  let inquiryDescription = '';
+  let discoverMore: NewsItem[] = [];
+
+  try {
+    const [hero, advisors, formContent, discoverContent] = await Promise.allSettled([
+      getNewsDetail(50),
+      getNewsList(6, -1, 9),
+      Promise.all([getNewsDetail(52), getNewsDetail(53)]),
+      getNewsList(9, -1, 8),
+    ]);
+
+    if (hero.status === 'fulfilled') {
+      heroTitle = hero.value.title || heroTitle;
+      heroDescription = hero.value.description || '';
+      heroMedia = hero.value.content || '';
     }
-  };
+    if (advisors.status === 'fulfilled') {
+      advisorCards = advisors.value as SaleCard[];
+    }
+    if (formContent.status === 'fulfilled') {
+      joinHeading = formContent.value[0].title;
+      joinDescription = formContent.value[0].description;
+      inquiryHeading = formContent.value[1].title;
+      inquiryDescription = formContent.value[1].description;
+    }
+    if (discoverContent.status === 'fulfilled') {
+      discoverMore = discoverContent.value;
+    }
+  } catch {
+    // Keep the page shape intact if legacy content is temporarily unavailable.
+  }
 
   return (
     <>
-      {/* Hero */}
       <section className={styles.hero}>
         <div className="container">
-          <h1 className={styles.heroTitle}>Sell With Us</h1>
-          <p className={styles.heroDesc}>
-            Partner with Beaconstone Realty for a premium selling experience backed by global reach and local expertise.
-          </p>
-        </div>
-      </section>
-
-      {/* Form Section */}
-      <section className={`section-lg ${styles.formSection}`}>
-        <div className="container">
-          <div className={styles.formGrid}>
-            <div className={styles.formInfo}>
-              <h2 className={styles.formTitle}>Join Our Network</h2>
-              <p className={styles.formDesc}>
-                Whether you&apos;re looking to list your property or join as an agent,
-                we&apos;d love to hear from you. Fill out the form and our team will
-                be in touch shortly.
-              </p>
-              <div className={styles.formFeatures}>
-                <div className={styles.feature}>
-                  <div className={styles.featureIcon}>🏠</div>
-                  <div>
-                    <h4>Global Reach</h4>
-                    <p>Access to international buyers and sellers</p>
-                  </div>
-                </div>
-                <div className={styles.feature}>
-                  <div className={styles.featureIcon}>📊</div>
-                  <div>
-                    <h4>Market Expertise</h4>
-                    <p>In-depth local market knowledge and analysis</p>
-                  </div>
-                </div>
-                <div className={styles.feature}>
-                  <div className={styles.featureIcon}>🤝</div>
-                  <div>
-                    <h4>White-Glove Service</h4>
-                    <p>Dedicated support throughout the entire process</p>
-                  </div>
-                </div>
-              </div>
+          <div className={styles.heroGrid}>
+            <div className={styles.heroCopy}>
+              <p className={styles.heroEyebrow}>Sale</p>
+              <h1 className={styles.heroTitle}>{heroTitle}</h1>
+              {heroDescription && <p className={styles.heroDescription}>{heroDescription}</p>}
             </div>
-
-            <div className={styles.formCard}>
-              {submitted ? (
-                <div className={styles.success}>
-                  <h3>Thank You!</h3>
-                  <p>Your message has been sent successfully. We&apos;ll be in touch soon.</p>
-                </div>
+            <div className={styles.heroMedia}>
+              {heroMedia ? (
+                <div dangerouslySetInnerHTML={{ __html: heroMedia }} />
               ) : (
-                <form onSubmit={handleSubmit} className={styles.form}>
-                  <div className={styles.formRow}>
-                    <div className={styles.inputGroup}>
-                      <label htmlFor="firstname">First Name *</label>
-                      <input
-                        id="firstname"
-                        type="text"
-                        required
-                        value={formData.firstname}
-                        onChange={e => setFormData({ ...formData, firstname: e.target.value })}
-                      />
-                    </div>
-                    <div className={styles.inputGroup}>
-                      <label htmlFor="lastname">Last Name *</label>
-                      <input
-                        id="lastname"
-                        type="text"
-                        required
-                        value={formData.lastname}
-                        onChange={e => setFormData({ ...formData, lastname: e.target.value })}
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.formRow}>
-                    <div className={styles.inputGroup}>
-                      <label htmlFor="email">Email Address *</label>
-                      <input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={e => setFormData({ ...formData, email: e.target.value })}
-                      />
-                    </div>
-                    <div className={styles.inputGroup}>
-                      <label htmlFor="phone">Phone Number</label>
-                      <input
-                        id="phone"
-                        type="text"
-                        value={formData.phone}
-                        onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.formRow}>
-                    <div className={styles.inputGroup}>
-                      <label htmlFor="market">Select Market</label>
-                      <input
-                        id="market"
-                        type="text"
-                        value={formData.market}
-                        onChange={e => setFormData({ ...formData, market: e.target.value })}
-                      />
-                    </div>
-                    <div className={styles.inputGroup}>
-                      <label htmlFor="linkedin">LinkedIn URL</label>
-                      <input
-                        id="linkedin"
-                        type="text"
-                        value={formData.linkedin}
-                        onChange={e => setFormData({ ...formData, linkedin: e.target.value })}
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.inputGroup}>
-                    <label htmlFor="message">Message</label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      value={formData.message}
-                      onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    />
-                  </div>
-                  <p className={styles.disclaimer}>
-                    By submitting this form, you acknowledge that you accept our Privacy Policy and Terms of Use.
-                  </p>
-                  <button type="submit" className="btn btn-primary">
-                    Send Message <ArrowRight />
-                  </button>
-                </form>
+                <div className={styles.heroFallback} />
               )}
             </div>
           </div>
         </div>
       </section>
+
+      {advisorCards.length > 0 && (
+        <section className={styles.advisors}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <p className={styles.sectionEyebrow}>Expertise</p>
+              <h2 className={styles.sectionTitle}>Work With Market Specialists</h2>
+            </div>
+            <div className={styles.advisorList}>
+              {advisorCards.map((advisor) => (
+                <article key={advisor.id} className={styles.advisorCard}>
+                  <Link href={advisor.url || '#'} className={styles.advisorPhotoLink}>
+                    {advisor.thumbnail && (
+                      <img
+                        src={advisor.thumbnail}
+                        alt={advisor.title}
+                        className={styles.advisorPhoto}
+                        loading="lazy"
+                      />
+                    )}
+                  </Link>
+                  <div className={styles.advisorBody}>
+                    <div className={styles.advisorMain}>
+                      <Link href={advisor.url || '#'} className={styles.advisorName}>{advisor.title}</Link>
+                      {advisor.keywords && <p className={styles.advisorRole}>{advisor.keywords}</p>}
+                      <div className={styles.separator} />
+                      {advisor.description && <p className={styles.advisorCompany}>{advisor.description}</p>}
+                      {advisor.content && (
+                        <div
+                          className={styles.advisorContent}
+                          dangerouslySetInnerHTML={{ __html: advisor.content }}
+                        />
+                      )}
+                    </div>
+                    <div className={styles.advisorContact}>
+                      <span className={styles.contactTitle}>Contact</span>
+                      {advisor.field?.phone && (
+                        <a href={`tel:${advisor.field.phone}`} className={styles.contactLink}>O: {advisor.field.phone}</a>
+                      )}
+                      {advisor.field?.real_estate_broker_email && (
+                        <a
+                          href={`mailto:${advisor.field.real_estate_broker_email}`}
+                          className={styles.contactLink}
+                        >
+                          {advisor.field.real_estate_broker_email}
+                        </a>
+                      )}
+                      <Link href={advisor.url || '#'} className={styles.contactAction}>Send message</Link>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className={styles.formsSection}>
+        <div className="container">
+          <div className={styles.formsGrid}>
+            <LegacyLeadForm
+              variant="join"
+              submissionTitle="Join as an agent"
+              title={joinHeading || 'Join as an agent'}
+              description={joinDescription || 'Introduce yourself, the market you focus on, and how you see your platform growing with Beacon Stone Realty.'}
+              messagePlaceholder="Share your background and the kind of opportunities you want to build."
+              noteHtml={FORM_NOTE_HTML}
+              disclaimerHtml={FORM_DISCLAIMER_HTML}
+              successMessage="Thank you. Your application has been submitted."
+            />
+            <LegacyLeadForm
+              variant="inquiry"
+              submissionTitle={inquiryHeading || heroTitle}
+              title={inquiryHeading || 'Let’s get in touch'}
+              description={inquiryDescription || 'Tell us about your sale objectives and one of our advisors will follow up once your request has been reviewed.'}
+              messagePlaceholder="I am interested in discussing a sale opportunity with Beacon Stone Realty."
+              noteHtml={FORM_NOTE_HTML}
+              disclaimerHtml={FORM_DISCLAIMER_HTML}
+              successMessage="Thank you. Your inquiry has been submitted."
+            />
+          </div>
+        </div>
+      </section>
+
+      {discoverMore.length > 0 && (
+        <section className={styles.discoverSection}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <p className={styles.sectionEyebrow}>Discover More</p>
+              <h2 className={styles.sectionTitle}>Further Reading</h2>
+            </div>
+            <div className={styles.discoverGrid}>
+              {discoverMore.map((item) => (
+                <Link key={item.id} href={item.url || '#'} className={styles.discoverCard}>
+                  {item.thumbnail && (
+                    <img
+                      src={item.thumbnail}
+                      alt={item.title}
+                      className={styles.discoverImage}
+                      loading="lazy"
+                    />
+                  )}
+                  <div className={styles.discoverBody}>
+                    <h3>{item.title}</h3>
+                    {item.keywords && <p className={styles.discoverEyebrow}>{item.keywords}</p>}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }

@@ -1,6 +1,6 @@
 import styles from './page.module.css';
 import Link from 'next/link';
-import { getGlobalData, getNewsDetail, getNewsList, getPicByClassId } from '@/lib/api';
+import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
 
 // Arrow icon component
 function ArrowRight() {
@@ -23,6 +23,7 @@ export default async function HomePage() {
   let exclusiveTitle = '';
   let exclusiveDesc = '';
   let videoContent = '';
+  let heroBannerContent = '';
   let propertySectionTitle = '';
   let propertySectionDesc = '';
   let properties: Array<{
@@ -62,7 +63,7 @@ export default async function HomePage() {
       videoContent = exclusiveData.value.content;
     }
     if (bannerData.status === 'fulfilled') {
-      // Banner video HTML is in content
+      heroBannerContent = bannerData.value.content;
     }
     if (globalData.status === 'fulfilled') {
       const newsClass = globalData.value.news_class_info.find(c => c.id === 1);
@@ -83,16 +84,22 @@ export default async function HomePage() {
       {/* ========== Hero Section with Video ========== */}
       <section className={styles.hero}>
         <div className={styles.heroVideo}>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="/video/hero-poster.jpg"
-            className={styles.heroVideoElement}
-          >
-            <source src="/video/hero-1080p.mp4" type="video/mp4" />
-          </video>
+          {heroBannerContent ? (
+            <div
+              className={styles.heroBannerHtml}
+              dangerouslySetInnerHTML={{ __html: heroBannerContent }}
+            />
+          ) : (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className={styles.heroVideoElement}
+            >
+              <source src="/video/hero-1080p.mp4" type="video/mp4" />
+            </video>
+          )}
           <div className={styles.heroOverlay} />
         </div>
         <div className={styles.heroContent}>

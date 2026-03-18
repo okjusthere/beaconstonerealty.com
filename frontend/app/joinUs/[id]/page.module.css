@@ -1,0 +1,196 @@
+.hero {
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-4xl);
+}
+
+.heroInner {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.heroTitle {
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+}
+
+.heroDesc {
+  max-width: 760px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.heroMedia {
+  overflow: hidden;
+}
+
+.heroMedia :global(video),
+.heroMedia :global(iframe),
+.heroMedia :global(img) {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.intro {
+  background: var(--color-white);
+}
+
+.introGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+}
+
+@media (min-width: 960px) {
+  .introGrid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.sectionTitle {
+  margin-bottom: var(--space-lg);
+}
+
+.richContent {
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+
+.sidePanel {
+  padding: var(--space-xl);
+  background: var(--color-off-white);
+  color: var(--color-text);
+}
+
+.introCta {
+  margin-top: var(--space-xl);
+  text-align: center;
+}
+
+.feature {
+  background: var(--color-white);
+  border-top: 1px solid var(--color-grey-lightest);
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .featureGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.featureImageWrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.careers {
+  background: var(--color-navy);
+}
+
+.careers .sectionTitle {
+  color: var(--color-white);
+  text-align: center;
+}
+
+.careerGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .careerGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.careerCard {
+  display: block;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.careerImage {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.careerBody {
+  padding: var(--space-lg);
+}
+
+.careerBody h3 {
+  color: var(--color-white);
+  margin-bottom: var(--space-sm);
+}
+
+.careerBody p {
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+}
+
+.discoverHeader {
+  padding: var(--space-4xl) 0 var(--space-lg);
+  background: var(--color-navy);
+  text-align: center;
+}
+
+.discoverHeader .sectionTitle {
+  color: var(--color-white);
+  margin: 0;
+}
+
+.discoverSection {
+  padding: 0 0 var(--space-5xl);
+  background: var(--color-navy);
+}
+
+.discoverGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .discoverGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.discoverCard {
+  display: block;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.discoverImage {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.discoverBody {
+  padding: var(--space-lg);
+}
+
+.discoverBody h3 {
+  color: var(--color-white);
+  margin-bottom: var(--space-sm);
+}
+
+.discoverBody p {
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+}

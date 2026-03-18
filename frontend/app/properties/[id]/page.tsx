@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 function ArrowRight() {
   return (
@@ -29,48 +31,60 @@ interface AgentData {
   field?: Record<string, string>;
 }
 
+const FORM_NOTE_HTML = `
+  <p>By submitting this form, you acknowledge that you accept our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
+  <p>This site is protected by reCAPTCHA and the Google <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Service</a> apply.</p>
+`;
+
+const FORM_DISCLAIMER_HTML = `
+  <p>Yes, I would like more information from Beacon Stone Realty. Please use and/or share my information with a Beacon Stone Realty agent to contact me about my real estate needs.</p>
+`;
+
 export default function PropertyDetailPage() {
+  const params = useParams<{ id: string }>();
+  const routeId = Array.isArray(params?.id) ? params.id[0] : params?.id;
   const [property, setProperty] = useState<PropertyData | null>(null);
   const [agent, setAgent] = useState<AgentData | null>(null);
   const [activePhoto, setActivePhoto] = useState(0);
-  const [formData, setFormData] = useState({
-    contacts: '', lastname: '', email: '', phone: '', message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
+    const id = routeId;
     if (!id) return;
 
-    const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://beaconstonerealty.com';
-    
-    fetch(`${apiBase}/application/index/news_detail.php?id=${id}`)
-      .then(r => r.json())
-      .then(data => setProperty(data))
-      .catch(() => {});
+    let cancelled = false;
 
-    // Try to load agent data
-    fetch(`${apiBase}/application/index/news_list.php?id=3&top=1&type=6`)
-      .then(r => r.json())
-      .then(data => { if (Array.isArray(data) && data.length > 0) setAgent(data[0]); })
-      .catch(() => {});
-  }, []);
+    async function loadProperty() {
+      try {
+        const response = await fetch(`/api/legacy/news_detail?id=${encodeURIComponent(id)}`);
+        const payload = await response.json();
+        const propertyData = payload?.obj?.data ?? null;
+        if (!cancelled) {
+          setProperty(propertyData);
+        }
+
+        const agentId = propertyData?.field?.real_estate_agent_id;
+        if (agentId) {
+          const agentResponse = await fetch(`/api/legacy/news_detail?id=${encodeURIComponent(agentId)}`);
+          const agentPayload = await agentResponse.json();
+          if (!cancelled) {
+            setAgent(agentPayload?.obj?.data ?? null);
+          }
+        }
+      } catch {
+        if (!cancelled) {
+          setProperty(null);
+        }
+      }
+    }
+
+    void loadProperty();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [routeId]);
 
   const photos = property?.photo_album?.length ? property.photo_album : property?.thumbnail ? [property.thumbnail] : [];
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL || '';
-      await fetch(`${apiBase}/application/index/inner_message.php`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
-      });
-      setSubmitted(true);
-    } catch { alert('Failed to send.'); }
-  };
 
   if (!property) {
     return (
@@ -170,46 +184,17 @@ export default function PropertyDetailPage() {
 
               {/* Contact Form */}
               <div className={styles.contactForm}>
-                <h3 className={styles.contactTitle}>Let&apos;s get in touch</h3>
-                {submitted ? (
-                  <div className={styles.success}>
-                    <p>Message sent successfully!</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit}>
-                    <div className={styles.inputGroup}>
-                      <input type="text" placeholder="First Name" required
-                        value={formData.contacts}
-                        onChange={e => setFormData({...formData, contacts: e.target.value})} />
-                    </div>
-                    <div className={styles.inputGroup}>
-                      <input type="text" placeholder="Last Name" required
-                        value={formData.lastname}
-                        onChange={e => setFormData({...formData, lastname: e.target.value})} />
-                    </div>
-                    <div className={styles.inputGroup}>
-                      <input type="email" placeholder="Email Address" required
-                        value={formData.email}
-                        onChange={e => setFormData({...formData, email: e.target.value})} />
-                    </div>
-                    <div className={styles.inputGroup}>
-                      <input type="text" placeholder="Phone (Optional)"
-                        value={formData.phone}
-                        onChange={e => setFormData({...formData, phone: e.target.value})} />
-                    </div>
-                    <div className={styles.inputGroup}>
-                      <textarea placeholder="Message (Optional)" rows={4}
-                        value={formData.message}
-                        onChange={e => setFormData({...formData, message: e.target.value})} />
-                    </div>
-                    <p className={styles.disclaimer}>
-                      By submitting this form, you acknowledge that you accept the Privacy Policy and Terms of Use.
-                    </p>
-                    <button type="submit" className={styles.submitBtn}>
-                      Send message <ArrowRight />
-                    </button>
-                  </form>
-                )}
+                <LegacyLeadForm
+                  variant="inquiry"
+                  submissionTitle={property.title}
+                  title="Let's get in touch"
+                  description="Tell us what you would like to know about this development and one of our advisors will review your request."
+                  messagePlaceholder="I would like to discuss this property with your team."
+                  noteHtml={FORM_NOTE_HTML}
+                  disclaimerHtml={FORM_DISCLAIMER_HTML}
+                  compact
+                  successMessage="Thank you. Your property inquiry has been submitted."
+                />
               </div>
             </div>
           </div>

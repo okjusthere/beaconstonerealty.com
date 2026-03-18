@@ -1,34 +1,197 @@
 /**
- * API layer — calls the existing PHP backend
- * PHP backend URL is configured via API_BASE_URL env var
+ * Compatibility API layer for the legacy PHP backend.
+ *
+ * The old endpoints are not plain REST:
+ * - most detail/list endpoints expect POST bodies, not query strings
+ * - requests must carry X-Requested-With: XMLHttpRequest
+ * - successful responses are wrapped as { code, message, obj: { data } }
  */
 
-const API_BASE = process.env.API_BASE_URL || 'https://beaconstonerealty.com';
+const API_BASE = (process.env.API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'https://beaconstonerealty.com')
+  .replace(/\/$/, '');
 const API_PATH = '/application/index';
+
+const INTERNAL_ROUTE_PATTERNS: Array<[RegExp, string]> = [
+  [/^\/index(?:\.php)?$/i, '/'],
+  [/^\/propertyCenter\/\d+$/i, '/properties'],
+  [/^\/propertyCenterDetail\/(\d+)$/i, '/properties/$1'],
+  [/^\/realEstateBrokerCenter\/\d+$/i, '/brokers'],
+  [/^\/realEstateBrokerDetail\/(\d+)$/i, '/brokers/$1'],
+  [/^\/sale\/\d+$/i, '/sell-with-us'],
+  [/^\/contact\/\d+$/i, '/contact'],
+  [/^\/joinUs\/(\d+)$/i, '/joinUs/$1'],
+];
 
 interface FetchOptions {
   revalidate?: number;
   cache?: RequestCache;
+  method?: 'GET' | 'POST';
+  cookieHeader?: string;
+}
+
+interface LegacyEnvelope<T> {
+  code: number;
+  message: string;
+  obj?: {
+    data?: T;
+  };
+}
+
+function isAbsoluteUrl(value: string): boolean {
+  return /^[a-z][a-z\d+\-.]*:/i.test(value) || value.startsWith('//');
+}
+
+function isNonHttpHref(value: string): boolean {
+  return value.startsWith('#') || value.startsWith('mailto:') || value.startsWith('tel:') || value.startsWith('javascript:');
+}
+
+export function resolveAssetUrl(value: string): string {
+  if (!value || isAbsoluteUrl(value) || isNonHttpHref(value)) {
+    return value;
+  }
+  if (value.startsWith('/')) {
+    return `${API_BASE}${value}`;
+  }
+  return value;
+}
+
+export function normalizeSitePath(value: string): string {
+  if (!value || isAbsoluteUrl(value) || isNonHttpHref(value)) {
+    return value;
+  }
+
+  const [pathname, queryString] = value.split('?');
+  const normalizedPath = INTERNAL_ROUTE_PATTERNS.reduce((result, [pattern, replacement]) => {
+    if (result !== pathname || !pattern.test(pathname)) {
+      return result;
+    }
+    return pathname.replace(pattern, replacement);
+  }, pathname);
+
+  return queryString ? `${normalizedPath}?${queryString}` : normalizedPath;
+}
+
+function rewriteHtmlAssetUrls(html: string): string {
+  if (!html) return html;
+
+  return html
+    .replace(
+    /(src|poster)=["'](\/[^"']+)["']/gi,
+    (_match, attribute: string, assetPath: string) => `${attribute}="${resolveAssetUrl(assetPath)}"`,
+    )
+    .replace(/(<video\b[^>]*>)([^<]*)(<\/video>)/gi, (_match, startTag: string, _text: string, endTag: string) => `${startTag}${endTag}`);
+}
+
+function normalizeLegacyData<T>(value: T, key?: string): T {
+  if (Array.isArray(value)) {
+    return value.map((item) => normalizeLegacyData(item, key)) as T;
+  }
+
+  if (value && typeof value === 'object') {
+    const normalizedEntries = Object.entries(value).map(([entryKey, entryValue]) => [
+      entryKey,
+      normalizeLegacyData(entryValue, entryKey),
+    ]);
+    return Object.fromEntries(normalizedEntries) as T;
+  }
+
+  if (typeof value === 'string') {
+    if (key === 'thumbnail' || key === 'path') {
+      return resolveAssetUrl(value) as T;
+    }
+    if (key === 'photo_album' || key === 'banner') {
+      return resolveAssetUrl(value) as T;
+    }
+    if (key === 'url') {
+      return normalizeSitePath(value) as T;
+    }
+    if (key === 'content') {
+      return rewriteHtmlAssetUrls(value) as T;
+    }
+  }
+
+  return value;
+}
+
+async function fetchLegacyResponse<T>(
+  endpoint: string,
+  params?: Record<string, string>,
+  options?: FetchOptions,
+): Promise<{ payload: LegacyEnvelope<T>; response: Response }> {
+  const method = options?.method ?? (params && Object.keys(params).length > 0 ? 'POST' : 'GET');
+  const url = `${API_BASE}${API_PATH}/${endpoint}`;
+  const headers: HeadersInit = {
+    'X-Requested-With': 'XMLHttpRequest',
+  };
+
+  const requestInit: RequestInit & { next?: { revalidate: number } } = {
+    method,
+    headers,
+    cache: options?.cache,
+  };
+
+  if (options?.cookieHeader) {
+    headers.Cookie = options.cookieHeader;
+  }
+
+  if (method === 'POST') {
+    headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+    requestInit.body = new URLSearchParams(params ?? {}).toString();
+  } else {
+    requestInit.next = { revalidate: options?.revalidate ?? 300 };
+  }
+
+  const response = await fetch(url, requestInit);
+
+  if (!response.ok) {
+    throw new Error(`API error: ${response.status} ${response.statusText} for ${endpoint}`);
+  }
+
+  return {
+    payload: await response.json() as LegacyEnvelope<T>,
+    response,
+  };
 }
 
 async function apiFetch<T>(endpoint: string, params?: Record<string, string>, options?: FetchOptions): Promise<T> {
-  const url = new URL(`${API_BASE}${API_PATH}/${endpoint}`);
-  if (params) {
-    Object.entries(params).forEach(([key, value]) => {
-      url.searchParams.set(key, value);
-    });
+  const { payload } = await fetchLegacyResponse<T>(endpoint, params, options);
+
+  if (payload.code !== 200) {
+    throw new Error(payload.message || `Legacy API error for ${endpoint}`);
   }
 
-  const res = await fetch(url.toString(), {
-    next: { revalidate: options?.revalidate ?? 300 }, // 5 min cache by default
-    cache: options?.cache,
-  });
+  return normalizeLegacyData((payload.obj?.data ?? null) as T);
+}
 
-  if (!res.ok) {
-    throw new Error(`API error: ${res.status} ${res.statusText} for ${endpoint}`);
-  }
+export async function proxyLegacyRequest<T>(
+  endpoint: string,
+  params?: Record<string, string>,
+  options?: FetchOptions,
+): Promise<LegacyEnvelope<T>> {
+  const { payload } = await fetchLegacyResponse<T>(endpoint, params, options);
+  return {
+    ...payload,
+    obj: payload.obj
+      ? { data: normalizeLegacyData((payload.obj.data ?? null) as T) }
+      : payload.obj,
+  };
+}
 
-  return res.json();
+export async function proxyLegacyRequestRaw<T>(
+  endpoint: string,
+  params?: Record<string, string>,
+  options?: FetchOptions,
+): Promise<{ payload: LegacyEnvelope<T>; setCookie: string | null }> {
+  const { payload, response } = await fetchLegacyResponse<T>(endpoint, params, options);
+  return {
+    payload: {
+      ...payload,
+      obj: payload.obj
+        ? { data: normalizeLegacyData((payload.obj.data ?? null) as T) }
+        : payload.obj,
+    },
+    setCookie: response.headers.get('set-cookie'),
+  };
 }
 
 // ---------- Types ----------

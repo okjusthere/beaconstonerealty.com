@@ -206,3 +206,8 @@
   text-align: center;
   color: var(--color-navy);
 }
+
+.errorMessage {
+  font-size: 0.9rem;
+  color: #b42318;
+}

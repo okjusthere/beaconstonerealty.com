@@ -12,7 +12,6 @@ function ArrowRight() {
 
 export default async function AboutPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const numId = parseInt(id, 10);
 
   let heroTitle = '';
   let heroDesc = '';
@@ -27,34 +26,43 @@ export default async function AboutPage({ params }: { params: Promise<{ id: stri
   let teamMembers: Array<{ id: number; title: string; url: string; thumbnail: string; description: string }> = [];
 
   try {
-    const [aboutHero, aboutStats, aboutMain, aboutFeature, aboutCta, team] = await Promise.allSettled([
-      getNewsDetail(4),
+    const [globalData, aboutHero, aboutStats, aboutMain, aboutFeature, team] = await Promise.allSettled([
+      getGlobalData(),
+      getNewsDetail(13),
       getNewsList(2, -1, 2),
-      getNewsDetail(5),
-      getNewsDetail(6),
-      getNewsDetail(7),
-      getNewsList(3, -1, 6),
+      getNewsDetail(18),
+      getNewsDetail(19),
+      getNewsList(10, 2, 10),
     ]);
 
+    if (globalData.status === 'fulfilled') {
+      const aboutMenu = globalData.value.menu_info.find((item) => item.url === `/about/${id}`);
+      if (aboutMenu) {
+        heroTitle = aboutMenu.sub_title || aboutMenu.title;
+        heroDesc = aboutMenu.remarks || '';
+      }
+
+      const ctaClass = globalData.value.news_class_info.find((item) => item.id === 3);
+      if (ctaClass) {
+        ctaTitle = ctaClass.title;
+        ctaDesc = ctaClass.description;
+      }
+    }
     if (aboutHero.status === 'fulfilled') {
-      heroTitle = aboutHero.value.title;
-      heroDesc = aboutHero.value.description;
+      heroTitle ||= aboutHero.value.title;
+      heroDesc ||= aboutHero.value.description;
     }
     if (aboutStats.status === 'fulfilled') {
       stats = aboutStats.value as typeof stats;
     }
     if (aboutMain.status === 'fulfilled') {
       mainTitle = aboutMain.value.title;
-      mainContent = aboutMain.value.content;
+      mainContent = aboutMain.value.description;
     }
     if (aboutFeature.status === 'fulfilled') {
       featureImage = aboutFeature.value.thumbnail;
       featureTitle = aboutFeature.value.title;
-      featureContent = aboutFeature.value.content;
-    }
-    if (aboutCta.status === 'fulfilled') {
-      ctaTitle = aboutCta.value.title;
-      ctaDesc = aboutCta.value.content;
+      featureContent = aboutFeature.value.description;
     }
     if (team.status === 'fulfilled') {
       teamMembers = team.value as typeof teamMembers;

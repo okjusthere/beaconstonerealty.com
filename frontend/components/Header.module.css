@@ -166,19 +166,19 @@
 
 /* Mobile Navigation */
 .mobileNav {
+  display: none;
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0;
   width: 100%;
   height: 100vh;
   background: var(--color-navy);
-  transition: right var(--transition-slow);
   z-index: 5;
   overflow-y: auto;
 }
 
 .mobileNav.open {
-  right: 0;
+  display: block;
 }
 
 .mobileNavInner {

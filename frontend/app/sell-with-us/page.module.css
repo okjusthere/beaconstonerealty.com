@@ -1,175 +1,254 @@
 .hero {
-  background: var(--color-navy);
-  padding: calc(var(--header-height) + var(--space-4xl)) 0 var(--space-3xl);
-  text-align: center;
+  padding: calc(var(--header-height) + 2rem) 0 4rem;
+  background:
+    radial-gradient(circle at top left, rgba(178, 142, 59, 0.18), transparent 26%),
+    linear-gradient(180deg, #f7f4ef 0%, #fff 100%);
 }
 
-.heroTitle {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  color: var(--color-white);
-  margin-bottom: var(--space-md);
-}
-
-.heroDesc {
-  font-family: var(--font-accent);
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Form Section */
-.formSection {
-  background: var(--color-grey-lightest);
-}
-
-.formGrid {
+.heroGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3xl);
-  align-items: start;
-}
-
-@media (min-width: 1024px) {
-  .formGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.formInfo {
-  padding: var(--space-xl) 0;
-}
-
-.formTitle {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  color: var(--color-navy);
-  margin-bottom: var(--space-lg);
-}
-
-.formDesc {
-  color: var(--color-text-light);
-  line-height: 1.8;
-  margin-bottom: var(--space-xl);
-}
-
-.formFeatures {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-.feature {
-  display: flex;
-  gap: var(--space-md);
-  align-items: flex-start;
-}
-
-.featureIcon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
+  gap: 2rem;
   align-items: center;
-  justify-content: center;
-  background: var(--color-white);
-  border-radius: var(--radius-md);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
 }
 
-.feature h4 {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--color-navy);
-  margin-bottom: 2px;
+.heroCopy {
+  max-width: 34rem;
 }
 
-.feature p {
-  font-size: 0.85rem;
-  color: var(--color-grey-dark);
-  margin: 0;
-}
-
-/* Form Card */
-.formCard {
-  background: var(--color-white);
-  padding: var(--space-xl);
-  box-shadow: var(--shadow-md);
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-.formRow {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-lg);
-}
-
-@media (min-width: 640px) {
-  .formRow {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.inputGroup {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.inputGroup label {
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  color: var(--color-grey-dark);
+.heroEyebrow,
+.sectionEyebrow,
+.discoverEyebrow,
+.contactTitle {
+  margin: 0 0 0.85rem;
+  color: #8e7a58;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.inputGroup input,
-.inputGroup textarea {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  padding: 12px 16px;
-  border: 1px solid var(--color-grey-light);
-  background: var(--color-white);
-  color: var(--color-text);
-  transition: border-color var(--transition-fast);
-  outline: none;
+.heroTitle,
+.sectionTitle {
+  margin-bottom: 1rem;
+  color: #3e3634;
 }
 
-.inputGroup input:focus,
-.inputGroup textarea:focus {
-  border-color: var(--color-navy);
+.heroTitle {
+  font-size: clamp(2.4rem, 5vw, 4.75rem);
+  line-height: 0.98;
 }
 
-.inputGroup textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-.disclaimer {
-  font-size: 0.8rem;
-  color: var(--color-grey);
-  line-height: 1.6;
+.heroDescription {
   margin: 0;
+  color: #5f5a57;
+  line-height: 1.85;
+  font-size: 1.02rem;
 }
 
-/* Success */
-.success {
-  text-align: center;
-  padding: var(--space-3xl);
+.heroMedia {
+  min-height: 360px;
+  background: #d9d3cc;
 }
 
-.success h3 {
-  font-size: 1.5rem;
-  color: var(--color-navy);
-  margin-bottom: var(--space-md);
+.heroMedia :global(video),
+.heroMedia :global(img),
+.heroMedia :global(iframe) {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.success p {
-  color: var(--color-text-light);
+.heroFallback {
+  height: 100%;
+  min-height: 360px;
+  background:
+    linear-gradient(135deg, rgba(62, 54, 52, 0.92), rgba(0, 35, 73, 0.82)),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.18), transparent 50%);
+}
+
+.advisors {
+  padding: 4.5rem 0;
+  background: #fff;
+}
+
+.sectionHeader {
+  margin-bottom: 2rem;
+}
+
+.advisorList {
+  display: flex;
+  flex-direction: column;
+}
+
+.advisorCard {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.advisorPhotoLink {
+  display: block;
+  flex: 0 0 128px;
+}
+
+.advisorPhoto {
+  display: block;
+  width: 128px;
+  height: 160px;
+  object-fit: contain;
+  background: transparent;
+}
+
+.advisorBody {
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.advisorMain {
+  max-width: 42rem;
+}
+
+.advisorName {
+  color: #3e3634;
+  font-size: clamp(1.55rem, 2.4vw, 1.95rem);
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.advisorRole {
+  margin: 0.65rem 0 0;
+  color: #666;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.separator {
+  width: 50px;
+  margin: 1rem 0;
+  border-top: 1px solid #b28e3b;
+}
+
+.advisorCompany {
+  margin: 0 0 0.5rem;
+  color: #3e3634;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.advisorContent {
+  color: #5f5a57;
+  line-height: 1.75;
+}
+
+.advisorContact {
+  display: flex;
+  flex: 0 0 220px;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.contactLink,
+.contactAction {
+  color: #3e3634;
+  text-decoration: none;
+  line-height: 1.7;
+}
+
+.contactAction {
+  margin-top: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.formsSection {
+  padding: 4.5rem 0;
+  background: #f2f2f2;
+}
+
+.formsGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.discoverSection {
+  padding: 4.5rem 0 5rem;
+  background: #002349;
+}
+
+.discoverSection .sectionTitle,
+.discoverSection .sectionEyebrow {
+  color: #fff;
+}
+
+.discoverGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.discoverCard {
+  display: block;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  text-decoration: none;
+}
+
+.discoverImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.discoverBody {
+  padding: 1.25rem;
+}
+
+.discoverBody h3 {
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.discoverEyebrow {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 1099px) {
+  .heroGrid,
+  .formsGrid,
+  .discoverGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 899px) {
+  .advisorCard,
+  .advisorBody {
+    flex-direction: column;
+  }
+
+  .advisorPhotoLink {
+    flex-basis: auto;
+  }
+
+  .advisorPhoto {
+    width: 112px;
+    height: 140px;
+  }
+
+  .advisorContact {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
