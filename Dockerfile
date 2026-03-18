@@ -1,13 +1,13 @@
 FROM php:7.4-apache
 
-# Fix MPM conflict and enable rewrite
-RUN a2dismod mpm_event mpm_worker 2>/dev/null; \
-    a2enmod mpm_prefork rewrite
+# Fix MPM conflict: remove event MPM, keep only prefork
+RUN rm -f /etc/apache2/mods-enabled/mpm_event.conf /etc/apache2/mods-enabled/mpm_event.load \
+          /etc/apache2/mods-enabled/mpm_worker.conf /etc/apache2/mods-enabled/mpm_worker.load \
+    && ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf \
+    && ln -sf /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load
 
-# Configure Apache to use Railway PORT
-RUN sed -i 's/Listen 80/Listen ${PORT}/g' /etc/apache2/ports.conf && \
-    sed -i 's/*:80/*:${PORT}/g' /etc/apache2/sites-available/000-default.conf
-ENV PORT=80
+# Enable mod_rewrite for .htaccess URL rewriting
+RUN a2enmod rewrite
 
 # Allow .htaccess overrides
 RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
@@ -31,5 +31,4 @@ RUN cd /var/www/html && composer install --no-dev --optimize-autoloader --no-scr
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
 
-# Use shell form of CMD so $PORT gets expanded at runtime
-CMD ["sh", "-c", "apache2-foreground"]
+EXPOSE 80
