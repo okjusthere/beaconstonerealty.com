@@ -1,15 +1,13 @@
 FROM php:7.4-apache
 
-# Enable Apache mod_rewrite
+# Enable Apache mod_rewrite for .htaccess
 RUN a2enmod rewrite
 
-# Install PHP extensions
-RUN docker-php-ext-install mysqli pdo_mysql mbstring
-
-# Install GD extension with dependencies
-RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev libzip-dev \
+# Install system dependencies for PHP extensions
+RUN apt-get update && apt-get install -y \
+    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev libonig-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd zip \
+    && docker-php-ext-install mysqli pdo_mysql mbstring gd zip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
