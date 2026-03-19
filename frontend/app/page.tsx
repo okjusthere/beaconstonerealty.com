@@ -4,10 +4,7 @@ import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
 import styles from './page.module.css';
 
 const HOME_HERO_POSTER = '/video/hero-poster.jpg';
-const HOME_HERO_SOURCES = [
-  { src: '/video/hero-720p.mp4', type: 'video/mp4', media: '(max-width: 767px)' },
-  { src: '/video/hero-1080p.mp4', type: 'video/mp4' },
-];
+const HOME_HERO_MUX_URL = 'https://player.mux.com/02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q?metadata-video-title=beacon&video-title=beacon&autoplay=muted&muted=true&loop=true&controls=false&playsinline=true';
 
 // Arrow icon component
 function ArrowRight() {
@@ -126,8 +123,9 @@ export default async function HomePage() {
           <div className={styles.heroMediaSurface}>
             <HeroVideo
               className={styles.heroVideoElement}
+              embedUrl={HOME_HERO_MUX_URL}
               poster={HOME_HERO_POSTER}
-              sources={HOME_HERO_SOURCES}
+              title="Beacon Stone Realty showcase"
             />
           </div>
         </div>

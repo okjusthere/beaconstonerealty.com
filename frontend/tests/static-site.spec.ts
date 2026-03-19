@@ -40,7 +40,7 @@ async function collectSameOriginAssets(page: Page) {
   });
 }
 
-test('homepage keeps the title block above the banner video and serves local media', async ({ page, request }) => {
+test('homepage keeps the title block above the Mux hero embed and serves same-origin assets', async ({ page, request }) => {
   const errors = trackClientErrors(page);
 
   await page.goto('/', { waitUntil: 'domcontentloaded' });
@@ -49,15 +49,16 @@ test('homepage keeps the title block above the banner video and serves local med
     level: 1,
     name: /Every home tells a story\. Let yours begin here/i,
   });
-  const heroVideo = page.locator('main video').first();
+  const heroFrame = page.locator('main iframe[title="Beacon Stone Realty showcase"]').first();
 
   await expect(heroHeading).toBeVisible();
-  await expect(heroVideo).toBeVisible();
+  await expect(heroFrame).toBeVisible();
   await expect(page.locator('h1 br')).toHaveCount(1);
-  await expect(heroVideo).toHaveAttribute('poster', /hero-poster\.jpg/);
+  await expect(heroFrame).toHaveAttribute('src', /player\.mux\.com\/02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q/);
+  await expect(heroFrame).toHaveAttribute('src', /autoplay=muted/);
 
   const headingBox = await heroHeading.boundingBox();
-  const videoBox = await heroVideo.boundingBox();
+  const videoBox = await heroFrame.boundingBox();
 
   expect(headingBox).not.toBeNull();
   expect(videoBox).not.toBeNull();
@@ -223,13 +224,13 @@ test.describe('mobile homepage layout', () => {
       level: 1,
       name: /Every home tells a story\. Let yours begin here/i,
     });
-    const heroVideo = page.locator('main video').first();
+    const heroFrame = page.locator('main iframe[title="Beacon Stone Realty showcase"]').first();
 
     await expect(heroHeading).toBeVisible();
-    await expect(heroVideo).toBeVisible();
+    await expect(heroFrame).toBeVisible();
 
     const headingBox = await heroHeading.boundingBox();
-    const videoBox = await heroVideo.boundingBox();
+    const videoBox = await heroFrame.boundingBox();
 
     expect(headingBox).not.toBeNull();
     expect(videoBox).not.toBeNull();

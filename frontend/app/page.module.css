@@ -59,39 +59,25 @@
   background: var(--color-brown);
 }
 
-.heroVideoElement,
-.heroBannerHtml,
-.heroFallback {
+.heroVideoElement {
   width: 100%;
   height: 100%;
 }
 
 .heroVideoElement {
+  position: relative;
   display: block;
-  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.heroVideoElement::-webkit-media-controls {
-  display: none !important;
-}
-
-.heroFallback {
-  background: linear-gradient(135deg, var(--color-brown) 0%, var(--color-brown-light) 100%);
-}
-
-.heroBannerHtml :global(p) {
-  margin: 0;
-  height: 100%;
-}
-
-.heroBannerHtml :global(video),
-.heroBannerHtml :global(iframe),
-.heroBannerHtml :global(img) {
+.heroVideoElement iframe {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   border: 0;
+  transition: opacity 220ms ease;
 }
 
 .about {

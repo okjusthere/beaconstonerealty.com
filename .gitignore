@@ -17,5 +17,3 @@ Thumbs.db
 
 # Large video files
 frontend/public/video/*.mp4
-!frontend/public/video/hero-1080p.mp4
-!frontend/public/video/hero-720p.mp4

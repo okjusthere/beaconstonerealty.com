@@ -2,25 +2,21 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-type HeroVideoSource = {
-  src: string;
-  type: string;
-  media?: string;
-};
-
 interface HeroVideoProps {
   className?: string;
+  embedUrl: string;
   poster: string;
-  sources: HeroVideoSource[];
+  title: string;
 }
 
-export default function HeroVideo({ className, poster, sources }: HeroVideoProps) {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+export default function HeroVideo({ className, embedUrl, poster, title }: HeroVideoProps) {
+  const frameRef = useRef<HTMLDivElement | null>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) {
+    const frame = frameRef.current;
+    if (!frame) {
       return;
     }
 
@@ -46,45 +42,29 @@ export default function HeroVideo({ className, poster, sources }: HeroVideoProps
       { rootMargin: '240px 0px' },
     );
 
-    observer.observe(video);
+    observer.observe(frame);
 
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || !shouldLoad) {
-      return;
-    }
-
-    const playAttempt = video.play();
-    if (playAttempt) {
-      playAttempt.catch(() => {});
-    }
-  }, [shouldLoad]);
-
   return (
-    <video
-      ref={videoRef}
+    <div
+      ref={frameRef}
       className={className}
-      poster={poster}
-      autoPlay={shouldLoad}
-      muted
-      loop
-      playsInline
-      preload={shouldLoad ? 'metadata' : 'none'}
+      style={{ backgroundImage: `url(${poster})` }}
       aria-hidden="true"
     >
-      {shouldLoad
-        ? sources.map((source) => (
-            <source
-              key={`${source.src}-${source.media || 'default'}`}
-              src={source.src}
-              type={source.type}
-              media={source.media}
-            />
-          ))
-        : null}
-    </video>
+      {shouldLoad ? (
+        <iframe
+          src={embedUrl}
+          title={title}
+          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+          allowFullScreen
+          loading="lazy"
+          onLoad={() => setIsReady(true)}
+          style={{ opacity: isReady ? 1 : 0 }}
+        />
+      ) : null}
+    </div>
   );
 }
