@@ -83,6 +83,7 @@
 .about {
   background: var(--color-white);
   padding-top: clamp(56px, 8vw, 96px);
+  padding-bottom: clamp(36px, 6vw, 72px);
 }
 
 .aboutGrid {
@@ -92,14 +93,19 @@
   align-items: start;
 }
 
+.aboutImage {
+  width: 100%;
+}
+
 .aboutImage img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
 }
 
 .aboutText {
-  padding-top: var(--space-sm);
+  max-width: 40rem;
+  padding-top: clamp(12px, 2vw, 24px);
 }
 
 .sectionTitle {
@@ -122,7 +128,8 @@
 
 .story {
   background: var(--color-white);
-  padding-top: 0;
+  padding-top: clamp(56px, 10vw, 132px);
+  padding-bottom: clamp(40px, 7vw, 88px);
 }
 
 .storyInner {
@@ -137,6 +144,7 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: var(--space-lg);
+  max-width: 38rem;
 }
 
 .storyImage {
@@ -145,7 +153,7 @@
 
 .storyImage img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
 }
 
@@ -307,8 +315,12 @@
 
 @media (min-width: 768px) {
   .aboutGrid {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-    gap: var(--space-3xl);
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    gap: clamp(56px, 7vw, 120px);
+  }
+
+  .aboutText {
+    justify-self: end;
   }
 
   .propertiesGrid {
@@ -330,21 +342,27 @@
     justify-content: flex-end;
   }
 
-  .storyInner {
-    display: flow-root;
+  .aboutImage {
+    max-width: 760px;
   }
 
-  .storyImage {
-    float: right;
-    width: 50%;
-    max-width: 625px;
+  .storyInner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+    gap: clamp(72px, 8vw, 140px);
+    align-items: start;
   }
 
   .storyText {
-    float: left;
-    width: calc(50% - 30px);
-    margin-top: 40px;
-    padding-right: 30px;
+    order: 1;
+    padding-top: clamp(84px, 10vw, 160px);
+  }
+
+  .storyImage {
+    order: 2;
+    justify-self: end;
+    width: 100%;
+    max-width: 900px;
   }
 
   .propertiesGrid {

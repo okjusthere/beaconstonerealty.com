@@ -64,6 +64,29 @@ test('homepage keeps the title block above the Mux hero embed and serves same-or
   expect(videoBox).not.toBeNull();
   expect((headingBox?.y ?? 0) + (headingBox?.height ?? 0)).toBeLessThan((videoBox?.y ?? 0) + 8);
 
+  const aboutHeading = page.getByRole('heading', { level: 2, name: /Beacon Stone Realty/i });
+  const aboutImage = page.locator('img[alt="Beacon Stone Realty"]').first();
+  const storyHeading = page.getByRole('heading', { level: 2, name: /Our Story/i });
+  const storyImage = page.locator('img[alt="Our Story"]').first();
+
+  await expect(aboutHeading).toBeVisible();
+  await expect(aboutImage).toBeVisible();
+  await expect(storyHeading).toBeVisible();
+  await expect(storyImage).toBeVisible();
+
+  const aboutHeadingBox = await aboutHeading.boundingBox();
+  const aboutImageBox = await aboutImage.boundingBox();
+  const storyHeadingBox = await storyHeading.boundingBox();
+  const storyImageBox = await storyImage.boundingBox();
+
+  expect(aboutHeadingBox).not.toBeNull();
+  expect(aboutImageBox).not.toBeNull();
+  expect(storyHeadingBox).not.toBeNull();
+  expect(storyImageBox).not.toBeNull();
+  expect((aboutHeadingBox?.x ?? 0)).toBeGreaterThan((aboutImageBox?.x ?? 0) + ((aboutImageBox?.width ?? 0) * 0.6));
+  expect((storyImageBox?.x ?? 0)).toBeGreaterThan((storyHeadingBox?.x ?? 0) + ((storyHeadingBox?.width ?? 0) * 0.8));
+  expect((storyHeadingBox?.y ?? 0)).toBeGreaterThan((storyImageBox?.y ?? 0) + 40);
+
   const assetUrls = await collectSameOriginAssets(page);
   expect(assetUrls.length).toBeGreaterThan(0);
 
