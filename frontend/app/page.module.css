@@ -72,7 +72,7 @@
   background-size: cover;
 }
 
-.heroVideoElement iframe {
+.heroVideoElement :global(mux-player) {
   display: block;
   width: 100%;
   height: 100%;

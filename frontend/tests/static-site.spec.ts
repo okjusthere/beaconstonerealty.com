@@ -49,14 +49,12 @@ test('homepage keeps the title block above the Mux hero embed and centers the fe
     level: 1,
     name: /Every home tells a story\. Let yours begin here/i,
   });
-  const heroFrame = page.locator('main iframe[title="Beacon Stone Realty showcase"]').first();
+  const heroFrame = page.locator('main mux-player[playback-id="02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q"]').first();
 
   await expect(heroHeading).toBeVisible();
   await expect(heroFrame).toBeVisible();
   await expect(page.locator('h1 br')).toHaveCount(1);
-  await expect(heroFrame).toHaveAttribute('src', /player\.mux\.com\/02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q/);
-  await expect(heroFrame).toHaveAttribute('src', /autoplay=true/);
-  await expect(heroFrame).toHaveAttribute('src', /muted=false/);
+  await expect(heroFrame).toHaveAttribute('playback-id', '02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q');
 
   const headingBox = await heroHeading.boundingBox();
   const videoBox = await heroFrame.boundingBox();
@@ -159,9 +157,9 @@ test('sell-with-us page renders advisor content and keeps only the sale inquiry 
   await page.goto('/sell-with-us/', { waitUntil: 'domcontentloaded' });
 
   await expect(page.getByRole('heading', { level: 1, name: /Sell with Us/i })).toBeVisible();
-  const saleFrame = page.locator('main iframe[title="Beacon Stone Realty sale showcase"]').first();
+  const saleFrame = page.locator('main mux-player[playback-id="02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q"]').first();
   await expect(saleFrame).toBeVisible();
-  await expect(saleFrame).toHaveAttribute('src', /muted=false/);
+  await expect(saleFrame).toHaveAttribute('playback-id', '02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q');
   await expect(page.getByRole('heading', { level: 2, name: /Work With Market Specialists/i })).toBeVisible();
   await expect(page.getByRole('link', { name: /Xiangyu \(Allen\) Zhang/i }).first()).toBeVisible();
   await expect(page.locator('form')).toHaveCount(1);
@@ -270,7 +268,7 @@ test.describe('mobile homepage layout', () => {
       level: 1,
       name: /Every home tells a story\. Let yours begin here/i,
     });
-    const heroFrame = page.locator('main iframe[title="Beacon Stone Realty showcase"]').first();
+    const heroFrame = page.locator('main mux-player[playback-id="02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q"]').first();
 
     await expect(heroHeading).toBeVisible();
     await expect(heroFrame).toBeVisible();

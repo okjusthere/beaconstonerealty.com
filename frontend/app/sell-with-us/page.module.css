@@ -82,7 +82,8 @@
 
 .heroMedia :global(video),
 .heroMedia :global(img),
-.heroMedia :global(iframe) {
+.heroMedia :global(iframe),
+.heroMedia :global(mux-player) {
   display: block;
   width: 100%;
   height: 100%;
@@ -119,7 +120,7 @@
   background-size: cover;
 }
 
-.heroMux :global(iframe) {
+.heroMux :global(mux-player) {
   width: 100%;
   height: 100%;
   transition: opacity 220ms ease;

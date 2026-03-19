@@ -1,15 +1,23 @@
 'use client';
 
+import MuxPlayer from '@mux/mux-player-react';
+import type { CSSProperties } from 'react';
 import { useEffect, useRef, useState } from 'react';
 
 interface HeroVideoProps {
   className?: string;
-  embedUrl: string;
+  playbackId: string;
   poster: string;
   title: string;
 }
 
-export default function HeroVideo({ className, embedUrl, poster, title }: HeroVideoProps) {
+const PLAYER_STYLE = {
+  '--top-controls': 'none',
+  '--bottom-controls': 'none',
+  '--controls-backdrop-color': 'transparent',
+} as CSSProperties;
+
+export default function HeroVideo({ className, playbackId, poster, title }: HeroVideoProps) {
   const frameRef = useRef<HTMLDivElement | null>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -55,14 +63,18 @@ export default function HeroVideo({ className, embedUrl, poster, title }: HeroVi
       aria-hidden="true"
     >
       {shouldLoad ? (
-        <iframe
-          src={embedUrl}
+        <MuxPlayer
+          playbackId={playbackId}
           title={title}
-          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-          allowFullScreen
-          loading="lazy"
-          onLoad={() => setIsReady(true)}
-          style={{ opacity: isReady ? 1 : 0 }}
+          videoTitle={title}
+          poster={poster}
+          autoPlay
+          muted={false}
+          loop
+          playsInline
+          preload="auto"
+          onCanPlay={() => setIsReady(true)}
+          style={{ ...PLAYER_STYLE, opacity: isReady ? 1 : 0 }}
         />
       ) : null}
     </div>

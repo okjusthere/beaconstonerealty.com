@@ -3,7 +3,7 @@ import HeroVideo from '@/components/HeroVideo';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
 import { getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
-import { BEACON_MUX_EMBED_URL, BEACON_MUX_POSTER } from '@/lib/mux';
+import { BEACON_MUX_PLAYBACK_ID, BEACON_MUX_POSTER } from '@/lib/mux';
 
 const FORM_NOTE_HTML = `
   <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
@@ -76,7 +76,7 @@ export default async function SellWithUsPage() {
             <div className={styles.heroMedia}>
               <HeroVideo
                 className={styles.heroMux}
-                embedUrl={BEACON_MUX_EMBED_URL}
+                playbackId={BEACON_MUX_PLAYBACK_ID}
                 poster={BEACON_MUX_POSTER}
                 title="Beacon Stone Realty sale showcase"
               />
