@@ -209,6 +209,8 @@ test('about and broker index pages restore the missing legacy sections and long-
   await expect(page.getByText(/An International Network/i)).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: /Advisors, Not Just Agents/i })).toBeVisible();
   await expect(page.getByText(/global network of exceptional agents and exclusive properties/i)).toBeVisible();
+  await expect(page.getByRole('link', { name: /Xiangyu \(Allen\) Zhang/i }).first()).toHaveAttribute('href', '/brokers/74/');
+  await expect(page.getByText(/View Profile/i).first()).toBeVisible();
 
   await page.goto('/brokers/', { waitUntil: 'domcontentloaded' });
   await expect(page.getByRole('heading', { level: 1, name: /Guided by Expertise\. Driven by Strategy/i })).toBeVisible();

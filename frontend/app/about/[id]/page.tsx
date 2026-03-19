@@ -27,6 +27,34 @@ type NetworkCard = Pick<NewsItem, 'id' | 'title' | 'thumbnail' | 'url'>;
 type AdvisorCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'description' | 'field'>;
 type DiscoverCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'description'>;
 
+function summarizeAdvisorIntro(advisor: AdvisorCard): string {
+  const source = stripHtmlTags(advisor.field?.real_estate_broker_desc || '');
+  if (!source) {
+    return '';
+  }
+
+  const sentenceMatch = source.match(/^(.{80,220}?[.!?])(?:\s|$)/);
+  if (sentenceMatch?.[1]) {
+    return sentenceMatch[1].trim();
+  }
+
+  return source.length > 170 ? `${source.slice(0, 167).trimEnd()}...` : source;
+}
+
+function mergeAdvisorRecord(base: AdvisorCard, detail: NewsItem): AdvisorCard {
+  return {
+    ...base,
+    ...detail,
+    url: base.url || detail.url,
+    thumbnail: base.thumbnail || detail.thumbnail,
+    description: base.description || detail.description,
+    field: {
+      ...(base.field || {}),
+      ...(detail.field || {}),
+    },
+  };
+}
+
 export default async function AboutPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
@@ -110,7 +138,16 @@ export default async function AboutPage({ params }: { params: Promise<{ id: stri
     }
 
     if (advisorsData.status === 'fulfilled') {
-      advisors = advisorsData.value as AdvisorCard[];
+      advisors = await Promise.all(
+        (advisorsData.value as AdvisorCard[]).map(async (advisor) => {
+          try {
+            const detail = await getNewsDetail(advisor.id);
+            return mergeAdvisorRecord(advisor, detail);
+          } catch {
+            return advisor;
+          }
+        }),
+      );
     }
 
     if (discoverData.status === 'fulfilled') {
@@ -232,11 +269,12 @@ export default async function AboutPage({ params }: { params: Promise<{ id: stri
                     <div className={styles.advisorBody}>
                       <h3>{advisor.title}</h3>
                       {advisor.description && <p className={styles.advisorRole}>{advisor.description}</p>}
-                      {advisor.field?.real_estate_broker_desc && (
+                      {summarizeAdvisorIntro(advisor) && (
                         <p className={styles.advisorSummary}>
-                          {stripHtmlTags(advisor.field.real_estate_broker_desc).slice(0, 220)}...
+                          {summarizeAdvisorIntro(advisor)}
                         </p>
                       )}
+                      <span className={styles.advisorAction}>View Profile</span>
                     </div>
                   </Link>
                 ))}
