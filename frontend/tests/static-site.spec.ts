@@ -55,7 +55,8 @@ test('homepage keeps the title block above the Mux hero embed and centers the fe
   await expect(heroFrame).toBeVisible();
   await expect(page.locator('h1 br')).toHaveCount(1);
   await expect(heroFrame).toHaveAttribute('src', /player\.mux\.com\/02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q/);
-  await expect(heroFrame).toHaveAttribute('src', /autoplay=muted/);
+  await expect(heroFrame).toHaveAttribute('src', /autoplay=true/);
+  await expect(heroFrame).toHaveAttribute('src', /muted=false/);
 
   const headingBox = await heroHeading.boundingBox();
   const videoBox = await heroFrame.boundingBox();
@@ -158,7 +159,9 @@ test('sell-with-us page renders advisor content and keeps only the sale inquiry 
   await page.goto('/sell-with-us/', { waitUntil: 'domcontentloaded' });
 
   await expect(page.getByRole('heading', { level: 1, name: /Sell with Us/i })).toBeVisible();
-  await expect(page.locator('main video').first()).toBeVisible();
+  const saleFrame = page.locator('main iframe[title="Beacon Stone Realty sale showcase"]').first();
+  await expect(saleFrame).toBeVisible();
+  await expect(saleFrame).toHaveAttribute('src', /muted=false/);
   await expect(page.getByRole('heading', { level: 2, name: /Work With Market Specialists/i })).toBeVisible();
   await expect(page.getByRole('link', { name: /Xiangyu \(Allen\) Zhang/i }).first()).toBeVisible();
   await expect(page.locator('form')).toHaveCount(1);

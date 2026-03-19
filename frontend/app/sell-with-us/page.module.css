@@ -111,6 +111,20 @@
   background: #2f2827;
 }
 
+.heroMux {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heroMux :global(iframe) {
+  width: 100%;
+  height: 100%;
+  transition: opacity 220ms ease;
+}
+
 .advisors {
   padding: 4.5rem 0;
   background: var(--color-white);

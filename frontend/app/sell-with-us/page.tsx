@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import HeroVideo from '@/components/HeroVideo';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
 import { getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
+import { BEACON_MUX_EMBED_URL, BEACON_MUX_POSTER } from '@/lib/mux';
 
 const FORM_NOTE_HTML = `
   <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
@@ -18,20 +20,9 @@ export const metadata = {
 
 type SaleCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'keywords' | 'description' | 'content' | 'field'>;
 
-function extractVideoSource(html: string): string | null {
-  const videoMatch = html.match(/<video[^>]+src=["']([^"']+)["']/i);
-  if (videoMatch?.[1]) {
-    return videoMatch[1];
-  }
-
-  const sourceMatch = html.match(/<source[^>]+src=["']([^"']+)["']/i);
-  return sourceMatch?.[1] ?? null;
-}
-
 export default async function SellWithUsPage() {
   let heroTitle = 'Sale';
   let heroDescription = '';
-  let heroMedia = '';
   let advisorCards: SaleCard[] = [];
   let inquiryHeading = '';
   let inquiryDescription = '';
@@ -53,7 +44,6 @@ export default async function SellWithUsPage() {
     if (hero.status === 'fulfilled') {
       heroTitle = hero.value.title || heroTitle;
       heroDescription = hero.value.description || '';
-      heroMedia = hero.value.content || '';
     }
     if (advisors.status === 'fulfilled') {
       advisorCards = advisors.value as SaleCard[];
@@ -68,8 +58,6 @@ export default async function SellWithUsPage() {
   } catch {
     // Keep the page shape intact if legacy content is temporarily unavailable.
   }
-
-  const heroVideoSrc = extractVideoSource(heroMedia);
 
   return (
     <>
@@ -86,22 +74,12 @@ export default async function SellWithUsPage() {
         <div className="container">
           <div className={styles.heroMediaFrame}>
             <div className={styles.heroMedia}>
-              {heroVideoSrc ? (
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className={styles.heroVideo}
-                >
-                  <source src={heroVideoSrc} type="video/mp4" />
-                </video>
-              ) : heroMedia ? (
-                <div dangerouslySetInnerHTML={{ __html: heroMedia }} />
-              ) : (
-                <div className={styles.heroFallback} />
-              )}
+              <HeroVideo
+                className={styles.heroMux}
+                embedUrl={BEACON_MUX_EMBED_URL}
+                poster={BEACON_MUX_POSTER}
+                title="Beacon Stone Realty sale showcase"
+              />
             </div>
           </div>
         </div>
