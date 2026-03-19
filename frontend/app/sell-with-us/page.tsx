@@ -18,6 +18,16 @@ export const metadata = {
 
 type SaleCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'keywords' | 'description' | 'content' | 'field'>;
 
+function extractVideoSource(html: string): string | null {
+  const videoMatch = html.match(/<video[^>]+src=["']([^"']+)["']/i);
+  if (videoMatch?.[1]) {
+    return videoMatch[1];
+  }
+
+  const sourceMatch = html.match(/<source[^>]+src=["']([^"']+)["']/i);
+  return sourceMatch?.[1] ?? null;
+}
+
 export default async function SellWithUsPage() {
   let heroTitle = 'Sale';
   let heroDescription = '';
@@ -63,6 +73,8 @@ export default async function SellWithUsPage() {
     // Keep the page shape intact if legacy content is temporarily unavailable.
   }
 
+  const heroVideoSrc = extractVideoSource(heroMedia);
+
   return (
     <>
       <section className={styles.hero}>
@@ -74,7 +86,18 @@ export default async function SellWithUsPage() {
               {heroDescription && <p className={styles.heroDescription}>{heroDescription}</p>}
             </div>
             <div className={styles.heroMedia}>
-              {heroMedia ? (
+              {heroVideoSrc ? (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className={styles.heroVideo}
+                >
+                  <source src={heroVideoSrc} type="video/mp4" />
+                </video>
+              ) : heroMedia ? (
                 <div dangerouslySetInnerHTML={{ __html: heroMedia }} />
               ) : (
                 <div className={styles.heroFallback} />

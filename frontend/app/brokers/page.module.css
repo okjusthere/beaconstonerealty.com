@@ -38,8 +38,8 @@
   margin: 0;
   padding: 1rem 1.5rem;
   background: rgba(62, 54, 52, 0.92);
-  border: 1px solid #c29b40;
-  color: #fff;
+  border: 1px solid var(--color-gold);
+  color: var(--color-white);
   text-align: center;
   font-size: clamp(2rem, 6vw, 4.5rem);
   line-height: 1;
@@ -47,7 +47,7 @@
 
 .results {
   padding: 4rem 0 3rem;
-  background: #fff;
+  background: var(--color-white);
 }
 
 .resultList {
@@ -59,7 +59,7 @@
   display: flex;
   gap: 1.5rem;
   padding: 2.5rem 0;
-  border-bottom: 1px solid #d6d6d6;
+  border-bottom: 1px solid var(--color-grey-light);
 }
 
 .agentImageLink {
@@ -86,7 +86,7 @@
 }
 
 .agentName {
-  color: #3e3634;
+  color: var(--color-brown);
   font-size: clamp(1.55rem, 2.3vw, 2rem);
   line-height: 1.2;
   text-decoration: none;
@@ -95,7 +95,7 @@
 .agentRole,
 .contactTitle {
   margin: 0.65rem 0 0;
-  color: #666;
+  color: var(--color-grey-dark);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -105,18 +105,18 @@
 .separator {
   width: 50px;
   margin: 1rem 0;
-  border-top: 1px solid #b28e3b;
+  border-top: 1px solid var(--color-gold);
 }
 
 .agentOffice {
   margin: 0 0 0.5rem;
-  color: #3e3634;
+  color: var(--color-brown);
   font-size: 1.05rem;
   line-height: 1.6;
 }
 
 .agentContent {
-  color: #5f5a57;
+  color: var(--color-text-light);
   line-height: 1.75;
 }
 
@@ -130,7 +130,7 @@
 
 .contactLink,
 .contactAction {
-  color: #3e3634;
+  color: var(--color-brown);
   text-decoration: none;
   line-height: 1.7;
 }
@@ -144,7 +144,7 @@
 
 .touchSection {
   padding: 0 0 5rem;
-  background: #f2f2f2;
+  background: var(--color-off-white);
 }
 
 .touchWrap {
@@ -155,7 +155,7 @@
 .empty {
   padding: 4rem 0;
   text-align: center;
-  color: #5f5a57;
+  color: var(--color-text-light);
 }
 
 @media (max-width: 899px) {

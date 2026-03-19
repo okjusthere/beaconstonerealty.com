@@ -16,19 +16,19 @@
 :root {
   /* Colors */
   --color-navy: #002349;
-  --color-navy-dark: #001a36;
-  --color-gold: #b28e3b;
-  --color-gold-light: #c9a855;
+  --color-navy-dark: #001731;
+  --color-gold: #c29b40;
+  --color-gold-light: #d4ae58;
   --color-brown: #3e3634;
   --color-brown-light: #5a504e;
   --color-white: #ffffff;
-  --color-off-white: #f8f7f5;
+  --color-off-white: #f2f2f2;
   --color-grey-lightest: #f2f2f2;
   --color-grey-light: #d6d6d6;
   --color-grey: #999999;
   --color-grey-dark: #666666;
-  --color-text: #333333;
-  --color-text-light: #555555;
+  --color-text: #3e3634;
+  --color-text-light: #666666;
   --color-black: #000000;
 
   /* Typography */
@@ -58,9 +58,9 @@
   --transition-slow: 500ms ease;
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.12);
 
   /* Border Radius */
   --radius-sm: 2px;
@@ -151,7 +151,7 @@ img {
   font-weight: 500;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  padding: 14px 32px;
+  padding: 16px 24px 14px;
   border: 1px solid transparent;
   cursor: pointer;
   transition: all var(--transition-base);
@@ -200,7 +200,7 @@ img {
   font-weight: 500;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: var(--color-navy);
+  color: var(--color-brown);
   background: none;
   border: none;
   cursor: pointer;

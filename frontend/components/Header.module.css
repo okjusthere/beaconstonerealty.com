@@ -5,16 +5,19 @@
   right: 0;
   z-index: 1000;
   background: var(--color-navy);
+  border-bottom: 1px solid rgba(62, 54, 52, 0.82);
   transition: all var(--transition-base);
 }
 
 .header.transparent {
   background: transparent;
+  border-bottom-color: transparent;
 }
 
 .header.scrolled {
   background: var(--color-navy);
-  box-shadow: var(--shadow-lg);
+  border-bottom-color: rgba(62, 54, 52, 0.82);
+  box-shadow: none;
 }
 
 .inner {
@@ -35,7 +38,7 @@
 }
 
 .logoImg {
-  height: 40px;
+  height: 58px;
   width: auto;
   object-fit: contain;
 }
@@ -66,19 +69,19 @@
 
 .navLink {
   display: block;
-  padding: var(--space-md) var(--space-md);
+  padding: 32px 20px;
   color: var(--color-white);
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 500;
-  letter-spacing: 1.2px;
+  letter-spacing: 1.4px;
   text-transform: uppercase;
   transition: color var(--transition-fast);
   white-space: nowrap;
 }
 
 .navLink:hover {
-  color: var(--color-gold);
+  color: #7c8ca2;
 }
 
 /* Dropdown */
@@ -113,15 +116,15 @@
 .ctaButton {
   display: inline-flex;
   align-items: center;
-  padding: 10px 24px;
+  padding: 13px 20px;
   background: var(--color-gold);
   color: var(--color-white);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
   letter-spacing: 1.4px;
   text-transform: uppercase;
   transition: all var(--transition-base);
-  margin-left: var(--space-md);
+  margin-left: 20px;
 }
 
 .ctaButton:hover {

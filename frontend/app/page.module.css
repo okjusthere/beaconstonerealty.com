@@ -55,7 +55,7 @@
   min-height: 280px;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #120f0e;
+  background: var(--color-brown);
 }
 
 .heroVideoElement,
@@ -71,7 +71,7 @@
 }
 
 .heroFallback {
-  background: linear-gradient(135deg, #1d1714 0%, #4a403c 100%);
+  background: linear-gradient(135deg, var(--color-brown) 0%, var(--color-brown-light) 100%);
 }
 
 .heroBannerHtml :global(p) {
@@ -215,7 +215,7 @@
   margin: 0 auto;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #000;
+  background: var(--color-brown);
 }
 
 .videoWrapper :global(p) {

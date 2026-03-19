@@ -12,7 +12,9 @@ const socialLinks = [
   { name: 'TikTok', url: '#' },
   { name: 'LinkedIn', url: '#' },
   { name: 'YouTube', url: '#' },
+  { name: 'X', url: '#' },
   { name: 'Facebook', url: '#' },
+  { name: 'Pinterest', url: '#' },
   { name: 'Red Note', url: '#' },
 ];
 

@@ -1,6 +1,6 @@
 .shell {
-  background: #f2f2f2;
-  border: 1px solid #ded9d1;
+  background: var(--color-off-white);
+  border: 1px solid rgba(62, 54, 52, 0.14);
   padding: 2rem;
 }
 
@@ -17,20 +17,20 @@
   font-size: 0.75rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #666;
+  color: var(--color-grey-dark);
   font-weight: 600;
 }
 
 .title {
   margin: 0 0 0.75rem;
-  color: #3e3634;
+  color: var(--color-brown);
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   line-height: 1.1;
 }
 
 .description {
   margin: 0;
-  color: #5f5a57;
+  color: var(--color-text-light);
   line-height: 1.75;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -63,7 +63,7 @@
 }
 
 .field label {
-  color: #3e3634;
+  color: var(--color-brown);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -72,9 +72,9 @@
 .field input,
 .field textarea {
   width: 100%;
-  border: 1px solid #cfc9c2;
-  background: #fff;
-  color: #302926;
+  border: 1px solid rgba(62, 54, 52, 0.24);
+  background: var(--color-white);
+  color: var(--color-brown);
   padding: 0.95rem 1rem;
   font: inherit;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -83,8 +83,8 @@
 .field input:focus,
 .field textarea:focus {
   outline: none;
-  border-color: #3e3634;
-  box-shadow: 0 0 0 3px rgba(62, 54, 52, 0.08);
+  border-color: var(--color-brown);
+  box-shadow: 0 0 0 3px rgba(62, 54, 52, 0.06);
 }
 
 .field textarea {
@@ -102,9 +102,9 @@
 .sendCode {
   height: 3.125rem;
   padding: 0 1.1rem;
-  border: 1px solid #3e3634;
-  background: transparent;
-  color: #3e3634;
+  border: 1px solid var(--color-brown);
+  background: var(--color-white);
+  color: var(--color-brown);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -118,7 +118,7 @@
 
 .note,
 .disclaimer {
-  color: #5f5a57;
+  color: var(--color-text-light);
   font-size: 0.9rem;
   line-height: 1.75;
   overflow-wrap: anywhere;
@@ -137,7 +137,7 @@
 
 .note :global(a),
 .disclaimer :global(a) {
-  color: #002349;
+  color: var(--color-navy);
   text-decoration: none;
 }
 
@@ -148,9 +148,9 @@
   justify-content: center;
   min-height: 3.25rem;
   padding: 0 1.5rem;
-  border: 1px solid #3e3634;
-  background: #3e3634;
-  color: #fff;
+  border: 1px solid var(--color-gold);
+  background: var(--color-brown);
+  color: var(--color-white);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;

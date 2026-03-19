@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   padding-top: var(--header-height);
-  background: #f2f2f2;
+  background: var(--color-off-white);
 }
 
 .heroImage,
@@ -19,7 +19,7 @@
 }
 
 .intro {
-  background: #f2f2f2;
+  background: var(--color-off-white);
   padding: 2.25rem 0 3rem;
 }
 
@@ -31,12 +31,12 @@
 
 .introTitle {
   margin-bottom: 1rem;
-  color: #3e3634;
+  color: var(--color-brown);
   font-size: clamp(2rem, 4vw, 3.25rem);
 }
 
 .introContent {
-  color: #5f5a57;
+  color: var(--color-text-light);
   line-height: 1.85;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -53,7 +53,7 @@
 
 .content {
   padding: 0 0 5rem;
-  background: #fff;
+  background: var(--color-white);
 }
 
 .grid {
@@ -69,14 +69,14 @@
 }
 
 .sidebarCard {
-  border: 1px solid #e2ddd6;
-  background: #faf7f2;
+  border: 1px solid rgba(62, 54, 52, 0.12);
+  background: var(--color-off-white);
   padding: 2rem;
 }
 
 .sidebarEyebrow {
   margin: 0 0 0.75rem;
-  color: #8e7a58;
+  color: var(--color-gold);
   font-size: 0.76rem;
   letter-spacing: 0.18em;
   font-weight: 700;
@@ -85,13 +85,13 @@
 
 .sidebarTitle {
   margin: 0 0 1rem;
-  color: #3e3634;
+  color: var(--color-brown);
   font-size: clamp(1.5rem, 3vw, 2.2rem);
 }
 
 .sidebarText {
   margin: 0 0 1.5rem;
-  color: #5f5a57;
+  color: var(--color-text-light);
   line-height: 1.75;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -108,13 +108,13 @@
 
 .contactItem {
   padding-top: 1.25rem;
-  border-top: 1px solid #e2ddd6;
+  border-top: 1px solid rgba(62, 54, 52, 0.12);
 }
 
 .contactLabel {
   display: block;
   margin-bottom: 0.35rem;
-  color: #8e7a58;
+  color: var(--color-gold);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -123,7 +123,7 @@
 
 .contactValue {
   margin: 0;
-  color: #3e3634;
+  color: var(--color-brown);
   font-size: 1.1rem;
   line-height: 1.6;
   text-decoration: none;
