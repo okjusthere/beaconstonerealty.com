@@ -1,5 +1,5 @@
 .hero {
-  background: var(--color-navy);
+  background: var(--color-brown);
   padding-top: calc(var(--header-height) + 50px);
   padding-bottom: 88px;
 }
@@ -89,7 +89,7 @@
 }
 
 .feature {
-  background: var(--color-navy);
+  background: var(--color-brown);
 }
 
 .featureMedia {
@@ -174,7 +174,7 @@
 }
 
 .advisorsHeader {
-  background: var(--color-navy);
+  background: var(--color-brown);
   padding: 76px 0 28px;
   text-align: center;
 }
@@ -186,7 +186,7 @@
 }
 
 .advisorsSection {
-  background: var(--color-navy);
+  background: var(--color-brown);
   padding: 0 0 76px;
 }
 

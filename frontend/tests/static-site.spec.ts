@@ -237,10 +237,17 @@ test('about and broker index pages restore the missing legacy sections and long-
   await page.goto('/about/13/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('main > section').first().locator('video')).toHaveCount(0);
   await expect(page.getByText(/An International Network/i)).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: /Advisors, Not Just Agents/i })).toBeVisible();
+  const advisorsHeading = page.getByRole('heading', { level: 2, name: /Advisors, Not Just Agents/i });
+  await expect(advisorsHeading).toBeVisible();
   await expect(page.getByText(/global network of exceptional agents and exclusive properties/i)).toBeVisible();
   await expect(page.getByRole('link', { name: /Xiangyu \(Allen\) Zhang/i }).first()).toHaveAttribute('href', '/brokers/74/');
   await expect(page.getByText(/View Profile/i).first()).toBeVisible();
+
+  const aboutHeroColor = await page.locator('main > section').first().evaluate((node) => window.getComputedStyle(node).backgroundColor);
+  const aboutAdvisorsColor = await advisorsHeading.evaluate((node) => window.getComputedStyle(node.closest('section') as Element).backgroundColor);
+
+  expect(aboutHeroColor).toBe('rgb(62, 54, 52)');
+  expect(aboutAdvisorsColor).toBe('rgb(62, 54, 52)');
 
   await page.goto('/brokers/', { waitUntil: 'domcontentloaded' });
   await expect(page.getByRole('heading', { level: 1, name: /Guided by Expertise\. Driven by Strategy/i })).toBeVisible();
@@ -252,15 +259,26 @@ test('about and broker index pages restore the missing legacy sections and long-
 test('join-us page renders media, feature sections, and discover-more links', async ({ page }) => {
   await page.goto('/joinUs/39/', { waitUntil: 'domcontentloaded' });
 
-  await expect(page.getByRole('heading', { level: 1, name: /Join Us/i })).toBeVisible();
+  const joinHeroHeading = page.getByRole('heading', { level: 1, name: /Join Us/i });
+  await expect(joinHeroHeading).toBeVisible();
   await expect(page.locator('main > section').first().locator('video')).toHaveCount(0);
   await expect(page.getByRole('heading', { level: 2, name: /A more thoughtful real estate experience\./i })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: /Why Beacon Stone Realty/i })).toBeVisible();
-  await expect(page.getByRole('heading', { level: 2, name: /Discover More/i })).toBeVisible();
+  const careersHeading = page.getByRole('heading', { level: 2, name: /Why Beacon Stone Realty/i });
+  const discoverHeading = page.getByRole('heading', { level: 2, name: /Discover More/i });
+  await expect(careersHeading).toBeVisible();
+  await expect(discoverHeading).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: /Give yourself every advantage/i })).toBeVisible();
 
   const discoverLinks = page.locator('a').filter({ hasText: /About Us|Sell with Us|Real Estate Agent Center/i });
   await expect(discoverLinks.first()).toBeVisible();
+
+  const joinHeroColor = await joinHeroHeading.evaluate((node) => window.getComputedStyle(node.closest('section') as Element).backgroundColor);
+  const joinCareersColor = await page.locator('main > section').nth(3).evaluate((node) => window.getComputedStyle(node).backgroundColor);
+  const joinDiscoverColor = await page.locator('main > section').nth(4).evaluate((node) => window.getComputedStyle(node).backgroundColor);
+
+  expect(joinHeroColor).toBe('rgb(62, 54, 52)');
+  expect(joinCareersColor).toBe('rgb(62, 54, 52)');
+  expect(joinDiscoverColor).toBe('rgb(62, 54, 52)');
 
   const joinForm = page.locator('form').first();
   await joinForm.getByLabel('First Name').fill('Ada');
