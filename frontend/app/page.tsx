@@ -124,6 +124,7 @@ export default async function HomePage() {
               playbackId={BEACON_MUX_PLAYBACK_ID}
               poster={BEACON_MUX_POSTER}
               title="Beacon Stone Realty showcase"
+              muted
             />
           </div>
         </div>

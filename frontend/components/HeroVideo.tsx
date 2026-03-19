@@ -9,6 +9,7 @@ interface HeroVideoProps {
   playbackId: string;
   poster: string;
   title: string;
+  muted?: boolean;
 }
 
 const PLAYER_STYLE = {
@@ -17,7 +18,13 @@ const PLAYER_STYLE = {
   '--controls-backdrop-color': 'transparent',
 } as CSSProperties;
 
-export default function HeroVideo({ className, playbackId, poster, title }: HeroVideoProps) {
+export default function HeroVideo({
+  className,
+  playbackId,
+  poster,
+  title,
+  muted = false,
+}: HeroVideoProps) {
   const frameRef = useRef<HTMLDivElement | null>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -68,8 +75,8 @@ export default function HeroVideo({ className, playbackId, poster, title }: Hero
           title={title}
           videoTitle={title}
           poster={poster}
-          autoPlay
-          muted={false}
+          autoPlay={muted ? 'muted' : true}
+          muted={muted}
           loop
           playsInline
           preload="auto"

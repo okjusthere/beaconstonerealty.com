@@ -55,6 +55,7 @@ test('homepage keeps the title block above the Mux hero embed and centers the fe
   await expect(heroFrame).toBeVisible();
   await expect(page.locator('h1 br')).toHaveCount(1);
   await expect(heroFrame).toHaveAttribute('playback-id', '02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q');
+  await expect.poll(async () => heroFrame.evaluate((node) => Boolean((node as HTMLMediaElement & { muted?: boolean }).muted))).toBe(true);
 
   const headingBox = await heroHeading.boundingBox();
   const videoBox = await heroFrame.boundingBox();
@@ -112,6 +113,17 @@ test('homepage keeps the title block above the Mux hero embed and centers the fe
   expect(errors).toEqual([]);
 });
 
+test('header uses the same brown background on home and interior pages', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  const homeHeaderColor = await page.locator('header').evaluate((node) => window.getComputedStyle(node).backgroundColor);
+
+  await page.goto('/about/13/', { waitUntil: 'domcontentloaded' });
+  const aboutHeaderColor = await page.locator('header').evaluate((node) => window.getComputedStyle(node).backgroundColor);
+
+  expect(homeHeaderColor).toBe('rgb(62, 54, 52)');
+  expect(aboutHeaderColor).toBe('rgb(62, 54, 52)');
+});
+
 test('critical static routes and legacy aliases respond successfully', async ({ request }) => {
   const routes = [
     '/',
@@ -160,6 +172,7 @@ test('sell-with-us page renders advisor content and keeps only the sale inquiry 
   const saleFrame = page.locator('main mux-player[playback-id="02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q"]').first();
   await expect(saleFrame).toBeVisible();
   await expect(saleFrame).toHaveAttribute('playback-id', '02PfbniOLPqerXd2XUwjIyrrl01F01asVS802OqdUvS6a01Q');
+  await expect.poll(async () => saleFrame.evaluate((node) => Boolean((node as HTMLMediaElement & { muted?: boolean }).muted))).toBe(false);
   await expect(page.getByRole('heading', { level: 2, name: /Work With Market Specialists/i })).toBeVisible();
   await expect(page.getByRole('link', { name: /Xiangyu \(Allen\) Zhang/i }).first()).toBeVisible();
   await expect(page.locator('form')).toHaveCount(1);

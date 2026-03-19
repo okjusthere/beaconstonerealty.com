@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import styles from './Header.module.css';
 import type { MenuItem, PicItem } from '@/lib/api';
 
@@ -15,8 +14,6 @@ export default function Header({ menuItems, logo }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
-  const pathname = usePathname();
-  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -36,7 +33,6 @@ export default function Header({ menuItems, logo }: HeaderProps) {
   const headerClass = [
     styles.header,
     scrolled ? styles.scrolled : '',
-    isHome && !scrolled ? styles.transparent : '',
   ].filter(Boolean).join(' ');
 
   return (
