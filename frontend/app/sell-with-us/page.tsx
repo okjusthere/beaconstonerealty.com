@@ -74,13 +74,17 @@ export default async function SellWithUsPage() {
   return (
     <>
       <section className={styles.hero}>
-        <div className="container">
-          <div className={styles.heroGrid}>
+        <div className={styles.heroInfo}>
+          <div className="container">
             <div className={styles.heroCopy}>
               <p className={styles.heroEyebrow}>Sale</p>
               <h1 className={styles.heroTitle}>{heroTitle}</h1>
               {heroDescription && <p className={styles.heroDescription}>{heroDescription}</p>}
             </div>
+          </div>
+        </div>
+        <div className="container">
+          <div className={styles.heroMediaFrame}>
             <div className={styles.heroMedia}>
               {heroVideoSrc ? (
                 <video

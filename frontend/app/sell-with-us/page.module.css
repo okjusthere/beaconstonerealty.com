@@ -1,17 +1,29 @@
 .hero {
-  padding: calc(var(--header-height) + 2rem) 0 4rem;
-  background: var(--color-off-white);
+  margin-bottom: clamp(3.5rem, 7vw, 6rem);
+  background: var(--color-white);
 }
 
-.heroGrid {
-  display: grid;
-  gap: 2rem;
-  align-items: center;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+.heroInfo {
+  position: relative;
+  padding: calc(var(--header-height) + 2.5rem) 0 10rem;
+  background: var(--color-navy);
+  text-align: center;
+}
+
+.heroInfo::after {
+  position: absolute;
+  bottom: 4.5rem;
+  left: 50%;
+  width: 1px;
+  height: 4rem;
+  background: var(--color-gold);
+  content: '';
+  transform: translateX(-50%);
 }
 
 .heroCopy {
-  max-width: 34rem;
+  max-width: 48rem;
+  margin: 0 auto;
 }
 
 .heroEyebrow,
@@ -33,22 +45,33 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.4rem, 5vw, 4.75rem);
-  line-height: 0.98;
+  margin-bottom: 1.15rem;
+  color: var(--color-white);
+  font-size: clamp(3rem, 6.2vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
 }
 
 .heroDescription {
-  margin: 0;
-  color: var(--color-text-light);
-  line-height: 1.85;
+  max-width: 40rem;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.74);
+  line-height: 1.9;
   font-size: 1.02rem;
 }
 
+.heroMediaFrame {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(-6rem, -9vw, -11rem);
+}
+
 .heroMedia {
-  min-height: 360px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: var(--color-brown);
+  background: #2f2827;
   border: 1px solid rgba(62, 54, 52, 0.12);
+  box-shadow: 0 28px 64px rgba(10, 18, 34, 0.12);
 }
 
 .heroMedia > div,
@@ -63,12 +86,18 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border: 0;
+}
+
+.heroMedia :global(img),
+.heroMedia :global(video) {
+  object-fit: contain;
+  object-position: center center;
+  background: #2f2827;
 }
 
 .heroFallback {
-  height: 100%;
-  min-height: 360px;
+  aspect-ratio: 16 / 9;
   background:
     linear-gradient(135deg, rgba(62, 54, 52, 0.94), rgba(0, 35, 73, 0.82)),
     radial-gradient(circle at center, rgba(255, 255, 255, 0.18), transparent 50%);
@@ -76,8 +105,10 @@
 
 .heroVideo {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center center;
+  background: #2f2827;
 }
 
 .advisors {
@@ -241,7 +272,6 @@
 }
 
 @media (max-width: 1099px) {
-  .heroGrid,
   .formsGrid,
   .discoverGrid {
     grid-template-columns: 1fr;
@@ -249,6 +279,19 @@
 }
 
 @media (max-width: 899px) {
+  .heroInfo {
+    padding: calc(var(--header-height) + 1.75rem) 0 7.75rem;
+  }
+
+  .heroInfo::after {
+    bottom: 3rem;
+    height: 3rem;
+  }
+
+  .heroMediaFrame {
+    margin-top: -4.5rem;
+  }
+
   .advisorCard,
   .advisorBody {
     flex-direction: column;
@@ -266,5 +309,19 @@
   .advisorContact {
     align-items: flex-start;
     text-align: left;
+  }
+}
+
+@media (min-width: 1280px) {
+  .heroInfo {
+    padding-bottom: 20rem;
+  }
+
+  .heroInfo::after {
+    bottom: 9rem;
+  }
+
+  .heroMediaFrame {
+    margin-top: -16rem;
   }
 }

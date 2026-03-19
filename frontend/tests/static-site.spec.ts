@@ -40,7 +40,7 @@ async function collectSameOriginAssets(page: Page) {
   });
 }
 
-test('homepage keeps the title block above the Mux hero embed and serves same-origin assets', async ({ page, request }) => {
+test('homepage keeps the title block above the Mux hero embed and centers the feature sections', async ({ page, request }) => {
   const errors = trackClientErrors(page);
 
   await page.goto('/', { waitUntil: 'domcontentloaded' });
@@ -85,7 +85,22 @@ test('homepage keeps the title block above the Mux hero embed and serves same-or
   expect(storyImageBox).not.toBeNull();
   expect((aboutHeadingBox?.x ?? 0)).toBeGreaterThan((aboutImageBox?.x ?? 0) + ((aboutImageBox?.width ?? 0) * 0.6));
   expect((storyImageBox?.x ?? 0)).toBeGreaterThan((storyHeadingBox?.x ?? 0) + ((storyHeadingBox?.width ?? 0) * 0.8));
-  expect((storyHeadingBox?.y ?? 0)).toBeGreaterThan((storyImageBox?.y ?? 0) + 40);
+  expect(Math.abs((storyHeadingBox?.y ?? 0) - (storyImageBox?.y ?? 0))).toBeLessThan(140);
+
+  const exclusiveHeading = page.getByRole('heading', { level: 2, name: /Representation, Defined by Elegance/i });
+  const exclusiveButton = page.getByRole('link', { name: /Sell With Us/i }).last();
+
+  await expect(exclusiveHeading).toBeVisible();
+  await expect(exclusiveButton).toBeVisible();
+
+  const exclusiveHeadingBox = await exclusiveHeading.boundingBox();
+  const exclusiveButtonBox = await exclusiveButton.boundingBox();
+  const viewportCenterX = page.viewportSize()?.width ? page.viewportSize()!.width / 2 : 0;
+
+  expect(exclusiveHeadingBox).not.toBeNull();
+  expect(exclusiveButtonBox).not.toBeNull();
+  expect(Math.abs(((exclusiveHeadingBox?.x ?? 0) + ((exclusiveHeadingBox?.width ?? 0) / 2)) - viewportCenterX)).toBeLessThan(120);
+  expect(Math.abs(((exclusiveButtonBox?.x ?? 0) + ((exclusiveButtonBox?.width ?? 0) / 2)) - viewportCenterX)).toBeLessThan(120);
 
   const assetUrls = await collectSameOriginAssets(page);
   expect(assetUrls.length).toBeGreaterThan(0);
@@ -143,6 +158,7 @@ test('sell-with-us page renders advisor content and keeps only the sale inquiry 
   await page.goto('/sell-with-us/', { waitUntil: 'domcontentloaded' });
 
   await expect(page.getByRole('heading', { level: 1, name: /Sell with Us/i })).toBeVisible();
+  await expect(page.locator('main video').first()).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: /Work With Market Specialists/i })).toBeVisible();
   await expect(page.getByRole('link', { name: /Xiangyu \(Allen\) Zhang/i }).first()).toBeVisible();
   await expect(page.locator('form')).toHaveCount(1);
