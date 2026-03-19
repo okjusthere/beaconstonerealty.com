@@ -188,8 +188,10 @@
 
 .formsGrid {
   display: grid;
+  max-width: 880px;
+  margin: 0 auto;
   gap: 1.5rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .discoverSection {

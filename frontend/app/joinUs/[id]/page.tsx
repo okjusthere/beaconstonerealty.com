@@ -1,6 +1,15 @@
 import Link from 'next/link';
+import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
 import { getGlobalData, getMenuRouteIds, getNewsDetail, getNewsList, getNewsRouteIds } from '@/lib/api';
+
+const FORM_NOTE_HTML = `
+  <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
+`;
+
+const FORM_DISCLAIMER_HTML = `
+  <p>You can review and edit the draft before sending it from your own email account.</p>
+`;
 
 function ArrowRight() {
   return (
@@ -39,9 +48,12 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
   let careerTitle = '';
   let careerCards: Array<{ id: number; title: string; url: string; thumbnail: string; description: string }> = [];
   let discoverMore: Array<{ id: number; title: string; url: string; thumbnail: string; description: string }> = [];
+  let joinFormTitle = '';
+  let joinFormDescription = '';
+  let recipientEmail = 'info@beacon-stone.com';
 
   try {
-    const [globalData, heroData, introData, sideData, featureData, careerData, discoverData] = await Promise.allSettled([
+    const [globalData, heroData, introData, sideData, featureData, careerData, discoverData, joinFormData] = await Promise.allSettled([
       getGlobalData(),
       getNewsDetail(39),
       getNewsDetail(40),
@@ -49,9 +61,11 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
       getNewsDetail(42),
       getNewsList(7, -1, 7),
       getNewsList(8, -1, 8),
+      getNewsDetail(52),
     ]);
 
     if (globalData.status === 'fulfilled') {
+      recipientEmail = globalData.value.web_info.email || recipientEmail;
       const joinMenu = globalData.value.menu_info.find((item) => item.url === `/joinUs/${id}`);
       if (joinMenu) {
         heroTitle = joinMenu.sub_title || joinMenu.title || heroTitle;
@@ -83,6 +97,10 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
     }
     if (discoverData.status === 'fulfilled') {
       discoverMore = discoverData.value as typeof discoverMore;
+    }
+    if (joinFormData.status === 'fulfilled') {
+      joinFormTitle = joinFormData.value.title;
+      joinFormDescription = joinFormData.value.description;
     }
   } catch {
     // Keep fallbacks for the initial migration pass.
@@ -170,11 +188,9 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
                 const hasCopy = Boolean(itemTitle || itemDescription);
 
                 return (
-                  <Link
+                  <article
                     key={item.id}
-                    href={item.url || '#'}
                     className={`${styles.careerCard} ${!hasCopy ? styles.careerCardVisualOnly : ''}`}
-                    aria-label={hasCopy ? undefined : `Career spotlight ${index + 1}`}
                   >
                     {item.thumbnail && (
                       <img
@@ -191,10 +207,10 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
                       </div>
                     ) : (
                       <div className={styles.careerOverlay}>
-                        <span>View Story</span>
+                        <span>Beacon Stone Realty</span>
                       </div>
                     )}
-                  </Link>
+                  </article>
                 );
               })}
             </div>
@@ -226,6 +242,28 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
           </section>
         </>
       )}
+
+      <section className={styles.leadSection}>
+        <div className="container">
+          <div className={styles.leadShell}>
+            <LegacyLeadForm
+              variant="join"
+              submissionTitle="Join as an agent"
+              eyebrow="Join Beacon Stone Realty"
+              title={joinFormTitle || 'Give yourself every advantage'}
+              description={
+                joinFormDescription
+                || 'Taking your business to the next level requires more opportunities and more wins. Introduce yourself, the market you focus on, and how you see your platform growing with Beacon Stone Realty.'
+              }
+              messagePlaceholder="Share your background and the kind of opportunities you want to build."
+              noteHtml={FORM_NOTE_HTML}
+              disclaimerHtml={FORM_DISCLAIMER_HTML}
+              recipientEmail={recipientEmail}
+              successMessage="Your email app has been opened with a recruiting inquiry draft."
+            />
+          </div>
+        </div>
+      </section>
     </>
   );
 }

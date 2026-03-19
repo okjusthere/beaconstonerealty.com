@@ -114,22 +114,16 @@ test('legacy alias pages resolve to the expected content', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1, name: /Terms of Use/i })).toBeVisible();
 });
 
-test('sell-with-us page renders advisor content and both forms enforce the expected rules', async ({ page }) => {
+test('sell-with-us page renders advisor content and keeps only the sale inquiry form', async ({ page }) => {
   await page.goto('/sell-with-us/', { waitUntil: 'domcontentloaded' });
 
   await expect(page.getByRole('heading', { level: 1, name: /Sell with Us/i })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: /Work With Market Specialists/i })).toBeVisible();
   await expect(page.getByRole('link', { name: /Xiangyu \(Allen\) Zhang/i }).first()).toBeVisible();
+  await expect(page.locator('form')).toHaveCount(1);
+  await expect(page.getByLabel('Select Market')).toHaveCount(0);
 
-  const joinForm = page.locator('form').nth(0);
-  await joinForm.getByLabel('First Name').fill('Ada');
-  await joinForm.getByLabel('Last Name').fill('Lovelace');
-  await joinForm.getByLabel('Email Address').fill('ada@example.com');
-  await joinForm.getByLabel('Phone Number').fill('212-555-0182');
-  await joinForm.getByRole('button', { name: /Send Message/i }).click();
-  await expect(joinForm.getByText('Select market is required.')).toBeVisible();
-
-  const inquiryForm = page.locator('form').nth(1);
+  const inquiryForm = page.locator('form').first();
   await inquiryForm.getByLabel('First Name').fill('Alan');
   await inquiryForm.getByLabel('Last Name').fill('Turing');
   await inquiryForm.getByLabel('Email Address').fill('alan@example.com');
@@ -203,9 +197,18 @@ test('join-us page renders media, feature sections, and discover-more links', as
   await expect(page.getByRole('heading', { level: 2, name: /A more thoughtful real estate experience\./i })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: /Why Beacon Stone Realty/i })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: /Discover More/i })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 2, name: /Give yourself every advantage/i })).toBeVisible();
 
   const discoverLinks = page.locator('a').filter({ hasText: /About Us|Sell with Us|Real Estate Agent Center/i });
   await expect(discoverLinks.first()).toBeVisible();
+
+  const joinForm = page.locator('form').first();
+  await joinForm.getByLabel('First Name').fill('Ada');
+  await joinForm.getByLabel('Last Name').fill('Lovelace');
+  await joinForm.getByLabel('Email Address').fill('ada@example.com');
+  await joinForm.getByLabel('Phone Number').fill('212-555-0182');
+  await joinForm.getByRole('button', { name: /Send Message/i }).click();
+  await expect(joinForm.getByText('Select market is required.')).toBeVisible();
 });
 
 test.describe('mobile homepage layout', () => {

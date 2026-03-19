@@ -33,8 +33,6 @@ export default async function SellWithUsPage() {
   let heroDescription = '';
   let heroMedia = '';
   let advisorCards: SaleCard[] = [];
-  let joinHeading = '';
-  let joinDescription = '';
   let inquiryHeading = '';
   let inquiryDescription = '';
   let discoverMore: NewsItem[] = [];
@@ -45,7 +43,7 @@ export default async function SellWithUsPage() {
       getGlobalData(),
       getNewsDetail(50),
       getNewsList(6, -1, 9),
-      Promise.all([getNewsDetail(52), getNewsDetail(53)]),
+      getNewsDetail(53),
       getNewsList(9, -1, 8),
     ]);
 
@@ -61,10 +59,8 @@ export default async function SellWithUsPage() {
       advisorCards = advisors.value as SaleCard[];
     }
     if (formContent.status === 'fulfilled') {
-      joinHeading = formContent.value[0].title;
-      joinDescription = formContent.value[0].description;
-      inquiryHeading = formContent.value[1].title;
-      inquiryDescription = formContent.value[1].description;
+      inquiryHeading = formContent.value.title;
+      inquiryDescription = formContent.value.description;
     }
     if (discoverContent.status === 'fulfilled') {
       discoverMore = discoverContent.value;
@@ -166,17 +162,6 @@ export default async function SellWithUsPage() {
       <section className={styles.formsSection}>
         <div className="container">
           <div className={styles.formsGrid}>
-            <LegacyLeadForm
-              variant="join"
-              submissionTitle="Join as an agent"
-              title={joinHeading || 'Join as an agent'}
-              description={joinDescription || 'Introduce yourself, the market you focus on, and how you see your platform growing with Beacon Stone Realty.'}
-              messagePlaceholder="Share your background and the kind of opportunities you want to build."
-              noteHtml={FORM_NOTE_HTML}
-              disclaimerHtml={FORM_DISCLAIMER_HTML}
-              recipientEmail={recipientEmail}
-              successMessage="Your email app has been opened with a recruiting inquiry draft."
-            />
             <LegacyLeadForm
               variant="inquiry"
               submissionTitle={inquiryHeading || heroTitle}
