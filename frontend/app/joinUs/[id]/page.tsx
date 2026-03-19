@@ -19,16 +19,6 @@ function ArrowRight() {
   );
 }
 
-function extractVideoSource(html: string): string | null {
-  const videoMatch = html.match(/<video[^>]+src=["']([^"']+)["']/i);
-  if (videoMatch?.[1]) {
-    return videoMatch[1];
-  }
-
-  const sourceMatch = html.match(/<source[^>]+src=["']([^"']+)["']/i);
-  return sourceMatch?.[1] ?? null;
-}
-
 function normalizeText(value?: string): string {
   return value?.replace(/\u00a0/g, ' ').trim() || '';
 }
@@ -38,7 +28,6 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
 
   let heroTitle = 'Join Us';
   let heroDesc = '';
-  let heroMedia = '';
   let introTitle = '';
   let introContent = '';
   let introSideContent = '';
@@ -53,9 +42,8 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
   let recipientEmail = 'info@beacon-stone.com';
 
   try {
-    const [globalData, heroData, introData, sideData, featureData, careerData, discoverData, joinFormData] = await Promise.allSettled([
+    const [globalData, introData, sideData, featureData, careerData, discoverData, joinFormData] = await Promise.allSettled([
       getGlobalData(),
-      getNewsDetail(39),
       getNewsDetail(40),
       getNewsDetail(41),
       getNewsDetail(42),
@@ -77,9 +65,6 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
       }
     }
 
-    if (heroData.status === 'fulfilled') {
-      heroMedia = heroData.value.content;
-    }
     if (introData.status === 'fulfilled') {
       introTitle = introData.value.title;
       introContent = introData.value.content;
@@ -106,8 +91,6 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
     // Keep fallbacks for the initial migration pass.
   }
 
-  const heroVideoSrc = extractVideoSource(heroMedia);
-
   return (
     <>
       <section className={styles.hero}>
@@ -117,29 +100,6 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
             {heroDesc && <p className={styles.heroDesc}>{heroDesc}</p>}
           </div>
         </div>
-        {heroMedia && (
-          <div className={`container ${styles.heroMedia}`}>
-            <div className={styles.heroMediaFrame}>
-              {heroVideoSrc ? (
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className={styles.heroVideo}
-                >
-                  <source src={heroVideoSrc} type="video/mp4" />
-                </video>
-              ) : (
-                <div
-                  className={styles.heroEmbed}
-                  dangerouslySetInnerHTML={{ __html: heroMedia }}
-                />
-              )}
-            </div>
-          </div>
-        )}
       </section>
 
       <section className={`section-lg ${styles.intro}`}>

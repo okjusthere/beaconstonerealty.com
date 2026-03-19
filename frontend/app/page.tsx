@@ -1,6 +1,13 @@
-import styles from './page.module.css';
 import Link from 'next/link';
+import HeroVideo from '@/components/HeroVideo';
 import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
+import styles from './page.module.css';
+
+const HOME_HERO_POSTER = '/video/hero-poster.jpg';
+const HOME_HERO_SOURCES = [
+  { src: '/video/hero-720p.mp4', type: 'video/mp4', media: '(max-width: 767px)' },
+  { src: '/video/hero-1080p.mp4', type: 'video/mp4' },
+];
 
 // Arrow icon component
 function ArrowRight() {
@@ -9,16 +16,6 @@ function ArrowRight() {
       <path d="M5 12h14M12 5l7 7-7 7"/>
     </svg>
   );
-}
-
-function extractVideoSource(html: string): string | null {
-  const videoMatch = html.match(/<video[^>]+src=["']([^"']+)["']/i);
-  if (videoMatch?.[1]) {
-    return videoMatch[1];
-  }
-
-  const sourceMatch = html.match(/<source[^>]+src=["']([^"']+)["']/i);
-  return sourceMatch?.[1] ?? null;
 }
 
 function stripHtmlTags(html: string): string {
@@ -56,7 +53,6 @@ export default async function HomePage() {
   let exclusiveTitle = '';
   let exclusiveDesc = '';
   let videoContent = '';
-  let heroBannerContent = '';
   let propertySectionTitle = '';
   let propertySectionDesc = '';
   let properties: Array<{
@@ -69,12 +65,11 @@ export default async function HomePage() {
   }> = [];
 
   try {
-    const [heroData, aboutData, storyData, exclusiveData, bannerData, globalData, propertyList] = await Promise.allSettled([
+    const [heroData, aboutData, storyData, exclusiveData, globalData, propertyList] = await Promise.allSettled([
       getNewsDetail(11),
       getNewsDetail(1),
       getNewsDetail(2),
       getNewsDetail(3),
-      getNewsDetail(39),
       getGlobalData(),
       getNewsList(5, -1, 1),
     ]);
@@ -95,9 +90,6 @@ export default async function HomePage() {
       exclusiveDesc = exclusiveData.value.description;
       videoContent = exclusiveData.value.content;
     }
-    if (bannerData.status === 'fulfilled') {
-      heroBannerContent = bannerData.value.content;
-    }
     if (globalData.status === 'fulfilled') {
       const newsClass = globalData.value.news_class_info.find(c => c.id === 1);
       if (newsClass) {
@@ -111,8 +103,6 @@ export default async function HomePage() {
   } catch {
     // Use fallback values
   }
-
-  const heroVideoSrc = extractVideoSource(heroBannerContent);
 
   return (
     <>
@@ -134,25 +124,11 @@ export default async function HomePage() {
         </div>
         <div className={styles.heroMedia}>
           <div className={styles.heroMediaSurface}>
-            {heroVideoSrc ? (
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                className={styles.heroVideoElement}
-              >
-                <source src={heroVideoSrc} type="video/mp4" />
-              </video>
-            ) : heroBannerContent ? (
-              <div
-                className={styles.heroBannerHtml}
-                dangerouslySetInnerHTML={{ __html: heroBannerContent }}
-              />
-            ) : (
-              <div className={styles.heroFallback} />
-            )}
+            <HeroVideo
+              className={styles.heroVideoElement}
+              poster={HOME_HERO_POSTER}
+              sources={HOME_HERO_SOURCES}
+            />
           </div>
         </div>
       </section>

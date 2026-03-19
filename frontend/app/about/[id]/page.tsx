@@ -10,16 +10,6 @@ function ArrowRight() {
   );
 }
 
-function extractVideoSource(html: string): string | null {
-  const videoMatch = html.match(/<video[^>]+src=["']([^"']+)["']/i);
-  if (videoMatch?.[1]) {
-    return videoMatch[1];
-  }
-
-  const sourceMatch = html.match(/<source[^>]+src=["']([^"']+)["']/i);
-  return sourceMatch?.[1] ?? null;
-}
-
 function stripHtmlTags(html: string): string {
   return html
     .replace(/<br\s*\/?>/gi, ' ')
@@ -42,7 +32,6 @@ export default async function AboutPage({ params }: { params: Promise<{ id: stri
 
   let heroTitle = 'About Us';
   let heroDesc = '';
-  let heroMedia = '';
   let stats: StatItem[] = [];
   let foundationTitle = '';
   let foundationContent = '';
@@ -99,7 +88,6 @@ export default async function AboutPage({ params }: { params: Promise<{ id: stri
     if (aboutHero.status === 'fulfilled') {
       heroTitle ||= aboutHero.value.title;
       heroDesc ||= aboutHero.value.description;
-      heroMedia = aboutHero.value.content || '';
     }
 
     if (aboutStats.status === 'fulfilled') {
@@ -132,8 +120,6 @@ export default async function AboutPage({ params }: { params: Promise<{ id: stri
     // Keep static fallbacks intact.
   }
 
-  const heroVideoSrc = extractVideoSource(heroMedia);
-
   return (
     <>
       <section className={styles.hero}>
@@ -143,29 +129,6 @@ export default async function AboutPage({ params }: { params: Promise<{ id: stri
             {heroDesc && <p className={styles.heroDesc}>{heroDesc}</p>}
           </div>
         </div>
-        {heroMedia && (
-          <div className={`container ${styles.heroMediaWrap}`}>
-            <div className={styles.heroMediaFrame}>
-              {heroVideoSrc ? (
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className={styles.heroVideo}
-                >
-                  <source src={heroVideoSrc} type="video/mp4" />
-                </video>
-              ) : (
-                <div
-                  className={styles.heroHtml}
-                  dangerouslySetInnerHTML={{ __html: heroMedia }}
-                />
-              )}
-            </div>
-          </div>
-        )}
       </section>
 
       {stats.length > 0 && (

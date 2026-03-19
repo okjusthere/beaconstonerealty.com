@@ -1,7 +1,7 @@
 .hero {
   background: var(--color-navy);
   padding-top: calc(var(--header-height) + 50px);
-  padding-bottom: 54px;
+  padding-bottom: 88px;
 }
 
 .heroInfo {
@@ -22,41 +22,6 @@
   font-style: italic;
   font-size: 1.06rem;
   line-height: 1.8;
-}
-
-.heroMediaWrap {
-  margin-top: 42px;
-}
-
-.heroMediaFrame {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-  background: var(--color-brown);
-  box-shadow: 0 26px 72px rgba(0, 0, 0, 0.16);
-}
-
-.heroVideo,
-.heroHtml,
-.heroHtml :global(p),
-.heroHtml :global(video),
-.heroHtml :global(iframe),
-.heroHtml :global(img) {
-  width: 100%;
-  height: 100%;
-}
-
-.heroVideo,
-.heroHtml :global(video),
-.heroHtml :global(iframe),
-.heroHtml :global(img) {
-  display: block;
-  border: 0;
-  object-fit: cover;
-}
-
-.heroHtml :global(p) {
-  margin: 0;
 }
 
 .stats {

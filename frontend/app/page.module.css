@@ -71,6 +71,10 @@
   object-fit: cover;
 }
 
+.heroVideoElement::-webkit-media-controls {
+  display: none !important;
+}
+
 .heroFallback {
   background: linear-gradient(135deg, var(--color-brown) 0%, var(--color-brown-light) 100%);
 }

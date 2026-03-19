@@ -54,6 +54,7 @@ test('homepage keeps the title block above the banner video and serves local med
   await expect(heroHeading).toBeVisible();
   await expect(heroVideo).toBeVisible();
   await expect(page.locator('h1 br')).toHaveCount(1);
+  await expect(heroVideo).toHaveAttribute('poster', /hero-poster\.jpg/);
 
   const headingBox = await heroHeading.boundingBox();
   const videoBox = await heroVideo.boundingBox();
@@ -180,6 +181,7 @@ test('property and broker detail pages expose the expected static content', asyn
 
 test('about and broker index pages restore the missing legacy sections and long-form bios', async ({ page }) => {
   await page.goto('/about/13/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('main > section').first().locator('video')).toHaveCount(0);
   await expect(page.getByText(/An International Network/i)).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: /Advisors, Not Just Agents/i })).toBeVisible();
   await expect(page.getByText(/global network of exceptional agents and exclusive properties/i)).toBeVisible();
@@ -193,7 +195,7 @@ test('join-us page renders media, feature sections, and discover-more links', as
   await page.goto('/joinUs/39/', { waitUntil: 'domcontentloaded' });
 
   await expect(page.getByRole('heading', { level: 1, name: /Join Us/i })).toBeVisible();
-  await expect(page.locator('section').first().locator('video')).toBeVisible();
+  await expect(page.locator('main > section').first().locator('video')).toHaveCount(0);
   await expect(page.getByRole('heading', { level: 2, name: /A more thoughtful real estate experience\./i })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: /Why Beacon Stone Realty/i })).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: /Discover More/i })).toBeVisible();
