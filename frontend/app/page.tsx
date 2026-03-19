@@ -30,6 +30,20 @@ function stripHtmlTags(html: string): string {
     .trim();
 }
 
+function renderHeroTitle(title: string) {
+  if (title.trim() === 'Every home tells a story. Let yours begin here') {
+    return (
+      <>
+        Every home tells a story.
+        <br />
+        Let yours begin here
+      </>
+    );
+  }
+
+  return title;
+}
+
 export default async function HomePage() {
   // Fetch all homepage data in parallel
   let heroTitle = 'Discover Exceptional Living';
@@ -108,7 +122,7 @@ export default async function HomePage() {
           <div className="container">
             <div className={styles.heroIntroGrid}>
               <div className={styles.heroIntroCopy}>
-                <h1 className={styles.heroTitle}>{heroTitle}</h1>
+                <h1 className={styles.heroTitle}>{renderHeroTitle(heroTitle)}</h1>
               </div>
               <div className={styles.heroIntroAction}>
                 <Link href="/properties" className={`btn ${styles.heroBtn}`}>
@@ -168,6 +182,11 @@ export default async function HomePage() {
         <section className={`section ${styles.story}`}>
           <div className="container">
             <div className={styles.storyInner}>
+              <div className={styles.storyImage}>
+                {storyImage && (
+                  <img src={storyImage} alt={storyTitle} loading="lazy" />
+                )}
+              </div>
               <div className={styles.storyText}>
                 <h2 className={styles.sectionTitle}>{storyTitle}</h2>
                 <div
@@ -177,11 +196,6 @@ export default async function HomePage() {
                 <Link href="/about/13" className="btn-arrow">
                   See Details <ArrowRight />
                 </Link>
-              </div>
-              <div className={styles.storyImage}>
-                {storyImage && (
-                  <img src={storyImage} alt={storyTitle} loading="lazy" />
-                )}
               </div>
             </div>
           </div>

@@ -53,6 +53,7 @@ test('homepage keeps the title block above the banner video and serves local med
 
   await expect(heroHeading).toBeVisible();
   await expect(heroVideo).toBeVisible();
+  await expect(page.locator('h1 br')).toHaveCount(1);
 
   const headingBox = await heroHeading.boundingBox();
   const videoBox = await heroVideo.boundingBox();
@@ -181,6 +182,17 @@ test('property and broker detail pages expose the expected static content', asyn
   await brokerForm.getByLabel('Phone Number').fill('212-555-0133');
   await brokerForm.getByRole('button', { name: /Send Message/i }).click();
   await expect(brokerForm.getByText('Please fill in the message.')).toBeVisible();
+});
+
+test('about and broker index pages restore the missing legacy sections and long-form bios', async ({ page }) => {
+  await page.goto('/about/13/', { waitUntil: 'domcontentloaded' });
+  await expect(page.getByText(/An International Network/i)).toBeVisible();
+  await expect(page.getByRole('heading', { level: 2, name: /Advisors, Not Just Agents/i })).toBeVisible();
+  await expect(page.getByText(/global network of exceptional agents and exclusive properties/i)).toBeVisible();
+
+  await page.goto('/brokers/', { waitUntil: 'domcontentloaded' });
+  await expect(page.getByRole('heading', { level: 1, name: /Guided by Expertise\. Driven by Strategy/i })).toBeVisible();
+  await expect(page.getByText(/New York.?based real estate investor and Founder/i)).toBeVisible();
 });
 
 test('join-us page renders media, feature sections, and discover-more links', async ({ page }) => {

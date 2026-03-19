@@ -18,6 +18,22 @@ export const metadata = {
 
 type BrokerCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'keywords' | 'description' | 'content' | 'field'>;
 
+function getBrokerRole(agent: BrokerCard): string {
+  return agent.keywords || agent.description || '';
+}
+
+function getBrokerOffice(agent: BrokerCard): string {
+  if (agent.keywords && agent.description && agent.description !== agent.keywords) {
+    return agent.description;
+  }
+
+  return '';
+}
+
+function getBrokerBio(agent: BrokerCard): string {
+  return agent.field?.real_estate_broker_desc || agent.content || '';
+}
+
 export default async function BrokersPage() {
   let pageTitle = 'Guided by Expertise. Driven by Strategy';
   let bannerImage = '';
@@ -76,13 +92,13 @@ export default async function BrokersPage() {
                   <div className={styles.agentBody}>
                     <div className={styles.agentMain}>
                       <Link href={agent.url || '#'} className={styles.agentName}>{agent.title}</Link>
-                      {agent.keywords && <p className={styles.agentRole}>{agent.keywords}</p>}
+                      {getBrokerRole(agent) && <p className={styles.agentRole}>{getBrokerRole(agent)}</p>}
                       <div className={styles.separator} />
-                      {agent.description && <p className={styles.agentOffice}>{agent.description}</p>}
-                      {agent.content && (
+                      {getBrokerOffice(agent) && <p className={styles.agentOffice}>{getBrokerOffice(agent)}</p>}
+                      {getBrokerBio(agent) && (
                         <div
                           className={styles.agentContent}
-                          dangerouslySetInnerHTML={{ __html: agent.content }}
+                          dangerouslySetInnerHTML={{ __html: getBrokerBio(agent) }}
                         />
                       )}
                     </div>

@@ -15,15 +15,16 @@
 }
 
 .heroIntroCopy {
-  max-width: 780px;
+  max-width: 720px;
 }
 
 .heroTitle {
   margin: 0;
   color: var(--color-white);
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  line-height: 1.08;
+  max-width: 20ch;
+  font-size: clamp(2.375rem, 3.2vw, 2.6875rem);
+  line-height: 1.13;
   letter-spacing: 0.02em;
 }
 
@@ -138,13 +139,13 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-2xl);
-  align-items: end;
+  align-items: start;
 }
 
 .storyText {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-lg);
 }
 
@@ -340,13 +341,20 @@
   }
 
   .storyInner {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-    gap: var(--space-3xl);
+    display: flow-root;
   }
 
   .storyImage {
-    max-width: 620px;
-    justify-self: end;
+    float: right;
+    width: 50%;
+    max-width: 625px;
+  }
+
+  .storyText {
+    float: left;
+    width: calc(50% - 30px);
+    margin-top: 40px;
+    padding-right: 30px;
   }
 
   .propertiesGrid {
