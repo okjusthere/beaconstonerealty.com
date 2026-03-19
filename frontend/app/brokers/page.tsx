@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
-import { findMenuByPath, getGlobalData, getNewsList, type NewsItem } from '@/lib/api';
+import { findMenuByPath, getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
 
 const FORM_NOTE_HTML = `
   <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
@@ -17,6 +17,13 @@ export const metadata = {
 };
 
 type BrokerCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'keywords' | 'description' | 'content' | 'field'>;
+
+type BrokerContact = {
+  phone: string;
+  email: string;
+  phoneLabel: string;
+  emailLabel: string;
+};
 
 function getBrokerRole(agent: BrokerCard): string {
   return agent.keywords || agent.description || '';
@@ -34,10 +41,52 @@ function getBrokerBio(agent: BrokerCard): string {
   return agent.field?.real_estate_broker_desc || agent.content || '';
 }
 
+function normalizePhone(value?: string): string {
+  if (!value) {
+    return '';
+  }
+
+  return value
+    .replace(/\s+/g, ' ')
+    .replace(/^\+1\s+\+1\b/, '+1')
+    .trim();
+}
+
+function mergeBrokerRecord(base: BrokerCard, detail: NewsItem): BrokerCard {
+  return {
+    ...base,
+    ...detail,
+    url: base.url || detail.url,
+    thumbnail: base.thumbnail || detail.thumbnail,
+    description: base.description || detail.description,
+    content: detail.content || base.content,
+    field: {
+      ...(base.field || {}),
+      ...(detail.field || {}),
+    },
+  };
+}
+
+function getBrokerContact(agent: BrokerCard, officePhone: string, officeEmail: string): BrokerContact {
+  const directPhone = normalizePhone(agent.field?.phone);
+  const directEmail = agent.field?.real_estate_broker_email || agent.field?.email || '';
+  const fallbackPhone = normalizePhone(officePhone);
+  const fallbackEmail = officeEmail || '';
+
+  return {
+    phone: directPhone || fallbackPhone,
+    email: directEmail || fallbackEmail,
+    phoneLabel: directPhone ? 'O' : 'Office',
+    emailLabel: directEmail ? 'Direct' : 'Office',
+  };
+}
+
 export default async function BrokersPage() {
   let pageTitle = 'Guided by Expertise. Driven by Strategy';
   let bannerImage = '';
   let agents: BrokerCard[] = [];
+  let officePhone = '';
+  let officeEmail = '';
   let recipientEmail = 'info@beacon-stone.com';
 
   try {
@@ -50,10 +99,22 @@ export default async function BrokersPage() {
       const menu = findMenuByPath(globalData.value.menu_info, '/brokers');
       pageTitle = menu?.remarks || menu?.title || pageTitle;
       bannerImage = menu?.thumbnail || '';
-      recipientEmail = globalData.value.web_info.email || recipientEmail;
+      officePhone = globalData.value.web_info.phone || '';
+      officeEmail = globalData.value.web_info.email || '';
+      recipientEmail = officeEmail || recipientEmail;
     }
     if (agentList.status === 'fulfilled') {
-      agents = agentList.value as BrokerCard[];
+      const mergedAgents = await Promise.all(
+        (agentList.value as BrokerCard[]).map(async (agent) => {
+          try {
+            const detail = await getNewsDetail(agent.id);
+            return mergeBrokerRecord(agent, detail);
+          } catch {
+            return agent;
+          }
+        }),
+      );
+      agents = mergedAgents;
     }
   } catch {
     // Preserve a readable empty state if the legacy feed is unavailable.
@@ -102,21 +163,29 @@ export default async function BrokersPage() {
                         />
                       )}
                     </div>
-                    <div className={styles.agentContact}>
-                      <span className={styles.contactTitle}>Contact</span>
-                      {agent.field?.phone && (
-                        <a href={`tel:${agent.field.phone}`} className={styles.contactLink}>O: {agent.field.phone}</a>
-                      )}
-                      {agent.field?.real_estate_broker_email && (
-                        <a
-                          href={`mailto:${agent.field.real_estate_broker_email}`}
-                          className={styles.contactLink}
-                        >
-                          {agent.field.real_estate_broker_email}
-                        </a>
-                      )}
-                      <Link href={agent.url || '#'} className={styles.contactAction}>Send message</Link>
-                    </div>
+                    {(() => {
+                      const contact = getBrokerContact(agent, officePhone, officeEmail);
+
+                      return (
+                        <div className={styles.agentContact}>
+                          <span className={styles.contactTitle}>Contact</span>
+                          {contact.phone && (
+                            <a href={`tel:${contact.phone}`} className={styles.contactLink}>
+                              {contact.phoneLabel}: {contact.phone}
+                            </a>
+                          )}
+                          {contact.email && (
+                            <a
+                              href={`mailto:${contact.email}`}
+                              className={styles.contactLink}
+                            >
+                              {contact.email}
+                            </a>
+                          )}
+                          <Link href={agent.url || '#'} className={styles.contactAction}>Send message</Link>
+                        </div>
+                      );
+                    })()}
                   </div>
                 </article>
               ))}

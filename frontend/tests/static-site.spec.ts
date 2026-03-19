@@ -213,6 +213,8 @@ test('about and broker index pages restore the missing legacy sections and long-
   await page.goto('/brokers/', { waitUntil: 'domcontentloaded' });
   await expect(page.getByRole('heading', { level: 1, name: /Guided by Expertise\. Driven by Strategy/i })).toBeVisible();
   await expect(page.getByText(/New York.?based real estate investor and Founder/i)).toBeVisible();
+  await expect(page.getByRole('link', { name: /allenzhang@beacon-stone\.com/i })).toBeVisible();
+  await expect(page.getByRole('link', { name: /qiaochen@beacon-stone\.com/i })).toBeVisible();
 });
 
 test('join-us page renders media, feature sections, and discover-more links', async ({ page }) => {
