@@ -184,24 +184,28 @@ export default async function HomePage() {
               className={styles.exclusiveDesc}
               dangerouslySetInnerHTML={{ __html: exclusiveDesc }}
             />
-            <Link href="/sell-with-us" className={`btn btn-secondary ${styles.exclusiveBtn}`}>
-              Sell With Us <ArrowRight />
-            </Link>
+            <div className={styles.exclusiveBtnWrap}>
+              <Link href="/sell-with-us" className={`btn btn-secondary ${styles.exclusiveBtn}`}>
+                Sell With Us <ArrowRight />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ========== Video Section ========== */}
-      {videoContent && (
-        <section className={`section ${styles.videoSection}`}>
-          <div className="container">
-            <div
-              className={styles.videoWrapper}
-              dangerouslySetInnerHTML={{ __html: videoContent }}
+      <section className={`section ${styles.videoSection}`}>
+        <div className="container">
+          <div className={styles.videoWrapper}>
+            <HeroVideo
+              className={styles.videoMux}
+              playbackId={BEACON_MUX_PLAYBACK_ID}
+              poster={BEACON_MUX_POSTER}
+              title="Beacon Stone Realty Brand Film"
             />
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* ========== Properties / Exceptional Locations ========== */}
       <section className={`section-lg ${styles.properties}`}>

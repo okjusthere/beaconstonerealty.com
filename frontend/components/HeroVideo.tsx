@@ -12,11 +12,13 @@ interface HeroVideoProps {
   muted?: boolean;
 }
 
-const PLAYER_STYLE = {
+const SILENT_STYLE = {
   '--top-controls': 'none',
   '--bottom-controls': 'none',
   '--controls-backdrop-color': 'transparent',
 } as CSSProperties;
+
+const AUDIBLE_STYLE = {} as CSSProperties;
 
 export default function HeroVideo({
   className,
@@ -75,13 +77,13 @@ export default function HeroVideo({
           title={title}
           videoTitle={title}
           poster={poster}
-          autoPlay={muted ? 'muted' : true}
+          autoPlay={muted ? 'muted' : false}
           muted={muted}
-          loop
+          loop={muted}
           playsInline
           preload="auto"
           onCanPlay={() => setIsReady(true)}
-          style={{ ...PLAYER_STYLE, opacity: isReady ? 1 : 0 }}
+          style={{ ...(muted ? SILENT_STYLE : AUDIBLE_STYLE), opacity: isReady ? 1 : 0 }}
         />
       ) : null}
     </div>

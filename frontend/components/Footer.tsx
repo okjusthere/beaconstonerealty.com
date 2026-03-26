@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styles from './Footer.module.css';
 import type { WebInfo, MenuItem } from '@/lib/api';
 
@@ -18,52 +17,12 @@ const socialLinks = [
   { name: 'Red Note', url: '#' },
 ];
 
-export default function Footer({ webInfo, menuItems }: FooterProps) {
+export default function Footer({ webInfo }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        {/* Company Info */}
-        <div className={styles.companySection}>
-          <div className={styles.companyName}>{webInfo.company || 'Beacon Stone Realty'}</div>
-          {webInfo.address && <p className={styles.companyDetail}>{webInfo.address}</p>}
-          {webInfo.phone && (
-            <p className={styles.companyDetail}>
-              Phone: <a href={`tel:${webInfo.phone}`}>{webInfo.phone}</a>
-            </p>
-          )}
-          {webInfo.email && (
-            <p className={styles.companyDetail}>
-              Email: <a href={`mailto:${webInfo.email}`}>{webInfo.email}</a>
-            </p>
-          )}
-        </div>
-
-        {/* Navigation Links */}
-        <div className={styles.navSection}>
-          <div className={styles.navGrid}>
-            {menuItems.filter(m => m.is_show).slice(0, 8).map((item) => (
-              <div key={item.id} className={styles.navColumn}>
-                <Link href={item.url || '#'} className={styles.navTitle}>
-                  {item.title}
-                </Link>
-                {item.children.length > 0 && (
-                  <ul className={styles.subNavList}>
-                    {item.children.filter(c => c.is_show).map((child) => (
-                      <li key={child.id}>
-                        <Link href={child.url || '#'} className={styles.subNavLink}>
-                          {child.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Social Links */}
         <div className={styles.socialSection}>
           <ul className={styles.socialList}>
@@ -84,7 +43,7 @@ export default function Footer({ webInfo, menuItems }: FooterProps) {
 
         {/* Copyright */}
         <div className={styles.copyright}>
-          <p>Copyright © 2022-{currentYear} {webInfo.company}. All Rights Reserved.</p>
+          <p>Copyright &copy; 2022-{currentYear} {webInfo.company || 'Beacon Stone Realty'}. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
