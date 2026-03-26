@@ -222,7 +222,7 @@
 }
 
 .mobileSubLink:hover {
-  color: var(--color-gold);
+  color: var(--color-white);
 }
 
 .mobileCta {
@@ -230,7 +230,8 @@
   text-align: center;
   padding: 16px;
   margin-top: var(--space-xl);
-  background: var(--color-gold);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: var(--color-white);
   font-size: 13px;
   font-weight: 600;

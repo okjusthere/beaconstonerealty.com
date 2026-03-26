@@ -252,6 +252,9 @@
   transition: opacity 220ms ease;
   --media-object-fit: cover;
   --media-object-position: center;
+  --media-primary-color: #ffffff;
+  --media-range-bar-color: var(--color-brown);
+  --media-control-hover-background: rgba(62, 54, 52, 0.7);
 }
 
 .videoWrapper :global(video),

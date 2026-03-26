@@ -90,7 +90,7 @@
 .heroPhone,
 .heroEmail {
   display: block;
-  color: var(--color-gold);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.95rem;
   margin-bottom: var(--space-sm);
   white-space: nowrap;
@@ -98,7 +98,7 @@
 
 .heroPhone:hover,
 .heroEmail:hover {
-  color: var(--color-gold-light);
+  color: var(--color-white);
 }
 
 /* Content */

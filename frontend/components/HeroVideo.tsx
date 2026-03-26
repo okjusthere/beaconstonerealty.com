@@ -18,7 +18,11 @@ const SILENT_STYLE = {
   '--controls-backdrop-color': 'transparent',
 } as CSSProperties;
 
-const AUDIBLE_STYLE = {} as CSSProperties;
+const AUDIBLE_STYLE = {
+  '--media-primary-color': '#ffffff',
+  '--media-range-bar-color': '#3e3634',
+  '--media-control-hover-background': 'rgba(62, 54, 52, 0.7)',
+} as CSSProperties;
 
 export default function HeroVideo({
   className,
