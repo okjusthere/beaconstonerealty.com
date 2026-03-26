@@ -222,33 +222,69 @@
   padding: 0 0 76px;
 }
 
-.advisorsList {
+/* ── Advisor Carousel ── */
+.carouselWrap {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 32px;
+  align-items: center;
 }
 
-.advisorHCard {
+.carouselBtn {
+  position: absolute;
+  z-index: 3;
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
   color: var(--color-white);
-  text-decoration: none;
-  transition: background 0.25s;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-.advisorHCard:hover {
-  background: rgba(255, 255, 255, 0.08);
+.carouselBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
 
-.advisorHImage {
+.carouselBtnPrev {
+  left: -8px;
+}
+
+.carouselBtnNext {
+  right: -8px;
+}
+
+.carouselViewport {
   width: 100%;
-  flex-shrink: 0;
+  overflow: hidden;
+  padding: 0 32px;
 }
 
-.advisorHImage img {
+.carouselTrack {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carouselSlide {
+  flex: 0 0 50%;
+  min-width: 0;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.carouselCard {
+  display: block;
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+.carouselImage {
+  overflow: hidden;
+}
+
+.carouselImage img {
   display: block;
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -257,57 +293,36 @@
   background: #08111f;
 }
 
-.advisorHBody {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 24px 28px;
-  flex: 1;
+.carouselBody {
+  padding: 18px 0;
 }
 
-.advisorHBody h3 {
-  margin: 0;
+.carouselBody h3 {
+  margin: 0 0 4px;
   color: var(--color-white);
-  font-size: 1.35rem;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
 }
 
-.advisorRole {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.carouselRole {
+  margin: 0 0 12px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
 }
 
-.advisorTitle {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.advisorSummary {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.82);
-  line-height: 1.75;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.advisorAction {
+.carouselAction {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: auto;
-  padding-top: 8px;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.82rem;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.carouselCard:hover .carouselAction {
+  color: var(--color-white);
 }
 
 .discoverHeader {
@@ -373,6 +388,29 @@
   color: var(--color-brown);
 }
 
+@media (max-width: 767px) {
+  .carouselSlide {
+    flex: 0 0 100%;
+  }
+
+  .carouselViewport {
+    padding: 0 16px;
+  }
+
+  .carouselBtnPrev {
+    left: -4px;
+  }
+
+  .carouselBtnNext {
+    right: -4px;
+  }
+
+  .carouselBtn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 @media (min-width: 768px) {
   .statsGrid,
   .discoverGrid {
@@ -387,36 +425,10 @@
   .networkStackCard:nth-child(even) {
     flex-direction: row-reverse;
   }
-
-  .advisorHCard {
-    flex-direction: row;
-  }
-
-  .advisorHImage {
-    width: 280px;
-    min-width: 280px;
-  }
-
-  .advisorHImage img {
-    height: 100%;
-  }
 }
 
 @media (min-width: 1024px) {
   .statsGrid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .advisorHImage {
-    width: 320px;
-    min-width: 320px;
-  }
-
-  .advisorHBody h3 {
-    font-size: 1.5rem;
-  }
-
-  .advisorSummary {
-    -webkit-line-clamp: 6;
   }
 }

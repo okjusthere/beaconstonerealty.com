@@ -82,7 +82,6 @@ export default async function SellWithUsPage() {
         <div className={styles.heroInfo}>
           <div className="container">
             <div className={styles.heroCopy}>
-              <p className={styles.heroEyebrow}>Sale</p>
               <h1 className={styles.heroTitle}>{heroTitle}</h1>
               {heroDescription && <p className={styles.heroDescription}>{heroDescription}</p>}
             </div>
@@ -106,7 +105,6 @@ export default async function SellWithUsPage() {
         <section className={styles.advisors}>
           <div className="container">
             <div className={styles.sectionHeader}>
-              <p className={styles.sectionEyebrow}>Expertise</p>
               <h2 className={styles.sectionTitle}>Work With Market Specialists</h2>
             </div>
             <div className={styles.advisorList}>

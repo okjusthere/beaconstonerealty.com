@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FanCarousel from '@/components/FanCarousel';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
 import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
@@ -40,9 +41,10 @@ export default async function JoinPage() {
   let joinFormTitle = '';
   let joinFormDescription = '';
   let recipientEmail = 'info@beacon-stone.com';
+  let brokerPhotos: Array<{ id: number; title: string; thumbnail: string }> = [];
 
   try {
-    const [globalData, introData, sideData, featureData, careerData, discoverData, joinFormData] = await Promise.allSettled([
+    const [globalData, introData, sideData, featureData, careerData, discoverData, joinFormData, brokersData] = await Promise.allSettled([
       getGlobalData(),
       getNewsDetail(40),
       getNewsDetail(41),
@@ -50,6 +52,7 @@ export default async function JoinPage() {
       getNewsList(7, -1, 7),
       getNewsList(8, -1, 8),
       getNewsDetail(52),
+      getNewsList(6, -1, 6),
     ]);
 
     if (globalData.status === 'fulfilled') {
@@ -86,6 +89,9 @@ export default async function JoinPage() {
     if (joinFormData.status === 'fulfilled') {
       joinFormTitle = joinFormData.value.title;
       joinFormDescription = joinFormData.value.description;
+    }
+    if (brokersData.status === 'fulfilled') {
+      brokerPhotos = (brokersData.value as typeof brokerPhotos).filter((b) => b.thumbnail && !b.thumbnail.includes('no_picture'));
     }
   } catch {
     // Keep fallbacks for the initial migration pass.
@@ -135,6 +141,14 @@ export default async function JoinPage() {
         </section>
       )}
 
+
+      {brokerPhotos.length >= 3 && (
+        <section className={styles.fanSection}>
+          <div className="container">
+            <FanCarousel items={brokerPhotos} />
+          </div>
+        </section>
+      )}
 
       {careerCards.length > 0 && (
         <section className={`section-lg ${styles.careers}`}>

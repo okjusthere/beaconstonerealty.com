@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import AdvisorCarousel from '@/components/AdvisorCarousel';
 import styles from './page.module.css';
 import { getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
 
@@ -260,33 +261,15 @@ export default async function AboutPage() {
           </section>
           <section className={styles.advisorsSection}>
             <div className="container">
-              <div className={styles.advisorsList}>
-                {advisors.map((advisor) => (
-                  <Link key={advisor.id} href={advisor.url || '#'} className={styles.advisorHCard}>
-                    {advisor.thumbnail && (
-                      <div className={styles.advisorHImage}>
-                        <img
-                          src={advisor.thumbnail}
-                          alt={advisor.title}
-                          loading="lazy"
-                        />
-                      </div>
-                    )}
-                    <div className={styles.advisorHBody}>
-                      <h3>{advisor.title}</h3>
-                      {advisor.description && <p className={styles.advisorRole}>{advisor.description}</p>}
-                      {summarizeAdvisorIntro(advisor) && (
-                        <p className={styles.advisorSummary}>
-                          {summarizeAdvisorIntro(advisor)}
-                        </p>
-                      )}
-                      <span className={styles.advisorAction}>
-                        MEET THE TEAM <ArrowRight />
-                      </span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+              <AdvisorCarousel
+                advisors={advisors.map((a) => ({
+                  id: a.id,
+                  title: a.title,
+                  url: a.url || '#',
+                  thumbnail: a.thumbnail || '',
+                  description: a.description || '',
+                }))}
+              />
             </div>
           </section>
         </>
