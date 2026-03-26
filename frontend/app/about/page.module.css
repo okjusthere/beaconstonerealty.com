@@ -208,19 +208,20 @@
 
 .advisorsHeader {
   background: var(--color-brown);
-  padding: 76px 0 28px;
+  padding: 56px 0 20px;
   text-align: center;
 }
 
 .advisorsTitle {
   margin: 0;
   color: var(--color-white);
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.9rem, 3.1vw, 2.7rem);
+  line-height: 1.08;
 }
 
 .advisorsSection {
   background: var(--color-brown);
-  padding: 0 0 76px;
+  padding: 0 0 64px;
 }
 
 /* ── Advisor Carousel ── */
@@ -228,6 +229,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  padding: 0 56px;
 }
 
 .carouselBtn {
@@ -250,17 +252,17 @@
 }
 
 .carouselBtnPrev {
-  left: -8px;
+  left: 0;
 }
 
 .carouselBtnNext {
-  right: -8px;
+  right: 0;
 }
 
 .carouselViewport {
   width: 100%;
   overflow: hidden;
-  padding: 0 32px;
+  padding: 0;
 }
 
 .carouselTrack {
@@ -270,12 +272,14 @@
 .carouselSlide {
   flex: 0 0 50%;
   min-width: 0;
-  padding: 0 12px;
+  padding: 0 14px;
   box-sizing: border-box;
 }
 
 .carouselCard {
   display: block;
+  max-width: 430px;
+  margin: 0 auto;
   text-decoration: none;
   color: var(--color-white);
 }
@@ -285,25 +289,31 @@
 }
 
 .carouselImage {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 460px;
   overflow: hidden;
 }
 
 .carouselImage img {
   display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center 15%;
+  width: min(72%, 320px);
+  max-height: 460px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center top;
 }
 
 .carouselBody {
-  padding: 18px 0;
+  padding: 16px 0 4px;
 }
 
 .carouselBody h3 {
   margin: 0 0 4px;
   color: var(--color-white);
-  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  line-height: 1.18;
 }
 
 .carouselRole {
@@ -311,6 +321,7 @@
   color: rgba(255, 255, 255, 0.65);
   font-size: 0.78rem;
   letter-spacing: 0.1em;
+  line-height: 1.65;
 }
 
 .carouselAction {
@@ -392,25 +403,51 @@
 }
 
 @media (max-width: 767px) {
+  .advisorsHeader {
+    padding: 44px 0 16px;
+  }
+
+  .advisorsSection {
+    padding: 0 0 48px;
+  }
+
+  .carouselWrap {
+    padding: 0 28px;
+  }
+
   .carouselSlide {
     flex: 0 0 100%;
+    padding: 0 10px;
   }
 
   .carouselViewport {
-    padding: 0 16px;
+    padding: 0;
   }
 
   .carouselBtnPrev {
-    left: -4px;
+    left: 0;
   }
 
   .carouselBtnNext {
-    right: -4px;
+    right: 0;
   }
 
   .carouselBtn {
     width: 36px;
     height: 36px;
+  }
+
+  .carouselCard {
+    max-width: 340px;
+  }
+
+  .carouselImage {
+    min-height: 360px;
+  }
+
+  .carouselImage img {
+    width: min(82%, 260px);
+    max-height: 360px;
   }
 }
 
