@@ -28,7 +28,7 @@
       {
         "id": 1,
         "classid": 1,
-        "path": "/media_library/image_20260305132714XFYZ.jpg",
+        "path": "https://uploads.kevv.ai/clientsuploads/beaconstone/logo.png",
         "name": "logo",
         "url": "",
         "remarks": ""
@@ -1356,7 +1356,7 @@
         "phone": "+1 929-271-8175",
         "real_estate_broker_region": "",
         "real_estate_broker_email": "audreywen@beacon-stone.com",
-        "real_estate_broker_desc": "<p>Ziwei (Audrey) Wen&nbsp;is a New York–based real estate advisor with Beacon Stone Realty, specializing in residential sales and international buyers. With a background in finance, risk management, and market analysis, she provides clients with data-driven guidance throughout the buying process — from property selection to long-term investment positioning.</p><p>Audrey holds a Master of Science in Enterprise Risk Management from Columbia University and a Bachelor’s degree in Mathematics and Economics from New York University. Prior to entering real estate, she gained experience at J.P. Morgan Asset Management, Ernst &amp; Young, and Deloitte, where she analyzed market trends, investment strategies, and financial risks across global industries.</p><p>Combining analytical rigor with local market expertise, Audrey helps clients evaluate not only the property itself but also financing structure, liquidity, and long-te"
+        "real_estate_broker_desc": "<p>Ziwei (Audrey) Wen is a New York–based real estate advisor with Beacon Stone Realty, specializing in residential sales and international buyers. With a background in finance, risk management, and market analysis, she provides clients with data-driven guidance throughout the buying process — from property selection to long-term investment positioning.</p><p>Audrey holds a Master of Science in Enterprise Risk Management from Columbia University and a Bachelor’s degree in Mathematics and Economics from New York University. Prior to entering real estate, she gained experience at J.P. Morgan Asset Management, Ernst &amp; Young, and Deloitte, where she analyzed market trends, investment strategies, and financial risks across global industries.</p><p>Combining analytical rigor with local market expertise, Audrey helps clients evaluate not only the property itself but also financing structure, liquidity, and long-term value. She frequently works with overseas buyers and provides virtual tours, remote transaction coordination, and clear step-by-step guidance to make cross-border purchases efficient and transparent.</p><p>Her approach focuses on clarity, strategy, and trust — ensuring clients understand both the lifestyle and financial implications behind every decision.</p>"
       }
     },
     "33": {
@@ -1364,7 +1364,7 @@
       "classid": [
         "11"
       ],
-      "title": "Tatyana Ilieva ",
+      "title": "Tatyana Ilieva",
       "url": "/brokers/33",
       "keywords": "",
       "description": "Real Estate Advisor",
@@ -1378,10 +1378,10 @@
       "seo_keywords": "",
       "seo_description": "",
       "field": {
-        "phone": "",
+        "phone": "+1 805-298-8641",
         "real_estate_broker_region": "",
-        "real_estate_broker_desc": "",
-        "real_estate_broker_email": ""
+        "real_estate_broker_desc": "<p>Tatyana Ilieva is a New York–based real estate advisor at Beacon Stone Realty, specializing in luxury residential and investment properties across Manhattan and the Greater New York market.</p>",
+        "real_estate_broker_email": "tatyana@beacon-stone.com"
       }
     },
     "34": {
@@ -1403,10 +1403,10 @@
       "seo_keywords": "",
       "seo_description": "",
       "field": {
-        "phone": "+966 114 977 208",
-        "real_estate_broker_region": "AL OLAYA, RIYADH, SAUDI ARABIA",
-        "real_estate_broker_desc": "<p style=\"margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: var(--font-family-text); line-height: 30px;\">An established property expert and Sales Manager, Project Developments with Saudi Arabia Sotheby’s International Realty, Khawlah brings a multidimensional background to her current role. Her previous experience spans marketing and client advisory, including working with one of the Kingdom’s largest firms, partly owned by the Public Investment Fund – before transitioning into luxury automotive sales. Exposure to high-net-worth clients and a proper understanding of their expectations for discretion and superior service naturally led her to the world of prime real estate, whose complexities and nuances she continues to uncover today, layer by layer, one transaction at a time.<br/></p><p><br/></p>",
-        "real_estate_broker_email": "khawlah.alfayez@sothebysrealty.com"
+        "phone": "+1 646-684-5457",
+        "real_estate_broker_region": "",
+        "real_estate_broker_desc": "<p>Qiao Chen is a New York City–based real estate advisor specializing in residential properties across NYC. Her approach combines refined aesthetic judgment with thoughtful market strategy.</p>",
+        "real_estate_broker_email": "qiaochen@beacon-stone.com"
       }
     },
     "35": {
@@ -2271,8 +2271,9 @@
       "seo_keywords": "",
       "seo_description": "",
       "field": {
+        "phone": "+1 858-209-3720",
         "real_estate_broker_email": "nickyu@beacon-stone.com",
-        "real_estate_broker_desc": "<p><strong>Nick Yu</strong>&nbsp;is a New York–based Real Estate Advisor at Beacon-Stone Realty, specializing in luxury and investment condominiums across Manhattan and Long Island City. He works with both local and international clients on luxury resale and new development opportunities, advising on acquisitions with a focus on long-term value, market positioning, and strategic execution.</p><p>A graduate of Columbia University’s Negotiation and Conflict Resolution program, Nick brings a disciplined and structured approach to every transaction. His background in advanced negotiation strategy allows him to navigate complex deal dynamics with clarity and composure, ensuring his clients are represented with precision and confidence.</p><p>Nick views real estate not only as a residence, but as a long-term financial asset. By combining market analysis, pricing strategy, and strong negotiation, he helps clients make informed decisi"
+        "real_estate_broker_desc": "<p>Nick Yu is a New York–based Real Estate Advisor at Beacon-Stone Realty, specializing in luxury and investment condominiums across Manhattan and Long Island City. He works with both local and international clients on luxury resale and new development opportunities, advising on acquisitions with a focus on long-term value, market positioning, and strategic execution.</p><p>A graduate of Columbia University’s Negotiation and Conflict Resolution program, Nick brings a disciplined and structured approach to every transaction. His background in advanced negotiation strategy allows him to navigate complex deal dynamics with clarity and composure, ensuring his clients are represented with precision and confidence.</p><p>Nick views real estate not only as a residence, but as a long-term financial asset. By combining market analysis, pricing strategy, and strong negotiation, he helps clients make informed decisions aligned with both lifestyle goals and investment objectives. He is committed to delivering discretion, transparency, and steady guidance at every stage of the process.</p>"
       }
     },
     "71": {
@@ -2294,8 +2295,9 @@
       "seo_keywords": "",
       "seo_description": "",
       "field": {
+        "phone": "+1 646-812-1577",
         "real_estate_broker_email": "julianagamboa@beacon-stone.com",
-        "real_estate_broker_desc": "<p><strong>Juliana Gamboa</strong>&nbsp;is a New York–based real estate advisor specializing in residential properties across Manhattan and the Greater New York market. She brings a background in luxury property sales and international client relations, combining strategic market insight with refined presentation and disciplined negotiation.</p><p>Prior to focusing on New York City real estate, Juliana was involved in luxury residential sales within an internationally recognized wellness-based residential community, guiding buyers through high-value transactions and contract processes. Working alongside sales and legal teams strengthened her attention to detail, compliance awareness, and structured approach to complex deals.</p><p>She holds a Bachelor’s degree in International Business (Honors) and is fully bilingual in English and Spanish, advising both local and international clients with clarity and precision.</p><p>"
+        "real_estate_broker_desc": "<p>Juliana Gamboa is a New York–based real estate advisor specializing in residential properties across Manhattan and the Greater New York market. She brings a background in luxury property sales and international client relations, combining strategic market insight with refined presentation and disciplined negotiation.</p><p>Prior to focusing on New York City real estate, Juliana was involved in luxury residential sales within an internationally recognized wellness-based residential community, guiding buyers through high-value transactions and contract processes. Working alongside sales and legal teams strengthened her attention to detail, compliance awareness, and structured approach to complex deals.</p><p>She holds a Bachelor’s degree in International Business (Honors) and is fully bilingual in English and Spanish, advising both local and international clients with clarity and precision.</p><p>Juliana approaches every transaction as a long-term investment decision and is committed to delivering discretion, structure, and elevated service at every stage of the process.</p>"
       }
     },
     "72": {
@@ -2317,8 +2319,9 @@
       "seo_keywords": "",
       "seo_description": "",
       "field": {
+        "phone": "+1 646-684-5457",
         "real_estate_broker_email": "qiaochen@beacon-stone.com",
-        "real_estate_broker_desc": "<p><strong>Qiao Chen</strong> is a New York City–based real estate advisor specializing in residential properties across NYC. Her approach combines refined aesthetic judgment with thoughtful market strategy, helping clients navigate decisions shaped by lifestyle, design, and long-term value.</p><p>Before entering real estate, Qiao worked as a pianist within New York’s cultural institutions and gained experience in the art and creative market, developing a strong eye for architecture, proportion, and craftsmanship — qualities that inform her perspective on exceptional homes.</p><p>She holds degrees from the Manhattan School of Music and an MBA in New York City, bringing structured negotiation, communication, and analytical decision-making to every transaction.</p><p>Qiao has experience assisting clients navigating New York City’s competitive and high-end residential market. She works with both local and international clie"
+        "real_estate_broker_desc": "<p>Qiao Chen is a New York City–based real estate advisor specializing in residential properties across NYC. Her approach combines refined aesthetic judgment with thoughtful market strategy, helping clients navigate decisions shaped by lifestyle, design, and long-term value.</p><p>Before entering real estate, Qiao worked as a pianist within New York’s cultural institutions and gained experience in the art and creative market, developing a strong eye for architecture, proportion, and craftsmanship — qualities that inform her perspective on exceptional homes.</p><p>She holds degrees from the Manhattan School of Music and an MBA in New York City, bringing structured negotiation, communication, and analytical decision-making to every transaction.</p><p>Qiao has experience assisting clients navigating New York City’s competitive and high-end residential market. She works with both local and international clients, offering discretion, clarity, and steady guidance across buying, selling, and rental transactions.</p>"
       }
     },
     "73": {
@@ -2340,8 +2343,9 @@
       "seo_keywords": "",
       "seo_description": "",
       "field": {
+        "phone": "+1 805-298-8641",
         "real_estate_broker_email": "tatyana@beacon-stone.com",
-        "real_estate_broker_desc": "<p><strong>Tatyana Ilieva&nbsp;</strong>is a New York–based real estate advisor at Beacon Stone Realty, specializing in luxury residential and investment properties across Manhattan and the Greater New York market. She brings a rare combination of analytical rigor, strategic clarity, and refined aesthetic sensibility to every transaction.</p><p>Currently a sophomore at Columbia University’s School of Engineering and Applied Science, studying Computer Science and Electrical Engineering, Tatyana approaches real estate with a data-driven, technically informed perspective. Her engineering background strengthens her ability to evaluate market trends, structure complex transactions, and identify long-term value opportunities with precision. Tatyana focuses on helping clients build a lifestyle of satisfaction for years to come.</p><p>Tatyana is a professional artist with a keen eye for composition, proportion, and design — skills "
+        "real_estate_broker_desc": "<p>Tatyana Ilieva is a New York–based real estate advisor at Beacon Stone Realty, specializing in luxury residential and investment properties across Manhattan and the Greater New York market. She brings a rare combination of analytical rigor, strategic clarity, and refined aesthetic sensibility to every transaction.</p><p>Currently a sophomore at Columbia University’s School of Engineering and Applied Science, studying Computer Science and Electrical Engineering, Tatyana approaches real estate with a data-driven, technically informed perspective. Her engineering background strengthens her ability to evaluate market trends, structure complex transactions, and identify long-term value opportunities with precision. Tatyana focuses on helping clients build a lifestyle of satisfaction for years to come.</p><p>Tatyana is a professional artist with a keen eye for composition, proportion, and design — skills she now applies to identifying exceptional properties and creating sophisticated positioning strategies for clients.</p><p>Before entering real estate, she gained experience in business strategy and market compliance in the payments industry, along with policy research at the California State Assembly, further enhancing her ability to navigate complex regulatory landscapes and deliver disciplined, high-level guidance. Early exposure to infrastructure and energy operations, Tatyana cultivated practical insights into development fundamentals and operational execution.</p><p>Combining technical expertise, creative insight, and institutional-level strategy, Tatyana advises clients with composure and thoughtful guidance, supporting decisions that align with both lifestyle priorities and long-term investment objectives.</p>"
       }
     },
     "74": {
@@ -2363,8 +2367,9 @@
       "seo_keywords": "",
       "seo_description": "",
       "field": {
+        "phone": "+1 646-696-8641",
         "real_estate_broker_email": "allenzhang@beacon-stone.com",
-        "real_estate_broker_desc": "<p><strong>Xiangyu (Allen) Zhang</strong>&nbsp;is a New York–based real estate investor and Founder&nbsp;&amp; CEO&nbsp;of Beacon Stone Realty, specializing in luxury acquisitions, strategic advisory, and high-value transactions across Manhattan and the Greater New York market.</p><p>With a Master’s degree from Boston University, advanced accounting studies at Harvard Business School, and private equity program at Columbia Business School, Allen approaches every transaction with institutional-level analytical rigor and strategic clarity. His background in real estate private equity&nbsp;further strengthens his ability to underwrite complex assets, structure sophisticated deals, and identify long-term value creation opportunities.</p><p>Allen’s achievements in the New York real estate market have earned international recognition, including a feature documentary produced fromby Tencent. He also serves as a resident comment"
+        "real_estate_broker_desc": "<p>Xiangyu (Allen) Zhang is a New York–based real estate investor and Founder &amp; CEO of Beacon Stone Realty, specializing in luxury acquisitions, strategic advisory, and high-value transactions across Manhattan and the Greater New York market.</p><p>With a Master’s degree from Boston University, advanced accounting studies at Harvard Business School, and private equity program at Columbia Business School, Allen approaches every transaction with institutional-level analytical rigor and strategic clarity. His background in real estate private equity further strengthens his ability to underwrite complex assets, structure sophisticated deals, and identify long-term value creation opportunities.</p><p>Allen’s achievements in the New York real estate market have earned international recognition, including a feature documentary produced by Tencent. He also serves as a resident commentator for the World Journal and appeared in Season One of Owning Manhattan on Netflix.</p><p>Allen advises high-net-worth individuals, international investors, and business leaders, combining data-driven market insight with refined negotiation strategy. As an active investor himself, Allen offers firsthand expertise in value-add positioning, construction fundamentals, and design-driven appreciation.</p><p>Fluent in both Eastern and Western business cultures, Allen delivers discretion, precision, and results — building long-term relationships grounded in trust and performance.</p>"
       }
     },
     "75": {

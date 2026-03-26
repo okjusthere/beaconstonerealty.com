@@ -66,12 +66,12 @@ export default async function BrokerDetailPage({ params }: { params: Promise<{ i
         </div>
       </section>
 
-      {broker.content && (
+      {(broker.field?.real_estate_broker_desc || broker.content) && (
         <section className={styles.content}>
           <div className="container">
             <div
               className={styles.richContent}
-              dangerouslySetInnerHTML={{ __html: broker.content }}
+              dangerouslySetInnerHTML={{ __html: broker.field?.real_estate_broker_desc || broker.content || '' }}
             />
           </div>
         </section>
