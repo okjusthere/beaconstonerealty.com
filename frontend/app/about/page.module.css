@@ -312,6 +312,7 @@
 .carouselBody {
   width: 100%;
   padding: 18px 0 4px;
+  padding-left: 10px;
 }
 
 .carouselBody h3 {
