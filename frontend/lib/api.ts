@@ -8,7 +8,9 @@ const INTERNAL_ROUTE_PATTERNS: Array<[RegExp, string]> = [
   [/^\/realEstateBrokerDetail\/(\d+)$/i, '/brokers/$1'],
   [/^\/sale\/\d+$/i, '/sell-with-us'],
   [/^\/contact\/\d+$/i, '/contact'],
-  [/^\/joinUs\/(\d+)$/i, '/joinUs/$1'],
+  [/^\/joinUs\/\d+$/i, '/join'],
+  [/^\/about\/\d+$/i, '/about'],
+  [/^\/legal\/\d+$/i, '/legal'],
 ];
 
 const LOCAL_SITE_HOST_PATTERN = /^https?:\/\/(?:www\.)?beaconstonerealty\.com/i;
@@ -179,6 +181,7 @@ function normalizeLegacyHtmlRoute(value: string): string | null {
 
     switch (pathname) {
       case '/':
+        return null;
       case '/index.html':
       case '/home.html':
         return '/';
