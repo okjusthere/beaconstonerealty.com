@@ -121,7 +121,7 @@ export default async function ContactPage() {
       {/* Form Section */}
       <section className={styles.formSection}>
         <div className={styles.formWrapper}>
-          <ContactForm recipientEmail={webInfo.email || 'info@beacon-stone.com'} />
+          <ContactForm />
         </div>
       </section>
 

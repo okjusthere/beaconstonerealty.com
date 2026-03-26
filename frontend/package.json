@@ -5,17 +5,26 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node scripts/create-static-aliases.mjs",
+    "build:cf": "npx @opennextjs/cloudflare build",
+    "preview:cf": "npx wrangler dev",
+    "deploy": "npm run build:cf && npx wrangler deploy",
     "start": "next start",
     "lint": "eslint",
-    "snapshot:content": "node scripts/export-legacy-content.mjs",
+    "seed": "node scripts/seed-sanity.mjs",
     "test:e2e": "npm run build && playwright test"
   },
   "dependencies": {
     "@mux/mux-player-react": "^3.11.5",
+    "@opennextjs/cloudflare": "^1.18.0",
+    "@sanity/client": "^7.20.0",
+    "@sanity/image-url": "^2.0.3",
+    "@sanity/vision": "^5.18.0",
     "next": "16.1.7",
+    "next-sanity": "^12.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "resend": "^6.9.4",
+    "sanity": "^5.18.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",

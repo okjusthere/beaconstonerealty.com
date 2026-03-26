@@ -1,17 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  buildMailtoHref,
-  validateContactForm,
-} from '@/lib/legacyForms';
+import { validateContactForm } from '@/lib/legacyForms';
+import { submitForm } from '@/lib/formSubmit';
 import styles from '../app/contact/page.module.css';
 
-interface ContactFormProps {
-  recipientEmail: string;
-}
-
-export default function ContactForm({ recipientEmail }: ContactFormProps) {
+export default function ContactForm() {
   const [values, setValues] = useState({
     firstName: '',
     lastName: '',
@@ -24,12 +18,13 @@ export default function ContactForm({ recipientEmail }: ContactFormProps) {
   });
   const [feedback, setFeedback] = useState('');
   const [feedbackKind, setFeedbackKind] = useState<'error' | 'success'>('error');
+  const [submitting, setSubmitting] = useState(false);
 
   function setField(field: string, value: string) {
     setValues((prev) => ({ ...prev, [field]: value }));
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFeedback('');
     setFeedbackKind('error');
@@ -41,19 +36,39 @@ export default function ContactForm({ recipientEmail }: ContactFormProps) {
       return;
     }
 
-    window.location.href = buildMailtoHref(recipientEmail, validation.payload);
-    setFeedback('Your email app has been opened with a contact request draft.');
-    setFeedbackKind('success');
-    setValues({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      budget: '',
-      bedrooms: '',
-      purchase: '',
-      location: '',
+    setSubmitting(true);
+    const result = await submitForm({
+      type: 'contact',
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      phone: values.phone,
+      metadata: {
+        budget: values.budget,
+        bedrooms: values.bedrooms,
+        timeline: values.purchase,
+        location: values.location,
+      },
     });
+    setSubmitting(false);
+
+    if (result.success) {
+      setFeedback('Thank you! We will be in touch shortly.');
+      setFeedbackKind('success');
+      setValues({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        budget: '',
+        bedrooms: '',
+        purchase: '',
+        location: '',
+      });
+    } else {
+      setFeedback(result.error || 'Something went wrong. Please try again.');
+      setFeedbackKind('error');
+    }
   }
 
   return (
@@ -152,8 +167,8 @@ export default function ContactForm({ recipientEmail }: ContactFormProps) {
         </div>
       </div>
 
-      <button type="submit" className={styles.submitBtn}>
-        SUBMIT
+      <button type="submit" className={styles.submitBtn} disabled={submitting}>
+        {submitting ? 'SUBMITTING...' : 'SUBMIT'}
       </button>
 
       {feedback && (

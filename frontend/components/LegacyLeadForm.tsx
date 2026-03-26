@@ -3,12 +3,12 @@
 import { useState } from 'react';
 import styles from './LegacyLeadForm.module.css';
 import {
-  buildMailtoHref,
   LegacyLeadVariant,
   validateContactForm,
   validateInquiryForm,
   validateJoinForm,
 } from '@/lib/legacyForms';
+import { submitForm } from '@/lib/formSubmit';
 
 function ArrowRight() {
   return (
@@ -72,13 +72,14 @@ export default function LegacyLeadForm({
   noteHtml,
   disclaimerHtml,
   messagePlaceholder,
-  successMessage = 'Your email app has been opened with a draft message.',
+  successMessage = 'Thank you! We will be in touch shortly.',
   compact = false,
   recipientEmail = 'info@beacon-stone.com',
 }: LegacyLeadFormProps) {
   const [values, setValues] = useState<Record<string, string>>({ ...INITIAL_VALUES[variant] });
   const [feedback, setFeedback] = useState('');
   const [feedbackKind, setFeedbackKind] = useState<'error' | 'success'>('error');
+  const [submitting, setSubmitting] = useState(false);
 
   function setFieldValue(field: string, value: string) {
     setValues((current) => ({ ...current, [field]: value }));
@@ -89,6 +90,7 @@ export default function LegacyLeadForm({
     setFeedback('');
     setFeedbackKind('error');
 
+    // Client-side validation
     const validation =
       variant === 'join'
         ? validateJoinForm(values as never, submissionTitle)
@@ -101,10 +103,41 @@ export default function LegacyLeadForm({
       return;
     }
 
-    window.location.href = buildMailtoHref(recipientEmail, validation.payload);
-    setFeedback(successMessage);
-    setFeedbackKind('success');
-    setValues({ ...INITIAL_VALUES[variant] });
+    // Build metadata based on variant
+    const metadata: Record<string, string> = {};
+    if (variant === 'join') {
+      if (values.market) metadata.market = values.market;
+      if (values.linkedin) metadata.linkedin = values.linkedin;
+    } else if (variant === 'contact') {
+      if (values.budget) metadata.budget = values.budget;
+      if (values.bedrooms) metadata.bedrooms = values.bedrooms;
+      if (values.purchase) metadata.timeline = values.purchase;
+      if (values.location) metadata.location = values.location;
+    }
+    if (recipientEmail && recipientEmail !== 'info@beacon-stone.com') {
+      metadata.agentEmail = recipientEmail;
+    }
+
+    setSubmitting(true);
+    const result = await submitForm({
+      type: variant,
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      phone: values.phone,
+      message: values.message,
+      metadata,
+    });
+    setSubmitting(false);
+
+    if (result.success) {
+      setFeedback(successMessage);
+      setFeedbackKind('success');
+      setValues({ ...INITIAL_VALUES[variant] });
+    } else {
+      setFeedback(result.error || 'Something went wrong. Please try again.');
+      setFeedbackKind('error');
+    }
   }
 
   const shellClassName = [styles.shell, compact ? styles.compact : ''].filter(Boolean).join(' ');
@@ -253,9 +286,9 @@ export default function LegacyLeadForm({
         {noteHtml && <div className={styles.note} dangerouslySetInnerHTML={{ __html: noteHtml }} />}
         {disclaimerHtml && <div className={styles.disclaimer} dangerouslySetInnerHTML={{ __html: disclaimerHtml }} />}
 
-        <button type="submit" className={styles.submit}>
-          Send Message
-          <ArrowRight />
+        <button type="submit" className={styles.submit} disabled={submitting}>
+          {submitting ? 'Sending...' : 'Send Message'}
+          {!submitting && <ArrowRight />}
         </button>
 
         {feedback && (
