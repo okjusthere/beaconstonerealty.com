@@ -22,7 +22,7 @@ const navLinks = [
   { name: 'About Us', href: '/about/13' },
   { name: 'Property Center', href: '/properties' },
   { name: 'Real Estate Advisors', href: '/brokers' },
-  { name: 'Join Us', href: '/join' },
+  { name: 'Join Us', href: '/joinUs/39' },
   { name: 'Contact Us', href: '/contact' },
 ];
 
