@@ -278,6 +278,7 @@
 
 .carouselCard {
   --advisor-media-width: min(100%, 400px);
+  --advisor-image-offset: 0px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -297,6 +298,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
+  background: #060606;
   overflow: hidden;
 }
 
@@ -307,6 +309,7 @@
   aspect-ratio: auto;
   object-fit: contain;
   object-position: center top;
+  transform: translateY(var(--advisor-image-offset));
 }
 
 .carouselBody {
@@ -347,25 +350,28 @@
 
 .discoverHeader {
   background: var(--color-white);
-  padding: 76px 0 20px;
+  padding: 56px 0 12px;
   text-align: center;
 }
 
 .discoverSection {
   background: var(--color-white);
-  padding: 0 0 80px;
+  padding: 0 0 60px;
 }
 
 .discoverGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 18px;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .discoverCard {
   display: block;
   overflow: hidden;
   background: transparent;
+  max-width: 520px;
   text-decoration: none;
 }
 
@@ -377,14 +383,14 @@
 }
 
 .discoverBody {
-  padding: 18px 0;
+  padding: 14px 0 6px;
 }
 
 .discoverBody h3 {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: var(--color-brown);
-  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-  line-height: 1.35;
+  font-size: clamp(1rem, 1.55vw, 1.2rem);
+  line-height: 1.28;
 }
 
 .discoverBody p {
@@ -398,7 +404,7 @@
   align-items: center;
   gap: 6px;
   color: var(--color-text-light);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;

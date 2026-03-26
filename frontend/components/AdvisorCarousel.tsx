@@ -13,6 +13,24 @@ interface Advisor {
   ctaLabel?: string;
 }
 
+function getPortraitOffset(title: string): string {
+  switch (title) {
+    case 'Ziwei (Audrey) Wen':
+    case 'Qiao Chen':
+      return '0px';
+    case 'Tatyana Ilieva':
+      return '8px';
+    case 'Juliana Gamboa':
+      return '16px';
+    case 'Nick Yu':
+      return '18px';
+    case 'Xiangyu (Allen) Zhang':
+      return '20px';
+    default:
+      return '10px';
+  }
+}
+
 function ArrowRight() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -132,7 +150,11 @@ export default function AdvisorCarousel({ advisors }: { advisors: Advisor[] }) {
         >
           {extendedSlides.map((advisor, i) => (
             <div key={`${advisor.id}-${i}`} className={styles.carouselSlide}>
-              <Link href={advisor.url || '#'} className={styles.carouselCard}>
+              <Link
+                href={advisor.url || '#'}
+                className={styles.carouselCard}
+                style={{ ['--advisor-image-offset' as string]: getPortraitOffset(advisor.title) }}
+              >
                 {advisor.thumbnail && (
                   <div className={styles.carouselImage}>
                     <img src={advisor.thumbnail} alt={advisor.title} />

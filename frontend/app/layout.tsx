@@ -46,6 +46,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href={logo?.path || '/favicon.ico'} />
+        <link rel="shortcut icon" href={logo?.path || '/favicon.ico'} />
+        <link rel="apple-touch-icon" href={logo?.path || '/favicon.ico'} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
