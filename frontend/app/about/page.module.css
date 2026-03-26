@@ -277,11 +277,12 @@
 }
 
 .carouselCard {
-  --advisor-media-width: min(72%, 320px);
+  --advisor-media-width: min(100%, 400px);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 430px;
+  align-items: stretch;
+  width: min(100%, 400px);
+  max-width: 100%;
   margin: 0 auto;
   text-decoration: none;
   color: var(--color-white);
@@ -294,23 +295,23 @@
 .carouselImage {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  min-height: 460px;
+  justify-content: flex-start;
+  width: 100%;
   overflow: hidden;
 }
 
 .carouselImage img {
   display: block;
   width: var(--advisor-media-width);
-  max-height: 460px;
+  max-height: min(68vh, 560px);
   aspect-ratio: auto;
   object-fit: contain;
   object-position: center top;
 }
 
 .carouselBody {
-  width: var(--advisor-media-width);
-  padding: 16px 0 4px;
+  width: 100%;
+  padding: 18px 0 4px;
 }
 
 .carouselBody h3 {
@@ -442,17 +443,17 @@
   }
 
   .carouselCard {
-    --advisor-media-width: min(82%, 260px);
-    max-width: 340px;
+    --advisor-media-width: min(100%, 300px);
+    width: min(100%, 300px);
   }
 
   .carouselImage {
-    min-height: 360px;
+    width: 100%;
   }
 
   .carouselImage img {
     width: var(--advisor-media-width);
-    max-height: 360px;
+    max-height: min(58vh, 420px);
   }
 }
 
