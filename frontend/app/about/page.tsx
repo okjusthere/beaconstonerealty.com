@@ -23,7 +23,7 @@ function stripHtmlTags(html: string): string {
 }
 
 type StatItem = { id: number; title: string; keywords: string; description: string };
-type NetworkCard = Pick<NewsItem, 'id' | 'title' | 'thumbnail' | 'url'>;
+type NetworkCard = Pick<NewsItem, 'id' | 'title' | 'thumbnail' | 'url'> & { content?: string };
 type AdvisorCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'description' | 'field'>;
 type DiscoverCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'description'>;
 
@@ -206,7 +206,10 @@ export default async function AboutPage() {
             <div className="container">
               <div className={styles.featureTextInner}>
                 <h2>{featureTitle}</h2>
-                <div dangerouslySetInnerHTML={{ __html: featureContent }} />
+                {featureContent && <div className={styles.featureDesc} dangerouslySetInnerHTML={{ __html: featureContent }} />}
+                <Link href="/sell-with-us" className={styles.btnOutline}>
+                  Sell With Us <ArrowRight />
+                </Link>
               </div>
             </div>
           </div>
@@ -219,27 +222,29 @@ export default async function AboutPage() {
             <div className={styles.networkHeader}>
               <h2 className={styles.sectionTitle}>{networkTitle}</h2>
               {networkDesc && <div className={styles.richText} dangerouslySetInnerHTML={{ __html: networkDesc }} />}
-              <Link href="/sell-with-us" className="btn btn-secondary">
-                Sell With Us <ArrowRight />
-              </Link>
             </div>
             {networkCards.length > 0 && (
-              <div className={styles.networkGrid}>
-                {networkCards.map((item) => (
-                  <Link key={item.id} href={item.url || '#'} className={styles.networkCard}>
-                    {item.thumbnail && (
-                      <img
-                        src={item.thumbnail}
-                        alt={item.title}
-                        loading="lazy"
-                        className={styles.networkImage}
-                      />
-                    )}
-                    <div className={styles.networkOverlay}>
-                      <h3>{item.title}</h3>
+              <div className={styles.networkStack}>
+                {networkCards.map((item) => {
+                  const content = item.content || '';
+                  return (
+                    <div key={item.id} className={styles.networkStackCard}>
+                      <div className={styles.networkStackText}>
+                        <h3>{item.title}</h3>
+                        {content && <div className={styles.richText} dangerouslySetInnerHTML={{ __html: content }} />}
+                      </div>
+                      {item.thumbnail && (
+                        <div className={styles.networkStackMedia}>
+                          <img
+                            src={item.thumbnail}
+                            alt={item.title}
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
                     </div>
-                  </Link>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
@@ -255,18 +260,19 @@ export default async function AboutPage() {
           </section>
           <section className={styles.advisorsSection}>
             <div className="container">
-              <div className={styles.advisorsGrid}>
+              <div className={styles.advisorsList}>
                 {advisors.map((advisor) => (
-                  <Link key={advisor.id} href={advisor.url || '#'} className={styles.advisorCard}>
+                  <Link key={advisor.id} href={advisor.url || '#'} className={styles.advisorHCard}>
                     {advisor.thumbnail && (
-                      <img
-                        src={advisor.thumbnail}
-                        alt={advisor.title}
-                        loading="lazy"
-                        className={styles.advisorImage}
-                      />
+                      <div className={styles.advisorHImage}>
+                        <img
+                          src={advisor.thumbnail}
+                          alt={advisor.title}
+                          loading="lazy"
+                        />
+                      </div>
                     )}
-                    <div className={styles.advisorBody}>
+                    <div className={styles.advisorHBody}>
                       <h3>{advisor.title}</h3>
                       {advisor.description && <p className={styles.advisorRole}>{advisor.description}</p>}
                       {summarizeAdvisorIntro(advisor) && (
@@ -274,7 +280,9 @@ export default async function AboutPage() {
                           {summarizeAdvisorIntro(advisor)}
                         </p>
                       )}
-                      <span className={styles.advisorAction}>View Profile</span>
+                      <span className={styles.advisorAction}>
+                        MEET THE TEAM <ArrowRight />
+                      </span>
                     </div>
                   </Link>
                 ))}
