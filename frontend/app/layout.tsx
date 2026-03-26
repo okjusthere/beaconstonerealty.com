@@ -8,6 +8,14 @@ export const metadata: Metadata = {
   title: 'Beaconstone Realty | Luxury Real Estate',
   description: 'Beaconstone Realty — premium luxury real estate services. Find exclusive properties and connect with top real estate professionals.',
   keywords: 'luxury real estate, Beaconstone Realty, premium properties, real estate broker',
+  icons: {
+    icon: [
+      { url: '/favicon.ico?v=3', type: 'image/x-icon' },
+      { url: '/icon.png?v=3', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico?v=3',
+    apple: '/icon.png?v=3',
+  },
 };
 
 export default async function RootLayout({
@@ -46,9 +54,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href={logo?.path || '/favicon.ico'} />
-        <link rel="shortcut icon" href={logo?.path || '/favicon.ico'} />
-        <link rel="apple-touch-icon" href={logo?.path || '/favicon.ico'} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
