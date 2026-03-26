@@ -277,7 +277,10 @@
 }
 
 .carouselCard {
-  display: block;
+  --advisor-media-width: min(72%, 320px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 430px;
   margin: 0 auto;
   text-decoration: none;
@@ -298,7 +301,7 @@
 
 .carouselImage img {
   display: block;
-  width: min(72%, 320px);
+  width: var(--advisor-media-width);
   max-height: 460px;
   aspect-ratio: auto;
   object-fit: contain;
@@ -306,6 +309,7 @@
 }
 
 .carouselBody {
+  width: var(--advisor-media-width);
   padding: 16px 0 4px;
 }
 
@@ -438,6 +442,7 @@
   }
 
   .carouselCard {
+    --advisor-media-width: min(82%, 260px);
     max-width: 340px;
   }
 
@@ -446,7 +451,7 @@
   }
 
   .carouselImage img {
-    width: min(82%, 260px);
+    width: var(--advisor-media-width);
     max-height: 360px;
   }
 }
