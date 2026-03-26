@@ -1,5 +1,5 @@
 .footer {
-  background: var(--color-white);
+  background: var(--color-off-white);
   color: var(--color-brown);
   border-top: 1px solid var(--color-grey-light);
 }
@@ -8,6 +8,36 @@
   max-width: var(--max-width-wide);
   margin: 0 auto;
   padding: 40px var(--space-lg);
+}
+
+/* Company Info */
+.companySection {
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(62, 54, 52, 0.12);
+}
+
+.companyName {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-brown);
+  margin-bottom: 10px;
+}
+
+.companyDetail {
+  margin: 0 0 4px;
+  font-size: 0.88rem;
+  color: var(--color-grey-dark);
+  line-height: 1.6;
+}
+
+.companyDetail a {
+  color: var(--color-grey-dark);
+  text-decoration: none;
+}
+
+.companyDetail a:hover {
+  color: var(--color-gold);
 }
 
 /* Navigation */

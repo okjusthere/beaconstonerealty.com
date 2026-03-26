@@ -134,6 +134,7 @@
   color: var(--color-brown);
   text-decoration: none;
   line-height: 1.7;
+  white-space: nowrap;
 }
 
 .contactAction {

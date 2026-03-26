@@ -46,7 +46,24 @@ export default async function SellWithUsPage() {
       heroDescription = hero.value.description || '';
     }
     if (advisors.status === 'fulfilled') {
-      advisorCards = advisors.value as SaleCard[];
+      advisorCards = await Promise.all(
+        (advisors.value as SaleCard[]).map(async (advisor) => {
+          try {
+            const detail = await getNewsDetail(advisor.id);
+            return {
+              ...advisor,
+              ...detail,
+              url: advisor.url || detail.url,
+              thumbnail: advisor.thumbnail || detail.thumbnail,
+              description: advisor.description || detail.description,
+              content: detail.content || advisor.content,
+              field: { ...(advisor.field || {}), ...(detail.field || {}) },
+            };
+          } catch {
+            return advisor;
+          }
+        }),
+      );
     }
     if (formContent.status === 'fulfilled') {
       inquiryHeading = formContent.value.title;
@@ -121,7 +138,7 @@ export default async function SellWithUsPage() {
                     <div className={styles.advisorContact}>
                       <span className={styles.contactTitle}>Contact</span>
                       {advisor.field?.phone && (
-                        <a href={`tel:${advisor.field.phone}`} className={styles.contactLink}>O: {advisor.field.phone}</a>
+                        <a href={`tel:${advisor.field.phone}`} className={styles.contactLink}>Cell: {advisor.field.phone}</a>
                       )}
                       {advisor.field?.real_estate_broker_email && (
                         <a

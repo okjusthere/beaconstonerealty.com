@@ -14,7 +14,7 @@
   width: 40px;
   height: 40px;
   border: 3px solid var(--color-grey-light);
-  border-top-color: var(--color-navy);
+  border-top-color: var(--color-brown);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -101,7 +101,7 @@
 .propertyTitle {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  color: var(--color-navy);
+  color: var(--color-brown);
   margin-bottom: var(--space-md);
   font-weight: 400;
 }
@@ -123,7 +123,7 @@
 .fieldsSectionTitle {
   font-family: var(--font-heading);
   font-size: 1.25rem;
-  color: var(--color-navy);
+  color: var(--color-brown);
   margin-bottom: var(--space-lg);
 }
 
@@ -162,6 +162,16 @@
 .richContent {
   color: var(--color-text-light);
   line-height: 1.8;
+}
+
+.richContent :global(span),
+.richContent :global(p),
+.richContent :global(div) {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  color: inherit !important;
+  background-color: transparent !important;
+  white-space: normal !important;
 }
 
 .richContent img {
@@ -238,7 +248,7 @@
 .contactTitle {
   font-family: var(--font-heading);
   font-size: 1.25rem;
-  color: var(--color-navy);
+  color: var(--color-brown);
   margin-bottom: var(--space-lg);
 }
 
@@ -260,7 +270,7 @@
 
 .inputGroup input:focus,
 .inputGroup textarea:focus {
-  border-color: var(--color-navy);
+  border-color: var(--color-brown);
 }
 
 .inputGroup textarea {
@@ -284,7 +294,7 @@
   letter-spacing: 1.4px;
   text-transform: uppercase;
   padding: 14px 28px;
-  background: var(--color-navy);
+  background: var(--color-brown);
   color: var(--color-white);
   border: none;
   cursor: pointer;
@@ -292,13 +302,13 @@
 }
 
 .submitBtn:hover {
-  background: var(--color-navy-dark);
+  background: var(--color-brown-light);
 }
 
 .success {
   padding: var(--space-xl);
   text-align: center;
-  color: var(--color-navy);
+  color: var(--color-brown);
 }
 
 .errorMessage {

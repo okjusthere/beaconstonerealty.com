@@ -38,7 +38,7 @@
 
 .sectionTitle {
   margin-bottom: var(--space-lg);
-  color: var(--color-navy);
+  color: var(--color-brown);
   font-size: clamp(2rem, 4vw, 3.2rem);
   line-height: 1.08;
 }
@@ -72,7 +72,7 @@
 
 .sidePanel :global(h3) {
   margin-bottom: var(--space-sm);
-  color: var(--color-navy);
+  color: var(--color-brown);
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 2.6vw, 2.2rem);
   line-height: 1.25;
@@ -80,7 +80,7 @@
 
 .sidePanel :global(h6) {
   margin: 0.3rem 0;
-  color: var(--color-navy);
+  color: var(--color-brown);
   font-size: 0.98rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;

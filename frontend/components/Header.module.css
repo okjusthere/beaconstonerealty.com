@@ -109,7 +109,7 @@
 
 .dropdownLink:hover {
   background: var(--color-grey-lightest);
-  color: var(--color-navy);
+  color: var(--color-brown);
 }
 
 /* CTA Button */
@@ -117,19 +117,21 @@
   display: inline-flex;
   align-items: center;
   padding: 13px 20px;
-  background: var(--color-gold);
-  color: var(--color-white);
+  background: var(--color-brown);
+  color: #ffffff;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 1.4px;
   text-transform: uppercase;
   transition: all var(--transition-base);
   margin-left: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .ctaButton:hover {
-  background: var(--color-gold-light);
-  color: var(--color-white);
+  background: var(--color-brown-light);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Mobile Toggle */

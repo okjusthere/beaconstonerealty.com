@@ -52,8 +52,8 @@
 }
 
 .content {
-  padding: 0 0 5rem;
-  background: var(--color-white);
+  padding: 3rem 0 5rem;
+  background: var(--color-off-white);
 }
 
 .grid {

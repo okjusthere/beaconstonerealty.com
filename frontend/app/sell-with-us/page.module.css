@@ -6,7 +6,7 @@
 .heroInfo {
   position: relative;
   padding: calc(var(--header-height) + 2.5rem) 0 10rem;
-  background: var(--color-navy);
+  background: var(--color-brown);
   text-align: center;
 }
 
@@ -218,6 +218,7 @@
   color: var(--color-brown);
   text-decoration: none;
   line-height: 1.7;
+  white-space: nowrap;
 }
 
 .contactAction {
@@ -242,7 +243,7 @@
 
 .discoverSection {
   padding: 4.5rem 0 5rem;
-  background: var(--color-navy);
+  background: var(--color-brown);
 }
 
 .discoverSection .sectionTitle,

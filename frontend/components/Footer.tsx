@@ -24,6 +24,22 @@ export default function Footer({ webInfo, menuItems }: FooterProps) {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
+        {/* Company Info */}
+        <div className={styles.companySection}>
+          <div className={styles.companyName}>{webInfo.company || 'Beacon Stone Realty'}</div>
+          {webInfo.address && <p className={styles.companyDetail}>{webInfo.address}</p>}
+          {webInfo.phone && (
+            <p className={styles.companyDetail}>
+              Phone: <a href={`tel:${webInfo.phone}`}>{webInfo.phone}</a>
+            </p>
+          )}
+          {webInfo.email && (
+            <p className={styles.companyDetail}>
+              Email: <a href={`mailto:${webInfo.email}`}>{webInfo.email}</a>
+            </p>
+          )}
+        </div>
+
         {/* Navigation Links */}
         <div className={styles.navSection}>
           <div className={styles.navGrid}>

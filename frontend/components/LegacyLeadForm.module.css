@@ -137,7 +137,7 @@
 
 .note :global(a),
 .disclaimer :global(a) {
-  color: var(--color-navy);
+  color: var(--color-brown);
   text-decoration: none;
 }
 

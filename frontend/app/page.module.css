@@ -4,7 +4,7 @@
 
 .heroIntro {
   padding-top: calc(var(--header-height) + var(--space-lg));
-  padding-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
 }
 
 .heroIntroGrid {
@@ -57,6 +57,7 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--color-brown);
+  line-height: 0;
 }
 
 .heroVideoElement {
@@ -82,8 +83,8 @@
 
 .about {
   background: var(--color-white);
-  padding-top: clamp(56px, 8vw, 96px);
-  padding-bottom: clamp(36px, 6vw, 72px);
+  padding-top: clamp(36px, 5vw, 60px);
+  padding-bottom: clamp(24px, 4vw, 48px);
 }
 
 .aboutGrid {
@@ -112,7 +113,7 @@
   margin-bottom: var(--space-lg);
   font-family: var(--font-heading);
   font-size: clamp(1.85rem, 3.4vw, 2.7rem);
-  color: var(--color-navy);
+  color: var(--color-brown);
   font-weight: 400;
 }
 
@@ -128,8 +129,8 @@
 
 .story {
   background: var(--color-white);
-  padding-top: clamp(56px, 10vw, 132px);
-  padding-bottom: clamp(40px, 7vw, 88px);
+  padding-top: clamp(36px, 5vw, 60px);
+  padding-bottom: clamp(24px, 4vw, 48px);
 }
 
 .storyInner {
@@ -160,7 +161,7 @@
 
 .exclusive {
   background: var(--color-brown);
-  padding: clamp(72px, 9vw, 120px) 0 clamp(28px, 4vw, 40px);
+  padding: clamp(48px, 6vw, 72px) 0 clamp(20px, 3vw, 32px);
 }
 
 .exclusiveInner {
@@ -277,7 +278,7 @@
 .propertyImageWrap {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   background: var(--color-grey-lightest);
 }
 
@@ -300,7 +301,7 @@
   margin-bottom: var(--space-sm);
   font-family: var(--font-heading);
   font-size: 1.15rem;
-  color: var(--color-navy);
+  color: var(--color-brown);
   font-weight: 400;
 }
 
@@ -332,7 +333,7 @@
 
 @media (min-width: 1024px) {
   .heroIntro {
-    padding-bottom: 26px;
+    padding-bottom: 12px;
   }
 
   .heroIntroGrid {

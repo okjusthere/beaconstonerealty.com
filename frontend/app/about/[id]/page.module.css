@@ -75,7 +75,7 @@
 
 .sectionTitle {
   margin: 0 0 22px;
-  color: var(--color-navy);
+  color: var(--color-brown);
   font-size: clamp(1.95rem, 3.2vw, 2.9rem);
 }
 
@@ -208,7 +208,7 @@
 .advisorImage {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   object-fit: contain;
   object-position: center top;
   background: #08111f;
@@ -217,9 +217,9 @@
 .advisorBody {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  min-height: 250px;
-  padding: 22px;
+  gap: 8px;
+  min-height: 120px;
+  padding: 16px 22px;
 }
 
 .advisorBody h3 {
@@ -231,7 +231,15 @@
 .advisorRole {
   margin: 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 0.82rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.advisorTitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }

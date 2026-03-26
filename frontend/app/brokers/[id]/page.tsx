@@ -53,7 +53,7 @@ export default async function BrokerDetailPage({ params }: { params: Promise<{ i
               )}
               {broker.field?.phone && (
                 <a href={`tel:${broker.field.phone}`} className={styles.heroPhone}>
-                  {broker.field.phone}
+                  Cell: {broker.field.phone}
                 </a>
               )}
               {brokerEmail && (

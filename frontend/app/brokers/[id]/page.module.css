@@ -14,7 +14,7 @@
   width: 40px;
   height: 40px;
   border: 3px solid var(--color-grey-light);
-  border-top-color: var(--color-navy);
+  border-top-color: var(--color-brown);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -93,6 +93,7 @@
   color: var(--color-gold);
   font-size: 0.95rem;
   margin-bottom: var(--space-sm);
+  white-space: nowrap;
 }
 
 .heroPhone:hover,
@@ -130,7 +131,7 @@
 .contactTitle {
   font-family: var(--font-heading);
   font-size: 1.5rem;
-  color: var(--color-navy);
+  color: var(--color-brown);
   margin-bottom: var(--space-xl);
 }
 
@@ -166,7 +167,7 @@
 
 .form input:focus,
 .form textarea:focus {
-  border-color: var(--color-navy);
+  border-color: var(--color-brown);
 }
 
 .form textarea {
@@ -189,8 +190,8 @@
   letter-spacing: 1.4px;
   text-transform: uppercase;
   padding: 14px 28px;
-  background: var(--color-navy);
-  color: var(--color-white);
+  background: var(--color-brown);
+  color: #ffffff;
   border: none;
   cursor: pointer;
   transition: background var(--transition-base);
@@ -198,13 +199,13 @@
 }
 
 .submitBtn:hover {
-  background: var(--color-navy-dark);
+  background: var(--color-brown-light);
 }
 
 .success {
   padding: var(--space-xl);
   text-align: center;
-  color: var(--color-navy);
+  color: var(--color-brown);
 }
 
 .errorMessage {

@@ -76,7 +76,7 @@ function getBrokerContact(agent: BrokerCard, officePhone: string, officeEmail: s
   return {
     phone: directPhone || fallbackPhone,
     email: directEmail || fallbackEmail,
-    phoneLabel: directPhone ? 'O' : 'Office',
+    phoneLabel: directPhone ? 'Cell' : 'Cell',
     emailLabel: directEmail ? 'Direct' : 'Office',
   };
 }
