@@ -20,9 +20,12 @@ const SILENT_STYLE = {
 
 const AUDIBLE_STYLE = {
   '--media-primary-color': '#ffffff',
+  '--media-secondary-color': '#3e3634',
   '--media-range-bar-color': '#3e3634',
   '--media-control-hover-background': 'rgba(62, 54, 52, 0.7)',
 } as CSSProperties;
+
+const ACCENT_COLOR = '#3e3634';
 
 export default function HeroVideo({
   className,
@@ -87,6 +90,7 @@ export default function HeroVideo({
           playsInline
           preload="auto"
           onCanPlay={() => setIsReady(true)}
+          accentColor={muted ? undefined : ACCENT_COLOR}
           style={{ ...(muted ? SILENT_STYLE : AUDIBLE_STYLE), opacity: isReady ? 1 : 0 }}
         />
       ) : null}

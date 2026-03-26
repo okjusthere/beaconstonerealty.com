@@ -253,6 +253,7 @@
   --media-object-fit: cover;
   --media-object-position: center;
   --media-primary-color: #ffffff;
+  --media-secondary-color: var(--color-brown);
   --media-range-bar-color: var(--color-brown);
   --media-control-hover-background: rgba(62, 54, 52, 0.7);
 }

@@ -133,6 +133,10 @@
   width: 100%;
   height: 100%;
   transition: opacity 220ms ease;
+  --media-primary-color: #ffffff;
+  --media-secondary-color: #3e3634;
+  --media-range-bar-color: #3e3634;
+  --media-control-hover-background: rgba(62, 54, 52, 0.7);
 }
 
 .advisors {
