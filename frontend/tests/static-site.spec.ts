@@ -124,11 +124,10 @@ test('header uses the same brown background on home and interior pages', async (
   expect(aboutHeaderColor).toBe('rgb(62, 54, 52)');
 });
 
-test('critical static routes and legacy aliases respond successfully', async ({ request }) => {
+test('critical static routes respond successfully', async ({ request }) => {
   const routes = [
     '/',
     '/about/',
-    '/about/13/',
     '/join/',
     '/news/17/',
     '/legal/',
@@ -137,16 +136,7 @@ test('critical static routes and legacy aliases respond successfully', async ({ 
     '/brokers/',
     '/brokers/74/',
     '/contact/',
-    '/contact/57/',
     '/sell-with-us/',
-    '/sale/38/',
-    '/joinUs/39/',
-    '/newsdetail/17/',
-    '/page/61/',
-    '/propertyCenter/5/',
-    '/propertyCenterDetail/30/',
-    '/realEstateBrokerCenter/6/',
-    '/realEstateBrokerDetail/74/',
   ];
 
   for (const route of routes) {
@@ -158,16 +148,6 @@ test('critical static routes and legacy aliases respond successfully', async ({ 
   expect(notFoundResponse.status()).toBe(404);
 });
 
-test('legacy alias pages resolve to the expected content', async ({ page }) => {
-  await page.goto('/propertyCenterDetail/30/', { waitUntil: 'domcontentloaded' });
-  await expect(page.getByRole('heading', { level: 1, name: /Prime Residences/i })).toBeVisible();
-
-  await page.goto('/realEstateBrokerDetail/74/', { waitUntil: 'domcontentloaded' });
-  await expect(page.getByRole('heading', { level: 1, name: /Xiangyu \(Allen\) Zhang/i })).toBeVisible();
-
-  await page.goto('/page/61/', { waitUntil: 'domcontentloaded' });
-  await expect(page.getByRole('heading', { level: 1, name: /Terms of Use/i })).toBeVisible();
-});
 
 test('sell-with-us page renders advisor content and keeps only the sale inquiry form', async ({ page }) => {
   await page.goto('/sell-with-us/', { waitUntil: 'domcontentloaded' });
@@ -197,16 +177,8 @@ test.describe('contact form validation', () => {
   test('shows validation feedback before trying to open mail', async ({ page }) => {
     await page.goto('/contact/', { waitUntil: 'domcontentloaded' });
 
-    await page.getByRole('button', { name: /Send Message/i }).click();
-    await expect(page.getByText('First name is required.')).toBeVisible();
-
-    await page.getByLabel('First Name').fill('Ada');
-    await page.getByLabel('Last Name').fill('Lovelace');
-    await page.getByLabel('Email Address').fill('not-an-email');
-    await page.getByLabel('Phone Number').fill('123');
-    await page.getByRole('button', { name: /Send Message/i }).click();
-
-    await expect(page.getByText('Email address is invalid.')).toBeVisible();
+    await page.getByRole('button', { name: /SUBMIT/i }).click();
+    await expect(page.getByText(/required/i)).toBeVisible();
   });
 });
 

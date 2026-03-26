@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from './[id]/page.module.css';
+import styles from './page.module.css';
 import { getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
 
 function ArrowRight() {
