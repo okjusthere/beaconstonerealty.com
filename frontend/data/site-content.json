@@ -94,7 +94,7 @@
         "parentid": 0,
         "type": 4,
         "link_id": 6,
-        "title": "Real Estate Agent Center",
+        "title": "Real Estate Advisors",
         "sub_title": "",
         "url": "/realEstateBrokerCenter/6",
         "remarks": "Guided by Expertise. Driven by Strategy",
@@ -268,7 +268,7 @@
       {
         "id": 6,
         "parentid": 0,
-        "title": "Real Estate Agent Center",
+        "title": "Real Estate Advisors",
         "description": "",
         "thumbnail": "/images/no_picture.jpg",
         "banner": [],
@@ -1717,7 +1717,7 @@
       "classid": [
         "8"
       ],
-      "title": "Real Estate Agent Center",
+      "title": "Real Estate Advisors",
       "url": "/realEstateBrokerCenter/6",
       "keywords": "",
       "description": "",
@@ -1909,7 +1909,7 @@
       "classid": [
         "9"
       ],
-      "title": "Real Estate Agent Center",
+      "title": "Real Estate Advisors",
       "url": "/realEstateBrokerCenter/6",
       "keywords": "",
       "description": "",
@@ -3069,7 +3069,7 @@
         "classid": [
           "8"
         ],
-        "title": "Real Estate Agent Center",
+        "title": "Real Estate Advisors",
         "url": "/realEstateBrokerCenter/6",
         "keywords": "",
         "description": "",
@@ -3105,7 +3105,7 @@
         "classid": [
           "9"
         ],
-        "title": "Real Estate Agent Center",
+        "title": "Real Estate Advisors",
         "url": "/realEstateBrokerCenter/6",
         "keywords": "",
         "description": "",

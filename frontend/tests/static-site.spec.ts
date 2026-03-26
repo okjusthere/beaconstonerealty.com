@@ -269,7 +269,7 @@ test('join-us page renders media, feature sections, and discover-more links', as
   await expect(discoverHeading).toBeVisible();
   await expect(page.getByRole('heading', { level: 2, name: /Give yourself every advantage/i })).toBeVisible();
 
-  const discoverLinks = page.locator('a').filter({ hasText: /About Us|Sell with Us|Real Estate Agent Center/i });
+  const discoverLinks = page.locator('a').filter({ hasText: /About Us|Sell with Us|Real Estate Advisors/i });
   await expect(discoverLinks.first()).toBeVisible();
 
   const joinHeroColor = await joinHeroHeading.evaluate((node) => window.getComputedStyle(node.closest('section') as Element).backgroundColor);

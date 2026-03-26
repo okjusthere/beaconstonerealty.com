@@ -12,7 +12,7 @@ const FORM_DISCLAIMER_HTML = `
 `;
 
 export const metadata = {
-  title: 'Our Agents | Beaconstone Realty',
+  title: 'Real Estate Advisors | Beaconstone Realty',
   description: 'Meet the Beacon Stone Realty professionals guiding clients across New York City.',
 };
 
