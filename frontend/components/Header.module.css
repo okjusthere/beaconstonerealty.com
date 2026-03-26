@@ -208,6 +208,10 @@
   letter-spacing: 0.5px;
 }
 
+.mobileNavLink:hover {
+  color: var(--color-white);
+}
+
 .mobileSubNav {
   list-style: none;
   padding-left: var(--space-lg);
@@ -237,6 +241,11 @@
   font-weight: 600;
   letter-spacing: 1.4px;
   text-transform: uppercase;
+}
+
+.mobileCta:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
 }
 
 /* Responsive */

@@ -137,6 +137,7 @@
 .btnOutline:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: var(--color-white);
+  color: var(--color-white);
 }
 
 .featureText h2 {
@@ -276,6 +277,10 @@
 .carouselCard {
   display: block;
   text-decoration: none;
+  color: var(--color-white);
+}
+
+.carouselCard:hover {
   color: var(--color-white);
 }
 

@@ -279,6 +279,10 @@
   text-decoration: none;
 }
 
+.discoverCard:hover {
+  color: var(--color-white);
+}
+
 .discoverImage {
   display: block;
   width: 100%;
