@@ -118,7 +118,7 @@ export default async function JoinPage() {
             <div className={styles.sidePanel} dangerouslySetInnerHTML={{ __html: introSideContent }} />
           </div>
           <div className={styles.introCta}>
-            <Link href="/sell-with-us" className={styles.btnOutline}>
+            <Link href="#join-form" className={styles.btnOutline}>
               Join Us <ArrowRight />
             </Link>
           </div>
@@ -178,7 +178,7 @@ export default async function JoinPage() {
         </>
       )}
 
-      <section className={styles.leadSection}>
+      <section id="join-form" className={styles.leadSection}>
         <div className="container">
           <div className={styles.leadShell}>
             <LegacyLeadForm

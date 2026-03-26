@@ -61,7 +61,7 @@ export default async function RootLayout({
         <main>
           {children}
         </main>
-        <Footer webInfo={webInfo} menuItems={menuItems} />
+        <Footer webInfo={webInfo} />
       </body>
     </html>
   );

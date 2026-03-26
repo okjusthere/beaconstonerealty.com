@@ -1,9 +1,8 @@
 import styles from './Footer.module.css';
-import type { WebInfo, MenuItem } from '@/lib/api';
+import type { WebInfo } from '@/lib/api';
 
 interface FooterProps {
   webInfo: WebInfo;
-  menuItems: MenuItem[];
 }
 
 const socialLinks = [
@@ -17,32 +16,12 @@ const socialLinks = [
   { name: 'Red Note', url: '#' },
 ];
 
-const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About Us', href: '/about' },
-  { name: 'Property Center', href: '/properties' },
-  { name: 'Real Estate Advisors', href: '/brokers' },
-  { name: 'Join Us', href: '/join' },
-  { name: 'Contact Us', href: '/contact' },
-];
-
 export default function Footer({ webInfo }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        {/* Nav Links */}
-        <nav className={styles.navSection}>
-          <ul className={styles.navList}>
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <a href={link.href} className={styles.navLink}>{link.name}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
         {/* Social Links */}
         <div className={styles.socialSection}>
           <ul className={styles.socialList}>

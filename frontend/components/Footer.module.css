@@ -7,35 +7,7 @@
 .container {
   max-width: var(--max-width-wide);
   margin: 0 auto;
-  padding: 40px var(--space-lg) 30px;
-}
-
-/* Nav */
-.navSection {
-  padding-bottom: 24px;
-}
-
-.navList {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  justify-content: center;
-  gap: 12px 32px;
-  margin: 0;
-  padding: 0;
-}
-
-.navLink {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--color-brown);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.navLink:hover {
-  color: #7c8ca2;
+  padding: 30px var(--space-lg) 30px;
 }
 
 /* Social */
