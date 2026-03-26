@@ -13,21 +13,28 @@ interface Advisor {
   ctaLabel?: string;
 }
 
-function getPortraitOffset(title: string): string {
+/**
+ * Returns the vertical object-position percentage for each advisor's photo.
+ * Lower % = show more of the top (face near top of image).
+ * Higher % = show more of the bottom (face lower in image).
+ * Tune per person so all faces align at a consistent vertical focal point.
+ */
+function getFacePosition(title: string): string {
   switch (title) {
     case 'Ziwei (Audrey) Wen':
+      return '18%';
     case 'Qiao Chen':
-      return '0px';
+      return '15%';
     case 'Tatyana Ilieva':
-      return '8px';
+      return '20%';
     case 'Juliana Gamboa':
-      return '16px';
+      return '22%';
     case 'Nick Yu':
-      return '18px';
+      return '20%';
     case 'Xiangyu (Allen) Zhang':
-      return '20px';
+      return '18%';
     default:
-      return '10px';
+      return '20%';
   }
 }
 
@@ -153,7 +160,7 @@ export default function AdvisorCarousel({ advisors }: { advisors: Advisor[] }) {
               <Link
                 href={advisor.url || '#'}
                 className={styles.carouselCard}
-                style={{ ['--advisor-image-offset' as string]: getPortraitOffset(advisor.title) }}
+                style={{ ['--advisor-face-position' as string]: getFacePosition(advisor.title) }}
               >
                 {advisor.thumbnail && (
                   <div className={styles.carouselImage}>
