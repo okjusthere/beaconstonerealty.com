@@ -24,11 +24,11 @@ function getFacePosition(title: string): string {
     case 'Ziwei (Audrey) Wen':
       return '18%';
     case 'Qiao Chen':
-      return '15%';
+      return '10%';
     case 'Tatyana Ilieva':
       return '20%';
     case 'Juliana Gamboa':
-      return '22%';
+      return '28%';
     case 'Nick Yu':
       return '20%';
     case 'Xiangyu (Allen) Zhang':
