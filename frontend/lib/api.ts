@@ -97,55 +97,18 @@ export interface NewsClass {
   children: NewsClass[];
 }
 
-export interface ProductItem {
-  id: number;
-  classid?: number[];
-  title: string;
-  url: string;
-  specifications: string;
-  origin: string;
-  price: string;
-  keywords: string;
-  description: string;
-  thumbnail: string;
-  enclosure?: string;
-  photo_album: string[];
-  add_time: number;
-  field?: Record<string, string>;
-}
-
-export interface ProductClass {
-  id: number;
-  parentid: number;
-  title: string;
-  description: string;
-  thumbnail: string;
-  banner?: string[];
-  content?: string;
-  url: string;
-  children: ProductClass[];
-}
 
 export interface GlobalData {
-  web_control: { state: number; tips: string };
   web_info: WebInfo;
-  web_code: Array<{ state: number; code: string }>;
   pic_info: PicItem[];
   menu_info: MenuItem[];
   news_class_info: NewsClass[];
-  product_class_info: ProductClass[];
-  customer_service: Array<{ key: string; value: string; description?: string; type?: string; state?: boolean }>;
-  links_info: Array<{ id: number; title: string; url: string; thumbnail: string }>;
-  links_class_info: Array<{ id: number; title: string; thumbnail: string }>;
 }
 
 interface StaticSiteContent {
-  generatedAt: string;
-  sourceSiteUrl: string;
   globalData: GlobalData;
   newsById: Record<string, NewsItem>;
-  newsListsByClassId: Record<string, NewsItem[]>;
-  productListsByClassId: Record<string, ProductItem[]>;
+  newsListsByClassId: Record<string, (NewsItem | { id: number })[]>;
 }
 
 function isAbsoluteUrl(value: string): boolean {
@@ -359,7 +322,12 @@ export async function getNewsDetail(id: number): Promise<NewsItem> {
 
 export async function getNewsList(classId: number, top: number = -1, showType: number = 1): Promise<NewsItem[]> {
   void showType;
-  const list = siteContent.newsListsByClassId[String(classId)] || [];
+  const raw = siteContent.newsListsByClassId[String(classId)] || [];
+  // Support both full items and id-only references
+  const list = raw.map((entry: NewsItem | { id: number }) => {
+    if ('title' in entry) return entry;
+    return siteContent.newsById[String(entry.id)];
+  }).filter(Boolean) as NewsItem[];
   return cloneValue(top > 0 ? list.slice(0, top) : list);
 }
 
@@ -373,44 +341,6 @@ export async function getNewsClassList(parentId: number = 0): Promise<NewsClass[
 
 function flattenNewsClasses(classes: NewsClass[]): NewsClass[] {
   return classes.flatMap((item) => [item, ...flattenNewsClasses(item.children || [])]);
-}
-
-export async function getProductDetail(id: number): Promise<ProductItem> {
-  const item = (siteContent.productListsByClassId.all || []).find((entry) => entry.id === id);
-
-  if (!item) {
-    throw new Error(`Static content missing product detail for ID ${id}`);
-  }
-
-  return cloneValue(item);
-}
-
-export async function getProductList(classId: number = 0, top: number = -1): Promise<ProductItem[]> {
-  const key = classId > 0 ? String(classId) : 'all';
-  const list = siteContent.productListsByClassId[key] || [];
-  return cloneValue(top > 0 ? list.slice(0, top) : list);
-}
-
-export async function getInnerNews(classId: number, page: number = 1): Promise<{ list: NewsItem[]; total: number }> {
-  const list = await getNewsList(classId);
-  const pageSize = 10;
-  const startIndex = Math.max(page - 1, 0) * pageSize;
-
-  return {
-    list: list.slice(startIndex, startIndex + pageSize),
-    total: list.length,
-  };
-}
-
-export async function submitMessage(): Promise<{ code: number; msg: string }> {
-  return {
-    code: 501,
-    msg: 'Static export does not support direct form submission.',
-  };
-}
-
-export async function getProductAttributes(): Promise<Record<string, string[]>> {
-  return {};
 }
 
 export function getPicByClassId(pics: PicItem[] | undefined | null, classId: number): PicItem | undefined {
