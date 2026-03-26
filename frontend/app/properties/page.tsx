@@ -66,7 +66,7 @@ export default async function PropertiesPage() {
                         {property.keywords && <span className={styles.cardEyebrow}>{property.keywords}</span>}
                         <h2 className={styles.cardTitle}>{property.title}</h2>
                         {property.description && (
-                          <p className={styles.cardPrice}>Starting Price: {property.description}</p>
+                          <p className={styles.cardPrice}><strong>Starting Price:</strong>{property.description}</p>
                         )}
                         <div className={styles.cardMeta}>
                           {property.field?.total_residences && (

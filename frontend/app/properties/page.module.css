@@ -1,32 +1,27 @@
 .hero {
-  padding: calc(var(--header-height) + 3rem) 0 2rem;
-  background: var(--color-white);
+  padding: calc(var(--header-height) + 48px) 0 56px;
+  background: var(--color-brown);
 }
 
 .heroInner {
-  max-width: 900px;
+  max-width: 960px;
   text-align: center;
   margin: 0 auto;
 }
 
 .eyebrow {
-  margin: 0 0 0.75rem;
-  color: var(--color-gold);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  display: none;
 }
 
 .heroTitle {
   margin: 0;
-  color: var(--color-brown);
-  font-size: clamp(2.25rem, 4vw, 4rem);
-  line-height: 1.05;
+  color: var(--color-white);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 1.08;
 }
 
 .listing {
-  padding: 1rem 0 5rem;
+  padding: 3rem 0 5rem;
   background: var(--color-white);
 }
 
@@ -85,16 +80,18 @@
 }
 
 .cardTitle {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(62, 54, 52, 0.12);
   color: var(--color-brown);
   font-size: clamp(1.35rem, 2vw, 1.7rem);
   line-height: 1.25;
 }
 
 .cardPrice {
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.5rem;
   color: var(--color-brown);
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 
@@ -107,11 +104,18 @@
 }
 
 .cardResidences {
-  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.cardMarketing {
+  font-size: 0.82rem;
+  color: var(--color-grey-dark);
 }
 
 .cardMarketing :global(*) {
   margin: 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
 }
 
 .empty {
