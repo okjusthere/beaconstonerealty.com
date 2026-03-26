@@ -151,7 +151,7 @@
 
 .careers {
   background: var(--color-brown);
-  padding: clamp(72px, 9vw, 110px) 0;
+  padding: clamp(48px, 6vw, 72px) 0 clamp(24px, 3vw, 36px);
 }
 
 .sectionHeader {
@@ -226,7 +226,7 @@
 }
 
 .discoverHeader {
-  padding: var(--space-4xl) 0 var(--space-lg);
+  padding: var(--space-xl) 0 var(--space-lg);
   background: var(--color-brown);
   text-align: center;
 }

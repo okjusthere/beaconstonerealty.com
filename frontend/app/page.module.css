@@ -100,8 +100,9 @@
 
 .aboutImage img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  object-position: center 60%;
 }
 
 .aboutText {
@@ -155,8 +156,9 @@
 
 .storyImage img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  object-position: center 70%;
 }
 
 .exclusive {
