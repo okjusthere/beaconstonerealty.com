@@ -264,7 +264,6 @@
 
 .carouselTrack {
   display: flex;
-  transition: transform 0.5s ease;
 }
 
 .carouselSlide {
@@ -290,7 +289,6 @@
   aspect-ratio: 3 / 4;
   object-fit: contain;
   object-position: center top;
-  background: #08111f;
 }
 
 .carouselBody {

@@ -68,23 +68,28 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
                 <p className={styles.propertyDesc}>{property.description}</p>
               )}
 
-              {property.field && Object.keys(property.field).length > 0 && (
-                <div className={styles.fields}>
-                  <h2 className={styles.fieldsSectionTitle}>Development Details</h2>
-                  <div className={styles.fieldsGrid}>
-                    {Object.entries(property.field).map(([key, value]) => (
-                      value && (
+              {property.field && Object.keys(property.field).length > 0 && (() => {
+                const HIDDEN_FIELDS = ['real_estate_agent_id', 'phone', 'real_estate_broker_region', 'real_estate_broker_desc', 'real_estate_broker_email'];
+                const visibleEntries = Object.entries(property.field).filter(
+                  ([key, value]) => value && !HIDDEN_FIELDS.includes(key)
+                );
+                if (visibleEntries.length === 0) return null;
+                return (
+                  <div className={styles.fields}>
+                    <h2 className={styles.fieldsSectionTitle}>Development Details</h2>
+                    <div className={styles.fieldsGrid}>
+                      {visibleEntries.map(([key, value]) => (
                         <div key={key} className={styles.fieldItem}>
                           <span className={styles.fieldLabel}>
                             {key.replace(/_/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())}
                           </span>
                           <span className={styles.fieldValue}>{value}</span>
                         </div>
-                      )
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                );
+              })()}
 
               {property.content && (
                 <div

@@ -143,52 +143,12 @@ export default async function JoinPage() {
 
 
       {brokerPhotos.length >= 3 && (
-        <section className={styles.fanSection}>
-          <div className="container">
-            <FanCarousel items={brokerPhotos} />
-          </div>
-        </section>
-      )}
-
-      {careerCards.length > 0 && (
-        <section className={`section-lg ${styles.careers}`}>
+        <section className={styles.careers}>
           <div className="container">
             <div className={styles.sectionHeader}>
               <h2 className={styles.sectionTitle}>{careerTitle || 'Unlock your potential'}</h2>
             </div>
-            <div className={styles.careerGrid}>
-              {careerCards.map((item, index) => {
-                const itemTitle = normalizeText(item.title);
-                const itemDescription = normalizeText(item.description);
-                const hasCopy = Boolean(itemTitle || itemDescription);
-
-                return (
-                  <article
-                    key={item.id}
-                    className={`${styles.careerCard} ${!hasCopy ? styles.careerCardVisualOnly : ''}`}
-                  >
-                    {item.thumbnail && (
-                      <img
-                        src={item.thumbnail}
-                        alt={itemTitle || `Career spotlight ${index + 1}`}
-                        loading="eager"
-                        className={styles.careerImage}
-                      />
-                    )}
-                    {hasCopy ? (
-                      <div className={styles.careerBody}>
-                        {itemTitle && <h3>{itemTitle}</h3>}
-                        {itemDescription && <p>{itemDescription}</p>}
-                      </div>
-                    ) : (
-                      <div className={styles.careerOverlay}>
-                        <span>Beacon Stone Realty</span>
-                      </div>
-                    )}
-                  </article>
-                );
-              })}
-            </div>
+            <FanCarousel items={brokerPhotos} />
           </div>
         </section>
       )}

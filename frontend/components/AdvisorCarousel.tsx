@@ -38,18 +38,54 @@ function ChevronRight() {
 }
 
 export default function AdvisorCarousel({ advisors }: { advisors: Advisor[] }) {
-  const [offset, setOffset] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const perPage = 2;
-  const maxOffset = Math.max(0, advisors.length - perPage);
+  const count = advisors.length;
+
+  // Clone last `perPage` items before and first `perPage` items after for seamless looping
+  const clonedBefore = advisors.slice(-perPage);
+  const clonedAfter = advisors.slice(0, perPage);
+  const extendedSlides = [...clonedBefore, ...advisors, ...clonedAfter];
+
+  // offset is in the "real" range: starts at perPage (first real item)
+  const [offset, setOffset] = useState(perPage);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const slideWidth = 100 / perPage; // percentage per slide
 
   const next = useCallback(() => {
-    setOffset((prev) => (prev >= maxOffset ? 0 : prev + 1));
-  }, [maxOffset]);
+    setIsTransitioning(true);
+    setOffset((prev) => prev + 1);
+  }, []);
 
   const prev = useCallback(() => {
-    setOffset((prev) => (prev <= 0 ? maxOffset : prev - 1));
-  }, [maxOffset]);
+    setIsTransitioning(true);
+    setOffset((prev) => prev - 1);
+  }, []);
+
+  // When transition ends, check if we need to jump to the "real" position
+  const handleTransitionEnd = useCallback(() => {
+    if (offset >= perPage + count) {
+      // Scrolled past the last real item into cloned-after zone
+      setIsTransitioning(false);
+      setOffset(perPage + (offset - perPage - count));
+    } else if (offset < perPage) {
+      // Scrolled before the first real item into cloned-before zone
+      setIsTransitioning(false);
+      setOffset(count + offset);
+    }
+  }, [offset, count, perPage]);
+
+  // After a no-transition jump, re-enable transition on next frame
+  useEffect(() => {
+    if (!isTransitioning) {
+      const frame = requestAnimationFrame(() => {
+        setIsTransitioning(true);
+      });
+      return () => cancelAnimationFrame(frame);
+    }
+  }, [isTransitioning]);
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -86,13 +122,16 @@ export default function AdvisorCarousel({ advisors }: { advisors: Advisor[] }) {
 
       <div className={styles.carouselViewport}>
         <div
+          ref={trackRef}
           className={styles.carouselTrack}
           style={{
-            transform: `translateX(-${offset * (100 / perPage)}%)`,
+            transform: `translateX(-${offset * slideWidth}%)`,
+            transition: isTransitioning ? 'transform 0.5s ease' : 'none',
           }}
+          onTransitionEnd={handleTransitionEnd}
         >
-          {advisors.map((advisor) => (
-            <div key={advisor.id} className={styles.carouselSlide}>
+          {extendedSlides.map((advisor, i) => (
+            <div key={`${advisor.id}-${i}`} className={styles.carouselSlide}>
               <Link href={advisor.url || '#'} className={styles.carouselCard}>
                 {advisor.thumbnail && (
                   <div className={styles.carouselImage}>

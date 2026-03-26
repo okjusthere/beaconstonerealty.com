@@ -43,11 +43,13 @@ export default function FanCarousel({ items }: { items: FanItem[] }) {
   const leftIdx = idx(center - 1);
   const rightIdx = idx(center + 1);
 
-  const positions = [
-    { index: leftIdx, className: styles.fanLeft },
-    { index: center, className: styles.fanCenter },
-    { index: rightIdx, className: styles.fanRight },
-  ];
+  // Determine CSS class for each item based on position relative to center
+  function getPositionClass(itemIndex: number): string {
+    if (itemIndex === center) return styles.fanCenter;
+    if (itemIndex === leftIdx) return styles.fanLeft;
+    if (itemIndex === rightIdx) return styles.fanRight;
+    return styles.fanHidden;
+  }
 
   return (
     <div className={styles.fanWrap}>
@@ -63,9 +65,9 @@ export default function FanCarousel({ items }: { items: FanItem[] }) {
       </button>
 
       <div className={styles.fanStage}>
-        {positions.map(({ index: i, className }) => (
-          <div key={items[i].id} className={`${styles.fanCard} ${className}`}>
-            <img src={items[i].thumbnail} alt={items[i].title} />
+        {items.map((item, i) => (
+          <div key={item.id} className={`${styles.fanCard} ${getPositionClass(i)}`}>
+            <img src={item.thumbnail} alt={item.title} />
           </div>
         ))}
       </div>
