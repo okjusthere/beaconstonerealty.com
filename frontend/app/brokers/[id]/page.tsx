@@ -4,7 +4,7 @@ import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
 import styles from './page.module.css';
 
 const FORM_NOTE_HTML = `
-  <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/page/61">Privacy Policy</a> and <a href="/page/61">Terms of Use</a>.</p>
+  <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/legal">Privacy Policy</a> and <a href="/legal">Terms of Use</a>.</p>
 `;
 
 const FORM_DISCLAIMER_HTML = `

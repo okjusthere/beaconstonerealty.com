@@ -19,10 +19,10 @@ const socialLinks = [
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'About Us', href: '/about/13' },
+  { name: 'About Us', href: '/about' },
   { name: 'Property Center', href: '/properties' },
   { name: 'Real Estate Advisors', href: '/brokers' },
-  { name: 'Join Us', href: '/joinUs/39' },
+  { name: 'Join Us', href: '/join' },
   { name: 'Contact Us', href: '/contact' },
 ];
 

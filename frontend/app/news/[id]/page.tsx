@@ -3,11 +3,7 @@ import { getNewsDetail, getNewsRouteIds } from '@/lib/api';
 import styles from './page.module.css';
 
 export async function generateStaticParams() {
-  const ids = new Set([
-    ...getNewsRouteIds('/newsdetail/'),
-    ...getNewsRouteIds('/news/'),
-  ]);
-  return Array.from(ids).map((id) => ({ id }));
+  return getNewsRouteIds('/news/').map((id) => ({ id }));
 }
 
 export default async function NewsDetailPage({ params }: { params: Promise<{ id: string }> }) {

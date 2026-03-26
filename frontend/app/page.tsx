@@ -166,7 +166,7 @@ export default async function HomePage() {
                   className={styles.richContent}
                   dangerouslySetInnerHTML={{ __html: storyContent }}
                 />
-                <Link href="/about/13" className="btn-arrow">
+                <Link href="/about" className="btn-arrow">
                   See Details <ArrowRight />
                 </Link>
               </div>

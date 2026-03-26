@@ -117,7 +117,7 @@ test('header uses the same brown background on home and interior pages', async (
   await page.goto('/', { waitUntil: 'domcontentloaded' });
   const homeHeaderColor = await page.locator('header').evaluate((node) => window.getComputedStyle(node).backgroundColor);
 
-  await page.goto('/about/13/', { waitUntil: 'domcontentloaded' });
+  await page.goto('/about/', { waitUntil: 'domcontentloaded' });
   const aboutHeaderColor = await page.locator('header').evaluate((node) => window.getComputedStyle(node).backgroundColor);
 
   expect(homeHeaderColor).toBe('rgb(62, 54, 52)');
@@ -127,7 +127,11 @@ test('header uses the same brown background on home and interior pages', async (
 test('critical static routes and legacy aliases respond successfully', async ({ request }) => {
   const routes = [
     '/',
+    '/about/',
     '/about/13/',
+    '/join/',
+    '/news/17/',
+    '/legal/',
     '/properties/',
     '/properties/30/',
     '/brokers/',
@@ -234,7 +238,7 @@ test('property and broker detail pages expose the expected static content', asyn
 });
 
 test('about and broker index pages restore the missing legacy sections and long-form bios', async ({ page }) => {
-  await page.goto('/about/13/', { waitUntil: 'domcontentloaded' });
+  await page.goto('/about/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('main > section').first().locator('video')).toHaveCount(0);
   await expect(page.getByText(/An International Network/i)).toBeVisible();
   const advisorsHeading = page.getByRole('heading', { level: 2, name: /Advisors, Not Just Agents/i });
@@ -257,7 +261,7 @@ test('about and broker index pages restore the missing legacy sections and long-
 });
 
 test('join-us page renders media, feature sections, and discover-more links', async ({ page }) => {
-  await page.goto('/joinUs/39/', { waitUntil: 'domcontentloaded' });
+  await page.goto('/join/', { waitUntil: 'domcontentloaded' });
 
   const joinHeroHeading = page.getByRole('heading', { level: 1, name: /Join Us/i });
   await expect(joinHeroHeading).toBeVisible();

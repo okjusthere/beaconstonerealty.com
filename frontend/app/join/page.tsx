@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
-import { getGlobalData, getMenuRouteIds, getNewsDetail, getNewsList, getNewsRouteIds } from '@/lib/api';
+import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
 
 const FORM_NOTE_HTML = `
   <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/legal">Privacy Policy</a> and <a href="/legal">Terms of Use</a>.</p>
@@ -23,8 +23,8 @@ function normalizeText(value?: string): string {
   return value?.replace(/\u00a0/g, ' ').trim() || '';
 }
 
-export default async function JoinUsPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default async function JoinPage() {
+  const id = '39';
 
   let heroTitle = 'Join Us';
   let heroDesc = '';
@@ -226,13 +226,4 @@ export default async function JoinUsPage({ params }: { params: Promise<{ id: str
       </section>
     </>
   );
-}
-
-export async function generateStaticParams() {
-  const ids = new Set([
-    ...getMenuRouteIds('/joinUs/'),
-    ...getNewsRouteIds('/joinUs/'),
-  ]);
-
-  return Array.from(ids).map((id) => ({ id }));
 }

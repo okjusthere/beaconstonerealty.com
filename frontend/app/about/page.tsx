@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import styles from './page.module.css';
-import { getGlobalData, getMenuRouteIds, getNewsDetail, getNewsList, getNewsRouteIds, type NewsItem } from '@/lib/api';
+import styles from './[id]/page.module.css';
+import { getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
 
 function ArrowRight() {
   return (
@@ -55,8 +55,8 @@ function mergeAdvisorRecord(base: AdvisorCard, detail: NewsItem): AdvisorCard {
   };
 }
 
-export default async function AboutPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default async function AboutPage() {
+  const id = '13';
 
   let heroTitle = 'About Us';
   let heroDesc = '';
@@ -288,7 +288,7 @@ export default async function AboutPage({ params }: { params: Promise<{ id: stri
         <>
           <section className={styles.discoverHeader}>
             <div className="container">
-              <h2 className={styles.sectionTitle}>Let’s Begin the Conversation.</h2>
+              <h2 className={styles.sectionTitle}>Let's Begin the Conversation.</h2>
             </div>
           </section>
           <section className={styles.discoverSection}>
@@ -317,13 +317,4 @@ export default async function AboutPage({ params }: { params: Promise<{ id: stri
       )}
     </>
   );
-}
-
-export async function generateStaticParams() {
-  const ids = new Set([
-    ...getMenuRouteIds('/about/'),
-    ...getNewsRouteIds('/about/'),
-  ]);
-
-  return Array.from(ids).map((routeId) => ({ id: routeId }));
 }

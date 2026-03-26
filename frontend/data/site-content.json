@@ -78,7 +78,7 @@
         "link_id": 5,
         "title": "Property Center",
         "sub_title": "",
-        "url": "/propertyCenter/5",
+        "url": "/properties",
         "remarks": "Where Elevated Living Begins",
         "thumbnail": "/images/no_picture.jpg",
         "banner": [],
@@ -96,7 +96,7 @@
         "link_id": 6,
         "title": "Real Estate Advisors",
         "sub_title": "",
-        "url": "/realEstateBrokerCenter/6",
+        "url": "/brokers",
         "remarks": "Guided by Expertise. Driven by Strategy",
         "thumbnail": "/media_library/image_20260305093311KIHV.jpg",
         "banner": [],
@@ -132,7 +132,7 @@
         "link_id": 57,
         "title": "Contact Us",
         "sub_title": "",
-        "url": "/contact/57",
+        "url": "/contact",
         "remarks": "",
         "thumbnail": "/images/no_picture.jpg",
         "banner": [
@@ -152,7 +152,7 @@
         "link_id": 38,
         "title": "Sale",
         "sub_title": "",
-        "url": "/sale/38",
+        "url": "/sell-with-us",
         "remarks": "",
         "thumbnail": "/images/no_picture.jpg",
         "banner": [],
@@ -259,7 +259,7 @@
         "seo_title": "",
         "seo_keywords": "",
         "seo_description": "",
-        "url": "/propertyCenter/5",
+        "url": "/properties",
         "c_id": [
           "3"
         ],
@@ -277,7 +277,7 @@
         "seo_title": "",
         "seo_keywords": "",
         "seo_description": "",
-        "url": "/realEstateBrokerCenter/6",
+        "url": "/brokers",
         "c_id": [
           "4"
         ],
@@ -517,7 +517,7 @@
         "1"
       ],
       "title": "Extraordinary Living ",
-      "url": "/newsdetail/4",
+      "url": "/news/4",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260209115447YXTX.png",
@@ -547,7 +547,7 @@
         "1"
       ],
       "title": "Extraordinary Living ",
-      "url": "/newsdetail/5",
+      "url": "/news/5",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260209115450PRNB.png",
@@ -577,7 +577,7 @@
         "1"
       ],
       "title": "Extraordinary Living ",
-      "url": "/newsdetail/6",
+      "url": "/news/6",
       "keywords": "",
       "description": " Stories and Market Insights ",
       "thumbnail": "/media_library/image_20260209115452GDDV.png",
@@ -607,7 +607,7 @@
         "1"
       ],
       "title": "Extraordinary Living ",
-      "url": "/newsdetail/7",
+      "url": "/news/7",
       "keywords": "",
       "description": " Stories and Market Insights ",
       "thumbnail": "/media_library/image_20260209115455YBNV.png",
@@ -637,7 +637,7 @@
         "1"
       ],
       "title": "Extraordinary Living ",
-      "url": "/newsdetail/8",
+      "url": "/news/8",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260209115531TEFW.png",
@@ -667,7 +667,7 @@
         "1"
       ],
       "title": "Extraordinary Living ",
-      "url": "/newsdetail/9",
+      "url": "/news/9",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260209115533HVJB.png",
@@ -809,7 +809,7 @@
         "2"
       ],
       "title": "MARKET FOCUS",
-      "url": "/newsdetail/14",
+      "url": "/news/14",
       "keywords": "NYC",
       "description": "Luxury Residential",
       "thumbnail": "/images/no_picture.jpg",
@@ -839,7 +839,7 @@
         "2"
       ],
       "title": "ELITE TEAM",
-      "url": "/newsdetail/15",
+      "url": "/news/15",
       "keywords": "60%+",
       "description": "Ivy League Graduates",
       "thumbnail": "/images/no_picture.jpg",
@@ -869,7 +869,7 @@
         "2"
       ],
       "title": "TRANSACTION VOLUME",
-      "url": "/newsdetail/16",
+      "url": "/news/16",
       "keywords": "$600M+",
       "description": "Residential Sales",
       "thumbnail": "/images/no_picture.jpg",
@@ -899,7 +899,7 @@
         "2"
       ],
       "title": "GLOBAL CONNECTIONS",
-      "url": "/newsdetail/17",
+      "url": "/news/17",
       "keywords": "30+",
       "description": "Partner Countries",
       "thumbnail": "/images/no_picture.jpg",
@@ -985,7 +985,7 @@
         "3"
       ],
       "title": "A global network of exceptional agents and exclusive properties.",
-      "url": "/newsdetail/20",
+      "url": "/news/20",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260312084810GYMP.jpg",
@@ -1015,7 +1015,7 @@
         "3"
       ],
       "title": "An International Network. A Higher Level of Access.",
-      "url": "/newsdetail/21",
+      "url": "/news/21",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260312084745BBYM.png",
@@ -1045,7 +1045,7 @@
         "4"
       ],
       "title": "Driven by Strategy. Defined by Results.",
-      "url": "/newsdetail/22",
+      "url": "/news/22",
       "keywords": "",
       "description": "Every property deserves more than exposure — it deserves positioning, negotiation, and execution at the highest level.",
       "thumbnail": "/media_library/image_20260209171311SMHN.png",
@@ -1075,7 +1075,7 @@
         "4"
       ],
       "title": "Advisors, Not Just Agents.",
-      "url": "/newsdetail/23",
+      "url": "/news/23",
       "keywords": "",
       "description": "Our team brings institutional-level strategy to residential real estate — guiding buyers, sellers, and investors with clarity and confidence.",
       "thumbnail": "/media_library/image_20260209171313IQXS.png",
@@ -1161,7 +1161,7 @@
         "5"
       ],
       "title": "Olana Naples Residence",
-      "url": "/propertyCenterDetail/26",
+      "url": "/properties/26",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260210101753HPBR.png",
@@ -1191,7 +1191,7 @@
         "5"
       ],
       "title": "Olana Naples Residence",
-      "url": "/propertyCenterDetail/27",
+      "url": "/properties/27",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260210101755JRND.png",
@@ -1221,7 +1221,7 @@
         "5"
       ],
       "title": "Curated Living",
-      "url": "/propertyCenterDetail/28",
+      "url": "/properties/28",
       "keywords": "",
       "description": "$32,500,000",
       "thumbnail": "/media_library/image_20260305113458KEDA.jpg",
@@ -1251,7 +1251,7 @@
         "5"
       ],
       "title": "Global Perspective",
-      "url": "/propertyCenterDetail/29",
+      "url": "/properties/29",
       "keywords": "Naples, FL, United States",
       "description": "$32,500,000",
       "thumbnail": "/media_library/image_20260305113510FDIK.jpg",
@@ -1281,7 +1281,7 @@
         "5"
       ],
       "title": "Prime Residences",
-      "url": "/propertyCenterDetail/30",
+      "url": "/properties/30",
       "keywords": "Naples, FL, United States",
       "description": "$32,500,000",
       "thumbnail": "/media_library/image_20260305113301FDXP.jpg",
@@ -1314,7 +1314,7 @@
         "6"
       ],
       "title": "Khawlah A Alfayez",
-      "url": "/realEstateBrokerDetail/31",
+      "url": "/brokers/31",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260210172814FQIC.png",
@@ -1339,7 +1339,7 @@
         "6"
       ],
       "title": "Ziwei (Audrey) Wen",
-      "url": "/realEstateBrokerDetail/32",
+      "url": "/brokers/32",
       "keywords": "",
       "description": "Real Estate Advisor",
       "thumbnail": "/media_library/image_20260312113728NQRK.jpg",
@@ -1364,7 +1364,7 @@
         "11"
       ],
       "title": "Tatyana Ilieva ",
-      "url": "/realEstateBrokerDetail/33",
+      "url": "/brokers/33",
       "keywords": "",
       "description": "Real Estate Advisor",
       "thumbnail": "/media_library/image_20260305131951PGBC.jpg",
@@ -1389,7 +1389,7 @@
         "11"
       ],
       "title": "Qiao Chen",
-      "url": "/realEstateBrokerDetail/34",
+      "url": "/brokers/34",
       "keywords": "",
       "description": "Real Estate Advisor",
       "thumbnail": "/media_library/image_20260306130353KHCT.jpg",
@@ -1496,7 +1496,7 @@
       "id": 38,
       "classid": null,
       "title": "sale",
-      "url": "/sale/38",
+      "url": "/sell-with-us",
       "keywords": null,
       "description": "",
       "thumbnail": "/images/no_picture.jpg",
@@ -1638,7 +1638,7 @@
         "7"
       ],
       "title": "Neyshia Go",
-      "url": "/newsdetail/43",
+      "url": "/news/43",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260211151407UKOD.png",
@@ -1658,7 +1658,7 @@
         "7"
       ],
       "title": "Neyshia Go",
-      "url": "/newsdetail/44",
+      "url": "/news/44",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260211151409OKHP.png",
@@ -1678,7 +1678,7 @@
         "7"
       ],
       "title": "Neyshia Go",
-      "url": "/newsdetail/45",
+      "url": "/news/45",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260211151412VKVE.png",
@@ -1698,7 +1698,7 @@
         "7"
       ],
       "title": "Neyshia Go",
-      "url": "/newsdetail/46",
+      "url": "/news/46",
       "keywords": "",
       "description": "BEVERLY HILLS, CALIFORNIA",
       "thumbnail": "/media_library/image_20260211151414SZGD.png",
@@ -1718,7 +1718,7 @@
         "8"
       ],
       "title": "Real Estate Advisors",
-      "url": "/realEstateBrokerCenter/6",
+      "url": "/brokers",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260306144923CECE.jpg",
@@ -1738,7 +1738,7 @@
         "8"
       ],
       "title": "Sell with Us",
-      "url": "/sale/38",
+      "url": "/sell-with-us",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260312085328LQPL.jpg",
@@ -1890,7 +1890,7 @@
         "9"
       ],
       "title": "JoinUs",
-      "url": "/newsdetail/54",
+      "url": "/news/54",
       "keywords": "joinUs/39",
       "description": "",
       "thumbnail": "/media_library/image_20260306145126HWER.jpg",
@@ -1910,7 +1910,7 @@
         "9"
       ],
       "title": "Real Estate Advisors",
-      "url": "/realEstateBrokerCenter/6",
+      "url": "/brokers",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260306145054TUDE.jpg",
@@ -1948,7 +1948,7 @@
       "id": 57,
       "classid": null,
       "title": "contact us",
-      "url": "/contact/57",
+      "url": "/contact",
       "keywords": null,
       "description": "",
       "thumbnail": "/images/no_picture.jpg",
@@ -2006,7 +2006,7 @@
         "10"
       ],
       "title": "Position Your Property at the Highest Level.",
-      "url": "/sale/38",
+      "url": "/sell-with-us",
       "keywords": "SELL WITH US",
       "description": "",
       "thumbnail": "/media_library/image_20260305092614UIUJ.jpg",
@@ -2094,7 +2094,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/62",
+      "url": "/news/62",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260305105924NPJN.jpg",
@@ -2114,7 +2114,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/63",
+      "url": "/news/63",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260305105924HXMO.jpg",
@@ -2134,7 +2134,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/64",
+      "url": "/news/64",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260305105924LSNV.jpg",
@@ -2154,7 +2154,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/65",
+      "url": "/news/65",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260305105924YARA.jpg",
@@ -2174,7 +2174,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/66",
+      "url": "/news/66",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260305105924HRER.jpg",
@@ -2194,7 +2194,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/67",
+      "url": "/news/67",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260305105925KJNU.jpg",
@@ -2214,7 +2214,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/68",
+      "url": "/news/68",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260305105925YWVW.jpg",
@@ -2234,7 +2234,7 @@
         "6"
       ],
       "title": "Ziwei (Audrey) Wen",
-      "url": "/propertyCenterDetail/69",
+      "url": "/properties/69",
       "keywords": "",
       "description": "Real Estate Advisor",
       "thumbnail": "/media_library/image_20260311180801HXRZ.jpg",
@@ -2257,7 +2257,7 @@
         "6"
       ],
       "title": "Nick Yu",
-      "url": "/realEstateBrokerDetail/70",
+      "url": "/brokers/70",
       "keywords": "",
       "description": "Real Estate Advisor",
       "thumbnail": "/media_library/image_20260312113638QJZD.jpg",
@@ -2280,7 +2280,7 @@
         "6"
       ],
       "title": "Juliana Gamboa ",
-      "url": "/realEstateBrokerDetail/71",
+      "url": "/brokers/71",
       "keywords": "",
       "description": "Real Estate Advisor",
       "thumbnail": "/media_library/image_20260312113632AISE.jpg",
@@ -2303,7 +2303,7 @@
         "6"
       ],
       "title": "Qiao Chen",
-      "url": "/realEstateBrokerDetail/72",
+      "url": "/brokers/72",
       "keywords": "",
       "description": "Real Estate Advisor",
       "thumbnail": "/media_library/image_20260312113625NICD.jpg",
@@ -2326,7 +2326,7 @@
         "6"
       ],
       "title": "Tatyana Ilieva",
-      "url": "/realEstateBrokerDetail/73",
+      "url": "/brokers/73",
       "keywords": "",
       "description": "Real Estate Advisor",
       "thumbnail": "/media_library/image_20260312113617KPIY.jpg",
@@ -2349,7 +2349,7 @@
         "6"
       ],
       "title": "Xiangyu (Allen) Zhang",
-      "url": "/realEstateBrokerDetail/74",
+      "url": "/brokers/74",
       "keywords": "",
       "description": "Founder & CEO – Real Estate Broker",
       "thumbnail": "/media_library/image_20260312113610SNBX.jpg",
@@ -2372,7 +2372,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/75",
+      "url": "/news/75",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260306145558MRTH.jpg",
@@ -2392,7 +2392,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/76",
+      "url": "/news/76",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260306145622PCEJ.jpg",
@@ -2412,7 +2412,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/77",
+      "url": "/news/77",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260306145606HDES.jpg",
@@ -2432,7 +2432,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/78",
+      "url": "/news/78",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260307103248YCSW.jpg",
@@ -2452,7 +2452,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/79",
+      "url": "/news/79",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260306145545MRTJ.jpg",
@@ -2472,7 +2472,7 @@
         "7"
       ],
       "title": " ",
-      "url": "/newsdetail/80",
+      "url": "/news/80",
       "keywords": "",
       "description": "",
       "thumbnail": "/media_library/image_20260306145535XKRU.jpg",
@@ -2496,7 +2496,7 @@
           "2"
         ],
         "title": "GLOBAL CONNECTIONS",
-        "url": "/newsdetail/17",
+        "url": "/news/17",
         "keywords": "30+",
         "description": "Partner Countries",
         "thumbnail": "/images/no_picture.jpg",
@@ -2523,7 +2523,7 @@
           "2"
         ],
         "title": "TRANSACTION VOLUME",
-        "url": "/newsdetail/16",
+        "url": "/news/16",
         "keywords": "$600M+",
         "description": "Residential Sales",
         "thumbnail": "/images/no_picture.jpg",
@@ -2550,7 +2550,7 @@
           "2"
         ],
         "title": "ELITE TEAM",
-        "url": "/newsdetail/15",
+        "url": "/news/15",
         "keywords": "60%+",
         "description": "Ivy League Graduates",
         "thumbnail": "/images/no_picture.jpg",
@@ -2577,7 +2577,7 @@
           "2"
         ],
         "title": "MARKET FOCUS",
-        "url": "/newsdetail/14",
+        "url": "/news/14",
         "keywords": "NYC",
         "description": "Luxury Residential",
         "thumbnail": "/images/no_picture.jpg",
@@ -2606,7 +2606,7 @@
           "3"
         ],
         "title": "An International Network. A Higher Level of Access.",
-        "url": "/newsdetail/21",
+        "url": "/news/21",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260312084745BBYM.png",
@@ -2633,7 +2633,7 @@
           "3"
         ],
         "title": "A global network of exceptional agents and exclusive properties.",
-        "url": "/newsdetail/20",
+        "url": "/news/20",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260312084810GYMP.jpg",
@@ -2662,7 +2662,7 @@
           "4"
         ],
         "title": "Advisors, Not Just Agents.",
-        "url": "/newsdetail/23",
+        "url": "/news/23",
         "keywords": "",
         "description": "Our team brings institutional-level strategy to residential real estate — guiding buyers, sellers, and investors with clarity and confidence.",
         "thumbnail": "/media_library/image_20260209171313IQXS.png",
@@ -2689,7 +2689,7 @@
           "4"
         ],
         "title": "Driven by Strategy. Defined by Results.",
-        "url": "/newsdetail/22",
+        "url": "/news/22",
         "keywords": "",
         "description": "Every property deserves more than exposure — it deserves positioning, negotiation, and execution at the highest level.",
         "thumbnail": "/media_library/image_20260209171311SMHN.png",
@@ -2718,7 +2718,7 @@
           "5"
         ],
         "title": "Prime Residences",
-        "url": "/propertyCenterDetail/30",
+        "url": "/properties/30",
         "keywords": "Naples, FL, United States",
         "description": "$32,500,000",
         "thumbnail": "/media_library/image_20260305113301FDXP.jpg",
@@ -2748,7 +2748,7 @@
           "5"
         ],
         "title": "Global Perspective",
-        "url": "/propertyCenterDetail/29",
+        "url": "/properties/29",
         "keywords": "Naples, FL, United States",
         "description": "$32,500,000",
         "thumbnail": "/media_library/image_20260305113510FDIK.jpg",
@@ -2775,7 +2775,7 @@
           "5"
         ],
         "title": "Curated Living",
-        "url": "/propertyCenterDetail/28",
+        "url": "/properties/28",
         "keywords": "",
         "description": "$32,500,000",
         "thumbnail": "/media_library/image_20260305113458KEDA.jpg",
@@ -2804,7 +2804,7 @@
           "6"
         ],
         "title": "Xiangyu (Allen) Zhang",
-        "url": "/realEstateBrokerDetail/74",
+        "url": "/brokers/74",
         "keywords": "",
         "description": "Founder & CEO – Real Estate Broker",
         "thumbnail": "/media_library/image_20260312113610SNBX.jpg",
@@ -2830,7 +2830,7 @@
           "6"
         ],
         "title": "Tatyana Ilieva",
-        "url": "/realEstateBrokerDetail/73",
+        "url": "/brokers/73",
         "keywords": "",
         "description": "Real Estate Advisor",
         "thumbnail": "/media_library/image_20260312113617KPIY.jpg",
@@ -2849,7 +2849,7 @@
           "6"
         ],
         "title": "Qiao Chen",
-        "url": "/realEstateBrokerDetail/72",
+        "url": "/brokers/72",
         "keywords": "",
         "description": "Real Estate Advisor",
         "thumbnail": "/media_library/image_20260312113625NICD.jpg",
@@ -2869,7 +2869,7 @@
           "6"
         ],
         "title": "Juliana Gamboa ",
-        "url": "/realEstateBrokerDetail/71",
+        "url": "/brokers/71",
         "keywords": "",
         "description": "Real Estate Advisor",
         "thumbnail": "/media_library/image_20260312113632AISE.jpg",
@@ -2890,7 +2890,7 @@
           "6"
         ],
         "title": "Nick Yu",
-        "url": "/realEstateBrokerDetail/70",
+        "url": "/brokers/70",
         "keywords": "",
         "description": "Real Estate Advisor",
         "thumbnail": "/media_library/image_20260312113638QJZD.jpg",
@@ -2911,7 +2911,7 @@
           "6"
         ],
         "title": "Ziwei (Audrey) Wen",
-        "url": "/realEstateBrokerDetail/32",
+        "url": "/brokers/32",
         "keywords": "",
         "description": "Real Estate Advisor",
         "thumbnail": "/media_library/image_20260312113728NQRK.jpg",
@@ -2932,7 +2932,7 @@
           "7"
         ],
         "title": " ",
-        "url": "/newsdetail/80",
+        "url": "/news/80",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260306145535XKRU.jpg",
@@ -2949,7 +2949,7 @@
           "7"
         ],
         "title": " ",
-        "url": "/newsdetail/79",
+        "url": "/news/79",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260306145545MRTJ.jpg",
@@ -2966,7 +2966,7 @@
           "7"
         ],
         "title": " ",
-        "url": "/newsdetail/78",
+        "url": "/news/78",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260307103248YCSW.jpg",
@@ -2983,7 +2983,7 @@
           "7"
         ],
         "title": " ",
-        "url": "/newsdetail/77",
+        "url": "/news/77",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260306145606HDES.jpg",
@@ -3000,7 +3000,7 @@
           "7"
         ],
         "title": " ",
-        "url": "/newsdetail/76",
+        "url": "/news/76",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260306145622PCEJ.jpg",
@@ -3017,7 +3017,7 @@
           "7"
         ],
         "title": " ",
-        "url": "/newsdetail/75",
+        "url": "/news/75",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260306145558MRTH.jpg",
@@ -3053,7 +3053,7 @@
           "8"
         ],
         "title": "Sell with Us",
-        "url": "/sale/38",
+        "url": "/sell-with-us",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260312085328LQPL.jpg",
@@ -3070,7 +3070,7 @@
           "8"
         ],
         "title": "Real Estate Advisors",
-        "url": "/realEstateBrokerCenter/6",
+        "url": "/brokers",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260306144923CECE.jpg",
@@ -3106,7 +3106,7 @@
           "9"
         ],
         "title": "Real Estate Advisors",
-        "url": "/realEstateBrokerCenter/6",
+        "url": "/brokers",
         "keywords": "",
         "description": "",
         "thumbnail": "/media_library/image_20260306145054TUDE.jpg",
@@ -3123,7 +3123,7 @@
           "9"
         ],
         "title": "JoinUs",
-        "url": "/newsdetail/54",
+        "url": "/news/54",
         "keywords": "joinUs/39",
         "description": "",
         "thumbnail": "/media_library/image_20260306145126HWER.jpg",
@@ -3169,7 +3169,7 @@
           "10"
         ],
         "title": "Position Your Property at the Highest Level.",
-        "url": "/sale/38",
+        "url": "/sell-with-us",
         "keywords": "SELL WITH US",
         "description": "",
         "thumbnail": "/media_library/image_20260305092614UIUJ.jpg",
@@ -3198,7 +3198,7 @@
           "11"
         ],
         "title": "Qiao Chen",
-        "url": "/realEstateBrokerDetail/34",
+        "url": "/brokers/34",
         "keywords": "",
         "description": "Real Estate Advisor",
         "thumbnail": "/media_library/image_20260306130353KHCT.jpg",
@@ -3220,7 +3220,7 @@
           "11"
         ],
         "title": "Tatyana Ilieva ",
-        "url": "/realEstateBrokerDetail/33",
+        "url": "/brokers/33",
         "keywords": "",
         "description": "Real Estate Advisor",
         "thumbnail": "/media_library/image_20260305131951PGBC.jpg",
