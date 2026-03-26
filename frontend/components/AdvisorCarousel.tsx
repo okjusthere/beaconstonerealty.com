@@ -24,7 +24,7 @@ function getFacePosition(title: string): string {
     case 'Ziwei (Audrey) Wen':
       return '18%';
     case 'Qiao Chen':
-      return '28%';
+      return '35%';
     case 'Tatyana Ilieva':
       return '20%';
     case 'Juliana Gamboa':
