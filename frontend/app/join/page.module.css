@@ -66,7 +66,7 @@
   padding: clamp(28px, 4vw, 40px);
   background: var(--color-off-white);
   border: 1px solid rgba(62, 54, 52, 0.12);
-  border-top: 2px solid var(--color-gold);
+  border-top: 2px solid var(--color-brown);
   color: var(--color-text);
 }
 
@@ -108,7 +108,7 @@
   align-items: center;
   gap: 10px;
   padding: 18px 48px;
-  border: 1.5px solid var(--color-gold);
+  border: 1.5px solid var(--color-brown);
   background: transparent;
   color: var(--color-brown);
   font-size: 0.82rem;
@@ -120,9 +120,9 @@
 }
 
 .btnOutline:hover {
-  background: var(--color-gold);
-  color: var(--color-brown);
-  border-color: var(--color-gold);
+  background: var(--color-brown);
+  color: var(--color-white);
+  border-color: var(--color-brown);
 }
 
 

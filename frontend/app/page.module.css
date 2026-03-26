@@ -201,13 +201,15 @@
 
 .exclusiveBtn {
   display: inline-flex;
-  border: 1px solid var(--color-gold);
+  padding: 18px 48px;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
   background: transparent;
   color: var(--color-white);
 }
 
 .exclusiveBtn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--color-white);
   color: var(--color-white);
 }
 
@@ -225,6 +227,8 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--color-brown);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
 }
 
 .videoWrapper :global(p) {
@@ -246,6 +250,8 @@
   height: 100%;
   border: 0;
   transition: opacity 220ms ease;
+  --media-object-fit: cover;
+  --media-object-position: center;
 }
 
 .videoWrapper :global(video),
@@ -256,6 +262,14 @@
   height: 100%;
   border: 0;
   object-fit: cover;
+}
+
+/* Fix Safari black border on video playback */
+.videoMux :global(mux-player),
+.videoWrapper :global(video) {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  outline: none;
 }
 
 .properties {

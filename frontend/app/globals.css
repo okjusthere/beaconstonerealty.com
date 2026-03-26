@@ -171,14 +171,15 @@ img {
 }
 
 .btn-secondary {
-  background: var(--color-gold);
+  background: transparent;
   color: var(--color-white);
-  border-color: var(--color-gold);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .btn-secondary:hover {
-  background: var(--color-gold-light);
+  background: rgba(255, 255, 255, 0.12);
   color: var(--color-white);
+  border-color: var(--color-white);
 }
 
 .btn-outline {
@@ -210,7 +211,7 @@ img {
 }
 
 .btn-arrow:hover {
-  color: var(--color-gold);
+  color: var(--color-brown-light);
 }
 
 .btn-arrow svg {

@@ -27,7 +27,7 @@
 .stats {
   background: var(--color-white);
   padding: 50px 0 60px;
-  border-bottom: 1px solid var(--color-gold);
+  border-bottom: 1px solid var(--color-brown);
 }
 
 .statsGrid {
@@ -64,7 +64,7 @@
 
 .foundation {
   background: var(--color-white);
-  padding: 72px 0 84px;
+  padding: 72px 0 36px;
 }
 
 .foundationInner {
@@ -286,9 +286,9 @@
 .carouselImage img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: contain;
-  object-position: center top;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 15%;
 }
 
 .carouselBody {

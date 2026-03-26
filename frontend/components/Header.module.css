@@ -35,10 +35,11 @@
   display: flex;
   align-items: center;
   z-index: 10;
+  margin-left: clamp(8px, 2vw, 24px);
 }
 
 .logoImg {
-  height: 58px;
+  height: 76px;
   width: auto;
   object-fit: contain;
 }

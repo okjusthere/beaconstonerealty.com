@@ -40,7 +40,7 @@
 .thumbBtn:hover,
 .thumbActive {
   opacity: 1;
-  border-color: var(--color-gold);
+  border-color: var(--color-brown);
 }
 
 .thumbBtn img {
