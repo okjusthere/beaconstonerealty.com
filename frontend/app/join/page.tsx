@@ -40,9 +40,10 @@ export default async function JoinPage() {
   let joinFormTitle = '';
   let joinFormDescription = '';
   let recipientEmail = 'info@beacon-stone.com';
+  let brokerPhotos: Array<{ id: number; title: string; thumbnail: string; url: string }> = [];
 
   try {
-    const [globalData, introData, sideData, featureData, careerData, discoverData, joinFormData] = await Promise.allSettled([
+    const [globalData, introData, sideData, featureData, careerData, discoverData, joinFormData, brokersData] = await Promise.allSettled([
       getGlobalData(),
       getNewsDetail(40),
       getNewsDetail(41),
@@ -50,6 +51,7 @@ export default async function JoinPage() {
       getNewsList(7, -1, 7),
       getNewsList(8, -1, 8),
       getNewsDetail(52),
+      getNewsList(6, -1, 6),
     ]);
 
     if (globalData.status === 'fulfilled') {
@@ -87,6 +89,9 @@ export default async function JoinPage() {
       joinFormTitle = joinFormData.value.title;
       joinFormDescription = joinFormData.value.description;
     }
+    if (brokersData.status === 'fulfilled') {
+      brokerPhotos = (brokersData.value as typeof brokerPhotos).filter((b) => b.thumbnail && !b.thumbnail.includes('no_picture'));
+    }
   } catch {
     // Keep fallbacks for the initial migration pass.
   }
@@ -112,7 +117,7 @@ export default async function JoinPage() {
             <div className={styles.sidePanel} dangerouslySetInnerHTML={{ __html: introSideContent }} />
           </div>
           <div className={styles.introCta}>
-            <Link href="/sell-with-us" className="btn btn-secondary">
+            <Link href="/sell-with-us" className={styles.btnOutline}>
               Join Us <ArrowRight />
             </Link>
           </div>
@@ -129,6 +134,24 @@ export default async function JoinPage() {
               <div className={styles.featureContent}>
                 <h2 className={styles.sectionTitle}>{featureTitle}</h2>
                 <div className={styles.richContent} dangerouslySetInnerHTML={{ __html: featureContent }} />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {brokerPhotos.length >= 3 && (
+        <section className={styles.brokerFan}>
+          <div className="container">
+            <div className={styles.fanWrapper}>
+              <div className={styles.fanCard} style={{ '--fan-index': 0 } as React.CSSProperties}>
+                <img src={brokerPhotos[1]?.thumbnail} alt={brokerPhotos[1]?.title} />
+              </div>
+              <div className={`${styles.fanCard} ${styles.fanCardCenter}`} style={{ '--fan-index': 1 } as React.CSSProperties}>
+                <img src={brokerPhotos[0]?.thumbnail} alt={brokerPhotos[0]?.title} />
+              </div>
+              <div className={styles.fanCard} style={{ '--fan-index': 2 } as React.CSSProperties}>
+                <img src={brokerPhotos[2]?.thumbnail} alt={brokerPhotos[2]?.title} />
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import LegacyLeadForm from '@/components/LegacyLeadForm';
+import ContactForm from '@/components/ContactForm';
 import styles from './page.module.css';
 import { findMenuByPath, getGlobalData, getNewsDetail, resolveAssetUrl, type WebInfo } from '@/lib/api';
 
@@ -25,10 +25,12 @@ const DEFAULT_WEB_INFO: WebInfo = {
   map: '',
 };
 
+const FALLBACK_HERO = 'https://uploads.kevv.ai/clientsuploads/beaconstone/luxury-house-pictures.jpg';
+
 export default async function ContactPage() {
   let webInfo = DEFAULT_WEB_INFO;
   let heroImage = '';
-  let introTitle = 'Contact Us';
+  let introTitle = 'THANK YOU FOR CONTACTING BEACON STONE REALTY';
   let introContent = '';
 
   try {
@@ -51,77 +53,98 @@ export default async function ContactPage() {
     // Keep the legacy fallback copy visible if the API is unavailable.
   }
 
+  const heroSrc = heroImage ? resolveAssetUrl(heroImage) : FALLBACK_HERO;
+
   const contactItems = [
-    { label: 'Phone', value: webInfo.phone, href: webInfo.phone ? `tel:${webInfo.phone}` : undefined },
-    { label: 'Email', value: webInfo.email, href: webInfo.email ? `mailto:${webInfo.email}` : undefined },
-    { label: 'Address', value: webInfo.address, href: undefined },
+    {
+      label: 'Phone',
+      value: webInfo.phone,
+      href: webInfo.phone ? `tel:${webInfo.phone}` : undefined,
+      icon: (
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+      ),
+    },
+    {
+      label: 'Email',
+      value: webInfo.email,
+      href: webInfo.email ? `mailto:${webInfo.email}` : undefined,
+      icon: (
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="M22 4l-10 8L2 4" />
+        </svg>
+      ),
+    },
+    {
+      label: 'Address',
+      value: webInfo.address,
+      href: undefined,
+      icon: (
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+      ),
+    },
   ].filter((item) => item.value);
 
   return (
     <>
+      {/* Hero Banner */}
       <section className={styles.hero}>
-        {heroImage ? (
-          <img
-            src={resolveAssetUrl(heroImage)}
-            alt={introTitle}
-            className={styles.heroImage}
-          />
-        ) : (
-          <div className={styles.heroFallback} />
-        )}
+        <img
+          src={heroSrc}
+          alt="Beacon Stone Realty"
+          className={styles.heroImage}
+        />
       </section>
 
+      {/* Intro Section */}
       <section className={styles.intro}>
-        <div className="container">
-          <div className={styles.introInner}>
-            <h1 className={styles.introTitle}>{introTitle}</h1>
-            {introContent && (
-              <div
-                className={styles.introContent}
-                dangerouslySetInnerHTML={{ __html: introContent }}
-              />
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.content}>
-        <div className="container">
-          <div className={styles.grid}>
-            <LegacyLeadForm
-              variant="contact"
-              submissionTitle="contact us"
-              eyebrow="Contact Us"
-              title="Tell us what you are looking for"
-              description="Share your timeline, preferred areas, and bedroom needs. Your email app will open with a prepared message."
-              recipientEmail={webInfo.email || 'info@beacon-stone.com'}
-              successMessage="Your email app has been opened with a contact request draft."
+        <div className={styles.introInner}>
+          <h1 className={styles.introTitle}>{introTitle}</h1>
+          {introContent ? (
+            <div
+              className={styles.introSubtitle}
+              dangerouslySetInnerHTML={{ __html: introContent }}
             />
-
-            <aside className={styles.sidebar}>
-              <div className={styles.sidebarCard}>
-                <p className={styles.sidebarEyebrow}>Beacon Stone Realty</p>
-                <h2 className={styles.sidebarTitle}>Get In Touch</h2>
-                <p className={styles.sidebarText}>
-                  Our team handles private residences, investment opportunities, and cross-border acquisitions across New York City.
-                </p>
-                <ul className={styles.contactList}>
-                  {contactItems.map((item) => (
-                    <li key={item.label} className={styles.contactItem}>
-                      <span className={styles.contactLabel}>{item.label}</span>
-                      {item.href ? (
-                        <a href={item.href} className={styles.contactValue}>{item.value}</a>
-                      ) : (
-                        <p className={styles.contactValue}>{item.value}</p>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </aside>
-          </div>
+          ) : (
+            <p className={styles.introSubtitle}>
+              Thank you for reaching out. We look forward to assisting you with insight, precision, and a refined approach to New York real estate. A member of our team will be in touch shortly.
+            </p>
+          )}
         </div>
       </section>
+
+      {/* Form Section */}
+      <section className={styles.formSection}>
+        <div className={styles.formWrapper}>
+          <ContactForm recipientEmail={webInfo.email || 'info@beacon-stone.com'} />
+        </div>
+      </section>
+
+      {/* Contact Cards */}
+      {contactItems.length > 0 && (
+        <section className={styles.cardsSection}>
+          <div className={styles.cardsGrid}>
+            {contactItems.map((item) => (
+              <div key={item.label} className={styles.card}>
+                <div className={styles.cardIcon}>{item.icon}</div>
+                <p className={styles.cardLabel}>{item.label}</p>
+                {item.href ? (
+                  <a href={item.href} className={styles.cardValue}>
+                    {item.value}
+                  </a>
+                ) : (
+                  <p className={styles.cardValue}>{item.value}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </>
   );
 }
