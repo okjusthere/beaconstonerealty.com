@@ -20,15 +20,15 @@ interface Advisor {
  * Tune per person so all faces align at a consistent vertical focal point.
  */
 function getFacePosition(title: string): string {
-  switch (title) {
+  switch (title.trim()) {
     case 'Ziwei (Audrey) Wen':
       return '18%';
     case 'Qiao Chen':
-      return '10%';
+      return '28%';
     case 'Tatyana Ilieva':
       return '20%';
     case 'Juliana Gamboa':
-      return '28%';
+      return '0%';
     case 'Nick Yu':
       return '20%';
     case 'Xiangyu (Allen) Zhang':
