@@ -109,13 +109,14 @@
 
 .cardMarketing {
   font-size: 0.82rem;
-  color: var(--color-grey-dark);
+  color: transparent;
 }
 
 .cardMarketing :global(*) {
   margin: 0;
   font-family: var(--font-mono, monospace);
   font-size: 0.82rem;
+  color: transparent;
 }
 
 .empty {

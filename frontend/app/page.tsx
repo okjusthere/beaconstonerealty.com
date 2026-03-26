@@ -109,11 +109,6 @@ export default async function HomePage() {
               <div className={styles.heroIntroCopy}>
                 <h1 className={styles.heroTitle}>{renderHeroTitle(heroTitle)}</h1>
               </div>
-              <div className={styles.heroIntroAction}>
-                <Link href="/properties" className={`btn ${styles.heroBtn}`}>
-                  Explore Properties <ArrowRight />
-                </Link>
-              </div>
             </div>
           </div>
         </div>

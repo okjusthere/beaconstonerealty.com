@@ -104,15 +104,15 @@ export default async function ContactPage() {
       {/* Intro Section */}
       <section className={styles.intro}>
         <div className={styles.introInner}>
-          <h1 className={styles.introTitle}>{introTitle}</h1>
+          <h1 className={styles.introTitle}>{introTitle.replace(/\u00a0/g, ' ')}</h1>
           {introContent ? (
             <div
               className={styles.introSubtitle}
-              dangerouslySetInnerHTML={{ __html: introContent }}
+              dangerouslySetInnerHTML={{ __html: introContent.replace(/&nbsp;/g, ' ').replace(/\u00a0/g, ' ') }}
             />
           ) : (
             <p className={styles.introSubtitle}>
-              Thank you for reaching out. We look forward to assisting you with insight, precision, and a refined approach to New York real estate. A member of our team will be in touch shortly.
+              Thank you for reaching out. We look forward to assisting you with insight, precision, and a refined approach to New York real estate.
             </p>
           )}
         </div>
