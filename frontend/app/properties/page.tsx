@@ -74,12 +74,6 @@ export default async function PropertiesPage() {
                               {property.field.total_residences} Total Residences
                             </span>
                           )}
-                          {property.content && (
-                            <div
-                              className={styles.cardMarketing}
-                              dangerouslySetInnerHTML={{ __html: property.content }}
-                            />
-                          )}
                         </div>
                       </Link>
                     </div>

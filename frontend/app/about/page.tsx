@@ -25,7 +25,7 @@ function stripHtmlTags(html: string): string {
 type StatItem = { id: number; title: string; keywords: string; description: string };
 type NetworkCard = Pick<NewsItem, 'id' | 'title' | 'thumbnail' | 'url'> & { content?: string };
 type AdvisorCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'description' | 'field'>;
-type DiscoverCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'description'>;
+type DiscoverCard = Pick<NewsItem, 'id' | 'title' | 'url' | 'thumbnail' | 'description' | 'keywords'>;
 
 function summarizeAdvisorIntro(advisor: AdvisorCard): string {
   const source = stripHtmlTags(advisor.field?.real_estate_broker_desc || '');
@@ -314,7 +314,11 @@ export default async function AboutPage() {
                     )}
                     <div className={styles.discoverBody}>
                       <h3>{item.title}</h3>
-                      {item.description && <p>{item.description}</p>}
+                      {item.keywords && (
+                        <span className={styles.discoverCta}>
+                          {item.keywords} <ArrowRight />
+                        </span>
+                      )}
                     </div>
                   </Link>
                 ))}
