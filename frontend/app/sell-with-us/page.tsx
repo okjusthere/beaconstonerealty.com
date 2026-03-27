@@ -3,6 +3,7 @@ import HeroVideo from '@/components/HeroVideo';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
 import { getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
+import { getSanityAgentList } from '@/lib/sanity-api';
 import { BEACON_MUX_PLAYBACK_ID, BEACON_MUX_POSTER } from '@/lib/mux';
 
 const FORM_NOTE_HTML = `
@@ -30,10 +31,10 @@ export default async function SellWithUsPage() {
   let recipientEmail = 'info@beacon-stone.com';
 
   try {
-    const [globalData, hero, advisors, formContent, discoverContent] = await Promise.allSettled([
+    const [globalData, hero, sanityAgents, formContent, discoverContent] = await Promise.allSettled([
       getGlobalData(),
       getNewsDetail(50),
-      getNewsList(6, -1, 9),
+      getSanityAgentList(),
       getNewsDetail(53),
       getNewsList(9, -1, 8),
     ]);
@@ -45,25 +46,8 @@ export default async function SellWithUsPage() {
       heroTitle = hero.value.title || heroTitle;
       heroDescription = hero.value.description || '';
     }
-    if (advisors.status === 'fulfilled') {
-      advisorCards = await Promise.all(
-        (advisors.value as SaleCard[]).map(async (advisor) => {
-          try {
-            const detail = await getNewsDetail(advisor.id);
-            return {
-              ...advisor,
-              ...detail,
-              url: advisor.url || detail.url,
-              thumbnail: advisor.thumbnail || detail.thumbnail,
-              description: advisor.description || detail.description,
-              content: detail.content || advisor.content,
-              field: { ...(advisor.field || {}), ...(detail.field || {}) },
-            };
-          } catch {
-            return advisor;
-          }
-        }),
-      );
+    if (sanityAgents.status === 'fulfilled' && sanityAgents.value.length > 0) {
+      advisorCards = sanityAgents.value as SaleCard[];
     }
     if (formContent.status === 'fulfilled') {
       inquiryHeading = formContent.value.title;

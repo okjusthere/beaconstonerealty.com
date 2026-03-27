@@ -3,6 +3,7 @@ import FanCarousel from '@/components/FanCarousel';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
 import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
+import { getSanityAgentList } from '@/lib/sanity-api';
 
 const FORM_NOTE_HTML = `
   <p>By submitting this form, you agree to our <a href="/legal">Privacy Policy</a> and <a href="/legal">Terms of Use</a>.</p>
@@ -52,7 +53,7 @@ export default async function JoinPage() {
       getNewsList(7, -1, 7),
       getNewsList(8, -1, 8),
       getNewsDetail(52),
-      getNewsList(6, -1, 6),
+      getSanityAgentList(),
     ]);
 
     if (globalData.status === 'fulfilled') {
@@ -90,7 +91,7 @@ export default async function JoinPage() {
       joinFormTitle = joinFormData.value.title;
       joinFormDescription = joinFormData.value.description;
     }
-    if (brokersData.status === 'fulfilled') {
+    if (brokersData.status === 'fulfilled' && brokersData.value.length > 0) {
       brokerPhotos = (brokersData.value as typeof brokerPhotos).filter((b) => b.thumbnail && !b.thumbnail.includes('no_picture'));
     }
   } catch {

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import AdvisorCarousel from '@/components/AdvisorCarousel';
 import styles from './page.module.css';
 import { getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
+import { getSanityAgentList } from '@/lib/sanity-api';
 
 function ArrowRight() {
   return (
@@ -42,19 +43,6 @@ function summarizeAdvisorIntro(advisor: AdvisorCard): string {
   return source.length > 170 ? `${source.slice(0, 167).trimEnd()}...` : source;
 }
 
-function mergeAdvisorRecord(base: AdvisorCard, detail: NewsItem): AdvisorCard {
-  return {
-    ...base,
-    ...detail,
-    url: base.url || detail.url,
-    thumbnail: base.thumbnail || detail.thumbnail,
-    description: base.description || detail.description,
-    field: {
-      ...(base.field || {}),
-      ...(detail.field || {}),
-    },
-  };
-}
 
 export default async function AboutPage() {
   const id = '13';
@@ -91,7 +79,7 @@ export default async function AboutPage() {
       getNewsDetail(18),
       getNewsDetail(19),
       getNewsList(3, -1, 5),
-      getNewsList(6, -1, 6),
+      getSanityAgentList(),
       getNewsList(10, 2, 10),
     ]);
 
@@ -138,17 +126,8 @@ export default async function AboutPage() {
       networkCards = networkData.value as NetworkCard[];
     }
 
-    if (advisorsData.status === 'fulfilled') {
-      advisors = await Promise.all(
-        (advisorsData.value as AdvisorCard[]).map(async (advisor) => {
-          try {
-            const detail = await getNewsDetail(advisor.id);
-            return mergeAdvisorRecord(advisor, detail);
-          } catch {
-            return advisor;
-          }
-        }),
-      );
+    if (advisorsData.status === 'fulfilled' && advisorsData.value.length > 0) {
+      advisors = advisorsData.value as AdvisorCard[];
     }
 
     if (discoverData.status === 'fulfilled') {

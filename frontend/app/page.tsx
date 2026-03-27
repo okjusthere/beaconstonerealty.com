@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import HeroVideo from '@/components/HeroVideo';
 import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
+import { getSanityListingList } from '@/lib/sanity-api';
 import { BEACON_MUX_PLAYBACK_ID, BEACON_MUX_POSTER } from '@/lib/mux';
 import styles from './page.module.css';
 
@@ -60,13 +61,13 @@ export default async function HomePage() {
   }> = [];
 
   try {
-    const [heroData, aboutData, storyData, exclusiveData, globalData, propertyList] = await Promise.allSettled([
+    const [heroData, aboutData, storyData, exclusiveData, globalData, sanityListings] = await Promise.allSettled([
       getNewsDetail(11),
       getNewsDetail(1),
       getNewsDetail(2),
       getNewsDetail(3),
       getGlobalData(),
-      getNewsList(5, -1, 1),
+      getSanityListingList(),
     ]);
 
     if (heroData.status === 'fulfilled') heroTitle = heroData.value.title;
@@ -92,8 +93,8 @@ export default async function HomePage() {
         propertySectionDesc = newsClass.description;
       }
     }
-    if (propertyList.status === 'fulfilled') {
-      properties = propertyList.value as typeof properties;
+    if (sanityListings.status === 'fulfilled' && sanityListings.value.length > 0) {
+      properties = sanityListings.value as typeof properties;
     }
   } catch {
     // Use fallback values
