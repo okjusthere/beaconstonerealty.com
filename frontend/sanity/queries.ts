@@ -49,6 +49,42 @@ export const agentSlugsQuery = groq`
   }
 `;
 
+export const agentByIdQuery = groq`
+  *[_type == "agent" && _id == $id][0] {
+    _id,
+    name,
+    slug,
+    title,
+    photo,
+    phone,
+    email,
+    region,
+    bio,
+    order
+  }
+`;
+
+export const agentIdsQuery = groq`
+  *[_type == "agent"] | order(order asc) {
+    _id
+  }
+`;
+
+export const allAgentsWithBioQuery = groq`
+  *[_type == "agent"] | order(order asc) {
+    _id,
+    name,
+    slug,
+    title,
+    photo,
+    phone,
+    email,
+    region,
+    bio,
+    order
+  }
+`;
+
 // ─── Listings ───
 export const allListingsQuery = groq`
   *[_type == "listing" && status != "sold"] | order(order asc) {
@@ -101,6 +137,42 @@ export const listingBySlugQuery = groq`
 export const listingSlugsQuery = groq`
   *[_type == "listing" && defined(slug.current)] {
     "slug": slug.current
+  }
+`;
+
+export const listingByIdQuery = groq`
+  *[_type == "listing" && _id == $id][0] {
+    _id,
+    title,
+    slug,
+    address,
+    price,
+    bedrooms,
+    bathrooms,
+    sqft,
+    propertyType,
+    status,
+    featuredImage,
+    gallery,
+    description,
+    highlights,
+    developmentDetails,
+    agent-> {
+      _id,
+      name,
+      slug,
+      title,
+      photo,
+      phone,
+      email
+    },
+    order
+  }
+`;
+
+export const listingIdsQuery = groq`
+  *[_type == "listing" && status != "sold"] | order(order asc) {
+    _id
   }
 `;
 

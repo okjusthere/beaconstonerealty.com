@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import styles from './page.module.css';
-import { findMenuByPath, getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
+import { findMenuByPath, getGlobalData, type NewsItem } from '@/lib/api';
+import { getSanityAgentList } from '@/lib/sanity-api';
 
 const FORM_NOTE_HTML = `
   <p>By submitting this form, you agree to our <a href="/legal">Privacy Policy</a> and <a href="/legal">Terms of Use</a>.</p>
@@ -52,21 +53,6 @@ function normalizePhone(value?: string): string {
     .trim();
 }
 
-function mergeBrokerRecord(base: BrokerCard, detail: NewsItem): BrokerCard {
-  return {
-    ...base,
-    ...detail,
-    url: base.url || detail.url,
-    thumbnail: base.thumbnail || detail.thumbnail,
-    description: base.description || detail.description,
-    content: detail.content || base.content,
-    field: {
-      ...(base.field || {}),
-      ...(detail.field || {}),
-    },
-  };
-}
-
 function getBrokerContact(agent: BrokerCard, officePhone: string, officeEmail: string): BrokerContact {
   const directPhone = normalizePhone(agent.field?.phone);
   const directEmail = agent.field?.real_estate_broker_email || agent.field?.email || '';
@@ -90,9 +76,9 @@ export default async function BrokersPage() {
   let recipientEmail = 'info@beacon-stone.com';
 
   try {
-    const [globalData, agentList] = await Promise.allSettled([
+    const [globalData, sanityAgents] = await Promise.allSettled([
       getGlobalData(),
-      getNewsList(6, -1, 9),
+      getSanityAgentList(),
     ]);
 
     if (globalData.status === 'fulfilled') {
@@ -103,21 +89,11 @@ export default async function BrokersPage() {
       officeEmail = globalData.value.web_info.email || '';
       recipientEmail = officeEmail || recipientEmail;
     }
-    if (agentList.status === 'fulfilled') {
-      const mergedAgents = await Promise.all(
-        (agentList.value as BrokerCard[]).map(async (agent) => {
-          try {
-            const detail = await getNewsDetail(agent.id);
-            return mergeBrokerRecord(agent, detail);
-          } catch {
-            return agent;
-          }
-        }),
-      );
-      agents = mergedAgents;
+    if (sanityAgents.status === 'fulfilled' && sanityAgents.value.length > 0) {
+      agents = sanityAgents.value as BrokerCard[];
     }
   } catch {
-    // Preserve a readable empty state if the legacy feed is unavailable.
+    // Preserve a readable empty state if the data source is unavailable.
   }
 
   return (

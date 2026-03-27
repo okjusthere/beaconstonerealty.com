@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
-import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
+import { getGlobalData } from '@/lib/api';
+import { getSanityAgentDetail, getSanityAgentIds } from '@/lib/sanity-api';
 import styles from './page.module.css';
 
 const FORM_NOTE_HTML = `
@@ -12,8 +13,8 @@ const FORM_DISCLAIMER_HTML = `
 `;
 
 export async function generateStaticParams() {
-  const brokers = await getNewsList(6, -1, 9);
-  return brokers.map((broker) => ({ id: String(broker.id) }));
+  const ids = await getSanityAgentIds();
+  return ids.map((id) => ({ id }));
 }
 
 export default async function BrokerDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -24,10 +25,8 @@ export default async function BrokerDetailPage({ params }: { params: Promise<{ i
     notFound();
   }
 
-  let broker;
-  try {
-    broker = await getNewsDetail(brokerId);
-  } catch {
+  const broker = await getSanityAgentDetail(brokerId);
+  if (!broker) {
     notFound();
   }
 

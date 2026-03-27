@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PropertyGallery from '@/components/PropertyGallery';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
-import { getGlobalData, getNewsDetail, getNewsList } from '@/lib/api';
+import { getGlobalData } from '@/lib/api';
+import { getSanityListingDetail, getSanityListingIds } from '@/lib/sanity-api';
 import styles from './page.module.css';
 
 function ArrowRight() {
@@ -22,8 +23,8 @@ const FORM_DISCLAIMER_HTML = `
 `;
 
 export async function generateStaticParams() {
-  const properties = await getNewsList(5, -1, 1);
-  return properties.map((property) => ({ id: String(property.id) }));
+  const ids = await getSanityListingIds();
+  return ids.map((id) => ({ id }));
 }
 
 export default async function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -34,20 +35,16 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
     notFound();
   }
 
-  let property;
-  try {
-    property = await getNewsDetail(propertyId);
-  } catch {
+  const [result, globalData] = await Promise.all([
+    getSanityListingDetail(propertyId),
+    getGlobalData(),
+  ]);
+
+  if (!result) {
     notFound();
   }
 
-  const [globalData, brokers] = await Promise.all([
-    getGlobalData(),
-    getNewsList(6, -1, 9),
-  ]);
-
-  const agentId = Number(property.field?.real_estate_agent_id || 0);
-  const agent = brokers.find((item) => item.id === agentId);
+  const { listing: property, agent } = result;
   const recipientEmail = globalData.web_info.email || 'info@beacon-stone.com';
   const photos = property.photo_album?.length
     ? property.photo_album

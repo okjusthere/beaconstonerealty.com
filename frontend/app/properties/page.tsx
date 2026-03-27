@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './page.module.css';
-import { findMenuByPath, getGlobalData, getNewsList, type NewsItem } from '@/lib/api';
+import { findMenuByPath, getGlobalData, type NewsItem } from '@/lib/api';
+import { getSanityListingList } from '@/lib/sanity-api';
 
 export const metadata = {
   title: 'Properties | Beaconstone Realty',
@@ -15,9 +16,9 @@ export default async function PropertiesPage() {
   let properties: PropertyCard[] = [];
 
   try {
-    const [globalData, propertyList] = await Promise.allSettled([
+    const [globalData, sanityListings] = await Promise.allSettled([
       getGlobalData(),
-      getNewsList(5, -1, 1),
+      getSanityListingList(),
     ]);
 
     if (globalData.status === 'fulfilled') {
@@ -26,8 +27,8 @@ export default async function PropertiesPage() {
       heroTitle = menu?.remarks || heroTitle;
     }
 
-    if (propertyList.status === 'fulfilled') {
-      properties = propertyList.value as PropertyCard[];
+    if (sanityListings.status === 'fulfilled' && sanityListings.value.length > 0) {
+      properties = sanityListings.value as PropertyCard[];
     }
   } catch {
     // Preserve a readable empty state while legacy data finishes migrating.
