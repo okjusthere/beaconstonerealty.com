@@ -151,12 +151,3 @@ export function validateContactForm(values: ContactFormValues, title: string): V
     ]),
   };
 }
-
-export function buildMailtoHref(recipientEmail: string, payload: LeadDraft): string {
-  const query = new URLSearchParams({
-    subject: payload.subject,
-    body: payload.body,
-  });
-
-  return `mailto:${recipientEmail}?${query.toString()}`;
-}

@@ -4,11 +4,11 @@ import styles from './page.module.css';
 import { findMenuByPath, getGlobalData, getNewsDetail, getNewsList, type NewsItem } from '@/lib/api';
 
 const FORM_NOTE_HTML = `
-  <p>Sending this form opens your email app with a prepared message to Beacon Stone Realty. By continuing, you acknowledge our <a href="/legal">Privacy Policy</a> and <a href="/legal">Terms of Use</a>.</p>
+  <p>By submitting this form, you agree to our <a href="/legal">Privacy Policy</a> and <a href="/legal">Terms of Use</a>.</p>
 `;
 
 const FORM_DISCLAIMER_HTML = `
-  <p>You can review and edit the draft before sending it from your own email account.</p>
+  <p>Our team will review your inquiry and get back to you shortly.</p>
 `;
 
 export const metadata = {
@@ -210,7 +210,7 @@ export default async function BrokersPage() {
               noteHtml={FORM_NOTE_HTML}
               disclaimerHtml={FORM_DISCLAIMER_HTML}
               recipientEmail={recipientEmail}
-              successMessage="Your email app has been opened with an inquiry draft."
+              successMessage="Thank you! Your inquiry has been submitted successfully."
             />
           </div>
         </div>
