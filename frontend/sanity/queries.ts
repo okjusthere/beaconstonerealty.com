@@ -1,4 +1,4 @@
-import { groq } from 'next-sanity';
+import groq from 'groq';
 
 // ─── Site Settings ───
 export const siteSettingsQuery = groq`

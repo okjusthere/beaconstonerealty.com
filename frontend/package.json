@@ -18,19 +18,18 @@
     "@opennextjs/cloudflare": "^1.18.0",
     "@sanity/client": "^7.20.0",
     "@sanity/image-url": "^2.0.3",
-    "@sanity/vision": "^5.18.0",
+    "groq": "^5.18.0",
     "next": "16.1.7",
-    "next-sanity": "^12.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "resend": "^6.9.4",
-    "sanity": "^5.18.0"
+    "resend": "^6.9.4"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "esbuild": "^0.27.4",
     "eslint": "^9",
     "eslint-config-next": "16.1.7",
     "typescript": "^5"
