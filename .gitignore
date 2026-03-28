@@ -15,5 +15,11 @@ Thumbs.db
 .vscode/
 *.swp
 
+# Node
+node_modules/
+.next/
+.sanity/
+dist/
+
 # Large video files
 frontend/public/video/*.mp4
