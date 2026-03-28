@@ -44,6 +44,12 @@ export default defineType({
       type: 'number',
     }),
     defineField({
+      name: 'totalResidences',
+      title: 'Total Residences',
+      type: 'number',
+      description: 'Total number of residences in the development.',
+    }),
+    defineField({
       name: 'propertyType',
       title: 'Property Type',
       type: 'string',

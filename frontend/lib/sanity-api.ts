@@ -102,7 +102,7 @@ function mapAgentToNewsItem(agent: Record<string, any>, includeBio = false): New
     title: agent.name || '',
     url: `/brokers/${id}`,
     keywords: agent.title || '', // role like "Real Estate Advisor"
-    description: agent.region || '',
+    description: '',
     thumbnail,
     content: bioHtml,
     enclosure: '',
@@ -111,7 +111,6 @@ function mapAgentToNewsItem(agent: Record<string, any>, includeBio = false): New
     field: {
       phone: agent.phone || '',
       real_estate_broker_email: agent.email || '',
-      real_estate_broker_region: agent.region || '',
       real_estate_broker_desc: bioHtml,
       slug,
     },
@@ -185,12 +184,17 @@ function mapListingToNewsItem(listing: Record<string, any>, isDetail = false): N
     field.real_estate_agent_id = String(agentLegacyId);
   }
 
+  // Map price into description (used as "Starting Price" on list page)
+  // Map address into the field map so detail page can access it
+  if (listing.address) field.address = listing.address;
+  if (listing.totalResidences) field.total_residences = String(listing.totalResidences);
+
   return {
     id,
     title: listing.title || '',
     url: `/properties/${id}`,
     keywords: listing.propertyType || '',
-    description: listing.address || '',
+    description: listing.price || '',
     thumbnail,
     content: contentHtml,
     enclosure: '',

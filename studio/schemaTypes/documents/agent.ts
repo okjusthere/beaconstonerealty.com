@@ -41,11 +41,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'region',
-      title: 'Region',
-      type: 'string',
-    }),
-    defineField({
       name: 'bio',
       title: 'Biography',
       type: 'array',

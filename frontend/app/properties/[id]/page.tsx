@@ -66,7 +66,7 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
               )}
 
               {property.field && Object.keys(property.field).length > 0 && (() => {
-                const HIDDEN_FIELDS = ['real_estate_agent_id', 'phone', 'real_estate_broker_region', 'real_estate_broker_desc', 'real_estate_broker_email'];
+                const HIDDEN_FIELDS = ['real_estate_agent_id', 'phone', 'real_estate_broker_desc', 'real_estate_broker_email'];
                 const visibleEntries = Object.entries(property.field).filter(
                   ([key, value]) => value && !HIDDEN_FIELDS.includes(key)
                 );

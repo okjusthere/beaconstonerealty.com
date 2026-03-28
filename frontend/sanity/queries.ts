@@ -23,7 +23,6 @@ export const allAgentsQuery = groq`
     photo,
     phone,
     email,
-    region,
     order
   }
 `;
@@ -37,7 +36,6 @@ export const agentBySlugQuery = groq`
     photo,
     phone,
     email,
-    region,
     bio,
     order
   }
@@ -58,7 +56,6 @@ export const agentByIdQuery = groq`
     photo,
     phone,
     email,
-    region,
     bio,
     order
   }
@@ -79,7 +76,6 @@ export const allAgentsWithBioQuery = groq`
     photo,
     phone,
     email,
-    region,
     bio,
     order
   }
@@ -98,6 +94,7 @@ export const allListingsQuery = groq`
     sqft,
     propertyType,
     status,
+    totalResidences,
     featuredImage,
     order,
     "agentName": agent->name
@@ -121,6 +118,7 @@ export const listingBySlugQuery = groq`
     description,
     highlights,
     developmentDetails,
+    totalResidences,
     agent-> {
       _id,
       name,
@@ -157,6 +155,7 @@ export const listingByIdQuery = groq`
     description,
     highlights,
     developmentDetails,
+    totalResidences,
     agent-> {
       _id,
       name,
