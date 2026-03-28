@@ -10,4 +10,7 @@ export default defineCliConfig({
     dataset,
   },
   ...(studioHost ? { studioHost } : {}),
+  deployment: {
+    appId: 'bquvqv5emaid6imcp706kmfy',
+  },
 });
