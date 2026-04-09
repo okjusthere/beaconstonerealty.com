@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Footer, { type FooterSocialLinks } from '@/components/Footer';
 import { getGlobalData, getPicByClassId } from '@/lib/api';
+import { getSiteSettings } from '@/sanity/fetch';
 
 export const metadata: Metadata = {
   title: 'Beaconstone Realty | Luxury Real Estate',
@@ -17,11 +18,16 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   let globalData;
+  let siteSettings: { socialLinks?: FooterSocialLinks | null } | null = null;
   try {
-    globalData = await getGlobalData();
+    [globalData, siteSettings] = await Promise.all([
+      getGlobalData(),
+      getSiteSettings() as Promise<{ socialLinks?: FooterSocialLinks | null } | null>,
+    ]);
   } catch {
     // Fallback: render without global data during build / when API is unavailable
     globalData = null;
+    siteSettings = null;
   }
 
   const menuItems = globalData?.menu_info ?? [];
@@ -59,7 +65,7 @@ export default async function RootLayout({
         <main>
           {children}
         </main>
-        <Footer webInfo={webInfo} />
+        <Footer webInfo={webInfo} socialLinks={siteSettings?.socialLinks} />
       </body>
     </html>
   );

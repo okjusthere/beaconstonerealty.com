@@ -1,44 +1,63 @@
 import styles from './Footer.module.css';
 import type { WebInfo } from '@/lib/api';
 
+export type FooterSocialLinks = Partial<{
+  instagram: string;
+  tiktok: string;
+  linkedin: string;
+  youtube: string;
+  x: string;
+  facebook: string;
+  pinterest: string;
+  rednote: string;
+}>;
+
 interface FooterProps {
   webInfo: WebInfo;
+  socialLinks?: FooterSocialLinks | null;
 }
 
-const socialLinks = [
-  { name: 'Instagram', url: '#' },
-  { name: 'TikTok', url: '#' },
-  { name: 'LinkedIn', url: '#' },
-  { name: 'YouTube', url: '#' },
-  { name: 'X', url: '#' },
-  { name: 'Facebook', url: '#' },
-  { name: 'Pinterest', url: '#' },
-  { name: 'Red Note', url: '#' },
+const socialLinkConfig: Array<{ name: string; key: keyof FooterSocialLinks }> = [
+  { name: 'Instagram', key: 'instagram' },
+  { name: 'TikTok', key: 'tiktok' },
+  { name: 'LinkedIn', key: 'linkedin' },
+  { name: 'YouTube', key: 'youtube' },
+  { name: 'X', key: 'x' },
+  { name: 'Facebook', key: 'facebook' },
+  { name: 'Pinterest', key: 'pinterest' },
+  { name: 'Red Note', key: 'rednote' },
 ];
 
-export default function Footer({ webInfo }: FooterProps) {
+export default function Footer({ webInfo, socialLinks }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const resolvedSocialLinks = socialLinkConfig
+    .map((social) => ({
+      name: social.name,
+      url: socialLinks?.[social.key]?.trim() || '',
+    }))
+    .filter((social) => social.url);
 
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        {/* Social Links */}
-        <div className={styles.socialSection}>
-          <ul className={styles.socialList}>
-            {socialLinks.map((social) => (
-              <li key={social.name}>
-                <a
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                >
-                  {social.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {resolvedSocialLinks.length > 0 ? (
+          <div className={styles.socialSection}>
+            <ul className={styles.socialList}>
+              {resolvedSocialLinks.map((social) => (
+                <li key={social.name}>
+                  <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.socialLink}
+                  >
+                    {social.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
 
         {/* Copyright */}
         <div className={styles.copyright}>
