@@ -13,6 +13,10 @@ import {
   listingByIdQuery,
   listingSlugsQuery,
   listingIdsQuery,
+  allNewsArticlesQuery,
+  featuredNewsArticlesQuery,
+  newsArticleByIdentifierQuery,
+  newsArticleRouteParamsQuery,
   pageBySlugQuery,
 } from './queries';
 
@@ -77,6 +81,27 @@ export async function getListingSlugs() {
 
 export async function getListingIds() {
   return fetchOrNull<Array<{ _id: string }>>(listingIdsQuery);
+}
+
+// ─── News ───
+export async function getAllNewsArticles() {
+  return fetchOrNull<Array<Record<string, unknown>>>(allNewsArticlesQuery);
+}
+
+export async function getFeaturedNewsArticles() {
+  return fetchOrNull<Array<Record<string, unknown>>>(featuredNewsArticlesQuery);
+}
+
+export async function getNewsArticleByIdentifier(identifier: string) {
+  const legacyId = Number(identifier);
+  return fetchOrNull<Record<string, unknown>>(newsArticleByIdentifierQuery, {
+    slug: identifier,
+    legacyId: Number.isFinite(legacyId) ? legacyId : -1,
+  });
+}
+
+export async function getNewsArticleRouteParams() {
+  return fetchOrNull<Array<{ slug: string; legacyId?: string }>>(newsArticleRouteParamsQuery);
 }
 
 // ─── Pages ───

@@ -9,6 +9,7 @@ The Studio currently manages:
 - `agent`
 - `listing`
 - `siteSettings`
+- `newsArticle`
 
 ## Local development
 

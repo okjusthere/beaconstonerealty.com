@@ -11,11 +11,13 @@
     "start": "next start",
     "lint": "eslint",
     "seed": "node scripts/seed-sanity.mjs",
+    "seed:news": "node scripts/seed-news-sanity.mjs",
     "test:e2e": "npm run build && playwright test"
   },
   "dependencies": {
     "@mux/mux-player-react": "^3.11.5",
     "@opennextjs/cloudflare": "^1.18.0",
+    "@portabletext/react": "^4.0.3",
     "@sanity/client": "^7.20.0",
     "@sanity/image-url": "^2.0.3",
     "groq": "^5.18.0",

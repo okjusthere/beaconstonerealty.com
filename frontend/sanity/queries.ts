@@ -175,6 +175,90 @@ export const listingIdsQuery = groq`
   }
 `;
 
+// ─── News ───
+export const allNewsArticlesQuery = groq`
+  *[_type == "newsArticle"] | order(publishedAt desc) {
+    _id,
+    legacyId,
+    title,
+    slug,
+    excerpt,
+    coverImage,
+    coverImageAlt,
+    publishedAt,
+    featured,
+    seoTitle,
+    seoDescription,
+    authorAgent-> {
+      _id,
+      name,
+      slug,
+      title,
+      photo
+    }
+  }
+`;
+
+export const featuredNewsArticlesQuery = groq`
+  *[_type == "newsArticle" && featured == true] | order(publishedAt desc)[0...3] {
+    _id,
+    legacyId,
+    title,
+    slug,
+    excerpt,
+    coverImage,
+    coverImageAlt,
+    publishedAt,
+    featured,
+    seoTitle,
+    seoDescription,
+    authorAgent-> {
+      _id,
+      name,
+      slug,
+      title,
+      photo
+    }
+  }
+`;
+
+export const newsArticleByIdentifierQuery = groq`
+  *[
+    _type == "newsArticle" &&
+    (
+      slug.current == $slug ||
+      legacyId == $legacyId
+    )
+  ][0] {
+    _id,
+    legacyId,
+    title,
+    slug,
+    excerpt,
+    coverImage,
+    coverImageAlt,
+    publishedAt,
+    featured,
+    seoTitle,
+    seoDescription,
+    body,
+    authorAgent-> {
+      _id,
+      name,
+      slug,
+      title,
+      photo
+    }
+  }
+`;
+
+export const newsArticleRouteParamsQuery = groq`
+  *[_type == "newsArticle" && defined(slug.current)] | order(publishedAt desc) {
+    "slug": slug.current,
+    "legacyId": string(legacyId)
+  }
+`;
+
 // ─── Pages ───
 export const pageBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {

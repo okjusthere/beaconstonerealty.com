@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer, { type FooterSocialLinks } from '@/components/Footer';
-import { getGlobalData, getPicByClassId } from '@/lib/api';
+import { getGlobalData, getPicByClassId, type MenuItem } from '@/lib/api';
 import { getSiteSettings } from '@/sanity/fetch';
 
 export const metadata: Metadata = {
@@ -11,6 +11,41 @@ export const metadata: Metadata = {
   keywords: 'luxury real estate, Beaconstone Realty, premium properties, real estate broker',
 
 };
+
+const NEWS_MENU_ITEM: MenuItem = {
+  id: 10001,
+  parentid: 0,
+  type: 2,
+  link_id: 0,
+  title: 'Real Estate News',
+  sub_title: 'Real Estate News',
+  url: '/news',
+  remarks: '',
+  thumbnail: '',
+  banner: [],
+  is_show: true,
+  children: [],
+};
+
+function withNewsMenuItem(menuItems: MenuItem[]): MenuItem[] {
+  if (menuItems.some((item) => item.url === '/news' || item.title.toLowerCase() === 'real estate news')) {
+    return menuItems;
+  }
+
+  const homeIndex = menuItems.findIndex(
+    (item) => item.title.toLowerCase() === 'home' || item.url === '/' || item.url === '/index',
+  );
+
+  if (homeIndex === -1) {
+    return [NEWS_MENU_ITEM, ...menuItems];
+  }
+
+  return [
+    ...menuItems.slice(0, homeIndex + 1),
+    NEWS_MENU_ITEM,
+    ...menuItems.slice(homeIndex + 1),
+  ];
+}
 
 export default async function RootLayout({
   children,
@@ -30,7 +65,7 @@ export default async function RootLayout({
     siteSettings = null;
   }
 
-  const menuItems = globalData?.menu_info ?? [];
+  const menuItems = withNewsMenuItem(globalData?.menu_info ?? []);
   const webInfo = globalData?.web_info ?? {
     company: 'Beaconstone Realty',
     address: '',
