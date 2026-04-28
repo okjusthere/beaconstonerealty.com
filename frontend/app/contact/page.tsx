@@ -1,6 +1,7 @@
 import ContactForm from '@/components/ContactForm';
 import styles from './page.module.css';
 import { findMenuByPath, getGlobalData, getNewsDetail, resolveAssetUrl, type WebInfo } from '@/lib/api';
+import { getSiteSettings } from '@/sanity/fetch';
 
 export const metadata = {
   title: 'Contact Us | Beaconstone Realty',
@@ -27,16 +28,29 @@ const DEFAULT_WEB_INFO: WebInfo = {
 
 const FALLBACK_HERO = 'https://uploads.kevv.ai/clientsuploads/beaconstone/luxury-house-pictures.jpg';
 
+type SiteContactInfo = Partial<{
+  companyName: string;
+  address: string;
+  phone: string;
+  email: string;
+}>;
+
+function textOrFallback(value: string | undefined, fallback: string) {
+  return value?.trim() || fallback;
+}
+
 export default async function ContactPage() {
   let webInfo = DEFAULT_WEB_INFO;
+  let siteSettings: SiteContactInfo | null = null;
   let heroImage = '';
   let introTitle = 'THANK YOU FOR CONTACTING BEACON STONE REALTY';
   let introContent = '';
 
   try {
-    const [globalData, introData] = await Promise.allSettled([
+    const [globalData, introData, siteSettingsData] = await Promise.allSettled([
       getGlobalData(),
       getNewsDetail(58),
+      getSiteSettings() as Promise<SiteContactInfo | null>,
     ]);
 
     if (globalData.status === 'fulfilled') {
@@ -49,17 +63,27 @@ export default async function ContactPage() {
       introTitle = introData.value.title || introTitle;
       introContent = introData.value.content || '';
     }
+
+    if (siteSettingsData.status === 'fulfilled') {
+      siteSettings = siteSettingsData.value;
+    }
   } catch {
     // Keep the legacy fallback copy visible if the API is unavailable.
   }
 
   const heroSrc = heroImage ? resolveAssetUrl(heroImage) : FALLBACK_HERO;
+  const companyName = textOrFallback(siteSettings?.companyName, webInfo.company || 'Beacon Stone Realty');
+  const contactInfo = {
+    phone: textOrFallback(siteSettings?.phone, webInfo.phone),
+    email: textOrFallback(siteSettings?.email, webInfo.email),
+    address: textOrFallback(siteSettings?.address, webInfo.address),
+  };
 
   const contactItems = [
     {
       label: 'Phone',
-      value: webInfo.phone,
-      href: webInfo.phone ? `tel:${webInfo.phone}` : undefined,
+      value: contactInfo.phone,
+      href: contactInfo.phone ? `tel:${contactInfo.phone}` : undefined,
       icon: (
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -68,8 +92,8 @@ export default async function ContactPage() {
     },
     {
       label: 'Email',
-      value: webInfo.email,
-      href: webInfo.email ? `mailto:${webInfo.email}` : undefined,
+      value: contactInfo.email,
+      href: contactInfo.email ? `mailto:${contactInfo.email}` : undefined,
       icon: (
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -79,7 +103,7 @@ export default async function ContactPage() {
     },
     {
       label: 'Address',
-      value: webInfo.address,
+      value: contactInfo.address,
       href: undefined,
       icon: (
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -96,7 +120,7 @@ export default async function ContactPage() {
       <section className={styles.hero}>
         <img
           src={heroSrc}
-          alt="Beacon Stone Realty"
+          alt={companyName}
           className={styles.heroImage}
         />
       </section>
