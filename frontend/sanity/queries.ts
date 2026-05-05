@@ -63,7 +63,8 @@ export const agentByIdQuery = groq`
 
 export const agentIdsQuery = groq`
   *[_type == "agent"] | order(order asc) {
-    _id
+    _id,
+    "slug": slug.current
   }
 `;
 

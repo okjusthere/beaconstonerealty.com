@@ -19,13 +19,7 @@ export async function generateStaticParams() {
 
 export default async function BrokerDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const brokerId = Number(id);
-
-  if (!Number.isFinite(brokerId)) {
-    notFound();
-  }
-
-  const broker = await getSanityAgentDetail(brokerId);
+  const broker = await getSanityAgentDetail(id);
   if (!broker) {
     notFound();
   }
@@ -76,7 +70,7 @@ export default async function BrokerDetailPage({ params }: { params: Promise<{ i
         </section>
       )}
 
-      <section className={styles.contact}>
+      <section id="contact" className={styles.contact}>
         <div className="container">
           <div className={styles.contactInner}>
             <LegacyLeadForm

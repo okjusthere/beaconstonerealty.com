@@ -130,7 +130,7 @@ export default async function SellWithUsPage() {
                           {advisor.field.real_estate_broker_email}
                         </a>
                       )}
-                      <Link href={advisor.url || '#'} className={styles.contactAction}>Send message</Link>
+                      <Link href={advisor.url ? `${advisor.url}#contact` : '#'} className={styles.contactAction}>Send message</Link>
                     </div>
                   </div>
                 </article>

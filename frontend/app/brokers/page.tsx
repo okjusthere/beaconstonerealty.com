@@ -114,57 +114,62 @@ export default async function BrokersPage() {
         <div className="container">
           {agents.length > 0 ? (
             <div className={styles.resultList}>
-              {agents.map((agent) => (
-                <article key={agent.id} className={styles.agentCard}>
-                  <Link href={agent.url || '#'} className={styles.agentImageLink}>
-                    {agent.thumbnail && (
-                      <img
-                        src={agent.thumbnail}
-                        alt={agent.title}
-                        className={styles.agentImage}
-                        loading="lazy"
-                      />
-                    )}
-                  </Link>
-                  <div className={styles.agentBody}>
-                    <div className={styles.agentMain}>
-                      <Link href={agent.url || '#'} className={styles.agentName}>{agent.title}</Link>
-                      {getBrokerRole(agent) && <p className={styles.agentRole}>{getBrokerRole(agent)}</p>}
-                      <div className={styles.separator} />
-                      {getBrokerOffice(agent) && <p className={styles.agentOffice}>{getBrokerOffice(agent)}</p>}
-                      {getBrokerBio(agent) && (
-                        <div
-                          className={styles.agentContent}
-                          dangerouslySetInnerHTML={{ __html: getBrokerBio(agent) }}
+              {agents.map((agent) => {
+                const detailUrl = agent.url || '#';
+                const contactUrl = agent.url ? `${agent.url}#contact` : '#';
+
+                return (
+                  <article key={agent.url || `${agent.id}-${agent.title}`} className={styles.agentCard}>
+                    <Link href={detailUrl} className={styles.agentImageLink}>
+                      {agent.thumbnail && (
+                        <img
+                          src={agent.thumbnail}
+                          alt={agent.title}
+                          className={styles.agentImage}
+                          loading="lazy"
                         />
                       )}
-                    </div>
-                    {(() => {
-                      const contact = getBrokerContact(agent, officePhone, officeEmail);
+                    </Link>
+                    <div className={styles.agentBody}>
+                      <div className={styles.agentMain}>
+                        <Link href={detailUrl} className={styles.agentName}>{agent.title}</Link>
+                        {getBrokerRole(agent) && <p className={styles.agentRole}>{getBrokerRole(agent)}</p>}
+                        <div className={styles.separator} />
+                        {getBrokerOffice(agent) && <p className={styles.agentOffice}>{getBrokerOffice(agent)}</p>}
+                        {getBrokerBio(agent) && (
+                          <div
+                            className={styles.agentContent}
+                            dangerouslySetInnerHTML={{ __html: getBrokerBio(agent) }}
+                          />
+                        )}
+                      </div>
+                      {(() => {
+                        const contact = getBrokerContact(agent, officePhone, officeEmail);
 
-                      return (
-                        <div className={styles.agentContact}>
-                          <span className={styles.contactTitle}>Contact</span>
-                          {contact.phone && (
-                            <a href={`tel:${contact.phone}`} className={styles.contactLink}>
-                              {contact.phoneLabel}: {contact.phone}
-                            </a>
-                          )}
-                          {contact.email && (
-                            <a
-                              href={`mailto:${contact.email}`}
-                              className={styles.contactLink}
-                            >
-                              {contact.email}
-                            </a>
-                          )}
-                          <Link href={agent.url || '#'} className={styles.contactAction}>Send message</Link>
-                        </div>
-                      );
-                    })()}
-                  </div>
-                </article>
-              ))}
+                        return (
+                          <div className={styles.agentContact}>
+                            <span className={styles.contactTitle}>Contact</span>
+                            {contact.phone && (
+                              <a href={`tel:${contact.phone}`} className={styles.contactLink}>
+                                {contact.phoneLabel}: {contact.phone}
+                              </a>
+                            )}
+                            {contact.email && (
+                              <a
+                                href={`mailto:${contact.email}`}
+                                className={styles.contactLink}
+                              >
+                                {contact.email}
+                              </a>
+                            )}
+                            <Link href={contactUrl} className={styles.contactAction}>Send message</Link>
+                          </div>
+                        );
+                      })()}
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           ) : (
             <div className={styles.empty}>

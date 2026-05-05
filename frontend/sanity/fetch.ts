@@ -59,7 +59,7 @@ export async function getAgentSlugs() {
 }
 
 export async function getAgentIds() {
-  return fetchOrNull<Array<{ _id: string }>>(agentIdsQuery);
+  return fetchOrNull<Array<{ _id: string; slug?: string }>>(agentIdsQuery);
 }
 
 // ─── Listings ───
