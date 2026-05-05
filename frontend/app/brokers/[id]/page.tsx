@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import { getGlobalData } from '@/lib/api';
 import { getSanityAgentDetail, getSanityAgentIds } from '@/lib/sanity-api';
@@ -22,6 +22,11 @@ export default async function BrokerDetailPage({ params }: { params: Promise<{ i
   const broker = await getSanityAgentDetail(id);
   if (!broker) {
     notFound();
+  }
+
+  const canonicalIdentifier = broker.url.split('/').filter(Boolean).at(-1);
+  if (canonicalIdentifier && canonicalIdentifier !== id) {
+    redirect(broker.url);
   }
 
   const globalData = await getGlobalData();
