@@ -13,6 +13,7 @@ import {
   getAgentBySlug,
   getAgentIds,
   getAllListings,
+  getListingBySlug,
   getListingById,
   getListingIds,
 } from '@/sanity/fetch';
@@ -35,6 +36,21 @@ function agentRouteIdentifier(agent: Record<string, unknown>): string {
     : '';
 
   return slug || (legacyId > 0 ? String(legacyId) : String(agent._id || ''));
+}
+
+function sanitySlug(value: unknown): string {
+  if (typeof value === 'object' && value && 'current' in value) {
+    return String((value as { current?: string }).current || '').trim();
+  }
+
+  return '';
+}
+
+function listingRouteIdentifier(listing: Record<string, unknown>): string {
+  const legacyId = legacyIdFromSanityId(String(listing._id || ''));
+  const slug = sanitySlug(listing.slug);
+
+  return slug || (legacyId > 0 ? String(legacyId) : String(listing._id || ''));
 }
 
 /**
@@ -196,6 +212,8 @@ export async function getSanityAgentIds(): Promise<string[]> {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapListingToNewsItem(listing: Record<string, any>, isDetail = false): NewsItem {
   const id = legacyIdFromSanityId(listing._id || '');
+  const slug = sanitySlug(listing.slug);
+  const routeIdentifier = listingRouteIdentifier(listing);
   const thumbnail = resolveImageUrl(listing.featuredImage);
 
   // Build gallery from Sanity gallery array
@@ -230,11 +248,12 @@ function mapListingToNewsItem(listing: Record<string, any>, isDetail = false): N
   // Map address into the field map so detail page can access it
   if (listing.address) field.address = listing.address;
   if (listing.totalResidences) field.total_residences = String(listing.totalResidences);
+  if (slug) field.slug = slug;
 
   return {
     id,
     title: listing.title || '',
-    url: `/properties/${id}`,
+    url: routeIdentifier ? `/properties/${routeIdentifier}` : '',
     keywords: listing.propertyType || '',
     description: listing.price || '',
     thumbnail,
@@ -256,14 +275,30 @@ export async function getSanityListingList(): Promise<NewsItem[]> {
 }
 
 /**
- * Get a single listing by legacy numeric ID (for the property detail page).
+ * Get a single listing by route identifier.
+ * Supports old numeric routes like /properties/30 and new Sanity slug routes.
  * Also resolves the associated agent into a NewsItem for the sidebar.
  */
-export async function getSanityListingDetail(legacyId: number): Promise<{
+export async function getSanityListingDetail(identifier: string | number): Promise<{
   listing: NewsItem;
   agent: NewsItem | null;
 } | null> {
-  const raw = await getListingById(`listing-${legacyId}`);
+  const routeId = String(identifier).trim();
+  if (!routeId) return null;
+
+  const legacyId = Number(routeId);
+  let raw = Number.isInteger(legacyId) && legacyId > 0
+    ? await getListingById(`listing-${legacyId}`)
+    : null;
+
+  if (!raw) {
+    raw = await getListingBySlug(routeId);
+  }
+
+  if (!raw) {
+    raw = await getListingById(routeId);
+  }
+
   if (!raw) return null;
 
   const listing = mapListingToNewsItem(raw, true);
@@ -280,12 +315,27 @@ export async function getSanityListingDetail(legacyId: number): Promise<{
 }
 
 /**
- * Get all listing legacy IDs for generateStaticParams.
+ * Get all listing route IDs for generateStaticParams.
+ * Includes old numeric IDs for backwards compatibility and slugs for new Sanity listings.
  */
 export async function getSanityListingIds(): Promise<string[]> {
   const listings = await getListingIds();
   if (!listings) return [];
-  return listings.map((l) => String(legacyIdFromSanityId(l._id))).filter((id) => id !== '0');
+  const ids = new Set<string>();
+
+  for (const listing of listings) {
+    const legacyId = legacyIdFromSanityId(listing._id);
+    if (legacyId > 0) {
+      ids.add(String(legacyId));
+    }
+    if (listing.slug) {
+      ids.add(listing.slug);
+    } else if (legacyId === 0 && listing._id) {
+      ids.add(listing._id);
+    }
+  }
+
+  return Array.from(ids);
 }
 
 /**

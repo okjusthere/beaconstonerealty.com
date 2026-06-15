@@ -172,7 +172,8 @@ export const listingByIdQuery = groq`
 
 export const listingIdsQuery = groq`
   *[_type == "listing" && status != "sold"] | order(order asc) {
-    _id
+    _id,
+    "slug": slug.current
   }
 `;
 

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import PropertyGallery from '@/components/PropertyGallery';
 import LegacyLeadForm from '@/components/LegacyLeadForm';
 import { getGlobalData } from '@/lib/api';
@@ -29,14 +29,9 @@ export async function generateStaticParams() {
 
 export default async function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const propertyId = Number(id);
-
-  if (!Number.isFinite(propertyId)) {
-    notFound();
-  }
 
   const [result, globalData] = await Promise.all([
-    getSanityListingDetail(propertyId),
+    getSanityListingDetail(id),
     getGlobalData(),
   ]);
 
@@ -45,6 +40,11 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
   }
 
   const { listing: property, agent } = result;
+  const canonicalIdentifier = property.url.split('/').filter(Boolean).at(-1);
+  if (canonicalIdentifier && canonicalIdentifier !== id) {
+    redirect(property.url);
+  }
+
   const recipientEmail = globalData.web_info.email || 'info@beacon-stone.com';
   const photos = property.photo_album?.length
     ? property.photo_album

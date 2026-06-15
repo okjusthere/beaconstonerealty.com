@@ -80,7 +80,7 @@ export async function getListingSlugs() {
 }
 
 export async function getListingIds() {
-  return fetchOrNull<Array<{ _id: string }>>(listingIdsQuery);
+  return fetchOrNull<Array<{ _id: string; slug?: string }>>(listingIdsQuery);
 }
 
 // ─── News ───
