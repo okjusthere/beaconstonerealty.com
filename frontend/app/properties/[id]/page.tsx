@@ -1,0 +1,137 @@
+import Link from 'next/link';
+import { notFound, redirect } from 'next/navigation';
+import PropertyGallery from '@/components/PropertyGallery';
+import LegacyLeadForm from '@/components/LegacyLeadForm';
+import { getGlobalData } from '@/lib/api';
+import { getSanityListingDetail, getSanityListingIds } from '@/lib/sanity-api';
+import styles from './page.module.css';
+
+function ArrowRight() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+  );
+}
+
+const FORM_NOTE_HTML = `
+  <p>By submitting this form, you agree to our <a href="/legal">Privacy Policy</a> and <a href="/legal">Terms of Use</a>.</p>
+`;
+
+const FORM_DISCLAIMER_HTML = `
+  <p>Our team will review your inquiry and get back to you shortly.</p>
+`;
+
+export async function generateStaticParams() {
+  const ids = await getSanityListingIds();
+  return ids.map((id) => ({ id }));
+}
+
+export default async function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+
+  const [result, globalData] = await Promise.all([
+    getSanityListingDetail(id),
+    getGlobalData(),
+  ]);
+
+  if (!result) {
+    notFound();
+  }
+
+  const { listing: property, agent } = result;
+  const canonicalIdentifier = property.url.split('/').filter(Boolean).at(-1);
+  if (canonicalIdentifier && canonicalIdentifier !== id) {
+    redirect(property.url);
+  }
+
+  const recipientEmail = globalData.web_info.email || 'info@beacon-stone.com';
+  const photos = property.photo_album?.length
+    ? property.photo_album
+    : property.thumbnail
+      ? [property.thumbnail]
+      : [];
+
+  return (
+    <>
+      <PropertyGallery images={photos} title={property.title} />
+
+      <section className={styles.details}>
+        <div className="container">
+          <div className={styles.detailsGrid}>
+            <div className={styles.detailsMain}>
+              <h1 className={styles.propertyTitle}>{property.title}</h1>
+              {property.description && (
+                <p className={styles.propertyDesc}>{property.description}</p>
+              )}
+
+              {property.field && Object.keys(property.field).length > 0 && (() => {
+                const HIDDEN_FIELDS = ['real_estate_agent_id', 'phone', 'real_estate_broker_desc', 'real_estate_broker_email'];
+                const visibleEntries = Object.entries(property.field).filter(
+                  ([key, value]) => value && !HIDDEN_FIELDS.includes(key)
+                );
+                if (visibleEntries.length === 0) return null;
+                return (
+                  <div className={styles.fields}>
+                    <h2 className={styles.fieldsSectionTitle}>Development Details</h2>
+                    <div className={styles.fieldsGrid}>
+                      {visibleEntries.map(([key, value]) => (
+                        <div key={key} className={styles.fieldItem}>
+                          <span className={styles.fieldLabel}>
+                            {key.replace(/_/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())}
+                          </span>
+                          <span className={styles.fieldValue}>{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {property.content && (
+                <div
+                  className={styles.richContent}
+                  dangerouslySetInnerHTML={{ __html: property.content }}
+                />
+              )}
+            </div>
+
+            <div className={styles.sidebar}>
+              {agent && (
+                <div className={styles.agentCard}>
+                  <div className={styles.agentPhoto}>
+                    {agent.thumbnail && <img src={agent.thumbnail} alt={agent.title} />}
+                  </div>
+                  <div className={styles.agentInfo}>
+                    <h3 className={styles.agentName}>{agent.title}</h3>
+                    <p className={styles.agentRole}>Real Estate Professional</p>
+                    {agent.url && (
+                      <Link href={agent.url} className={styles.agentLink}>
+                        Agent Profile <ArrowRight />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              <div className={styles.contactForm}>
+                <LegacyLeadForm
+                  variant="inquiry"
+                  submissionTitle={property.title}
+                  title="Let's get in touch"
+                  description="Tell us what you would like to know about this development and a prepared email draft will open for you."
+                  messagePlaceholder="I would like to discuss this property with your team."
+                  noteHtml={FORM_NOTE_HTML}
+                  disclaimerHtml={FORM_DISCLAIMER_HTML}
+                  compact
+                  recipientEmail={recipientEmail}
+                  successMessage="Thank you! Your inquiry has been submitted successfully."
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

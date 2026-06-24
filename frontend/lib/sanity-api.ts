@@ -1,0 +1,348 @@
+/**
+ * Adapter layer that maps Sanity CMS responses to the shapes
+ * expected by existing page components (NewsItem-compatible).
+ *
+ * This avoids changing component internals - only the data source changes.
+ */
+
+import { urlFor } from '@/sanity/client';
+import {
+  getAllAgents,
+  getAllAgentsWithBio,
+  getAgentById,
+  getAgentBySlug,
+  getAgentIds,
+  getAllListings,
+  getListingBySlug,
+  getListingById,
+  getListingIds,
+} from '@/sanity/fetch';
+import type { NewsItem } from './api';
+
+// ─── Helpers ───
+
+/**
+ * Extract the legacy numeric ID from a Sanity `_id` like "agent-42" or "listing-7".
+ */
+function legacyIdFromSanityId(sanityId: string): number {
+  const match = sanityId.match(/-(\d+)$/);
+  return match ? Number(match[1]) : 0;
+}
+
+function agentRouteIdentifier(agent: Record<string, unknown>): string {
+  const legacyId = legacyIdFromSanityId(String(agent._id || ''));
+  const slug = typeof agent.slug === 'object' && agent.slug && 'current' in agent.slug
+    ? String((agent.slug as { current?: string }).current || '')
+    : '';
+
+  return slug || (legacyId > 0 ? String(legacyId) : String(agent._id || ''));
+}
+
+function sanitySlug(value: unknown): string {
+  if (typeof value === 'object' && value && 'current' in value) {
+    return String((value as { current?: string }).current || '').trim();
+  }
+
+  return '';
+}
+
+function listingRouteIdentifier(listing: Record<string, unknown>): string {
+  const legacyId = legacyIdFromSanityId(String(listing._id || ''));
+  const slug = sanitySlug(listing.slug);
+
+  return slug || (legacyId > 0 ? String(legacyId) : String(listing._id || ''));
+}
+
+/**
+ * Resolve a Sanity image object to a URL string.
+ * Returns empty string if source is falsy.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function resolveImageUrl(source: any): string {
+  if (!source) return '';
+  try {
+    return urlFor(source).url();
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * Convert Sanity Portable Text blocks to an HTML string.
+ * This is a minimal converter that handles the basic block types
+ * produced by the seed script (plain paragraphs with spans).
+ * No extra dependencies needed.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function portableTextToHtml(blocks: any): string {
+  if (!blocks) return '';
+  if (typeof blocks === 'string') return blocks;
+  if (!Array.isArray(blocks)) return '';
+
+  return blocks
+    .map((block) => {
+      if (block._type !== 'block') return '';
+
+      const style = block.style || 'normal';
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const text = (block.children || []).map((child: any) => {
+        let t = child.text || '';
+        const marks: string[] = child.marks || [];
+        for (const mark of marks) {
+          if (mark === 'strong') t = `<strong>${t}</strong>`;
+          else if (mark === 'em') t = `<em>${t}</em>`;
+        }
+        return t;
+      }).join('');
+
+      if (!text) return '';
+
+      switch (style) {
+        case 'h1': return `<h1>${text}</h1>`;
+        case 'h2': return `<h2>${text}</h2>`;
+        case 'h3': return `<h3>${text}</h3>`;
+        case 'h4': return `<h4>${text}</h4>`;
+        case 'blockquote': return `<blockquote>${text}</blockquote>`;
+        default: return `<p>${text}</p>`;
+      }
+    })
+    .filter(Boolean)
+    .join('\n');
+}
+
+// ─── Agent adapters ───
+
+/**
+ * Map a Sanity agent record to a NewsItem-compatible shape.
+ * Used by both the broker list page and broker detail page.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function mapAgentToNewsItem(agent: Record<string, any>, includeBio = false): NewsItem {
+  const id = legacyIdFromSanityId(agent._id || '');
+  const slug = agent.slug?.current || '';
+  const routeIdentifier = agentRouteIdentifier(agent);
+  const thumbnail = resolveImageUrl(agent.photo);
+  const bioHtml = includeBio ? portableTextToHtml(agent.bio) : '';
+
+  return {
+    id,
+    title: agent.name || '',
+    url: routeIdentifier ? `/brokers/${routeIdentifier}` : '',
+    keywords: agent.title || '', // role like "Real Estate Advisor"
+    description: '',
+    thumbnail,
+    content: bioHtml,
+    enclosure: '',
+    photo_album: [],
+    add_time: 0,
+    field: {
+      phone: agent.phone || '',
+      real_estate_broker_email: agent.email || '',
+      real_estate_broker_desc: bioHtml,
+      slug,
+    },
+  };
+}
+
+/**
+ * Get all agents as NewsItem[] (for the brokers list page).
+ * Includes bio so the list page can show a bio excerpt.
+ */
+export async function getSanityAgentList(): Promise<NewsItem[]> {
+  const agents = await getAllAgentsWithBio();
+  if (!agents) return [];
+  return agents.map((agent) => mapAgentToNewsItem(agent, true));
+}
+
+/**
+ * Get a single agent by route identifier.
+ * Supports old numeric routes like /brokers/74 and new Sanity slug routes.
+ */
+export async function getSanityAgentDetail(identifier: string | number): Promise<NewsItem | null> {
+  const routeId = String(identifier).trim();
+  if (!routeId) return null;
+
+  const legacyId = Number(routeId);
+  let agent = Number.isInteger(legacyId) && legacyId > 0
+    ? await getAgentById(`agent-${legacyId}`)
+    : null;
+
+  if (!agent) {
+    agent = await getAgentBySlug(routeId);
+  }
+
+  if (!agent) {
+    agent = await getAgentById(routeId);
+  }
+
+  if (!agent) return null;
+  return mapAgentToNewsItem(agent, true);
+}
+
+/**
+ * Get all agent route IDs for generateStaticParams.
+ * Includes old numeric IDs for backwards compatibility and slugs for new Sanity agents.
+ */
+export async function getSanityAgentIds(): Promise<string[]> {
+  const agents = await getAgentIds();
+  if (!agents) return [];
+  const ids = new Set<string>();
+
+  for (const agent of agents) {
+    const legacyId = legacyIdFromSanityId(agent._id);
+    if (legacyId > 0) {
+      ids.add(String(legacyId));
+    }
+    if (agent.slug) {
+      ids.add(agent.slug);
+    } else if (legacyId === 0 && agent._id) {
+      ids.add(agent._id);
+    }
+  }
+
+  return Array.from(ids);
+}
+
+// ─── Listing adapters ───
+
+/**
+ * Map a Sanity listing record to a NewsItem-compatible shape.
+ * Used by both the properties list page and property detail page.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function mapListingToNewsItem(listing: Record<string, any>, isDetail = false): NewsItem {
+  const id = legacyIdFromSanityId(listing._id || '');
+  const slug = sanitySlug(listing.slug);
+  const routeIdentifier = listingRouteIdentifier(listing);
+  const thumbnail = resolveImageUrl(listing.featuredImage);
+
+  // Build gallery from Sanity gallery array
+  const gallery: string[] = [];
+  if (listing.gallery && Array.isArray(listing.gallery)) {
+    for (const img of listing.gallery) {
+      const url = resolveImageUrl(img);
+      if (url) gallery.push(url);
+    }
+  }
+
+  // Build HTML content from portable text description
+  const contentHtml = isDetail ? portableTextToHtml(listing.description) : '';
+
+  // Build field map with listing-specific metadata
+  const field: Record<string, string> = {};
+  if (listing.propertyType) field.development_type = listing.propertyType;
+  if (listing.price) field.price = String(listing.price);
+  if (listing.bedrooms) field.bedrooms = String(listing.bedrooms);
+  if (listing.bathrooms) field.bathrooms = String(listing.bathrooms);
+  if (listing.sqft) field.sqft = String(listing.sqft);
+  if (listing.highlights) field.house_introduction = listing.highlights;
+  if (listing.developmentDetails) field.development_details = listing.developmentDetails;
+
+  // Store agent reference ID so the detail page can look up the agent
+  if (listing.agent?._id) {
+    const agentLegacyId = legacyIdFromSanityId(listing.agent._id);
+    field.real_estate_agent_id = String(agentLegacyId);
+  }
+
+  // Map price into description (used as "Starting Price" on list page)
+  // Map address into the field map so detail page can access it
+  if (listing.address) field.address = listing.address;
+  if (listing.totalResidences) field.total_residences = String(listing.totalResidences);
+  if (slug) field.slug = slug;
+
+  return {
+    id,
+    title: listing.title || '',
+    url: routeIdentifier ? `/properties/${routeIdentifier}` : '',
+    keywords: listing.propertyType || '',
+    description: listing.price || '',
+    thumbnail,
+    content: contentHtml,
+    enclosure: '',
+    photo_album: gallery,
+    add_time: 0,
+    field,
+  };
+}
+
+/**
+ * Get all listings as NewsItem[] (for the properties list page).
+ */
+export async function getSanityListingList(): Promise<NewsItem[]> {
+  const listings = await getAllListings();
+  if (!listings) return [];
+  return listings.map((listing) => mapListingToNewsItem(listing));
+}
+
+/**
+ * Get a single listing by route identifier.
+ * Supports old numeric routes like /properties/30 and new Sanity slug routes.
+ * Also resolves the associated agent into a NewsItem for the sidebar.
+ */
+export async function getSanityListingDetail(identifier: string | number): Promise<{
+  listing: NewsItem;
+  agent: NewsItem | null;
+} | null> {
+  const routeId = String(identifier).trim();
+  if (!routeId) return null;
+
+  const legacyId = Number(routeId);
+  let raw = Number.isInteger(legacyId) && legacyId > 0
+    ? await getListingById(`listing-${legacyId}`)
+    : null;
+
+  if (!raw) {
+    raw = await getListingBySlug(routeId);
+  }
+
+  if (!raw) {
+    raw = await getListingById(routeId);
+  }
+
+  if (!raw) return null;
+
+  const listing = mapListingToNewsItem(raw, true);
+
+  // Map the embedded agent reference if present
+  let agent: NewsItem | null = null;
+  if (raw.agent && typeof raw.agent === 'object') {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const agentData = raw.agent as Record<string, any>;
+    agent = mapAgentToNewsItem(agentData, false);
+  }
+
+  return { listing, agent };
+}
+
+/**
+ * Get all listing route IDs for generateStaticParams.
+ * Includes old numeric IDs for backwards compatibility and slugs for new Sanity listings.
+ */
+export async function getSanityListingIds(): Promise<string[]> {
+  const listings = await getListingIds();
+  if (!listings) return [];
+  const ids = new Set<string>();
+
+  for (const listing of listings) {
+    const legacyId = legacyIdFromSanityId(listing._id);
+    if (legacyId > 0) {
+      ids.add(String(legacyId));
+    }
+    if (listing.slug) {
+      ids.add(listing.slug);
+    } else if (legacyId === 0 && listing._id) {
+      ids.add(listing._id);
+    }
+  }
+
+  return Array.from(ids);
+}
+
+/**
+ * Get all agents as NewsItem[] (needed by property detail page to find an agent).
+ */
+export async function getSanityAllAgents(): Promise<NewsItem[]> {
+  const agents = await getAllAgents();
+  if (!agents) return [];
+  return agents.map((agent) => mapAgentToNewsItem(agent, false));
+}

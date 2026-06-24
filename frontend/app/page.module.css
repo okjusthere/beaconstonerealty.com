@@ -1,0 +1,452 @@
+.hero {
+  background: var(--color-brown);
+}
+
+.heroIntro {
+  padding-top: calc(var(--header-height) + var(--space-lg));
+  padding-bottom: var(--space-md);
+}
+
+.heroIntroGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  align-items: end;
+}
+
+.heroIntroCopy {
+  max-width: 720px;
+}
+
+.heroTitle {
+  margin: 0;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  max-width: 20ch;
+  font-size: clamp(2.375rem, 3.2vw, 2.6875rem);
+  line-height: 1.13;
+  letter-spacing: 0.02em;
+}
+
+.heroIntroAction {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.heroBtn {
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: transparent;
+  color: var(--color-white);
+  padding: 15px 28px;
+}
+
+.heroBtn:hover {
+  border-color: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-white);
+}
+
+.heroMedia {
+  position: relative;
+}
+
+.heroMediaSurface {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-brown);
+  line-height: 0;
+}
+
+.heroVideoElement {
+  width: 100%;
+  height: 100%;
+}
+
+.heroVideoElement {
+  position: relative;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heroVideoElement :global(mux-player) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  transition: opacity 220ms ease;
+  --media-object-fit: cover;
+  --media-object-position: center;
+}
+
+.about {
+  background: var(--color-white);
+  padding-top: clamp(36px, 5vw, 60px);
+  padding-bottom: clamp(24px, 4vw, 48px);
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.aboutImage {
+  width: 100%;
+}
+
+.aboutImage img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 60%;
+}
+
+.aboutText {
+  max-width: 40rem;
+  padding-top: clamp(12px, 2vw, 24px);
+}
+
+.sectionTitle {
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 3.4vw, 2.7rem);
+  color: var(--color-brown);
+  font-weight: 400;
+}
+
+.richContent {
+  color: var(--color-text-light);
+  line-height: 1.9;
+  font-size: 1rem;
+}
+
+.richContent :global(p) {
+  margin-bottom: 1em;
+}
+
+.story {
+  background: var(--color-white);
+  padding-top: clamp(36px, 5vw, 60px);
+  padding-bottom: clamp(24px, 4vw, 48px);
+}
+
+.storyInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.storyText {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--space-lg);
+  max-width: 38rem;
+  align-self: center;
+}
+
+.storyImage {
+  width: 100%;
+}
+
+.storyImage img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 70%;
+}
+
+.exclusive {
+  background: var(--color-brown);
+  padding: clamp(48px, 6vw, 72px) 0 clamp(20px, 3vw, 32px);
+}
+
+.exclusiveInner {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.exclusiveTitle {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.exclusiveDesc {
+  margin: 0 0 var(--space-xl);
+  max-width: 820px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.exclusiveDesc :global(p) {
+  margin: 0 0 0.75em;
+  color: inherit;
+}
+
+.exclusiveBtnWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.exclusiveBtn {
+  display: inline-flex;
+  padding: 18px 48px;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  color: var(--color-white);
+}
+
+.exclusiveBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.videoSection {
+  background: var(--color-brown);
+  padding-top: 0;
+  padding-bottom: clamp(56px, 8vw, 88px);
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-brown);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
+
+.videoWrapper :global(p) {
+  margin: 0;
+  height: 100%;
+}
+
+.videoMux {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.videoMux :global(mux-player) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  transition: opacity 220ms ease;
+  --media-object-fit: cover;
+  --media-object-position: center;
+  --media-primary-color: #ffffff;
+  --media-secondary-color: var(--color-brown);
+  --media-range-bar-color: var(--color-brown);
+  --media-control-hover-background: rgba(62, 54, 52, 0.7);
+}
+
+.videoWrapper :global(video),
+.videoWrapper :global(iframe),
+.videoWrapper :global(img) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+/* Fix Safari black border on video playback */
+.videoMux :global(mux-player),
+.videoWrapper :global(video) {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  outline: none;
+}
+
+.properties {
+  background: var(--color-white);
+}
+
+.propertiesHeader {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.propertiesDesc {
+  color: var(--color-grey-dark);
+  max-width: 680px;
+  margin: 0 auto var(--space-lg);
+}
+
+.propertiesDesc :global(p) {
+  margin: 0 0 0.75em;
+  color: inherit;
+}
+
+.propertiesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+.propertyCard {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(62, 54, 52, 0.12);
+  background: var(--color-white);
+  text-decoration: none;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.propertyCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.propertyImageWrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--color-grey-lightest);
+}
+
+.propertyImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.propertyCard:hover .propertyImage {
+  transform: scale(1.04);
+}
+
+.propertyInfo {
+  padding: var(--space-lg);
+}
+
+.propertyTitle {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--color-brown);
+  font-weight: 400;
+}
+
+.propertyDesc {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--color-grey-dark);
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .aboutGrid {
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    gap: clamp(56px, 7vw, 120px);
+  }
+
+  .aboutText {
+    justify-self: end;
+  }
+
+  .propertiesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroIntro {
+    padding-bottom: 12px;
+  }
+
+  .heroIntroGrid {
+    grid-template-columns: minmax(0, 8fr) minmax(260px, 4fr);
+    gap: var(--space-2xl);
+  }
+
+  .heroIntroAction {
+    justify-content: flex-end;
+  }
+
+  .aboutImage {
+    max-width: 760px;
+  }
+
+  .storyInner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+    gap: clamp(72px, 8vw, 140px);
+    align-items: center;
+  }
+
+  .storyText {
+    order: 1;
+    padding-top: 0;
+  }
+
+  .storyImage {
+    order: 2;
+    justify-self: end;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .propertiesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .heroIntro {
+    padding-top: calc(var(--header-height) + 18px);
+    padding-bottom: var(--space-lg);
+  }
+
+  .heroMediaSurface {
+    min-height: 220px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .heroVideoElement :global(video) {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .videoWrapper {
+    aspect-ratio: 4 / 3;
+  }
+
+  .videoWrapper :global(video) {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .exclusiveInner {
+    text-align: center;
+    margin-left: auto;
+  }
+
+  .exclusiveDesc {
+    margin-left: auto;
+  }
+}
